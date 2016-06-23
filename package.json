@@ -1,0 +1,44 @@
+{
+  "name": "jeremywagner.me",
+  "version": "1.0.0",
+  "description": "Just my blog.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malchata/jeremywagner.me.git"
+  },
+  "keywords": [
+    "jeremy",
+    "wagner",
+    "blog",
+    "web",
+    "optimization",
+    "front",
+    "end",
+    "development"
+  ],
+  "author": "Jeremy Wagner <jeremy.l.wagner@gmail.com> (https://jeremywagner.me/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malchata/jeremywagner.me/issues"
+  },
+  "homepage": "https://github.com/malchata/jeremywagner.me#readme",
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "autorem": "^0.1.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "less-plugin-clean-css": "^1.5.1"
+  }
+}

@@ -1,0 +1,78 @@
+@media screen and (min-width: @largeBreakpoint){
+	body{
+		padding: 48px 20px;
+	}
+
+	header{
+		padding: 0 0 0 percentage(44 / 757);
+	}
+
+	.content{
+		margin: 0 auto;
+		max-width: 1150px;
+	}
+
+	#jeremy{
+		max-width: 163px;
+		width: percentage(163 / 757);
+		vertical-align: bottom;
+		margin: 0;
+		position: relative;
+		z-index: 2;
+	}
+
+	.title-container{
+		vertical-align: bottom;
+		margin: 0 0 5px;
+		width: percentage(594 / 757);
+		position: relative;
+		left: -8%;
+		z-index: 1;
+	}
+
+	.name{
+		font: 700 20px/20px @montserrat;
+		margin: 0 0 6px;
+		padding: 2px 8px 2px percentage(100/ 757);
+		text-align: left;
+		display: inline-block;
+	}
+
+	.site{
+		margin: 0 0 6px;
+		font: 700 24px/24px @montserrat;
+		padding: 0 0 0 percentage(100 / 757);
+		text-align: left;
+	}
+
+	.tagline{
+		padding: 0 0 0 percentage(100 / 757);
+		text-align: left;
+	}
+
+	#nav-icon{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.name{
+		font: 700 24px/24px @montserrat;
+	}
+
+	.site{
+		font: 700 28px/28px @montserrat;
+	}
+}
+
+@media screen and (min-width: 800px){
+	.name{
+		font: 700 29px/29px @montserrat;
+		padding: 2px 8px 2px percentage(90 / 757);
+	}
+
+	.site{
+		font: 700 39px/39px @montserrat;
+		padding: 0 0 0 percentage(90 / 757);
+	}
+}

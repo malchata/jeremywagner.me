@@ -1,0 +1,81 @@
+<?php $http2 = $_SERVER["SERVER_PROTOCOL"] === "HTTP/2"; ?>
+<!doctype html>
+<html<?php if($http2 === false){?> class="http1"<?php } ?>>
+	<head>
+		<title>
+			Jeremy Wagner's Web Development Blog
+		</title>
+		<meta name="robots" content="index, follow">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjord+One|Montserrat:400,700|Tinos:400,700" type="text/css">
+		<link rel="stylesheet" href="css/global.css" type="text/css">
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="content">
+			<!-- Begin Header -->
+			<header>
+				<img src="img/global/jeremy.svg" alt="Jeremy!" id="jeremy">
+				<div class="title-container">
+					<h1 class="name">Jeremy Wagner's</h1>
+					<h2 class="site">Web Dev<span>elopment</span> Blog</h2>
+					<h4 class="tagline">Featuring occasional rambling diatribes about other things.</h4>
+				</div>
+				<div id="nav-icon">
+					<div class="hamburger-bar"></div>
+					<div class="hamburger-bar-spacer"></div>
+					<div class="hamburger-bar"></div>
+					<div class="hamburger-bar-spacer"></div>
+					<div class="hamburger-bar"></div>
+				</div>
+			</header>
+			<!-- End Header -->
+			<!-- Begin Nav -->
+			<nav>
+				<ul class="menu">
+					<div id="close-nav"></div>
+					<li class="menu-item">
+						<a href="hire-me.html" class="menu-link">Hire Me</a>
+					</li>
+					<li class="menu-item">
+						<a href="about-me.html" class="menu-link">About Me</a>
+					</li>
+					<li class="menu-item">
+						<a href="/book" target="_blank" class="menu-link">Buy my Book</a>
+					</li>
+					<li class="menu-item">
+						<a href="/speaker-info.html" class="menu-link">Speaker Info</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- End Nav -->
+			<!-- Begin Post Summary -->
+			<article class="post summary">
+				<h1>How an SVG Media Query Made my Client’s Website a Little Leaner.</h1>
+				<p class="date">May 25, 2016</date>
+				<p>This isn’t a huge success story, but I thought it was sufficiently spiffy to warrant a short post. Who knows? This short post may help you some day.</p>
+				<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" target="_blank">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site’s logo a different treatment for each breakpoint.</p>
+				<a href="blog/svg-media-query.html" class="read-more">Read More &raquo;</a>
+			</article>
+			<!-- End Post Summary -->
+			<!-- Begin Post Summary -->
+			<article class="post summary">
+				<h1>Getting Cozy with WebP Images</h1>
+				<p class="date">April 25, 2016</date>
+				<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images <b><u>tug at your senses</u></b>, and for content authors, they're essential in moving people to do things.</p>
+				<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
+				<a href="blog/webp-images.html" class="read-more">Read More &raquo;</a>
+			</article>
+			<!-- End Post Summary -->
+		</section>
+		<!-- End Content -->
+		<footer>
+			<p class="footer-copy">All content &copy; <?php echo(date("Y")); ?> Jeremy Wagner, unless where otherwise noted.</p>
+		</footer>
+		<?php if($http2 === true){ ?>
+		<script src="js/nav.js" async></script>
+		<?php }else{ ?>
+		<script src="js/scripts.js" async></script>
+		<?php } ?>
+	</body>
+</html>
