@@ -16,8 +16,6 @@ strike,
 b,
 u,
 i,
-ol,
-ul,
 li,
 table,
 caption,
@@ -43,6 +41,24 @@ video{
 	vertical-align: baseline;
 }
 
+ol,
+ul{
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+}
+
+b{
+	font-weight: 700;
+}
+
+i{
+	font-style: italic;
+}
+
 article,
 aside,
 details,
@@ -65,11 +81,6 @@ body{
 	background: @white;
 }
 
-ol,
-ul{
-	list-style: none;
-}
-
 blockquote,
 q{
 	quotes: none;
@@ -86,6 +97,15 @@ q:after{
 table{
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+img{
+	max-width: 100%;
+	display: inline-block;
+}
+
+a{
+	color: @lightBrown;
 }
 
 *{

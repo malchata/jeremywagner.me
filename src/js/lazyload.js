@@ -12,10 +12,14 @@
 			lazyLoader.scanImages();
 			document.addEventListener("scroll", lazyLoader.scanImages);
 			document.addEventListener("touchmove", lazyLoader.scanImages);
+			window.addEventListener("orientationchange", lazyLoader.scanImages);
+			window.addEventListener("resize", lazyLoader.scanImages);
 		},
 		destroy: function(){
 			document.removeEventListener("scroll", lazyLoader.scanImages);
 			document.removeEventListener("touchmove", lazyLoader.scanImages);
+			window.removeEventListener("orientationchange", lazyLoader.scanImages);
+			window.removeEventListener("resize", lazyLoader.scanImages);
 		},
 		scanImages: function(){
 			if(document.getElementsByClassName(lazyLoader.lazyClass).length === 0){
@@ -40,8 +44,9 @@
 			}
 		},
 		inViewport: function(img){
-			var top = ((document.body.scrollTop || document.documentElement.scrollTop) + window.innerHeight) + lazyLoader.buffer;
-			return img.offsetTop <= top;
+			var top = ((document.body.scrollTop || document.documentElement.scrollTop) + window.innerHeight) + lazyLoader.buffer,
+				isVisible = img.currentStyle ? img.currentStyle.display : getComputedStyle(img, null).display;
+			return img.offsetTop <= top && isVisible !== "none";
 		},
 		loadImage: function(img){
 			if(img.parentNode.tagName === "PICTURE"){

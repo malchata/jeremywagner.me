@@ -1,0 +1,13 @@
+<?php
+if(stristr($_SERVER["REQUEST_URI"], "/blog/")){
+	$pathPrefix = realpath("./../");
+}
+else{
+	$pathPrefix = realpath("./");
+}
+
+// File Versioning
+$cssVersion = filemtime($pathPrefix . "/css/global.css");
+$navVersion = filemtime($pathPrefix . "/js/nav.js");
+$lazyLoadVersion = filemtime($pathPrefix . "/js/lazyload.js");
+?>

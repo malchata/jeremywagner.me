@@ -9,6 +9,7 @@ var gulp = require("gulp"),
 	postcss = require("gulp-postcss"),
 	autoprefixer = require("autoprefixer"),
 	autorem = require("autorem"),
+	nunjucks = require("gulp-nunjucks"),
 	htmlmin = require("gulp-htmlmin"),
 	uglify = require("gulp-uglify"),
 	concat = require("gulp-concat"),
@@ -21,37 +22,43 @@ gulp.task("watch", function(){
 
 	// Watches
 	gulp.watch("src/less/**/*.less", ["less"]);
-	gulp.watch("dist/css/main.css", ["postcss"]);
-	gulp.watch("src/**/*.html", ["htmlmin"]);
+	gulp.watch("dist/css/global.css", ["postcss"]);
+	gulp.watch("src/**/*.html", ["nunjucks"]);
+	gulp.watch("dist/**/*.html", ["htmlmin"]);
 	gulp.watch("src/js/**/*.js", ["uglify"]);
-	gulp.watch("dist/js/**/*.js", ["concat"]);
+	gulp.watch(["dist/js/**/*.js", "!dist/js/scripts.js"], ["concat"]);
 	gulp.watch("src/img/**", ["imagemin"]);
 });
 
-// Build task
-gulp.task("build", ["less", "postcss", "htmlmin", "uglify", "imagemin"]);
+// Build Task
+gulp.task("default", ["less", "postcss", "nunjucks", "htmlmin", "uglify", "imagemin"]);
 
-// LESS compilation
+// LESS Compilation
 gulp.task("less", function(){
-	return gulp.src("src/less/global.less").pipe(plumber()).pipe(less({
+	return gulp.src("src/less/global.less").pipe(less({
 		plugins: [cleancss]
 	})).pipe(gulp.dest("dist/css")).pipe(livereload());
 });
 
 // postcss
-gulp.task("postcss", function(){
+gulp.task("postcss", ["less"], function(){
 	var processors = [
 		autoprefixer({
 			browsers: ["last 4 versions"]
 		}), autorem()
 	];
 
-	return gulp.src("dist/css/*.css").pipe(plumber()).pipe(postcss(processors)).pipe(gulp.dest("dist/css")).pipe(livereload());
+	return gulp.src("dist/css/*.css").pipe(postcss(processors)).pipe(gulp.dest("dist/css")).pipe(livereload());
 });
 
-// HTML minification
-gulp.task("htmlmin", function(){
-	return gulp.src("src/**/*.html").pipe(plumber()).pipe(htmlmin({
+// Nunjucks Templating
+gulp.task("nunjucks", function(){
+	return gulp.src(["src/**/*.html", "!src/partials/**"]).pipe(nunjucks.compile()).pipe(gulp.dest("dist")).pipe(livereload());
+});
+
+// HTML Minification
+gulp.task("htmlmin", ["nunjucks"], function(){
+	return gulp.src("dist/**/*.html").pipe(htmlmin({
 		collapseWhitespace: true,
 		removeComments: true
 	})).pipe(gulp.dest("dist")).pipe(livereload());
@@ -59,15 +66,15 @@ gulp.task("htmlmin", function(){
 
 // Uglification
 gulp.task("uglify", function(){
-	return gulp.src("src/js/**/*.js").pipe(plumber()).pipe(uglify()).pipe(gulp.dest("dist/js"));
+	return gulp.src("src/js/**/*.js").pipe(uglify()).pipe(gulp.dest("dist/js"));
 });
 
 // Concatenation
-gulp.task("concat", function(){
-	return gulp.src(["dist/js/lazyload.js"]).pipe(concat("scripts.js")).pipe(gulp.dest("dist/js"));
+gulp.task("concat", ["uglify"], function(){
+	return gulp.src(["dist/js/nav.js", "dist/js/lazyload.js"]).pipe(concat("scripts.js")).pipe(gulp.dest("dist/js")).pipe(livereload());
 });
 
 // Imagemin
 gulp.task("imagemin", function(){
-	gulp.src("src/img/**").pipe(plumber()).pipe(imagemin()).pipe(gulp.dest("dist/img")).pipe(livereload());
+	gulp.src("src/img/**").pipe(imagemin()).pipe(gulp.dest("dist/img")).pipe(livereload());
 });

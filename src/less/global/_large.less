@@ -1,15 +1,31 @@
 @media screen and (min-width: @largeBreakpoint){
 	body{
-		padding: 48px 20px;
+		padding: 20px;
 	}
 
 	header{
-		padding: 0 0 0 percentage(44 / 757);
+		margin: 0 0 -76px;
+		padding: 0 0 0 percentage(20 / 984);
+		max-width: @maxContainerWidth;
+		width: percentage(757 / 984);
+	}
+
+	.page-fade{
+		display: none !important;
+	}
+
+	.columns{
+		max-width: @maxContainerWidth;
+		overflow: auto;
+		margin: 0 auto;
 	}
 
 	.content{
-		margin: 0 auto;
-		max-width: 1150px;
+		float: left;
+		width: percentage(757 / 984);
+		padding: 98px percentage(20 / 984) 20px;
+		background: @lightGrey1;
+		background: linear-gradient(to bottom, @lightGrey1 0%, @lightGrey2 100%);
 	}
 
 	#jeremy{
@@ -26,14 +42,14 @@
 		margin: 0 0 5px;
 		width: percentage(594 / 757);
 		position: relative;
-		left: -8%;
+		left: -10%;
 		z-index: 1;
 	}
 
 	.name{
 		font: 700 20px/20px @montserrat;
 		margin: 0 0 6px;
-		padding: 2px 8px 2px percentage(100/ 757);
+		padding: 2px 8px 2px percentage(120/ 757);
 		text-align: left;
 		display: inline-block;
 	}
@@ -41,38 +57,111 @@
 	.site{
 		margin: 0 0 6px;
 		font: 700 24px/24px @montserrat;
-		padding: 0 0 0 percentage(100 / 757);
+		padding: 0 0 0 percentage(120 / 757);
 		text-align: left;
+		white-space: nowrap;
 	}
 
 	.tagline{
-		padding: 0 0 0 percentage(100 / 757);
+		padding: 0 0 0 percentage(120 / 757);
 		text-align: left;
 	}
 
 	#nav-icon{
 		display: none;
 	}
-}
 
-@media screen and (min-width: 700px){
-	.name{
-		font: 700 24px/24px @montserrat;
+	#close-nav{
+		display: none;
 	}
 
-	.site{
-		font: 700 28px/28px @montserrat;
+	nav{
+		display: block;
+		transform: none;
+		transition: none;
+		position: static;
+		background: transparent;
+		float: right;
+		width: percentage(202 / 984);
+		padding: 0;
+
+		.footer-copy{
+			text-align: left;
+			display: block;
+		}
+	}
+
+	footer{
+		.footer-copy{
+			display: none;
+		}
 	}
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
 	.name{
 		font: 700 29px/29px @montserrat;
-		padding: 2px 8px 2px percentage(90 / 757);
+		padding: 2px 8px 2px percentage(110 / 757);
 	}
 
 	.site{
 		font: 700 39px/39px @montserrat;
-		padding: 0 0 0 percentage(90 / 757);
+		padding: 0 0 0 percentage(110 / 757);
+	}
+
+	.abbreviation{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1000px){
+	.tagline{
+		padding: 0 0 0 percentage(110 / 757)
+	}
+
+	header{
+		margin: 0 0 -88px;
+		padding: 0 0 0 percentage(204 / 1140);
+	}
+
+	.content{
+		padding: 128px percentage(40 / 1140) 20px percentage(80 / 1140);
+		width: percentage(757 / 1140);
+		margin: 0 0 0 percentage(160 / 1140);
+	}
+
+	nav{
+		width: percentage(197 / 1140);
+	}
+
+	.feature-image{
+		display: block;
+		position: absolute;
+		width: 35%;
+		max-width: 212px;
+		left: -37.5%;
+		top: 0;
+	}
+
+	.book-link,
+	.book-image{
+		display: block;
+	}
+
+	.book-link{
+		position: absolute;
+		left: -23.762376238%;
+		top: 50%;
+		margin: -22px 0 0;
+	}
+
+	.book-image{
+		border: 1px solid @grey3;
+	}
+}
+
+@media screen and (min-width: 1140px){
+	.abbreviation{
+		display: inline;
 	}
 }
