@@ -1,5 +1,19 @@
 <footer>
 	<p class="footer-copy">All content &copy; <?php echo(date("Y")); ?> Jeremy Wagner, unless where otherwise noted.</p>
 </footer>
-<script src="/js/nav.js?v=<?php echo($navVersion); ?>" defer></script>
-<script src="/js/lazyload.js?v=<?php echo($lazyLoadVersion); ?>" defer></script>
+<script>
+	if("serviceWorker" in navigator){
+		console.log("serviceWorker is available.");
+		console.log('CLIENT: service worker registration in progress.');
+		navigator.serviceWorker.register('/js/sw.js').then(function(){
+			console.log('CLIENT: service worker registration complete.');
+		}, function(){
+			console.log('CLIENT: service worker registration failure.');
+		});
+	}
+</script>
+<script src="/js/lazyload.js?v=<?php echo($lazyLoadVersion); ?>" async></script>
+<script src="/js/debounce.js?v=<?php echo($debounceVersion); ?>"></script>
+<script src="/js/nav.js?v=<?php echo($navVersion); ?>"></script>
+<script src="/js/attach-nav.js?v=<?php echo($attachNavVersion); ?>"></script>
+<noscript><img src="/img/global/blank.gif?noscript=true"></noscript>

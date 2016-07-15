@@ -1,5 +1,6 @@
 body{
 	padding: 10px;
+	overflow-x: hidden;
 }
 
 header{
@@ -88,7 +89,7 @@ nav{
 	position: fixed;
 	top: 0;
 	right: 0;
-	padding: 20px 60px 0 20px;
+	padding: 20px 60px 20px 20px;
 	transform: translateX(100%);
 	transition: transform @shortDuration ease-in-out;
 	z-index: 4;
@@ -100,7 +101,6 @@ nav{
 
 .social{
 	font-size: 0;
-	margin: 0 0 24px;
 }
 
 .twitter,
@@ -142,8 +142,11 @@ nav{
 	list-style: none;
 }
 
-pre{
+.code-container{
 	background: @lightBlue;
+}
+
+pre{
 	padding: 6.75px 16px 27px 32px;
 	overflow-x: auto;
 }
@@ -153,6 +156,10 @@ code{
 	padding: 0;
 	color: @blue;
 	font: 400 16px/24px @codeFont;
+}
+
+a code{
+	color: inherit;
 }
 
 .menu-item{
@@ -167,8 +174,7 @@ code{
 	text-decoration: none;
 }
 
-.book-link,
-.book-image{
+.book-link{
 	display: none;
 }
 
@@ -219,8 +225,10 @@ code{
 	position: relative;
 }
 
-.feature-image{
-	display: none;
+.lazy{
+	background: @lightBlue;
+	display: inline-block;
+	height: auto;
 }
 
 .no-js{
@@ -255,6 +263,10 @@ p{
 		color: @brown;
 		margin: 0;
 	}
+
+	&:last-of-type{
+		margin: 0 0 8px;
+	}
 }
 
 figure{
@@ -266,8 +278,8 @@ figure{
 
 figcaption{
 	span{
-		padding: 5px;
-		font: 400 14px/16.8px @tinos;
+		padding: 5px 8px;
+		font: 400 14px/25.75px @tinos;
 		background: @lightBrown;
 		text-align: center;
 		color: @white;
@@ -275,8 +287,9 @@ figcaption{
 	}
 }
 
-.figure-image{
-	margin: 0 0 20px;
+picture + noscript + figcaption,
+.figure-image + noscript + figcaption{
+	margin: 20px 0 0;
 }
 
 .post{
@@ -289,6 +302,11 @@ figcaption{
 			color: @blue;
 		}
 	}
+}
+
+.sig{
+	width: 160px;
+	transform: rotate(-2.5deg);
 }
 
 h2{
@@ -310,6 +328,11 @@ h2{
 	color: @lightBrown;
 	text-align: center;
 	margin: 0;
+}
+
+iframe{
+	max-width: 100%;
+	margin: 0 0 20px;
 }
 
 @media screen and (min-width: 375px){

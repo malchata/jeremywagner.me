@@ -1,6 +1,4 @@
 (function(window, document){
-	"use strict";
-
 	var lazyLoader = {
 		lazyClass: "lazy",
 		images: null,
@@ -76,6 +74,7 @@
 			}
 
 			lazyLoader.removeClass(img, lazyLoader.lazyClass);
+			img.removeAttribute("style");
 		},
 		removeClass: function(img, className){
 			var classArr = img.className.split(" ");

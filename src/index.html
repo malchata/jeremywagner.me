@@ -1,7 +1,9 @@
 {% include "partials/preprocessing.html" %}
 <!doctype html>
 <html class="no-js">
-	{% include "partials/html-head.html" %}
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
 	<body>
 		<div id="page-fade"></div>
 		<!-- Begin Content -->
@@ -11,27 +13,15 @@
 			<section class="content">
 				<!-- Begin Post Summary -->
 				<article class="post summary">
-					<!-- Begin Feature Image -->
-					<a href="/blog/svg-media-query.html"><img class="feature-image lazy" data-src="/img/blog/svg-media-query/feature-image.svg"></a>
-					<noscript>
-						<img class="feature-image" src="/img/blog/svg-media-query/feature-image.svg">
-					</noscript>
-					<!-- End Feature Image -->
 					<h1><a href="/blog/svg-media-query.html">How an SVG Media Query Made my Client's Website a Little Leaner.</a></h1>
 					<p class="date">May 25, 2016</date>
-					<p>This isn't a huge success story, but I thought it was sufficiently spiffy to warrant a short post. Who knows? This short post may help you some day.</p>
-					<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" target="_blank">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site's logo a different treatment for each breakpoint.</p>
+					<p>This isn’t a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
+					<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" target="_blank">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site’s logo a different treatment for each breakpoint.</p>
 					<a href="/blog/svg-media-query.html" class="read-more">Read More &raquo;</a>
 				</article>
 				<!-- End Post Summary -->
 				<!-- Begin Post Summary -->
 				<article class="post summary">
-					<!-- Begin Feature Image -->
-					<a href="/blog/webp-images.html"><img class="feature-image lazy" data-src="/img/blog/webp-images/feature-image-1x.png" data-srcset="/img/blog/webp-images/feature-image-1x.png 1x, /img/blog/webp-images/feature-image-2x.png 2x"></a>
-					<noscript>
-						<img class="feature-image" src="/img/blog/webp-images/feature-image-1x.png" srcset="/img/blog/webp-images/feature-image-1x.png 1x, /img/blog/webp-images/feature-image-2x.png 2x">
-					</noscript>
-					<!-- End Feature Image -->
 					<h1><a href="/blog/webp-images.html">Getting Cozy with WebP Images</a></h1>
 					<p class="date">April 25, 2016</date>
 					<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images <b><u>tug at your senses</u></b>, and for content authors, they're essential in moving people to do things.</p>

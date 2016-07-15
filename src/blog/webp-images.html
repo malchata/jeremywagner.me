@@ -1,7 +1,9 @@
 {% include "partials/preprocessing.html" %}
 <!doctype html>
 <html class="no-js">
-	{% include "partials/html-head.html" %}
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
 	<body>
 		<div id="page-fade"></div>
 		<!-- Begin Content -->
@@ -9,22 +11,24 @@
 			{% include "partials/header.html" %}
 			{% include "partials/nav.html" %}
 			<section class="content">
-				<!-- Begin Post Summary -->
+				<!-- Begin Post -->
 				<article class="post">
-					<!-- Begin Feature Image -->
-					<a href="/blog/webp-images.html"><img class="feature-image lazy" data-src="/img/blog/webp-images/feature-image-1x.png" data-srcset="/img/blog/webp-images/feature-image-1x.png 1x, /img/blog/webp-images/feature-image-2x.png 2x"></a>
-					<noscript>
-						<img class="feature-image" src="/img/blog/webp-images/feature-image-1x.png" srcset="/img/blog/webp-images/feature-image-1x.png 1x, /img/blog/webp-images/feature-image-2x.png 2x">
-					</noscript>
-					<!-- End Feature Image -->
-					<h1>Getting Cozy with WebP Images</h1>
-					<p class="date">April 25, 2016</date>
+					<h1>{{title}}</h1>
+					<p class="date">{{date}}</date>
 					<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
 					<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/modem-1x.png" data-srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" alt="I thought we moved past this, already.">
+						<picture>
+							<source data-srcset="/img/blog/webp-images/modem-1x.webp 1x, /img/blog/webp-images/modem-2x.webp 2x" type="image/webp">
+							<source data-srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" type="image/png">
+							<img class="figure-image lazy" data-src="/img/blog/webp-images/modem-1x.png" alt="I thought we moved past this, already." <?php echo(imagePadding(320, 176)); ?>>
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/modem-1x.png" srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" alt="I thought we moved past this, already.">
+							<picture>
+								<source src="/img/blog/webp-images/modem-1x.webp" srcset="/img/blog/webp-images/modem-1x.webp 1x, /img/blog/webp-images/modem-2x.webp 2x" type="image/webp">
+								<source src="/img/blog/webp-images/modem-1x.png" srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/webp-images/modem-1x.png" alt="I thought we moved past this, already.">
+							</picture>
 						</noscript>
 						<figcaption>
 							<span>I thought we moved past this, already.</span>
@@ -42,9 +46,17 @@
 					<h2>What is WebP, and Why Should I Even Care?</h2>
 					<p>WebP is an image format developed and first released by Google in 2010. It supports encoding images in both lossless and lossy formats, making it a versatile format for any type of visual content, and an alternative format to both PNG or JPEG. The results are usually comparable.</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/tacos-1x.png" data-src="/img/blog/webp-images/tacos-1x.png 1x, /img/blog/webp-images/tacos-2x.png 2x" alt="Can you tell the difference? (Hint: the WebP version is on the right.)">
+						<picture>
+							<source data-srcset="/img/blog/webp-images/tacos-1x.webp 1x, /img/blog/webp-images/tacos-2x.webp 2x" type="image/webp">
+							<source data-srcset="/img/blog/webp-images/tacos-1x.png 1x, /img/blog/webp-images/tacos-2x.png 2x" type="image/png">
+							<img class="figure-image lazy" data-src="/img/blog/webp-images/tacos-1x.png" alt="Can you tell the difference? (Hint: the WebP version is on the right.)" <?php echo(imagePadding(400, 108)); ?>>
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/tacos-1x.png" src="/img/blog/webp-images/tacos-1x.png 1x, /img/blog/webp-images/tacos-2x.png 2x" alt="Can you tell the difference? (Hint: the WebP version is on the right.)">
+							<picture>
+								<source srcset="/img/blog/webp-images/tacos-1x.webp 1x, /img/blog/webp-images/tacos-2x.webp 2x" type="image/webp">
+								<source srcset="/img/blog/webp-images/tacos-1x.png 1x, /img/blog/webp-images/tacos-2x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/webp-images/tacos-1x.png" alt="Can you tell the difference? (Hint: the WebP version is on the right.)">
+							</picture>
 						</noscript>
 						<figcaption>
 							<span>Can you tell the difference? (Hint: the WebP version is on the right.)</span>
@@ -53,7 +65,7 @@
 					<p>In the above example, the visual differences are almost imperceptible, yet the differences in file size are substantial. The JPEG version on the left weighs in at 56.7 KB, and the WebP version on the right is nearly one third smaller at 38 KB. Not a bad improvement, especially when you consider that the visual quality between the two are pretty much the same.</p>
 					<p>So the next question (of course) is “what's the browser support?” Not as slim as you might think. Since WebP is a Google technology, support for it is fixed to Chromium-based browsers. These browsers make up a significant portion of users worldwide, however, meaning that <a href="http://caniuse.com/#search=webp" target="_blank">nearly 67% of browsers in use support WebP</a> at the time of this writing. If you had the chance to make your website faster for two thirds of your users, would you pass it up?</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/bateman.gif" alt="Thought so.">
+						<img class="figure-image lazy" data-src="/img/blog/webp-images/bateman.gif" alt="Thought so." <?php echo(imagePadding(500, 213)); ?>>
 						<noscript>
 							<img class="figure-image" src="/img/blog/webp-images/bateman.gif" alt="Thought so.">
 						</noscript>
@@ -68,9 +80,17 @@
 					<p>What's the difference between the two? Think of it as being similar to the differences between JPEG and PNG images. JPEGs are lossy and PNG images are lossless. Use regular old WebP when you want to convert your JPEG images. Use WebP Lossless when you're converting your PNGs.</p>
 					<p>When you save images to the WebP Lossless format with the Photoshop plugin, you're given no prompts to tweak settings or anything. It just takes care of everything. When you choose regular old WebP for your lossy images, you'll get something like this:</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/webp-plugin-1x.png" data-src="/img/blog/webp-images/webp-plugin-1x.png 1x, /img/blog/webp-images/webp-plugin-2x.png 2x" alt="Lots going on here, huh?">
+						<picture>
+							<source data-srcset="/img/blog/webp-images/webp-plugin-1x.webp 1x, /img/blog/webp-images/webp-plugin-2x.webp 2x" type="image/webp">
+							<source data-srcset="/img/blog/webp-images/webp-plugin-1x.png 1x, /img/blog/webp-images/webp-plugin-2x.png 2x" type="image/png">
+							<img class="figure-image lazy" data-src="/img/blog/webp-images/webp-plugin-1x.png" alt="Lots going on here, huh?" <?php echo(imagePadding(645, 393)); ?>>
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/webp-plugin-1x.png" src="/img/blog/webp-images/webp-plugin-1x.png 1x, /img/blog/webp-images/webp-plugin-2x.png 2x" alt="Lots going on here, huh?">
+							<picture>
+								<source srcset="/img/blog/webp-images/webp-plugin-1x.webp 1x, /img/blog/webp-images/webp-plugin-2x.webp 2x" type="image/webp">
+								<source srcset="/img/blog/webp-images/webp-plugin-1x.png 1x, /img/blog/webp-images/webp-plugin-2x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/webp-images/webp-plugin-1x.png" alt="Lots going on here, huh?">
+							</picture>
 						</noscript>
 						<figcaption>
 							<span>Lots going on here, huh?</span>
@@ -91,11 +111,11 @@
 					</figure>
 					<p>imagemin is the Swiss Army Knife of image processors in Node, but we'll just focus on using it to convert all of our JPEGs and PNGs to WebPs (whew!) Don't fret, though! Even if you've never used Node before, this article will walk you through everything. If the idea of using Node bugs you, you can use the WebP Photoshop plugin and skip ahead.</p>
 					<p>The first thing you'll want to do is <a href="https://nodejs.org/en/download" target="_blank">download Node.js</a> and install it. This should only take you five minutes. Once installed, open a terminal/command line window and go to your web project's root folder. From there, just use Node Package Manager (npm) to install <code>imagemin</code> and the <code>imagemin-webp</code> plugin:</p>
-<pre><code>
+<div class="code-container"><pre><code>
 npm install imagemin imagemin-webp
-</code></pre>
-					<p>This install may take up to a minute. When finished, open your text editor and create a new file named webp.js in your web project's root folder. Type the script below into the file:</p>
-<pre><code>
+</code></pre></div>
+					<p>This install may take up to a minute. When finished, open your text editor and create a new file named <code>webp.js</code> in your web project's root folder. Type the script below into the file:</p>
+<div class="code-container"><pre><code>
 var imagemin = require(&quot;imagemin&quot;),    // The imagemin module.
     webp = require(&quot;imagemin-webp&quot;),   // imagemin's WebP plugin.
     outputFolder = &quot;./img&quot;,            // Output folder
@@ -109,13 +129,13 @@ new imagemin().src(PNGImages).dest(outputFolder).use(webp({
 new imagemin().src(JPEGImages).dest(outputFolder).use(webp({
     quality: 65 // Quality setting from 0 to 100
 })).run();
-</code></pre>
-					<p>This script will process all JPEG and PNG images in the img folder and convert them to WebP. When converting PNG images, we set the lossless option to true. When converting JPEG images, we set the quality option to 65. Feel free to experiment with these settings to get different results. You can experiment with even more settings at the <a href="https://www.npmjs.com/package/imagemin-webp" target="_blank"><code>imagemin-webp</code> plugin page</a>.</p>
-					<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the PNGImages and JPEGImages variables. This script also assumes you want the WebP output to go into the img folder. If you don't want that, change the value of the outputFolder variable to whatever you need. Once you're ready, run the script like so:</p>
-<pre><code>
+</code></pre></div>
+					<p>This script will process all JPEG and PNG images in the img folder and convert them to WebP. When converting PNG images, we set the <code>lossless</code> option to <code>true</code>. When converting JPEG images, we set the quality option to 65. Feel free to experiment with these settings to get different results. You can experiment with even more settings at the <a href="https://www.npmjs.com/package/imagemin-webp" target="_blank"><code>imagemin-webp</code> plugin page</a>.</p>
+					<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>PNGImages</code> and <code>JPEGImages</code> variables. This script also assumes you want the WebP output to go into the <code>img</code> folder. If you don't want that, change the value of the <code>outputFolder</code> variable to whatever you need. Once you're ready, run the script like so:</p>
+<div class="code-container"><pre><code>
 node webp.js
-</code></pre>
-					<p>This will process all of the images and dump their WebP counterparts into the img folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <b>1.04 MB</b> without any perceptible loss in visual quality. That's a <b><i>62% reduction</i></b> without much effort!</p>
+</code></pre></div>
+					<p>This will process all of the images and dump their WebP counterparts into the <code>img</code> folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <b>1.04 MB</b> without any perceptible loss in visual quality. That's a <b><i>62% reduction</i></b> without much effort!</p>
 					<figure>
 						<img class="figure-image lazy" data-src="/img/blog/webp-images/bateman-3.gif" alt="&quot;Have you ever seen my WebPs?&quot;">
 						<noscript>
@@ -128,31 +148,39 @@ node webp.js
 					<p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 					<h2>Using WebP in HTML</h2>
 					<p>Using a WebP image in HTML is like using any other kind of image, right? Just slap that sucker into the <code>&lt;img&gt;</code> tag's <code>src</code> attribute and away you go!</p>
-<pre><code>
+<div class="code-container"><pre><code>
 &lt;!-- Nothing possibly can go wrong with this, right? --&gt;
 &lt;img src=&quot;img/myAwesomeWebPImage.webp&quot; alt=&quot;WebP rules.&quot;&gt;
-</code></pre>
+</code></pre></div>
 					<p>This will work great&mdash; but only for browsers that support it. Woe betide those unlucky users who wander by your site when all you're using is WebP:</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/broken-webp-1x.png" data-src="/img/blog/webp-images/broken-webp-1x.png 1x, /img/blog/webp-images/broken-webp-2x.png 2x" alt="WHAT HAPPENED">
+						<picture>
+							<source data-srcset="/img/blog/webp-images/broken-webp-1x.webp 1x, /img/blog/webp-images/broken-webp-2x.webp 2x" type="image/webp">
+							<source data-srcset="/img/blog/webp-images/broken-webp-1x.png 1x, /img/blog/webp-images/broken-webp-2x.png 2x" type="image/png">
+							<img class="figure-image lazy" data-src="/img/blog/webp-images/broken-webp-1x.png" alt="WHAT HAPPENED">
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/broken-webp-1x.png" src="/img/blog/webp-images/broken-webp-1x.png 1x, /img/blog/webp-images/broken-webp-2x.png 2x" alt="WHAT HAPPENED">
-						</noscript>bobb
+							<picture>
+								<source srcset="/img/blog/webp-images/broken-webp-1x.webp 1x, /img/blog/webp-images/broken-webp-2x.webp 2x" type="image/webp">
+								<source srcset="/img/blog/webp-images/broken-webp-1x.png 1x, /img/blog/webp-images/broken-webp-2x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/webp-images/broken-webp-1x.png" alt="WHAT HAPPENED">
+							</picture>
+						</noscript>
 						<figcaption>
 							<span>WHAT HAPPENED</span>
 						</figcaption>
 					</figure>
-					<p>That's just the way front end development is, so buck up. Some features just aren't going to work in every browser, and that's not going to change anytime soon. The easiest way we can make this work is to use the <code>&lt;picture&gt;</code> element to specify a set of fallbacks like so:</p>
-<pre><code>
+					<p>It sucks, sure, but that's just the way front end development is, so buck up. Some features just aren't going to work in every browser, and that's not going to change anytime soon. The easiest way we can make this work is to use the <code>&lt;picture&gt;</code> element to specify a set of fallbacks like so:</p>
+<div class="code-container"><pre><code>
 &lt;picture&gt;
     &lt;source srcset=&quot;img/awesomeWebPImage.webp&quot; type=&quot;image/webp&quot;&gt;
-    &lt;source srcset=&quot;img/creakyOldJPEG.jpg&quot; type=&quot;image/jpg&quot;&gt;
+    &lt;source srcset=&quot;img/creakyOldJPEG.jpg&quot; type=&quot;image/jpeg&quot;&gt;
     &lt;img src=&quot;img/creakyOldJPEG.jpg&quot; alt=&quot;Alt Text!&quot;&gt;
 &lt;/picture&gt;
-</code></pre>
+</code></pre></div>
 					<p>This is probably your best best for the broadest possible compatibility because it will work in every single browser, not just those that support the <code>&lt;picture&gt;</code> element. The reason for this is that browsers that don't support <code>&lt;picture&gt;</code> will just display whatever source is specified in the <code>&lt;img&gt;</code> tag. If you need full <code>&lt;picture&gt;</code> support, you can always drop in <a href="https://github.com/scottjehl/picturefill" target="_blank">Scott Jehl's super-slick Picturefill script</a>.</p>
 					<h2>Using WebP Images in CSS</h2>
-					<p>The picture gets more complicated when you need to use WebP images in CSS. Unlike the <code>&lt;picture&gt;</code> element in HTML which falls back gracefully to the <code>&lt;img&gt;</code> element in all browsers, CSS doesn't provide a built-in solution for fallback images that's optimal. Solutions such as multiple backgrounds end up downloading both resources in some cases, which is a big optimization no no. The solution lies in feature detection.</p>
+					<p>The picture (see what I did there?) gets more complicated when you need to use WebP images in CSS. Unlike the <code>&lt;picture&gt;</code> element in HTML which falls back gracefully to the <code>&lt;img&gt;</code> element in all browsers, CSS doesn't provide a built-in solution for fallback images that's optimal. Solutions such as multiple backgrounds end up downloading both resources in some cases, which is a big optimization no no. The solution lies in feature detection.</p>
 					<p><a href="http://modernizr.com" target="_blank">Modernizr</a> is a well-known feature detection library that detects available features in browsers. WebP support just so happens to be one of those detections. Even better, you can do a custom Modernizr build with only WebP detection at <a href="https://modernizr.com/download" target="_blank">https://modernizr.com/download</a>, which allows you to detect WebP support with very low overhead.</p>
 					<p>When you add this custom build to your website via the <code>&lt;script&gt;</code> tag, it will automatically add one of two classes to the <code>&lt;html&gt;</code> element:</p>
 					<ol>
@@ -160,7 +188,7 @@ node webp.js
 						<li>The <code>no-webp</code> class is added when the browser doesn't support WebP.</li>
 					</ol>
 					<p>With these classes, you'll be able to use CSS to load background images according to a browser's capability by targeting the class on the <code>&lt;html&gt;</code> tag:</p>
-<pre><code>
+<div class="code-container"><pre><code>
 .no-webp .elementWithBackgroundImage{
     background-image: url(&quot;image.jpg&quot;);
 }
@@ -168,14 +196,22 @@ node webp.js
 .webp .elementWithBackgroundImage{
     background-image: url(&quot;image.webp&quot;);
 }
-</code></pre>
+</code></pre></div>
 					<p>That's it. Browsers that can use WebP will get WebP. Those that can't will just fall back to supported image types. It's a win-win! Except…</p>
 					<h2>What About Users with JavaScript Disabled?</h2>
-					<p>If you're depending on Modernizr, you have to think about users with JavaScript disabled. Sorry, but it's way things are.</p>
+					<p>If you're depending on Modernizr, you have to think about users with JavaScript disabled. Sorry, but it's the way things are.</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/screams.png" alt="You can't escape it.">
+						<picture>
+							<source data-src="/img/blog/webp-images/screams.webp" type="image/webp">
+							<source data-src="/img/blog/webp-images/screams.jpg" type="image/jpeg">
+							<img class="figure-image lazy" data-src="/img/blog/webp-images/screams.jpg" alt="You can't escape it.">
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/screams.png" alt="You can't escape it.">
+							<picture>
+								<source src="/img/blog/webp-images/screams.webp" type="image/webp">
+								<source src="/img/blog/webp-images/screams.jpg" type="image/jpeg">
+								<img class="figure-image" src="/img/blog/webp-images/screams.jpg" alt="You can't escape it.">
+							</picture>
 						</noscript>
 						<figcaption>
 							<span>You can't escape it.</span>
@@ -183,22 +219,22 @@ node webp.js
 					</figure>
 					<p>Yeah, that's how most developers feel about it, but the user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" target="_blank">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>&lt;html&gt;</code> element.</p>
 					<p>To get around this, we'll start by adding a class of <code>no-js</code> to the <code>&lt;html&gt;</code> tag:</p>
-<pre><code>
+<div class="code-container"><pre><code>
 &lt;html class=&quot;no-js&quot;&gt;
-</code></pre>
+</code></pre></div>
 					<p>We'll then write a small piece of inline script that we'll place before any <code>&lt;link&gt;</code> or <code>&lt;script&gt;</code> tags:</p>
-<pre><code>
+<div class="code-container"><pre><code>
 &lt;script&gt;
     document.documentElement.classList.remove(&quot;no-js&quot;);
 &lt;/script&gt;
-</code></pre>
+</code></pre></div>
 					<p>This will remove the <code>no-js</code> class on the <code>&lt;html&gt;</code> element when parsed.</p>
 					<p>So what good does this do us? When JavaScript is disabled, this small script never runs, so the <code>no-js</code> class will stay on the element. This means we can can add another rule to provide an image type that has the widest support:</p>
-<pre><code>
+<div class="code-container"><pre><code>
 .no-js .elementWithBackgroundImage{
     background-image: url(&quot;image.jpg&quot;);
 }
-</code></pre>
+</code></pre></div>
 					<p>This does everything we need. If JavaScript is running, the small inline script is run and removes the <code>no-js</code> class before the CSS is parsed, so the JPEG is never downloaded in a WebP-capable browser. If JavaScript is indeed turned off, then the class is not removed and the more compatible image format is used.</p>
 					<p>Now that we've done all of this, these are the use cases we can expect:</p>
 					<ol>
@@ -206,19 +242,17 @@ node webp.js
 						<li>Those who can't use WebP will get PNG or JPEG images.</li>
 						<li>Those with JavaScript turned off will get PNG or JPEG images.</li>
 					</ol>
-					<p>Now you can lean back in your chair and say this to yourself:</p>
-					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/webp-images/walt.gif">
-						<noscript>
-							<img class="figure-image" src="/img/blog/webp-images/walt.gif">
-						</noscript>
-					</figure>
+					<p>Give yourself a hand. You just learned how to progressively use WebP images.</p>
 					<h2>In Closing</h2>
 					<p>WebP is a versatile image format that we can serve in place of PNG and JPEG images&mdash; if it's supported. It can yield a substantial reduction in the size of images on your website, and as we know, anything that results in transferring less data lowers page load time.</p>
 					<p>Are there cons? A couple. The biggest one is that you're maintaining two sets of images to achieve the best possible support, which may not be possible for your website if there's a huge set of imagery that you need to convert over to WebP. Another is that you'll have to manage a bit of JavaScript if you need to use WebP images in CSS.</p>
 					<p>The takeaway is that the relatively low effort is worth the savings you'll realize, savings that will improve the user experience of your website by allowing it to load faster. Users browsing via mobile networks will benefit especially. Now go forward and WebP to your heart's content!</p>
+					<p>
+						Cheers,<br>
+						-j
+					</p>
 				</article>
-				<!-- End Post Summary -->
+				<!-- End Post -->
 			</section>
 		</section>
 		<!-- End Content -->

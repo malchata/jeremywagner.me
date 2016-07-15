@@ -1,10 +1,9 @@
 (function(window, document){
-	document.addEventListener("DOMContentLoaded", function(){
+	document.onreadystatechange = function(){
 		navIcon = document.getElementById("nav-icon");
 		closeIcon = document.getElementById("close-nav");
 		nav = document.getElementsByTagName("nav")[0];
 		pageFade = document.getElementById("page-fade");
-		threshold = 640;
 
 		navIcon.addEventListener("click", openNav);
 		closeIcon.addEventListener("click", closeNav);
@@ -19,5 +18,5 @@
 			nav.className = "";
 			pageFade.className = "";
 		}
-	});
+	};
 })(window, document);
