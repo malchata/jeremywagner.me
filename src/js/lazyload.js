@@ -73,19 +73,8 @@
 				img.removeAttribute("data-srcset");
 			}
 
-			lazyLoader.removeClass(img, lazyLoader.lazyClass);
+			img.classList.remove(lazyLoader.lazyClass);
 			img.removeAttribute("style");
-		},
-		removeClass: function(img, className){
-			var classArr = img.className.split(" ");
-
-			for(var i = 0; i < classArr.length; i++){
-				if(classArr[i] === className){
-					classArr.splice(i, 1);
-				}
-			}
-
-			img.className = classArr.toString().replace(",", " ");
 		}
 	};
 

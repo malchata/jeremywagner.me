@@ -71,9 +71,14 @@ gulp.task("nunjucks", function(){
 
 	return gulp.src(src)
 		.pipe(plumber())
-		.pipe(changed(dest))
 		.pipe(data(function(file){
-			return JSON.parse(fs.readFileSync(file.path.replace(".html", ".json")));
+			try{
+				var jsonFile = file.path.replace(".html", ".json");
+				return JSON.parse(fs.readFileSync(jsonFile));
+			}
+			catch(e){
+				return false;
+			}
 		}))
 		.pipe(nunjucks.compile())
 		.pipe(gulp.dest(dest))
@@ -110,7 +115,7 @@ gulp.task("uglify", function(){
 
 // Concatenation
 gulp.task("concat", ["uglify"], function(){
-	var src = ["dist/**/*.js", "!dist/js/scripts.js"],
+	var src = ["dist/**/*.js", "!dist/js/scripts.js", "!dist/js/ga.js"],
 		dest = "dist/js";
 
 	return gulp.src(src)
@@ -178,3 +183,4 @@ gulp.task("imagemin-webp-lossy", function(){
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 });
+

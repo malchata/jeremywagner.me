@@ -10,8 +10,10 @@
 		width: percentage(757 / 984);
 	}
 
-	.page-fade{
-		display: none !important;
+	#page-fade{
+		&.show{
+			display: none;
+		}
 	}
 
 	.columns{
@@ -119,7 +121,7 @@
 		}
 	}
 
-	.nav-container{
+	#nav-container{
 		transition: top @shortDuration ease-out;
 	}
 

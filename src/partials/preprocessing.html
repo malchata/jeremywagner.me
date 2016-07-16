@@ -6,16 +6,24 @@ else{
 	$pathPrefix = realpath("./");
 }
 
-// File Versioning
-$cssVersion = filemtime($pathPrefix . "/css/global.css");
-$debounceVersion = filemtime($pathPrefix . "/js/debounce.js");
-$navVersion = filemtime($pathPrefix . "/js/nav.js");
-$lazyLoadVersion = filemtime($pathPrefix . "/js/lazyload.js");
-$attachNavVersion = filemtime($pathPrefix . "/js/attach-nav.js");
-$swVersion = filemtime($pathPrefix . "/js/sw.js");
+$versions = [];
+$versions["global.css"] = filemtime($pathPrefix . "/css/global.css");
+$versions["ga.js"] = filemtime($pathPrefix . "/js/ga.js");
+$versions["scripts.js"] = filemtime($pathPrefix . "/js/scripts.js");
+$versions["debounce.js"] = filemtime($pathPrefix . "/js/debounce.js");
+$versions["lazyload.js"] = filemtime($pathPrefix . "/js/lazyload.js");
+$versions["nav.js"] = filemtime($pathPrefix . "/js/nav.js");
+$versions["attach-nav.js"] = filemtime($pathPrefix . "/js/attach-nav.js");
 
-// Image Padding
-function imagePadding($w, $h){
-	return "style=\"width: " . $w . "px; height: " . $h . "px;\"";
+// HTTP/2 Version Checking
+$http2 = $_SERVER["SERVER_PROTOCOL"] === "HTTP/2" ? true : false;
+
+function httpClass($h2){
+	if($h2 === true){
+		return "http2";
+	}
+	else{
+		return "http1";
+	}
 }
 ?>

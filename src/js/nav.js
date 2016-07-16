@@ -1,5 +1,5 @@
 (function(window, document){
-	document.onreadystatechange = function(){
+	document.addEventListener("DOMContentLoaded", function(){
 		navIcon = document.getElementById("nav-icon");
 		closeIcon = document.getElementById("close-nav");
 		nav = document.getElementsByTagName("nav")[0];
@@ -10,13 +10,13 @@
 		pageFade.addEventListener("click", closeNav);
 
 		function openNav(){
-			nav.className = "open";
-			pageFade.className = " show";
+			nav.classList.add("open");
+			pageFade.classList.add("show");
 		}
 
 		function closeNav(){
-			nav.className = "";
-			pageFade.className = "";
+			nav.classList.remove("open");
+			pageFade.classList.remove("show");
 		}
-	};
+	});
 })(window, document);

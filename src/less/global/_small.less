@@ -226,9 +226,6 @@ a code{
 }
 
 .lazy{
-	background: @lightBlue;
-	display: inline-block;
-	height: auto;
 }
 
 .no-js{
@@ -287,6 +284,15 @@ figcaption{
 	}
 }
 
+.figure-image{
+	color: @lightBlue;
+	font-size: 0;
+	border-color: @lightBlue;
+	outline: 0;
+}
+
+picture + figcaption,
+.figure-image + figcaption,
 picture + noscript + figcaption,
 .figure-image + noscript + figcaption{
 	margin: 20px 0 0;
@@ -333,6 +339,33 @@ h2{
 iframe{
 	max-width: 100%;
 	margin: 0 0 20px;
+}
+
+.http1{
+	.twitter,
+	.linked-in,
+	.github,
+	.email{
+		background: url("../img/global/sprite.svg") no-repeat;
+		background-size: 88px 88px;
+	}
+
+	.twitter{
+		background-position: 0 0;
+	}
+
+	.linked-in{
+		background-position: -22px -22px;
+	}
+
+	.github{
+		background-position: -44px -44px;
+	}
+
+	.email{
+		background-position: -66px -66px;
+		margin: 0;
+	}
 }
 
 @media screen and (min-width: 375px){

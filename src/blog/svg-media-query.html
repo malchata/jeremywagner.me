@@ -1,6 +1,6 @@
 {% include "partials/preprocessing.html" %}
 <!doctype html>
-<html class="no-js">
+<html class="no-js <?php echo(httpClass($http2)); ?>">
 	<head>
 		{% include "partials/html-head.html" %}
 	</head>
@@ -21,7 +21,7 @@
 						<picture>
 							<source data-srcset="/img/blog/svg-media-query/weekly-timber-1x.webp 1x, /img/blog/svg-media-query/weekly-timber-2x.webp 2x" type="image/webp">
 							<source data-srcset="/img/blog/svg-media-query/weekly-timber-1x.png 1x, /img/blog/svg-media-query/weekly-timber-2x.png 2x" type="image/png">
-							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-timber-1x.png" alt="The site logo appears on mobile in the upper left hand corner in white, and on desktop just above the navigation in green." <?php echo(imagePadding(960, 402)); ?>>
+							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-timber-1x.png" alt="The site logo appears on mobile in the upper left hand corner in white, and on desktop just above the navigation in green.">
 						</picture>
 						<noscript>
 							<picture>
@@ -36,7 +36,7 @@
 					</figure>
 					<p>As it tends to happen, I overlooked this detail until after the client approved the designs, so I was on the hook. Being borderline obsessive about website optimization, I knew I couldn't slap this together without thinking things over. I had two options. I could use two different images, which brought on slight discomfort.</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/svg-media-query/i-am-dead-inside.jpg" <?php echo(imagePadding(500, 281)); ?>>
+						<img class="figure-image lazy" data-src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
 						<noscript>
 							<img class="figure-image" src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
 						</noscript>
@@ -65,7 +65,7 @@
 						<picture>
 							<source data-src="/img/blog/svg-media-query/weekly-logo-1x.webp" type="image/webp">
 							<source data-src="/img/blog/svg-media-query/weekly-logo-1x.png" type="image/png">
-							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment." <?php echo(imagePadding(363, 153)); ?>>
+							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment.">
 						</picture>
 						<noscript>
 							<picture>
@@ -113,7 +113,7 @@
 						<picture>
 							<source data-srcset="/img/blog/svg-media-query/new-treatment-1x.webp 1x, /img/blog/svg-media-query/new-treatment-2x.webp 2x" type="image/webp">
 							<source data-srcset="/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x" type="image/png">
-							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments." <?php echo(imagePadding(937, 260)); ?>>
+							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments.">
 						</picture>
 						<noscript>
 							<picture>
