@@ -45,7 +45,7 @@ gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-webp
 
 // css
 gulp.task("build-css", function(){
-	var src = "src/less/global.less",
+	var src = ["src/less/global.less", "src/less/fonts-loaded.less"],
 		dest = "dist/css";
 
 	return gulp.src(src)
@@ -115,7 +115,7 @@ gulp.task("uglify", function(){
 
 // Concatenation
 gulp.task("concat", ["uglify"], function(){
-	var src = ["dist/**/*.js", "!dist/js/scripts.js", "!dist/js/ga.js"],
+	var src = ["dist/**/*.js", "!dist/js/scripts.js", "!dist/js/ga.js", "!dist/js/load-fonts.js", "!dist/js/fontfaceobserver.js"],
 		dest = "dist/js";
 
 	return gulp.src(src)

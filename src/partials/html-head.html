@@ -9,7 +9,22 @@
 <meta name="og:image" content="{{featureImage}}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjord+One|Montserrat:400,700|Tinos:400,700" type="text/css">
 <link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
+<?php
+if($http2 === true){
+	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
+}
+else{
+	?><style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style><?php
+}
+?>
 <script>
-	var htmlClasses = document.documentElement.className.replace("no-js", "");
-	document.documentElement.className = htmlClasses;
+	document.documentElement.classList.remove("no-js");
 </script>
+<?php
+if($http2 === true){
+	?><script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async defer></script><?php
+}
+else{
+	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
+}
+?>

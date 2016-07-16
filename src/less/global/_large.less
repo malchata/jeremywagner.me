@@ -63,7 +63,7 @@
 	}
 
 	.name{
-		font: 700 20px/20px @montserrat;
+		font: 700 20px/20px @sansSerif;
 		margin: 0 0 6px;
 		padding: 2px 8px 2px percentage(120/ 757);
 		text-align: left;
@@ -86,7 +86,7 @@
 
 	.site{
 		margin: 0 0 6px;
-		font: 700 24px/24px @montserrat;
+		font: 700 24px/24px @sansSerif;
 		padding: 0 0 0 percentage(120 / 757);
 		text-align: left;
 		white-space: nowrap;
@@ -123,6 +123,7 @@
 
 	#nav-container{
 		transition: top @shortDuration ease-out;
+		max-width: 262.75px;
 	}
 
 	.fixed{
@@ -143,14 +144,14 @@
 	}
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: @extraLargeBreakpoint){
 	.name{
-		font: 700 29px/29px @montserrat;
+		font: 700 29px/29px @sansSerif;
 		padding: 2px 8px 2px percentage(110 / 757);
 	}
 
 	.site{
-		font: 700 39px/39px @montserrat;
+		font: 700 39px/39px @sansSerif;
 		padding: 0 0 0 percentage(110 / 757);
 	}
 

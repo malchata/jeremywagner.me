@@ -5,11 +5,10 @@
 if($http2 === true){
 	?>
 	<script src="/js/ga.js?v=<?php echo($versions["ga.js"]); ?>" async defer></script>
-	<!-- <script src="/js/lazyload.js?v=<?php echo($versions["lazyload.js"]); ?>" async defer></script> -->
+	<script src="/js/lazyload.js?v=<?php echo($versions["lazyload.js"]); ?>" async defer></script>
 	<script src="/js/debounce.js?v=<?php echo($versions["debounce.js"]); ?>" defer></script>
 	<script src="/js/nav.js?v=<?php echo($versions["nav.js"]); ?>" defer></script>
 	<script src="/js/attach-nav.js?v=<?php echo($versions["attach-nav.js"]); ?>" defer></script>
-	<noscript><img src="/img/global/blank.gif?noscript=true"></noscript>
 	<?php
 }
 else{
@@ -19,3 +18,6 @@ else{
 	<?php
 }
 ?>
+<noscript>
+	<img src="/img/global/blank.gif?noscript=true">
+</noscript>

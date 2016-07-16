@@ -8,15 +8,17 @@ else{
 
 $versions = [];
 $versions["global.css"] = filemtime($pathPrefix . "/css/global.css");
+$versions["fonts-loaded.css"] = filemtime($pathPrefix . "/css/fonts-loaded.css");
 $versions["ga.js"] = filemtime($pathPrefix . "/js/ga.js");
 $versions["scripts.js"] = filemtime($pathPrefix . "/js/scripts.js");
 $versions["debounce.js"] = filemtime($pathPrefix . "/js/debounce.js");
 $versions["lazyload.js"] = filemtime($pathPrefix . "/js/lazyload.js");
 $versions["nav.js"] = filemtime($pathPrefix . "/js/nav.js");
 $versions["attach-nav.js"] = filemtime($pathPrefix . "/js/attach-nav.js");
+$versions["load-fonts.js"] = filemtime($pathPrefix . "/js/load-fonts.js");
 
 // HTTP/2 Version Checking
-$http2 = $_SERVER["SERVER_PROTOCOL"] === "HTTP/2" ? true : false;
+$http2 = $_SERVER["SERVER_PROTOCOL"] === "HTTP/1" ? true : false;
 
 function httpClass($h2){
 	if($h2 === true){
@@ -24,6 +26,13 @@ function httpClass($h2){
 	}
 	else{
 		return "http1";
+	}
+}
+
+function fontsLoaded(){
+	if(isset($_COOKIE["fonts-loaded"])){
+		return "fonts-loaded";
+	}else{
 	}
 }
 ?>
