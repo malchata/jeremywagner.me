@@ -33,6 +33,7 @@ gulp.task("default", function(){
 	gulp.watch(["src/**/*.html", "src/**/*.json"], ["htmlmin"]);
 	gulp.watch("src/js/**/*.js", ["uglify"]);
 	gulp.watch("src/img/**", ["imagemin"]);
+	gulp.watch("src/*.png", ["imagemin-favicon"]);
 });
 
 // clean
@@ -41,7 +42,7 @@ gulp.task("clean", function(){
 });
 
 // build
-gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-webp-lossless"]);
+gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-webp-lossless", "imagemin-favicon"]);
 
 // css
 gulp.task("build-css", function(){
@@ -125,7 +126,7 @@ gulp.task("concat", ["uglify"], function(){
 		.pipe(livereload());
 });
 
-// imagemin - jpegrecompress
+// imagemin
 gulp.task("imagemin", ["imagemin-webp-lossless", "imagemin-webp-lossy"], function(){
 	var src = "src/img/**",
 		dest = "dist/img";
@@ -165,22 +166,23 @@ gulp.task("imagemin-webp-lossless", function(){
 		.pipe(livereload());
 });
 
-// imagemin - lossy webp
-gulp.task("imagemin-webp-lossy", function(){
-	var src = "src/img/**/*.jpg",
-		dest = "dist/img";
+// imagemin - favicons
+gulp.task("imagemin-favicon", function(){
+	var src = "src/*.png",
+		dest = "dist";
 
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
 		.pipe(imagemin([
-				webp({
-					quality: 65
-				})
-			]
-		))
-		.pipe(extReplace(".webp"))
+			jpegRecompress({
+				max: 90
+			}),
+			pngQuant({
+				quality: "45-90"
+			}),
+			svgo()
+		]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 });
-

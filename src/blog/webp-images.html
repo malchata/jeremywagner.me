@@ -1,6 +1,6 @@
 {% include "partials/preprocessing.html" %}
 <!doctype html>
-<html class="no-js <?php echo(httpClass($http2)); ?>">
+<html class="no-js <?php echo(httpClass($http2));?> <?php echo(fontsLoaded()); ?>">
 	<head>
 		{% include "partials/html-head.html" %}
 	</head>
@@ -93,7 +93,7 @@
 					<h2>Converting Images to WebP with Node</h2>
 					<p><a href="http://nodejs.org" target="_blank">Node.js</a> is awesome, as you may or may not be able to agree with, depending on your feelings and experience with it. For jack of all tradesmen such as myself, it's less about the fact that it brings JavaScript to the server and more that it's a productivity tool that I can use while I write code. In this article, we're going to use Node to convert your JPEGs and PNGs to WebP images en masse with the use of a Node package called <code>imagemin</code>.</p>
 					<p><code>imagemin</code> is the Swiss Army Knife of image processors in Node, but we'll just focus on using it to convert all of our JPEGs and PNGs to WebPs (whew!) Don't fret, though! Even if you've never used Node before, this article will walk you through everything. If the idea of using Node bugs you, you can use the WebP Photoshop plugin and skip ahead.</p>
-					<p>The first thing you'll want to do is <a href="https://nodejs.org/en/download" target="_blank">download Node.js</a> and install it. This should only take you five minutes. Once installed, open a terminal/command line window and go to your web project's root folder. From there, just use Node Package Manager (npm) to install <code>imagemin</code> and the <code>imagemin-webp</code> plugin:</p>
+					<p>The first thing you'll want to do is <a href="https://nodejs.org/en/download" target="_blank">download Node.js</a> and install it. This should only take you five minutes. Once installed, open a terminal/command line window and go to your web project's root folder. From there, just use Node Package Manager (<code>npm</code>) to install <code>imagemin</code> and the <code>imagemin-webp</code> plugin:</p>
 <div class="code-container"><pre><code>
 npm install imagemin imagemin-webp
 </code></pre></div>

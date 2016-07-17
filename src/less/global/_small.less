@@ -193,12 +193,9 @@ a code{
 	width: 30px;
 	height: 5px;
 	display: block;
-	content: "";
 	background: @lightBrown;
 	transform-origin: 50%;
-	position: absolute;
 	top: 50%;
-	left: 0;
 	margin: -2.5px 0 0;
 }
 
@@ -210,10 +207,18 @@ a code{
 	transform: rotate(-45deg);
 }
 
+#close-nav::before,
+#close-nav::after,
+.content::before{
+	content: "";
+	left: 0;
+	position: absolute;
+}
+
 .summary{
 	padding: 0 0 24px;
 	margin: 0 0 24px;
-	border-bottom: 1px solid @lightBlue;
+	border-bottom: 1px solid @white;
 
 	&:last-child{
 		padding: 0;
@@ -277,10 +282,7 @@ figcaption{
 	span{
 		padding: 5px 8px;
 		font: 400 14px/25.75px @serif;
-		background: @lightBrown;
 		text-align: center;
-		color: @white;
-		display: inline-block;
 	}
 }
 
@@ -321,12 +323,16 @@ h2{
 }
 
 .read-more{
-	display: inline-block;
 	padding: 5px 7px;
-	background: @lightBrown;
 	font: 400 20px/20px @serif;
-	color: @white;
 	text-decoration: none;
+}
+
+.read-more,
+figcaption span{
+	color: @white;
+	background: @lightBrown;
+	display: inline-block;
 }
 
 .footer-copy{
