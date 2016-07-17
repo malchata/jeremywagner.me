@@ -166,6 +166,25 @@ gulp.task("imagemin-webp-lossless", function(){
 		.pipe(livereload());
 });
 
+// imagemin - lossy webp
+gulp.task("imagemin-webp-lossy", function(){
+	var src = "src/img/**/*.jpg",
+		dest = "dist/img";
+
+	return gulp.src(src)
+		.pipe(plumber())
+		.pipe(changed(dest))
+		.pipe(imagemin([
+				webp({
+					quality: 65
+				})
+			]
+		))
+		.pipe(extReplace(".webp"))
+		.pipe(gulp.dest(dest))
+		.pipe(livereload());
+});
+
 // imagemin - favicons
 gulp.task("imagemin-favicon", function(){
 	var src = "src/*.png",
