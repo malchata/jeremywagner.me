@@ -88,7 +88,7 @@ gulp.task("nunjucks", function(){
 
 // htmlmin
 gulp.task("htmlmin", ["nunjucks"], function(){
-	var src = ["dist/**/*.html", "!src/partials/**/*.html"],
+	var src = "dist/**/*.html",
 		dest = "dist";
 
 	return gulp.src(src)
