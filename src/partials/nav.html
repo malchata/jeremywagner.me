@@ -3,20 +3,26 @@
 		<ul class="menu">
 			<div id="close-nav"></div>
 			<li class="menu-item">
-				<a href="/about-me.html" class="menu-link">About Me</a>
+				<a href="/about-me" class="menu-link">About Me</a>
 			</li>
 			<li class="menu-item">
-				<a href="/lets-work-together.html" class="menu-link">Let's Work Together</a>
+				<a href="/lets-work-together" class="menu-link">Let's Work Together</a>
 			</li>
 			<li class="menu-item">
 				<a href="/book" target="_blank" class="menu-link">Buy my Book</a>
-				<a href="/book" class="book-link" target="_blank"><img class="book-image lazy" data-src="/img/global/book-1x.png" data-srcset="/img/global/book-1x.png 1x, /img/global/book-2x.png 2x"></a>
+				<a href="/book" class="book-link" target="_blank">
+					<picture>
+						<source data-srcset="/img/global/book-1x.webp 1x, /img/global/book-2x.webp 2x" type="image/webp">
+						<source data-srcset="/img/global/book-1x.png 1x, /img/global/book-2x.png 2x" type="image/png">
+						<img class="book-image lazy" data-src="/img/global/book-1x.png">
+					</picture>
+				</a>
 				<noscript>
 					<a href="/book" class="book-link" target="_blank"><img class="book-image" src="/img/global/book-1x.png" srcset="/img/global/book-1x.png 1x, /img/global/book-2x.png 2x"></a>
 				</noscript>
 			</li>
 			<li class="menu-item">
-				<a href="/speaker-info.html" class="menu-link">Speaker Info</a>
+				<a href="/speaker-info" class="menu-link">Speaker Info</a>
 			</li>
 		</ul>
 		<div class="social">
