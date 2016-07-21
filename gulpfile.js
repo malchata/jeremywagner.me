@@ -23,6 +23,10 @@ var gulp = require("gulp"),
 	webp = require("imagemin-webp"),
 	fs = require("fs");
 
+/**
+ * UTILITY TASKS
+ **/
+
 // Watch task
 gulp.task("default", function(){
 	// Reload automatically on changes
@@ -31,7 +35,7 @@ gulp.task("default", function(){
 	// Watches
 	gulp.watch("src/less/**/*.less", ["build-css"]);
 	gulp.watch(["src/**/*.html", "src/**/*.json"], ["htmlmin"]);
-	gulp.watch("src/js/**/*.js", ["uglify"]);
+	gulp.watch("src/js/**/*.js", ["concat"]);
 	gulp.watch("src/img/**", ["imagemin"]);
 	gulp.watch("src/*.png", ["imagemin-favicon"]);
 });
@@ -44,7 +48,10 @@ gulp.task("clean", function(){
 // build
 gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-webp-lossless", "imagemin-favicon"]);
 
-// css
+/**
+ * CSS BUILDING TASK
+ **/
+
 gulp.task("build-css", function(){
 	var src = ["src/less/global.less", "src/less/fonts-loaded.less"],
 		dest = "dist/css";
@@ -65,9 +72,13 @@ gulp.task("build-css", function(){
 		.pipe(livereload());
 });
 
+/**
+ * HTML-RELATED TASKS
+ **/
+
 // nunjucks
 gulp.task("nunjucks", function(){
-	var src = ["src/**/*.html"],
+	var src = ["src/**/*.html", "!src/partials/*.html"],
 		dest = "dist";
 
 	return gulp.src(src)
@@ -101,6 +112,10 @@ gulp.task("htmlmin", ["nunjucks"], function(){
 		.pipe(livereload());
 });
 
+/**
+ * JAVASCRIPT-RELATED TASKS
+ **/
+
 // uglify
 gulp.task("uglify", function(){
 	var src = "src/js/**/*.js",
@@ -116,7 +131,16 @@ gulp.task("uglify", function(){
 
 // Concatenation
 gulp.task("concat", ["uglify"], function(){
-	var src = ["dist/**/*.js", "!dist/js/scripts.js", "!dist/js/ga.js", "!dist/js/load-fonts.js", "!dist/js/fontfaceobserver.js"],
+	var src = [
+			"dist/**/*.js",
+			"!dist/js/scripts.js",
+			"!dist/js/ga.js",
+			"!dist/js/load-fonts.js",
+			"!dist/js/fontfaceobserver.js",
+			"!dist/js/sw-install.js",
+			"!dist/js/sw.js",
+			"!dist/js/caches.js"
+		],
 		dest = "dist/js";
 
 	return gulp.src(src)
@@ -125,6 +149,10 @@ gulp.task("concat", ["uglify"], function(){
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 });
+
+/**
+ * IMAGE PROCESSING TASKS
+ **/
 
 // imagemin
 gulp.task("imagemin", ["imagemin-webp-lossless", "imagemin-webp-lossy"], function(){

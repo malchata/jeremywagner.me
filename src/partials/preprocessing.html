@@ -13,6 +13,14 @@ else{
 	$pathPrefix = realpath("./");
 }
 
+// Is development server
+if(stristr($_SERVER["HTTP_HOST"], "dev.jeremywagner.me")){
+	$isDevServer = true;
+}
+else{
+	$isDevServer = false;
+}
+
 // Asset versioning
 $versions = [];
 $versions["global.css"] = filemtime($pathPrefix . "/css/global.css");

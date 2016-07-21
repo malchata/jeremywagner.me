@@ -1,5 +1,5 @@
 <title>
-	Jeremy Wagner - {{title}}
+	{{title}} - Jeremy Wagner
 </title>
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://jeremywagner.me/apple-touch-icon-152x152.png">
 <link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-16x16.png" sizes="16x16">
-<meta name="application-name" content="&nbsp;"/>
+<meta name="application-name" content="Jeremy Wagner's Web Development Blog">
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
 <?php
@@ -32,10 +32,7 @@ else{
 	document.documentElement.classList.remove("no-js");
 </script>
 <?php
-if($http2 === true){
-	?><script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async defer></script><?php
-}
-else{
+if($http2 === false){
 	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
 }
 ?>

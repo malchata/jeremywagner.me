@@ -13,6 +13,20 @@
 			<section class="content">
 				<!-- Begin Post Summary -->
 				<article class="post summary">
+					<h1><a href="/blog/stop-using-the-protocol-relative-url">Cutting Cruft with an SVG Media Query.</a></h1>
+					<p class="date">July 21, 2016</date>
+					<p>Paul Irish, one of the prominent developers in the pantheon of web gods, <a href="http://www.paulirish.com/2010/the-protocol-relative-url" target="_blank">wrote about the protocol-relative URL</a> way back in 2010. It was a convenient little post that advised developers to abandon absolute protocol URL schemes using <code>http://</code> or <code>https://</code> in favor of a protocol-relative variant that looks something like this:</p>
+<div class="code-container">
+<pre><code>
+&lt;script src=&quot;//code.jquery.com/jquery-2.2.3.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</div>
+					<p>This convenient syntax eliminates the need for developers to construct URLs based on the user's current security context. If this syntax was used on an HTTP page to include something from a CDN, it retrieved the HTTP version. If the user used it on an HTTPS page, it retrieved the HTTPS version. Seems like a hell of an idea, right?</p>
+					<a href="/blog/stop-using-the-protocol-relative-url" class="read-more">Read More &raquo;</a>
+				</article>
+				<!-- End Post Summary -->
+				<!-- Begin Post Summary -->
+				<article class="post summary">
 					<h1><a href="/blog/svg-media-query">Cutting Cruft with an SVG Media Query.</a></h1>
 					<p class="date">May 25, 2016</date>
 					<p>This isn’t a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
