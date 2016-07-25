@@ -14,12 +14,6 @@ var cacheVersion = "v1",
 		"/img/global/icon-linked-in.svg"
 	];
 
-cachedAssets = cachedAssets.map(function(asset){
-	return new Request(asset,{
-		credentials: "include"
-	});
-});
-
 self.addEventListener("install", function(event){
 	event.waitUntil(caches.open(cacheVersion).then(function(cache){
 		return cache.addAll(cachedAssets);
