@@ -21,9 +21,10 @@ self.addEventListener("install", function(event){
 });
 
 self.addEventListener("fetch", function(event){
-	var allowedHosts = /(dev\.jeremywagner\.me|jeremywagner\.me|fonts\.googleapis\.com|fonts\.gstatic\.com)/i;
+	var allowedHosts = /(dev\.jeremywagner\.me|jeremywagner\.me|fonts\.googleapis\.com|fonts\.gstatic\.com)/i,
+		blacklist = /(ga.js)/i;
 
-	if(allowedHosts.test(event.request.url)){
+	if(allowedHosts.test(event.request.url) === true && blacklist.test(event.request.url) === false){
 		event.respondWith(
 			caches.match(event.request).then(function(cachedResponse){
 				return cachedResponse || fetch(event.request).then(function(fetchedResponse){
