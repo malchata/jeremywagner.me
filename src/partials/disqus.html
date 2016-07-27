@@ -1,0 +1,19 @@
+<h2>Thoughts? Let's hear them!</h2>
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = "<?php echo($pageUrl); ?>";
+		this.page.identifier = "<?php echo($pageId); ?>";
+		this.page.title = "{{title}}";
+	};
+
+	(function(d){
+		var s = d.createElement('script');
+		s.src = '//jeremywagner.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})(document);
+</script>
+<noscript>
+	<h2>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow">comments powered by Disqus.</a></h2>
+</noscript>

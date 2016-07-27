@@ -1,0 +1,63 @@
+{% include "partials/preprocessing.html" %}
+<!doctype html>
+<html class="no-js <?php echo(httpClass($http2));?> <?php echo(fontsLoaded()); ?>">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin Post -->
+				<article class="post">
+					<h1>Speaker Info</h1>
+					<p>Next to the work I do, speaking is something that I <i>really</i> love. I've been speaking for a little while now, and I welcome any opportunity to get up in front of folks and talk about web development in the space I work in.</p>
+					<figure>
+						<picture>
+							<source srcset="/img/global/talking-1x.webp 1x, /img/global/talking-2x.webp 2x" type="image/webp">
+							<source srcset="/img/global/talking-1x.jpg 1x, /img/global/talking-2x.jpg 2x" type="image/png">
+							<img class="figure-image" src="/img/global/talking-1x.jpg" alt="Talking up a storm at Open Source North 2016.">
+						</picture>
+						<figcaption>
+							<span>Talking up a storm at Open Source North 2016.</span>
+						</figcaption>
+					</figure>
+					<p>If you'd like me to speak at a conference that you're organizing, let me first say that I'm honored that you're considering me. There's just a couple of things we need to talk about.</p>
+					<h2>Do you have a code of conduct?</h2>
+					<p>This is key. I want to ensure that the event you're organizing has a comprehensive code of conduct that sets the ground rules for everyone involved. Your event should be a place where anyone and everyone can feel like they belong, and that they're safe to be the person that they are.</p>
+					<h2>Do you arrange travel and lodging?</h2>
+					<p>Air travel and lodging is not a trivial cost for most professionals, and my situation is no different. Unless your event is in or near the Twin Cities where I live, I'll need to know if you cover these costs for your speakers.</p>
+					<h2>Topics I cover</h2>
+					<p>I talk about a lot of stuff, but below is a list of stuff I've talked/can talk about at your event:</p>
+					<ul>
+						<li>Web performance (my strong suit!)</li>
+						<li>HTML, CSS or JavaScript stuff.</li>
+						<li>Whatever ideas you might have!</li>
+					</ul>
+					<h2>Some of my speaking</h2>
+					<p>Here's a screen recording of a presentation I gave on flexbox at <a href="http://opensourcenorth.com" target="_blank">Open Source North</a>. Check it out:</p>
+					<figure>
+						<iframe width="420" height="315" src="https://www.youtube.com/embed/BgrceT5krGM" frameborder="0" allowfullscreen></iframe>
+						<figcaption>
+							<span>Gabbin' about flexbox</span>
+						</figcaption>
+					</figure>
+					<h2>What people think</h2>
+					<p>I feel uncomfortable tooting my own horn, so I'll let other people do the talking. Here's what some attendees of a recent talk of mine have had to say:</p>
+					<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">.<a href="https://twitter.com/malchata">@malchata</a> is rocking a Flexbox talk at <a href="https://twitter.com/hashtag/OSN2016?src=hash">#OSN2016</a>. Excellent, live JSBin demos embedded in slides. Glad he&#39;s recording it.</p>&mdash; Dan Callahan (@callahad) <a href="https://twitter.com/callahad/status/740964014386085889">June 9, 2016</a></blockquote>
+					<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/davidtc">@davidtc</a> GET /jokes = 404. jk :) Seriously good job <a href="https://twitter.com/malchata">@malchata</a>. Solid energy, good examples, lots of good examples w/o live coding the world.</p>&mdash; Jim Cummins (@JimTheDev) <a href="https://twitter.com/JimTheDev/status/740971555379806208">June 9, 2016</a></blockquote>
+					<h2>Get in touch!</h2>
+					<p>If you're still interested in having me speak at your event, don't hesitate to get in touch. You can contact me at <a href="mailto:public@jeremywagner.me?subject=Speaking at an event">public@jeremywagner.me</a>.</p>
+					<p>-j</p>
+				</article>
+				<!-- End Post -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>

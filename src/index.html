@@ -1,0 +1,51 @@
+{% include "partials/preprocessing.html" %}
+<!doctype html>
+<html class="no-js <?php echo(httpClass($http2));?> <?php echo(fontsLoaded()); ?>">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin Post Summary -->
+				<article class="post summary">
+					<h1><a href="/blog/stop-using-the-protocol-relative-url">Stop Using the Protocol-relative URL</a></h1>
+					<p class="date">July 21, 2016</date>
+					<p>Paul Irish, one of the prominent developers in the pantheon of web gods, <a href="http://www.paulirish.com/2010/the-protocol-relative-url" target="_blank">wrote about the protocol-relative URL</a> way back in 2010. It was a convenient little post that advised developers to abandon absolute protocol URL schemes using <code>http://</code> or <code>https://</code> in favor of a protocol-relative variant that looks something like this:</p>
+<div class="code-container">
+<pre><code>
+&lt;script src=&quot;//code.jquery.com/jquery-2.2.3.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</div>
+					<p>This convenient syntax eliminates the need for developers to construct URLs based on the user's current security context. If this syntax was used on an HTTP page to include something from a CDN, it retrieved the HTTP version. If the user used it on an HTTPS page, it retrieved the HTTPS version. Seems like a hell of an idea, right?</p>
+					<a href="/blog/stop-using-the-protocol-relative-url" class="read-more">Read More &raquo;</a>
+				</article>
+				<!-- End Post Summary -->
+				<!-- Begin Post Summary -->
+				<article class="post summary">
+					<h1><a href="/blog/svg-media-query">Cutting Cruft with an SVG Media Query</a></h1>
+					<p class="date">May 25, 2016</date>
+					<p>This isn’t a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
+					<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" target="_blank">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site’s logo a different treatment for each breakpoint.</p>
+					<a href="/blog/svg-media-query" class="read-more">Read More &raquo;</a>
+				</article>
+				<!-- End Post Summary -->
+				<!-- Begin Post Summary -->
+				<article class="post summary">
+					<h1><a href="/blog/webp-images">Using WebP Images</a></h1>
+					<p class="date">April 25, 2016</date>
+					<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
+					<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
+					<a href="/blog/webp-images" class="read-more">Read More &raquo;</a>
+				</article>
+				<!-- End Post Summary -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>

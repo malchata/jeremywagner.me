@@ -1,0 +1,7 @@
+{
+	"title": "Cutting Cruft with an SVG Media Query",
+	"featureImage": "/img/blog/webp-images/modem-2x.png",
+	"date": "May 25, 2016",
+	"description": "In this post, I explain how I used an SVG media query to cut down on unnecessary imagery for a client's website.",
+	"categories": ["images", "web development", "web performance"]
+}
