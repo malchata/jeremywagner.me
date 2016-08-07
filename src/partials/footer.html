@@ -7,6 +7,7 @@ if($http2 === true){
 		?><script src="/js/ga.js?v=<?php echo($versions["ga.js"]); ?>" async defer></script><?php
 	}
 	?>
+	<script src="/js/sw-install.js?v=<?php echo($versions["sw-install.js"]); ?>" async defer></script>
 	<script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async defer></script>
 	<script src="/js/lazyload.js?v=<?php echo($versions["lazyload.js"]); ?>" async defer></script>
 	<script src="/js/debounce.js?v=<?php echo($versions["debounce.js"]); ?>" defer></script>
@@ -19,6 +20,7 @@ else{
 		?><script><?php echo(file_get_contents($pathPrefix . "/js/ga.js")); ?></script><?php
 	}
 	?>
+	<script><?php echo(file_get_contents($pathprefix . "/js/sw-install.js")); ?></script>
 	<script src="/js/scripts.js?v=<?php echo($versions["scripts.js"]); ?>" defer></script>
 	<?php
 }
