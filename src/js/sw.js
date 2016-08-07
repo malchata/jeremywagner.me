@@ -24,7 +24,7 @@ self.addEventListener("install", function(event){
 
 self.addEventListener("fetch", function(event){
 	var whitelist = /(jeremywagner.me|fonts\.googleapis\.com|fonts\.gstatic\.com)/i,
-		blacklist = /(sw\.js|sw-install\.js|ga\.js|google-analytics\.com|youtube\.com|ytimg\.com|twitter\.com|doubleclick\.net|twimg\.com)$/i,
+		blacklist = /(sw\.js|sw-install\.js|ga\.js|google-analytics\.com|youtube\.com|ytimg\.com|twitter\.com|doubleclick\.net|twimg\.com)/i,
 		htmlDocument = /(\/|\.html)$/i;
 
 	if(whitelist.test(event.request.url) === true && blacklist.test(event.request.url) === false){
