@@ -21,7 +21,7 @@
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
 <?php
-if($http2 === true){
+if($isHttp2 === true){
 	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
 }
 else{
@@ -32,7 +32,7 @@ else{
 	document.documentElement.classList.remove("no-js");
 </script>
 <?php
-if($http2 === false){
+if($isHttp2 === false){
 	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
 }
 ?>

@@ -93,8 +93,7 @@ gulp.task("nunjucks", function(){
 			}
 		}))
 		.pipe(nunjucks.compile())
-		.pipe(gulp.dest(dest))
-		.pipe(livereload());
+		.pipe(gulp.dest(dest));
 });
 
 // htmlmin

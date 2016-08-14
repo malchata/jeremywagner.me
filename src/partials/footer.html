@@ -2,7 +2,7 @@
 	<p class="footer-copy">All content &copy; <?php echo(date("Y")); ?> Jeremy Wagner, unless where otherwise noted.</p>
 </footer>
 <?php
-if($http2 === true){
+if($isHttp2 === true){
 	if($isDevServer === false){
 		?><script src="/js/ga.js?v=<?php echo($versions["ga.js"]); ?>" async defer></script><?php
 	}

@@ -19,8 +19,8 @@
 					<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
 					<figure>
 						<picture>
-							<source src="/img/blog/webp-images/modem-1x.webp" srcset="/img/blog/webp-images/modem-1x.webp 1x, /img/blog/webp-images/modem-2x.webp 2x" type="image/webp">
-							<source src="/img/blog/webp-images/modem-1x.png" srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" type="image/png">
+							<source srcset="/img/blog/webp-images/modem-1x.webp 1x, /img/blog/webp-images/modem-2x.webp 2x" type="image/webp">
+							<source srcset="/img/blog/webp-images/modem-1x.png 1x, /img/blog/webp-images/modem-2x.png 2x" type="image/png">
 							<img class="figure-image" src="/img/blog/webp-images/modem-1x.png" alt="I thought we moved past this, already.">
 						</picture>
 						<figcaption>
@@ -185,14 +185,14 @@ node webp.js
 					<p>If you're depending on Modernizr, you have to think about users with JavaScript disabled. Sorry, but it's the way things are.</p>
 					<figure>
 						<picture>
-							<source data-src="/img/blog/webp-images/screams.webp" type="image/webp">
-							<source data-src="/img/blog/webp-images/screams.jpg" type="image/jpeg">
+							<source data-srcset="/img/blog/webp-images/screams.webp" type="image/webp">
+							<source data-srcset="/img/blog/webp-images/screams.jpg" type="image/jpeg">
 							<img class="figure-image lazy" data-src="/img/blog/webp-images/screams.jpg" alt="You can't escape it.">
 						</picture>
 						<noscript>
 							<picture>
-								<source src="/img/blog/webp-images/screams.webp" type="image/webp">
-								<source src="/img/blog/webp-images/screams.jpg" type="image/jpeg">
+								<source srcset="/img/blog/webp-images/screams.webp" type="image/webp">
+								<source srcset="/img/blog/webp-images/screams.jpg" type="image/jpeg">
 								<img class="figure-image" src="/img/blog/webp-images/screams.jpg" alt="You can't escape it.">
 							</picture>
 						</noscript>
