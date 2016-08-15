@@ -56,26 +56,26 @@ function fontsLoaded(){
 function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 	// Establish global link headers
 	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style" .
-		",</img/global/jeremy.svg>; rel=preload; as=image; nopush";
+		",</img/global/jeremy.svg>; rel=preload; as=image";
 
 	// Set headers
 	if($h2 === true){
 		$headers["Link"] .= ",</css/fonts-loaded.css?v=" . $versions["fonts-loaded.css"] . ">; rel=preload; as=style";
 
 			if($isDevServer === false){
-				$headers["Link"] .= ",</js/ga.js?v=" . $versions["ga.js"] . ">; rel=preload; as=script; nopush";
+				$headers["Link"] .= ",</js/ga.js?v=" . $versions["ga.js"] . ">; rel=preload; as=script";
 			}
 
-			$headers["Link"] .=",</js/debounce.js?v=" . $versions["debounce.js"] . ">; rel=preload; as=script; nopush" .
-			",</js/lazyload.js?v=" . $versions["lazyload.js"] . ">; rel=preload; as=script; nopush" .
-			",</js/nav.js?v=" . $versions["nav.js"] . ">; rel=preload; as=script; nopush" .
-			",</js/attach-nav.js?v=" . $versions["attach-nav.js"] . ">; rel=preload; as=script; nopush" .
-			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script; nopush" .
-			//",</js/sw-install.js?v=" . $versions["sw-install.js"] . ">; rel=preload; as=script; nopush" .
-			",</img/global/icon-email.svg>; rel=preload; as=image; nopush" .
-			",</img/global/icon-github.svg>; rel=preload; as=image; nopush" .
-			",</img/global/icon-linked-in.svg>; rel=preload; as=image; nopush" .
-			",</img/global/icon-twitter.svg>; rel=preload; as=image; nopush";
+			$headers["Link"] .=",</js/debounce.js?v=" . $versions["debounce.js"] . ">; rel=preload; as=script" .
+			",</js/lazyload.js?v=" . $versions["lazyload.js"] . ">; rel=preload; as=script" .
+			",</js/nav.js?v=" . $versions["nav.js"] . ">; rel=preload; as=script" .
+			",</js/attach-nav.js?v=" . $versions["attach-nav.js"] . ">; rel=preload; as=script" .
+			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script" .
+			//",</js/sw-install.js?v=" . $versions["sw-install.js"] . ">; rel=preload; as=script" .
+			",</img/global/icon-email.svg>; rel=preload; as=image" .
+			",</img/global/icon-github.svg>; rel=preload; as=image" .
+			",</img/global/icon-linked-in.svg>; rel=preload; as=image" .
+			",</img/global/icon-twitter.svg>; rel=preload; as=image";
 	}
 	else{
 		$headers["Link"] .= ",</js/scripts.js?v=" . $versions["scripts.js"] . ">; rel=preload; as=script" .
