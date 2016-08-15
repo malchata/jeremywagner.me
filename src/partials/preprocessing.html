@@ -35,6 +35,7 @@ $versions["attach-nav.js"] = cacheString("/js/attach-nav.js", $pathPrefix);
 $versions["load-fonts.js"] = cacheString("/js/load-fonts.js", $pathPrefix);
 //$versions["sw-install.js"] = cacheString("/js/sw-install.js", $pathPrefix);
 
+
 function httpClass($h2){
 	if($h2 === true){
 		return "http2";
@@ -54,26 +55,46 @@ function fontsLoaded(){
 // Headers
 function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 	// Establish global link headers
-	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style,";
+	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style" .
+		",</img/global/jeremy.svg>; rel=preload; as=image; nopush";
 
 	// Set headers
 	if($h2 === true){
-		$headers["Link"] .= "</css/fonts-loaded.css?v=" . $versions["fonts-loaded.css"] . ">; rel=preload; as=style,";
+		$headers["Link"] .= ",</css/fonts-loaded.css?v=" . $versions["fonts-loaded.css"] . ">; rel=preload; as=style";
+
+			if($isDevServer === false){
+				$headers["Link"] .= ",</js/ga.js?v=" . $versions["ga.js"] . ">; rel=preload; as=script; nopush";
+			}
+
+			$headers["Link"] .=",</js/debounce.js?v=" . $versions["debounce.js"] . ">; rel=preload; as=script; nopush" .
+			",</js/lazyload.js?v=" . $versions["lazyload.js"] . ">; rel=preload; as=script; nopush" .
+			",</js/nav.js?v=" . $versions["nav.js"] . ">; rel=preload; as=script; nopush" .
+			",</js/attach-nav.js?v=" . $versions["attach-nav.js"] . ">; rel=preload; as=script; nopush" .
+			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script; nopush" .
+			//",</js/sw-install.js?v=" . $versions["sw-install.js"] . ">; rel=preload; as=script; nopush" .
+			",</img/global/icon-email.svg>; rel=preload; as=image; nopush" .
+			",</img/global/icon-github.svg>; rel=preload; as=image; nopush" .
+			",</img/global/icon-linked-in.svg>; rel=preload; as=image; nopush" .
+			",</img/global/icon-twitter.svg>; rel=preload; as=image; nopush";
+	}
+	else{
+		$headers["Link"] .= ",</js/scripts.js?v=" . $versions["scripts.js"] . ">; rel=preload; as=script" .
+			",</img/global/sprite.svg>; rel=preload; as=image";
 	}
 
 	// Check if this is a blog page.
 	if($isBlog){
-		$headers["Link"] .= "<https://jeremywagner.disqus.com>; rel=preconnect," .
-			"<https://a.disquscdn.com>; rel=preconnect," .
-			"<https://disqus.com>; rel=preconnect," .
-			"<https://referrer.disqus.com>; rel=preconnect";
+		$headers["Link"] .= ",<https://jeremywagner.disqus.com>; rel=preconnect" .
+			",<https://a.disquscdn.com>; rel=preconnect" .
+			",<https://disqus.com>; rel=preconnect" .
+			",<https://referrer.disqus.com>; rel=preconnect";
 	}
 
 	// Other preconnect headers
-	$headers["Link"] .= "<https://www.google-analytics.com>; rel=preconnect," .
-			"<https://fonts.gstatic.com>; rel=preconnect," .
-			"<https://fonts.googleapis.com>; rel=preconnect," .
-			"<https://ssl.google-analytics.com>; rel=preconnect";
+	$headers["Link"] .= ",<https://www.google-analytics.com>; rel=preconnect" .
+			",<https://fonts.gstatic.com>; rel=preconnect" .
+			",<https://fonts.googleapis.com>; rel=preconnect" .
+			",<https://ssl.google-analytics.com>; rel=preconnect";
 
 	// Apply headers
 	foreach($headers as $headerName => $headerValue){
