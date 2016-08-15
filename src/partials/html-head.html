@@ -8,7 +8,7 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjord+One|Montserrat:400,700|Tinos:400,700" type="text/css">
-<link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
+<!-- <link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css"> -->
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://jeremywagner.me/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://jeremywagner.me/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://jeremywagner.me/apple-touch-icon-72x72.png">
@@ -22,7 +22,8 @@
 <meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
 <?php
 if($isHttp2 === true){
-	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
+	?><style><?php echo(file_get_contents($pathPrefix . "/css/global.css")); ?></style><?php
+	?><style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style><?php
 }
 else{
 	?><style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style><?php
