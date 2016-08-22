@@ -1,6 +1,6 @@
-{% include "partials/preprocessing.html" %}
+<?php require_once("../../preprocessing.php"); ?>
 <!doctype html>
-<html class="no-js <?php echo(httpClass($http2));?> <?php echo(fontsLoaded()); ?>">
+<html class="no-js <?php echo(httpClass($isHttp2));?> <?php echo(fontsLoaded()); ?>">
 	<head>
 		{% include "partials/html-head.html" %}
 	</head>

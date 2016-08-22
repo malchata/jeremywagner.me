@@ -8,19 +8,14 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjord+One|Montserrat:400,700|Tinos:400,700" type="text/css">
-<link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://jeremywagner.me/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://jeremywagner.me/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://jeremywagner.me/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://jeremywagner.me/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://jeremywagner.me/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://jeremywagner.me/apple-touch-icon-152x152.png">
-<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-16x16.png" sizes="16x16">
-<meta name="application-name" content="Jeremy Wagner's Web Development Blog">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
 <?php
+if($isHttp2 === true){
+	?><link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css"><?php
+}
+else{
+	?><style><?php echo(file_get_contents($pathPrefix . "/css/global.css")); ?></style><?php
+}
+
 if($isHttp2 === true){
 	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
 }
@@ -36,3 +31,14 @@ if($isHttp2 === false){
 	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
 }
 ?>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://jeremywagner.me/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://jeremywagner.me/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://jeremywagner.me/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://jeremywagner.me/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://jeremywagner.me/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://jeremywagner.me/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-16x16.png" sizes="16x16">
+<meta name="application-name" content="Jeremy Wagner's Web Development Blog">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
