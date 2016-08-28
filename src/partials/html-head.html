@@ -8,14 +8,8 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjord+One|Montserrat:400,700|Tinos:400,700" type="text/css">
+<link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
 <?php
-if($isHttp2 === true){
-	?><link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css"><?php
-}
-else{
-	?><style><?php echo(file_get_contents($pathPrefix . "/css/global.css")); ?></style><?php
-}
-
 if($isHttp2 === true){
 	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
 }
@@ -23,9 +17,7 @@ else{
 	?><style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style><?php
 }
 ?>
-<script>
-	document.documentElement.classList.remove("no-js");
-</script>
+<script>document.documentElement.classList.remove("no-js");</script>
 <?php
 if($isHttp2 === false){
 	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
