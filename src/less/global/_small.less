@@ -23,12 +23,16 @@ header{
 	}
 }
 
-#jeremy{
-	width: percentage(75 / 350);
-	height: auto;
-	display: inline-block;
+#header-image-container{
 	margin: 0 percentage(13 / 350) 0 0;
+	width: percentage(75 / 350);
 	vertical-align: top;
+	display: inline-block;
+}
+
+#jeremy{
+	padding-top: percentage(321.515 / 224.226);
+	background: url("/img/global/jeremy.svg") no-repeat;
 }
 
 .title-container{
@@ -384,9 +388,10 @@ iframe{
 	.twitter,
 	.linked-in,
 	.github,
-	.email{
+	.email,
+	#jeremy{
 		background: url("../img/global/sprite.svg") no-repeat;
-		background-size: 88px 88px;
+		background-size: 312.23px 409.51px;
 	}
 
 	.twitter{
@@ -404,6 +409,11 @@ iframe{
 	.email{
 		background-position: -66px -66px;
 		margin: 0;
+	}
+
+	#jeremy{
+		background-position: right bottom;
+		background-size: 139.24611776% 127.37041818%;
 	}
 }
 
