@@ -36,9 +36,17 @@
 					</figure>
 					<p>As it tends to happen, I overlooked this detail until after the client approved the designs, so I was on the hook. Being borderline obsessive about website optimization, I knew I couldn't slap this together without thinking things over. I had two options. I could use two different images, which brought on slight discomfort.</p>
 					<figure>
-						<img class="figure-image lazy" data-src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
+						<picture>
+							<source data-srcset="/img/blog/svg-media-query/i-am-dead-inside.webp" type="image/webp">
+							<source data-srcset="/img/blog/svg-media-query/i-am-dead-inside.jpg" type="image/jpeg">
+							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
+						</picture>
 						<noscript>
-							<img class="figure-image" src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
+							<picture>
+								<source srcset="/img/blog/svg-media-query/i-am-dead-inside.webp" type="image/webp">
+								<source srcset="/img/blog/svg-media-query/i-am-dead-inside.jpg" type="image/jpeg">
+								<img class="figure-image" src="/img/blog/svg-media-query/i-am-dead-inside.jpg">
+							</picture>
 						</noscript>
 					</figure>
 					<p>Or I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
@@ -62,17 +70,9 @@
 </code></pre></div>
 					<p>The relevant piece of code here is within the <code>&lt;style&gt;</code> tags. We have objects in the SVG that use one of two classes: Some that use the <code>.st0</code>, and some that use <code>.st1</code>. Those using <code>.st0</code> are given a fill color of white (<code>#fff</code>), and those use .st1 are given a fill color of a sort of pine green (<code>#197f21</code>). This treatment looks like so:
 					<figure>
-						<picture>
-							<source data-srcset="/img/blog/svg-media-query/weekly-logo-1x.webp" type="image/webp">
-							<source data-srcset="/img/blog/svg-media-query/weekly-logo-1x.png" type="image/png">
-							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment.">
-						</picture>
+						<img class="figure-image lazy" data-src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment.">
 						<noscript>
-							<picture>
-								<source srcset="/img/blog/svg-media-query/weekly-logo-1x.webp" type="image/webp">
-								<source srcset="/img/blog/svg-media-query/weekly-logo-1x.png" type="image/png">
-								<img class="figure-image" src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment.">
-							</picture>
+							<img class="figure-image" src="/img/blog/svg-media-query/weekly-logo-1x.png" alt="The mobile logo treatment.">
 						</noscript>
 						<figcaption>
 							<span>The mobile logo treatment.</span>
@@ -110,17 +110,9 @@
 					<p>The new media query works in a mobile first fashion, since the site itself uses a mobile-first responsive design approach. For mobile devices, we have the white logo treatment. Then, when the logo width hits a width of <code>300px</code>, we invert the color scheme for desktop devices.</p>
 					<p>To see the logo in action, head over to <a href="http://weeklytimber.com" target="_blank">http://weeklytimber.com</a> and resize the browser window. The logo treatment is the same image source (<code>logo.svg</code>) but the media query allows us to invert the fill colors, thus eliminating the need for a second image file. If you pull the logo up directly at <a href="http://weeklytimber.com/img/logo.svg" target="_blank">http://weeklytimber.com/img/logo.svg</a>, you can resize the browser window to see the color scheme flip at the <code>300px</code> threshold.</p>
 					<figure>
-						<picture>
-							<source data-srcset="/img/blog/svg-media-query/new-treatment-1x.webp 1x, /img/blog/svg-media-query/new-treatment-2x.webp 2x" type="image/webp">
-							<source data-srcset="/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x" type="image/png">
-							<img class="figure-image lazy" data-src="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments.">
-						</picture>
+						<img data-srcset="/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x" class="figure-image lazy" data-src="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments.">
 						<noscript>
-							<picture>
-								<source srcset="/img/blog/svg-media-query/new-treatment-1x.webp 1x, /img/blog/svg-media-query/new-treatment-2x.webp 2x" type="image/webp">
-								<source srcset="/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x" type="image/png">
-								<img class="figure-image" data="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments.">
-							</picture>
+							<img srcset="/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x" class="figure-image" src="/img/blog/svg-media-query/new-treatment-1x.png" alt="Our single SVG image accommodating both logo treatments.">
 						</noscript>
 						<figcaption>
 							<span>Our single SVG image accommodating both logo treatments.</span>

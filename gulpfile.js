@@ -46,7 +46,7 @@ gulp.task("clean", function(){
 });
 
 // build
-gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-webp-lossless", "imagemin-favicon"]);
+gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favicon"]);
 
 /**
  * CSS BUILDING TASK
@@ -154,8 +154,8 @@ gulp.task("concat", ["uglify"], function(){
  **/
 
 // imagemin
-gulp.task("imagemin", ["imagemin-webp-lossless", "imagemin-webp-lossy"], function(){
-	var src = "src/img/**",
+gulp.task("imagemin", ["imagemin-webp"], function(){
+	var src = "src/img/**/*.{jpg,png,gif,svg}",
 		dest = "dist/img";
 
 	return gulp.src(src)
@@ -174,28 +174,9 @@ gulp.task("imagemin", ["imagemin-webp-lossless", "imagemin-webp-lossy"], functio
 		.pipe(livereload());
 });
 
-// imagemin - lossless webp
-gulp.task("imagemin-webp-lossless", function(){
-	var src = "src/img/**/*.png",
-		dest = "dist/img";
-
-	return gulp.src(src)
-		.pipe(plumber())
-		.pipe(changed(dest))
-		.pipe(imagemin([
-				webp({
-					lossless: true
-				})
-			]
-		))
-		.pipe(extReplace(".webp"))
-		.pipe(gulp.dest(dest))
-		.pipe(livereload());
-});
-
-// imagemin - lossy webp
-gulp.task("imagemin-webp-lossy", function(){
-	var src = "src/img/**/*.jpg",
+// imagemin - webp
+gulp.task("imagemin-webp", function(){
+	var src = "src/img/**/*.{jpg,png}",
 		dest = "dist/img";
 
 	return gulp.src(src)
