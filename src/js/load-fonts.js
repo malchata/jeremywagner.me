@@ -2,7 +2,6 @@
 	if(document.fonts){
 		document.fonts.load("1em Tinos");
 		document.fonts.load("1em Montserrat");
-		document.fonts.load("1em Fjord One");
 
 		document.fonts.ready.then(function(fontFaceSet){
 			document.documentElement.classList.add("fonts-loaded");
@@ -14,6 +13,7 @@
 
 		fontFaceObserverScript.src = "/js/fontfaceobserver.js";
 		fontFaceObserverScript.defer = "defer";
+		fontFaceObserverScript.async = "async";
 
 		document.head.appendChild(fontFaceObserverScript);
 	}

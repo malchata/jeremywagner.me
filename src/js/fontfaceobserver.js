@@ -12,10 +12,9 @@ c.family+'",serif'));z(p,function(a){h=a;r()});w(p,I(c,'"'+c.family+'",monospace
 
 (function(document){
 	var tinos = new FontFaceObserver("Tinos"),
-		montserrat = new FontFaceObserver("Montserrat"),
-		fjordOne = new FontFaceObserver("Fjord One");
+		montserrat = new FontFaceObserver("Montserrat");
 
-	Promise.all([tinos.load(), montserrat.load(), fjordOne.load()]).then(function(){
+	Promise.all([tinos.load(), montserrat.load()]).then(function(){
 		document.documentElement.classList.add("fonts-loaded");
 		document.cookie = "fonts-loaded=";
 	});
