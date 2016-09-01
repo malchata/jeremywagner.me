@@ -43,10 +43,7 @@ header{
 }
 
 .name{
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 16px;
-	font-family: @sansSerif;
+	font: 700 16px/16px @sansSerif;
 	text-align: center;
 	text-transform: uppercase;
 	background: @blue;
@@ -56,12 +53,9 @@ header{
 }
 
 .site{
+	font: 700 16px/16px @sansSerif;
 	text-align: center;
 	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 16px;
-	font-family: @sansSerif;
 	margin: 0 0 8px;
 }
 
@@ -76,6 +70,7 @@ header{
 
 .tagline{
 	display: none;
+	font: 400 11px/12.7798px @sansSerif;
 }
 
 #nav-icon{
@@ -165,10 +160,7 @@ code{
 	margin: 0;
 	padding: 0;
 	color: @blue;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
-	font-family: @code;
+	font: 400 16px/24px @code;
 }
 
 a{
@@ -178,10 +170,7 @@ a{
 }
 
 .menu-item{
-	font-weight: 400;
-	font-size: 24px;
-	line-height: 28.8px;
-	font-family: @serif;
+	font: 400 22px/26.4px @sansSerif;
 	text-transform: uppercase;
 	margin: 0 0 24px;
 	position: relative;
@@ -262,10 +251,7 @@ ol{
 }
 
 h1{
-	font-weight: 400;
-	font-size: 26px;
-	line-height: 32.4px;
-	font-family: @serif;
+	font: 400 26px/32.4px @serif;
 	color: @blue;
 
 	a{
@@ -275,20 +261,14 @@ h1{
 }
 
 p{
-	font-weight: 400;
-	font-size: 19px;
-	line-height: 35px;
-	font-family: @serif;
+	font: 400 19px/35px @serif;
 	color: @blue;
+}
 
-	&.date{
-		font-weight: 700;
-		font-size: 19px;
-		line-height: 35px;
-		font-family: @serif;
-		color: @brown;
-		margin: 0;
-	}
+.date{
+	font-weight: 700;
+	color: @brown;
+	margin: 0;
 }
 
 figure{
@@ -301,10 +281,7 @@ figure{
 figcaption{
 	span{
 		padding: 5px 8px;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 25.75px;
-		font-family: @serif;
+		font: 400 14px/25.75px @serif;
 		text-align: center;
 	}
 }
@@ -328,10 +305,7 @@ picture + noscript + figcaption,
 		padding: 0 0 0 18px;
 
 		li{
-			font-weight: 400;
-			font-size: 19px;
-			line-height: 35px;
-			font-family: @serif;
+			font: 400 19px/35px @serif;
 			color: @blue;
 		}
 	}
@@ -343,19 +317,13 @@ picture + noscript + figcaption,
 }
 
 h2{
-	font-weight: 700;
-	font-size: 23px;
-	line-height: 35px;
-	font-family: @serif;
+	font: 700 23px/35px @serif;
 	color: @blue;
 }
 
 .read-more{
 	padding: 5px 7px;
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 20px;
-	font-family: @serif;
+	font: 400 20px/20px @serif;
 	text-decoration: none;
 }
 
@@ -367,10 +335,7 @@ figcaption span{
 }
 
 .footer-copy{
-	font-weight: 400;
-	font-size: 11px;
-	line-height: 13.2px;
-	font-family: @serif;
+	font: 400 11px/13.2px @serif;
 	color: @lightBrown;
 	text-align: center;
 	margin: 0;
@@ -379,9 +344,6 @@ figcaption span{
 iframe{
 	max-width: 100%;
 	margin: 0 0 20px;
-}
-
-#disqus_thread{
 }
 
 .http1{
@@ -420,10 +382,6 @@ iframe{
 @media screen and (min-width: 375px){
 	.tagline{
 		display: block;
-		font-weight: 400;
-		font-size: 11px;
-		line-height: 12.7798px;
-		font-family: @sansSerif;
 		text-transform: uppercase;
 		text-align: center;
 	}
@@ -431,17 +389,13 @@ iframe{
 
 @media screen and (min-width: 456px){
 	.name{
-		font-weight: 700;
 		font-size: 18px;
 		line-height: 18px;
-		font-family: @sansSerif;
 	}
 
 	.site{
-		font-weight: 700;
 		font-size: 18px;
 		line-height: 18px;
-		font-family: @sansSerif;
 	}
 
 	.abbreviation{

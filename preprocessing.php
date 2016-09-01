@@ -33,7 +33,6 @@ $versions["lazyload.js"] = cacheString("/js/lazyload.js", $pathPrefix);
 $versions["nav.js"] = cacheString("/js/nav.js", $pathPrefix);
 $versions["attach-nav.js"] = cacheString("/js/attach-nav.js", $pathPrefix);
 $versions["load-fonts.js"] = cacheString("/js/load-fonts.js", $pathPrefix);
-//$versions["sw-install.js"] = cacheString("/js/sw-install.js", $pathPrefix);
 
 
 function httpClass($h2){
@@ -55,8 +54,7 @@ function fontsLoaded(){
 // Headers
 function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 	// Establish global link headers
-	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style" .
-		",</img/global/jeremy.svg>; rel=preload; as=image";
+	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style";
 
 	// Set headers
 	if($h2 === true){
@@ -70,16 +68,10 @@ function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 			",</js/lazyload.js?v=" . $versions["lazyload.js"] . ">; rel=preload; as=script" .
 			",</js/nav.js?v=" . $versions["nav.js"] . ">; rel=preload; as=script" .
 			",</js/attach-nav.js?v=" . $versions["attach-nav.js"] . ">; rel=preload; as=script" .
-			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script" .
-			//",</js/sw-install.js?v=" . $versions["sw-install.js"] . ">; rel=preload; as=script" .
-			",</img/global/icon-email.svg>; rel=preload; as=image" .
-			",</img/global/icon-github.svg>; rel=preload; as=image" .
-			",</img/global/icon-linked-in.svg>; rel=preload; as=image" .
-			",</img/global/icon-twitter.svg>; rel=preload; as=image";
+			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script";
 	}
 	else{
-		$headers["Link"] .= ",</js/scripts.js?v=" . $versions["scripts.js"] . ">; rel=preload; as=script" .
-			",</img/global/sprite.svg>; rel=preload; as=image";
+		$headers["Link"] .= ",</js/scripts.js?v=" . $versions["scripts.js"] . ">; rel=preload; as=script";
 	}
 
 	// Check if this is a blog page.
