@@ -95,14 +95,21 @@ function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 }
 
 // Cache string generator
-function cacheString($sessionKey, $string, $pathPrefix){
-	if(isset($_SESSION[$sessionKey])){
-		return $_SESSION[$sessionKey];
+function cacheString($cacheKey, $string, $pathPrefix){
+	$checksumCacheDir = "/var/www/caches/cache-keys/";
+	$checksumCache = "/var/www/caches/cache-keys/" . $cacheKey;
+
+	if(file_exists($checksumCache)){
+		return file_get_contents($checksumCache);
 	}
 	else{
-		$cacheKey = substr(md5_file($pathPrefix . $string), 0, 8);
-		$_SESSION[$sessionKey] = $cacheKey;
-		return $cacheKey;
+		if(is_dir($checksumCacheDir) === false){
+			mkdir($checksumCacheDir, 0755);
+		}
+
+		$checksum = substr(md5_file($pathPrefix . $string), 0, 8);
+		file_put_contents($checksumCache, $checksum, LOCK_EX);
+		return $checksum;
 	}
 }
 
