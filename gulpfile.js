@@ -53,7 +53,7 @@ gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favi
  **/
 
 gulp.task("build-css", function(){
-	var src = ["src/less/global.less", "src/less/fonts-loaded.less"],
+	var src = ["src/less/global.less", "src/less/fonts-loaded.less", "src/less/http1.less"],
 		dest = "dist/css";
 
 	return gulp.src(src)

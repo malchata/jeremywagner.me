@@ -14,7 +14,10 @@ if($isHttp2 === true){
 	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
 }
 else{
-	?><style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style><?php
+	?>
+	<style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style>
+	<style><?php echo(file_get_contents($pathPrefix . "/css/http1.css")); ?></style>
+	<?php
 }
 ?>
 <script>document.documentElement.classList.remove("no-js");</script>

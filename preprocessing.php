@@ -24,15 +24,15 @@ else{
 
 // Asset versioning
 $versions = [];
-$versions["global.css"] = cacheString("/css/global.css", $pathPrefix);
-$versions["fonts-loaded.css"] = cacheString("/css/fonts-loaded.css", $pathPrefix);
-$versions["ga.js"] = cacheString("/js/ga.js", $pathPrefix);
-$versions["scripts.js"] = cacheString("/js/scripts.js", $pathPrefix);
-$versions["debounce.js"] = cacheString("/js/debounce.js", $pathPrefix);
-$versions["lazyload.js"] = cacheString("/js/lazyload.js", $pathPrefix);
-$versions["nav.js"] = cacheString("/js/nav.js", $pathPrefix);
-$versions["attach-nav.js"] = cacheString("/js/attach-nav.js", $pathPrefix);
-$versions["load-fonts.js"] = cacheString("/js/load-fonts.js", $pathPrefix);
+$versions["global.css"] = cacheString("global.css", "/css/global.css", $pathPrefix);
+$versions["fonts-loaded.css"] = cacheString("fonts-loaded.css", "/css/fonts-loaded.css", $pathPrefix);
+$versions["ga.js"] = cacheString("ga.js", "/js/ga.js", $pathPrefix);
+$versions["scripts.js"] = cacheString("scripts.js", "/js/scripts.js", $pathPrefix);
+$versions["debounce.js"] = cacheString("debounce.js", "/js/debounce.js", $pathPrefix);
+$versions["lazyload.js"] = cacheString("lazyload.js", "/js/lazyload.js", $pathPrefix);
+$versions["nav.js"] = cacheString("nav.js", "/js/nav.js", $pathPrefix);
+$versions["attach-nav.js"] = cacheString("attach-nav.js", "/js/attach-nav.js", $pathPrefix);
+$versions["load-fonts.js"] = cacheString("load-fonts.js", "/js/load-fonts.js", $pathPrefix);
 
 
 function httpClass($h2){
@@ -95,8 +95,15 @@ function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
 }
 
 // Cache string generator
-function cacheString($string, $pathPrefix){
-	return substr(md5_file($pathPrefix . $string), 0, 8);
+function cacheString($sessionKey, $string, $pathPrefix){
+	if(isset($_SESSION[$sessionKey])){
+		return $_SESSION[$sessionKey];
+	}
+	else{
+		$cacheKey = substr(md5_file($pathPrefix . $string), 0, 8);
+		$_SESSION[$sessionKey] = $cacheKey;
+		return $cacheKey;
+	}
 }
 
 generateLinkHeaders($isHttp2, $versions, $isBlog, $isDevServer);
