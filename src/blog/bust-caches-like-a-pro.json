@@ -1,0 +1,7 @@
+{
+	"title": "Bust Caches Like a Pro",
+	"featureImage": "/img/blog/bust-caches-like-a-pro/og-image.png",
+	"date": "September 12, 2016",
+	"description": "Does the busywork around busting caches got you in all in the dumps? I tell my tale of how I automated cache invalidation in this article.",
+	"categories": ["browser cache", "web development", "web performance"]
+}
