@@ -15,6 +15,7 @@
 				<article class="post">
 					<h1>{{title}}</h1>
 					<p class="date">{{date}}</date>
+					<p><i>Hey, guys! I talk about this topic (and many others) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" target="_blank" rel="noopener">my upcoming book from Manning publications</a>. You can get 39% off with the code <code>wagnerdz</code>. I hope you like this post!</i></p>
 					<p>Browser caches are great. With a good <code>cache-control</code> policy, you can take advantage of the browser cache to seriously increase the speed of return visits to your site. On a multi-page site where many resources are shared across pages, a primed browser cache can reduce load times when users navigate to subsequent pages.</p>
 					<p>What sucks, though, is when you have to bust a cache for an asset that changes. Cache busting (or cache invalidation, as it is commonly known) is what we must do when we change an asset, but want to make sure the browser downloads the new version of it.</p>
 					<p>Let's say you have a CSS file named <code>global.css</code>, and the response headers for it look something like this:</p>
