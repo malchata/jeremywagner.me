@@ -149,6 +149,7 @@ nav{
 
 .code-container{
 	background: @lightBlue;
+	border-radius: 2px;
 }
 
 pre{
@@ -263,6 +264,12 @@ h1{
 p{
 	font: 400 19px/35px @serif;
 	color: @blue;
+
+	& > code{
+		border-radius: 2px;
+		padding: 1px 2px;
+		background: @lightBlue;
+	}
 }
 
 .date{
@@ -344,11 +351,6 @@ figcaption span{
 iframe{
 	max-width: 100%;
 	margin: 0 auto 20px;
-	//contain: strict;
-}
-
-twitterwidget{
-	//contain: layout;
 }
 
 @media screen and (min-width: 375px){
