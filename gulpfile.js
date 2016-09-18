@@ -46,7 +46,7 @@ gulp.task("clean", function(){
 });
 
 // build
-gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favicon"]);
+gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favicon", "copy-files"]);
 
 /**
  * CSS BUILDING TASK
@@ -212,4 +212,15 @@ gulp.task("imagemin-favicon", function(){
 		]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
+});
+
+// Copy files
+gulp.task("copy-files", function(){
+	var src = ["src/robots.txt"],
+		dest = "dist";
+
+	return gulp.src(src)
+		.pipe(plumber())
+		.pipe(changed(dest))
+		.pipe(gulp.dest(dest));
 });

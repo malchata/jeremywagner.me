@@ -264,12 +264,14 @@ h1{
 p{
 	font: 400 19px/35px @serif;
 	color: @blue;
+}
 
-	& > code{
-		border-radius: 2px;
-		padding: 1px 2px;
-		background: @lightBlue;
-	}
+p > code,
+li > code,
+a > code
+	border-radius: 2px;
+	padding: 1px 2px;
+	background: @lightBlue;
 }
 
 .date{
