@@ -216,7 +216,7 @@ gulp.task("imagemin-favicon", function(){
 
 // Copy files
 gulp.task("copy-files", function(){
-	var src = ["src/robots.txt"],
+	var src = ["src/robots.txt", "src/*.ico"],
 		dest = "dist";
 
 	return gulp.src(src)
