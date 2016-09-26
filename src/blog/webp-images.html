@@ -14,7 +14,8 @@
 				<!-- Begin Post -->
 				<article class="post">
 					<h1>{{title}}</h1>
-					<p class="date">{{date}}</date>
+					<p class="date">{{date}} (Updated: {{updatedate}})</date>
+					<p><i>This article has been updated to reflect changes in the <code>imagemin</code> API.</i></p>
 					<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
 					<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
 					<figure>
@@ -105,13 +106,17 @@ var imagemin = require(&quot;imagemin&quot;),    // The imagemin module.
     PNGImages = &quot;./img/*.png&quot;,         // PNG images
     JPEGImages = &quot;./img/*.jpg&quot;;        // JPEG images
 
-new imagemin().src(PNGImages).dest(outputFolder).use(webp({
-    lossless: true // Losslessly encode images
-})).run();
+imagemin([PNGImages], outputFolder, {
+    plugins: [webp({
+        lossless: true // Losslessly encode images
+    })]
+});
 
-new imagemin().src(JPEGImages).dest(outputFolder).use(webp({
-    quality: 65 // Quality setting from 0 to 100
-})).run();
+imagemin([JPEGImages], outputFolder, {
+    plugins: [webp({
+        quality: 65 // Quality setting from 0 to 100
+    })]
+});
 </code></pre></div>
 					<p>This script will process all JPEG and PNG images in the img folder and convert them to WebP. When converting PNG images, we set the <code>lossless</code> option to <code>true</code>. When converting JPEG images, we set the quality option to 65. Feel free to experiment with these settings to get different results. You can experiment with even more settings at the <a href="https://www.npmjs.com/package/imagemin-webp" target="_blank" rel="noopener"><code>imagemin-webp</code> plugin page</a>.</p>
 					<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>PNGImages</code> and <code>JPEGImages</code> variables. This script also assumes you want the WebP output to go into the <code>img</code> folder. If you don't want that, change the value of the <code>outputFolder</code> variable to whatever you need. Once you're ready, run the script like so:</p>
