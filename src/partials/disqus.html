@@ -1,19 +1,28 @@
 <h2>Thoughts? Let's hear them!</h2>
-<div id="disqus_thread"></div>
-<script>
-	var disqus_config = function () {
-		this.page.url = "<?php echo($pageUrl); ?>";
-		this.page.identifier = "<?php echo($pageId); ?>";
-		this.page.title = "{{title}}";
-	};
+<?php
+if($isDevServer === false){
+	?>
+	<div id="disqus_thread"></div>
+	<script>
+		var disqus_config = function () {
+			this.page.url = "<?php echo($pageUrl); ?>";
+			this.page.identifier = "<?php echo($pageId); ?>";
+			this.page.title = "{{title}}";
+		};
 
-	(function(d){
-		var s = d.createElement('script');
-		s.src = '//jeremywagner.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
-	})(document);
-</script>
-<noscript>
-	<h2>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow">comments powered by Disqus.</a></h2>
-</noscript>
+		(function(d){
+			var s = d.createElement('script');
+			s.src = '//jeremywagner.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})(document);
+	</script>
+	<noscript>
+		<h2>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow">comments powered by Disqus.</a></h2>
+	</noscript>
+	<?php
+}
+else{
+	?><div style="border-radius:.5rem; background-color:#fbb; padding:1rem; font-family:sans-serif;font-size:1.5rem;margin:1rem 0 0">Comments are not rendered on the dev instance.</div><?php
+}
+?>

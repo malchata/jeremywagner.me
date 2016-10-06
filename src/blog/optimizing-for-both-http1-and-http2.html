@@ -1,0 +1,98 @@
+<?php require_once("../../preprocessing.php"); ?>
+<!doctype html>
+<html class="no-js <?php echo(httpClass($isHttp2));?> <?php echo(fontsLoaded()); ?>">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin Post -->
+				<article class="post">
+					<h1>{{title}}</h1>
+					<p class="date">{{date}}</date>
+					<p>HTTP/2 is here, and man, is it great. All of the vexing problems we've dealt with in HTTP/1 such as head-of-line blocking and uncompressed HTTP headers are solved by this badly needed update to the protocol. I've set up this site to run on HTTP/2, and the effort is well worth it. Due in part to HTTP/2, I'm able to pull my site up rather quickly in a variety of scenarios.</p>
+					<p>HTTP/2 is plagued by two problems, though, and they're rather important ones at that:</p>
+					<ol>
+						<li>Not enough web servers are using it.</li>
+						<li>Not every web browser in use supports it.</li>
+					</ol>
+					<p>These aren't problems with the technology <i>itself</i>, but they <i>are</i> problems <i>associated</i> with the technology, nonetheless. There's not much you can do about the first problem except to do your part, and configure your server to use HTTP/2. If you can't do that, you can pressure your hosting company, or use a free CDN service such as <a href="https://cloudflare.com" target="_blank">CloudFlare</a> to provide it for you.</p>
+					<p>If you're already running HTTP/2, though, you <i>can</i> do something about the second problem (aside from waiting for your users to upgrade their web browser.) You can modify how you serve assets to your users based on the HTTP protocol version they're using.</p>
+					<p>We can do this because not every browser can understand HTTP/2, and any fully conforming implementation of the protocol will fall back to HTTP/1 as necessary. This crucial fallback behavior means you get to upgrade your server to use HTTP/2 without worrying about leaving a potentially huge swath of your audience out in the cold.</p>
+					<p>It also means that you can use a back end language on your server to examine what version of the protocol is being used in the reuqest, and change how you serve assets to your users.</p>
+					<h2>HTTP/1 vs. HTTP/2 Optimizations</h2>
+					<p><a href="https://blog.newrelic.com/2016/02/09/http2-best-practices-web-performance/" target="_blank">Many articles</a> out there <a href="https://www.nginx.com/blog/7-tips-for-faster-http2-performance/" target="_blank">have already covered</a> what you need to do to make your site run its best on HTTP/2, but in case you need a refresher, here's a list of optimization practices you should stop doing if your site is running on an HTTP/2 server:</p>
+					<ol>
+						<li>Stop concatenating stuff.</li>
+					</ol>
+					<p>&quot;Thanks a lot, dude. Can you be more specific?&quot; Okay, <i>fine</i>. Cocatenation is a rather large umbrella covering a ton of stuff that you should quit doing. Stuff like what's on this list:</p>
+					<ul>
+						<li>Combining CSS files.</li>
+						<li>Combining JavaScript files.</li>
+						<li>Using image sprites (which is really just combining images.)</li>
+						<li>Inlining scripts and CSS into HTML (which is really just combining scripts, CSS and HTML.)</li>
+						<li>Embedding binary data into HTML and CSS using base64 encoding schemes (which is really just combining binary data into CSS and HTML.)</li>
+					</ul>
+					<p>All of the optimization practices that are good for HTTP/1, yet bad for HTTP/2, involve combining files. The reason we combine files is because of HTTP/1's stupid head of line blocking problem. Think of head of line blocking in terms of a person in front of you at a bar (or a coffee shop for the strong-willed among you exhibiting temperance) who has no clue how to order a drink. This person takes their sweet time about the task, asking lots of questions. Meanwhile, you know what you want, and you just want to order it, pay for it, and head off.</p>
+					<p>In this analogy, think of the bartender as the HTTP/1 web server. The server in this case is the natural bottleneck. After all, it can only respond to so many requests at a time. Think of the indecisive person in front of you as being like some giant JavaScript library or framework style sheet that's taking forever to load. It's in the way, and its blocking other stuff from loading. HTTP/2 solves this problem for us like some kind of bartender demigod capable of serving over ten drinks at once.</p>
+					<figure>
+						<div class="image-container">
+							<picture>
+								<source data-srcset="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.webp 1x, /img/blog/optimizing-for-both-http1-and-http2/super-bartender-2x.webp 2x" type="image/webp">
+								<source data-srcset="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.png 1x, /img/blog/optimizing-for-both-http1-and-http2/super-bartender-2x.png 2x" type="image/png">
+								<img class="figure-image lazy" data-src="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.png" alt="All hail BARTENDOR, Lord of the Swill.">
+							</picture>
+						</div>
+						<noscript>
+							<picture>
+								<source srcset="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.webp 1x, img/blog/optimizing-for-both-http1-and-http2/super-bartender-2x.webp 2x" type="image/webp">
+								<source srcset="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.png 1x, /img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/optimizing-for-both-http1-and-http2/super-bartender-1x.png" alt="All hail BARTENDOR, Lord of the Swill.">
+							</picture>
+						</noscript>
+						<figcaption>
+							<span>All hail <b>BARTENDOR</b>, Lord of the Swill.</span>
+						</figcaption>
+					</figure>
+					<p>This is great and all for people using browsers that support HTTP/2. In fact, this is how I've optimized my site. I don't combine my scripts, and I don't use image sprites. The reason for this is because caching is more efficient when resources are more granular than when they're concatenated. If I use an image sprite, and I need to update one of the images inside of it, the entire sprite must be downloaded again to retrieve the changed portion of it. This is a rather inefficient way to cache content.</p>
+					<p>But how many of my users are stuck on aging browsers that don't support HTTP/2? They don't benefit from HTTP/2 optimizations, in fact, those optimizations have the potential to harm performance for them. This is a question that only <a href="http://caniuse.com" target="_blank">caniuse.com</a> and Google Analytics can answer.</p>
+					<h2>Assessing your Audience's HTTP/2 Support</h2>
+					<p>If you care about who's visiting your site, then it's a good bet that you've slapped a Google Analytics tracking code on your site. While Google Analytics doesn't tell you a whole lot the capabilities of your users, it does have data about what browsers they're using.</p>
+					<p>This is where caniuse.com comes in handy. You can actually import your Google Analytics data into this site and get some insight into how many of your site's visitors can support a particular browser feature. When I built this site, I fed my data from Google Analytics into caniuse.com, and looked to see what segment of my site's visitors supported HTTP/2.</p>
+					<figure>
+						<picture>
+							<source data-srcset="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.webp 1x, /img/blog/optimizing-for-both-http1-and-http2/http2-support-2x.webp 2x" type="image/webp">
+							<source data-srcset="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.png 1x, /img/blog/optimizing-for-both-http1-and-http2/http2-support-2x.png 2x" type="image/png">
+							<img class="figure-image lazy" data-src="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.png" alt="HTTP/2 support for this site.">
+						</picture>
+						<noscript>
+							<picture>
+								<source srcset="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.webp 1x, img/blog/optimizing-for-both-http1-and-http2/http2-support-2x.webp 2x" type="image/webp">
+								<source srcset="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.png 1x, /img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.png 2x" type="image/png">
+								<img class="figure-image" src="/img/blog/optimizing-for-both-http1-and-http2/http2-support-1x.png" alt="HTTP/2 support for this site.">
+							</picture>
+						</noscript>
+						<figcaption>
+							<span>HTTP/2 support for this site.</span>
+						</figcaption>
+					</figure>
+					<p>90% support is not bad by any measure. Nine out of ten are getting the benefits of the new protocol! Except you should think of it from the other side: One out of ten users are receiving a sub-optimal experience. It's easy to dismiss these users as an inconvenient minority, and move on.</p>
+					<p>It's also incredibly easy to say that your users should just upgrade. Over time, all of your users are slowly upgrading their browsers, but some simply may not be able to for a variety of reasons. Whatever their reason is for being behind the curve, you need to respond to their needs <i>if</i> they represent a significant portion of your audience.</p>
+					<h2>Changing How you Deliver Assets</h2>
+					p{The page you're reading right now is hosted on a server that runs PHP. PHP has a set of environment variables, and one of them is named code{$_SERVER["
+				</article>
+				<!-- End Post -->
+				<!-- Begin Comments -->
+				{% include "partials/disqus.html" %}
+				<!-- End Comments -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>
