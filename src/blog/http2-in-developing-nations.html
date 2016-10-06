@@ -15,7 +15,8 @@
 				<article class="post">
 					<h1>{{title}}</h1>
 					<p class="date">{{date}}</date>
-					<p>I've been doing some research on HTTP/2 use across the world in preparation for an article on another outlet, and observed some compelling relationships between HTTP/2 support by browser, the developing world, and internet infrastructure quality.</p>
+					<p><i>Hey, guys! I talk about HTTP/2 (and other stuff) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" target="_blank" rel="noopener">my upcoming book from Manning publications</a> on web performance. Maybe check it out if that's your kind of thing. In any event, I hope you like this post!</i></p>
+					<p>I've been doing some research on HTTP/2 use across the world in preparation for an article on another outlet,. In doing so, I've observed some compelling relationships between HTTP/2 support by browser, the developing world, and internet infrastructure quality.</p>
 					<p>In developed nations, we see often see that internet infrastructure quality is pretty good in comparison to developing nations. That's not to say that some developed nations couldn't stand to do better, but they're often better by comparison. Let's take a quick look at this graph of average and peak connection speeds in the world's top 8 developing nations by population, courtesy of <a href="https://content.akamai.com/pg7162-q2-soti-connectivity-report.html" target="_blank" rel="noopener">Akamai's second quarter State of the Internet Report for 2016</a>:</p>
 					<figure>
 						<picture>
@@ -45,7 +46,7 @@
 							<span>Average and peak internet speeds in the top 8 developing nations by population.</span>
 						</figcaption>
 					</figure>
-					<p>Now we're looking at a completely different picture. Forget about peak speeds for a minute, and just look at average speeds. Developing nations have much more fragile internet infrastructure by comparison. Now let's correlate this information to HTTP/2 support. What does HTTP/2 support look like in the same top 8 developed nations by population? As always, <a href="http://caniuse.com/#search=http2" target="_blank" rel="noopener">data from caniuse.com</a> gives us an idea:</p>
+					<p>Now we're looking at a completely different picture. Forget about peak speeds for a minute, and just look at average speeds. Developing nations have much more fragile internet infrastructure by comparison. Now let's correlate this information to HTTP/2 support. What does browser support for HTTP/2 look like in the same set of developed nations? As always, <a href="http://caniuse.com/#search=http2" target="_blank" rel="noopener">data from caniuse.com</a> gives us an idea:</p>
 					<figure>
 						<picture>
 							<source data-srcset="/img/blog/http2-in-developing-nations/http2-support-developed-nations-1x.webp 1x, /img/blog/http2-in-developing-nations/http2-support-developed-nations-2x.webp 2x" type="image/webp">
@@ -64,7 +65,7 @@
 						</figcaption>
 					</figure>
 					<p>Not too bad. Support ranges between 65% and 85%. There is a grey area here in the way of what caniuse considers &quot;partial support&quot;, which means that some browsers may or may not support the protocol based on any number of conditions. A good example of this concept is IE11. On Windows 10, IE11 supports HTTP/2, but not on earlier versions of Windows.</p>
-					<p>Okay, let's get out of the weeds. What does HTTP/2 support look like in developing nations?</p>
+					<p>Okay, let's get out of the weeds. What does HTTP/2 support in browsers look like in developing nations?</p>
 					<figure>
 						<picture>
 							<source data-srcset="/img/blog/http2-in-developing-nations/http2-support-developing-nations-1x.webp 1x, /img/blog/http2-in-developing-nations/http2-support-developing-nations-2x.webp 2x" type="image/webp">
