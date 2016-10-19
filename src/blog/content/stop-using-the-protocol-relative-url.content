@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
-<p class="date">{{date}}</date>
+<p class="date">{{date}}</p>
 <p>Paul Irish <a href="http://www.paulirish.com/2010/the-protocol-relative-url" target="_blank">wrote about the protocol-relative URL</a> way back in 2010. It was a convenient little post that advised developers to abandon absolute protocol URL schemes using <code>http://</code> or <code>https://</code> in favor of a protocol-relative variant that looks something like this:</p>
 <div class="code-container">
 <pre><code>
@@ -53,8 +53,8 @@ $sources = array(
 	),
 	"amp-img" => array(
 		"src" => "/img/blog/stop-using-the-protocol-relative-url/https-vs-http-1x.png",
-		"width" => "384",
-		"height" => "216"
+		"width" => "359",
+		"height" => "98"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, $isAmp, "Note the values of the protocol and scheme columns."));

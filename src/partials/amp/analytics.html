@@ -1,0 +1,19 @@
+<amp-analytics type="googleanalytics" id="analytics1">
+	<script type="application/json">
+		{
+			"vars": {
+				"account": "UA-3517427-23"
+			},
+			"triggers": {
+				"trackPageview": {
+					"on": "visible",
+					"request": "pageview",
+					"vars": {
+						"title": "{{title}}",
+						"ampdocUrl": "<?php echo($ampUrl); ?>"
+					}
+				}
+			}
+		}
+	</script>
+</amp-analytics>

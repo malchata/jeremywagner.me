@@ -8,6 +8,8 @@ $isHttp2 = stristr($_SERVER["SERVER_PROTOCOL"], "HTTP/2") ? true : false;
 if($isAmp){
 	$pathPrefix = realpath("./../../");
 	$canonicalUrl = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . str_ireplace("/amp/", "/", $_SERVER["REQUEST_URI"]);
+	$pageUrl = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	$ampUrl = str_ireplace("/blog/", "/blog/amp/", $pageUrl);
 }
 elseif($isBlog){
 	$pathPrefix = realpath("./../");
