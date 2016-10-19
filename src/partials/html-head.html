@@ -8,9 +8,13 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <meta name="google-site-verification" content="x8U1FZK1rB-BGI7Tcw0zOHqHFXxbSSalze8kZ74yU1o">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Tinos:400,700" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Tinos:400,700" type="text/css">
 <link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
 <?php
+if($isBlog){
+	?><link rel="amphtml" href="<?php echo($ampUrl); ?>"><?php
+}
+
 if($isHttp2 === true){
 	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
 }

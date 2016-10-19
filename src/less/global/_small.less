@@ -70,7 +70,7 @@ header{
 
 .tagline{
 	display: none;
-	font: 400 11px/12.7798px @sansSerif;
+	font: 400 11px/@lineHeightRatio @sansSerif;
 }
 
 #nav-icon{
@@ -101,6 +101,10 @@ nav{
 
 	&.open{
 		transform: translateX(0);
+	}
+
+	.footer-copy{
+		display: none;
 	}
 }
 
@@ -161,7 +165,7 @@ code{
 	margin: 0;
 	padding: 0;
 	color: @blue;
-	font: 400 16px/24px @code;
+	font: 400 16px/@lineHeightRatio @code;
 }
 
 a{
@@ -171,7 +175,7 @@ a{
 }
 
 .menu-item{
-	font: 400 22px/26.4px @sansSerif;
+	font: 700 22px/@lineHeightRatio @sansSerif;
 	text-transform: uppercase;
 	margin: 0 0 24px;
 	position: relative;
@@ -234,10 +238,6 @@ a{
 	}
 }
 
-.post{
-	position: relative;
-}
-
 .no-js{
 	.lazy{
 		display: none;
@@ -252,7 +252,7 @@ ol{
 }
 
 h1{
-	font: 400 26px/32.4px @serif;
+	font: 400 26px/@lineHeightRatio @serif;
 	color: @blue;
 
 	a{
@@ -262,7 +262,7 @@ h1{
 }
 
 p{
-	font: 400 19px/35px @serif;
+	font: 400 19px/@lineHeightRatio @serif;
 	color: @blue;
 }
 
@@ -290,7 +290,7 @@ figure{
 figcaption{
 	span{
 		padding: 5px 8px;
-		font: 400 14px/25.75px @serif;
+		font: 400 14px/@lineHeightRatio @serif;
 		text-align: center;
 	}
 }
@@ -309,30 +309,27 @@ picture + noscript + figcaption,
 }
 
 .post{
+	position: relative;
+
 	ul,
 	ol{
 		padding: 0 0 0 18px;
 
 		li{
-			font: 400 19px/35px @serif;
+			font: 400 19px/@lineHeightRatio @serif;
 			color: @blue;
 		}
 	}
 }
 
-.sig{
-	width: 160px;
-	transform: rotate(-2.5deg);
-}
-
 h2{
-	font: 700 23px/35px @serif;
+	font: 700 23px/@lineHeightRatio @serif;
 	color: @blue;
 }
 
 .read-more{
 	padding: 5px 7px;
-	font: 400 20px/20px @serif;
+	font: 400 20px/@lineHeightRatio @serif;
 	text-decoration: none;
 }
 
@@ -343,8 +340,14 @@ figcaption span{
 	display: inline-block;
 }
 
+footer{
+	.footer-copy{
+		display: block;
+	}
+}
+
 .footer-copy{
-	font: 400 11px/13.2px @serif;
+	font: 400 11px/@lineHeightRatio @serif;
 	color: @lightBrown;
 	text-align: center;
 	margin: 0;

@@ -1,0 +1,150 @@
+// Import Prerequisites"
+@import "includes/_vars.less";
+@import "includes/_amp_reset.less";
+
+// AMP Styles
+body{
+	padding: 10px;
+}
+
+h1,
+p,
+ul,
+ol{
+	margin: 0 0 24px;
+}
+
+h1{
+	font: 400 26px/@lineHeightRatio @serif;
+	color: @blue;
+
+	a{
+		color: @blue;
+		text-decoration: none;
+	}
+}
+
+p{
+	font: 400 19px/@lineHeightRatio @serif;
+	color: @blue;
+}
+
+p > code,
+li > code,
+a > code{
+	border-radius: 2px;
+	padding: 1px 2px;
+	background: @lightBlue;
+}
+
+.date{
+	font-weight: 700;
+	color: @brown;
+	margin: 0;
+}
+
+figure{
+	display: block;
+	margin: 0 auto 24px;
+	clear: both;
+	text-align: center;
+}
+
+figcaption{
+	margin: 20px 0 0;
+
+	span{
+		padding: 5px 8px;
+		font: 400 14px/@lineHeightRatio @serif;
+		text-align: center;
+		color: @white;
+		background: @lightBrown;
+		display: inline-block;
+	}
+}
+
+.post{
+	ul,
+	ol{
+		padding: 0 0 0 18px;
+
+		li{
+			font: 400 19px/@lineHeightRatio @serif;
+			color: @blue;
+		}
+	}
+}
+
+h2{
+	font: 700 23px/@lineHeightRatio @serif;
+	color: @blue;
+}
+
+.code-container{
+	background: @lightBlue;
+	border-radius: 2px;
+}
+
+pre{
+	padding: 6.75px 16px 27px 32px;
+	overflow-x: auto;
+}
+
+code{
+	margin: 0;
+	padding: 0;
+	color: @blue;
+	font: 400 16px/@lineHeightRatio @code;
+}
+
+a{
+	code{
+		color: inherit;
+	}
+}
+
+.title-container{
+	margin: 0 0 16px;
+}
+
+.site-link{
+	text-decoration: none;
+}
+
+.name{
+	font: 700 20px/@lineHeightRatio @sansSerif;
+	text-transform: uppercase;
+	text-align: center;
+	background: @blue;
+	color: @lightBlue;
+	padding: 3px 0;
+	margin: 0 0 8px;
+}
+
+.site{
+	font: 700 16px/@lineHeightRatio @sansSerif;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0 0 8px;
+}
+
+.site,
+.tagline{
+	color: @blue;
+}
+
+.tagline{
+	font: 400 14px/@lineHeightRatio @sansSerif;
+	text-align: center;
+}
+
+amp-img{
+	max-width: 100%;
+}
+
+.footer-copy{
+	font: 400 11px/@lineHeightRatio @serif;
+	color: @lightBrown;
+	text-align: center;
+	margin: 0;
+}
