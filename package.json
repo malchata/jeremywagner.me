@@ -46,8 +46,12 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
+    "imagemin-gifsicle": "^5.1.0",
     "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
     "imagemin-pngquant": "^5.0.0",
+    "imagemin-svgo": "^5.2.0",
     "imagemin-webp": "^4.0.0"
   }
 }
