@@ -26,11 +26,6 @@ else{
 }
 ?>
 <script>document.documentElement.classList.remove("no-js");</script>
-<?php
-if($isHttp2 === false){
-	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
-}
-?>
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://jeremywagner.me/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://jeremywagner.me/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://jeremywagner.me/apple-touch-icon-72x72.png">
@@ -42,3 +37,17 @@ if($isHttp2 === false){
 <meta name="application-name" content="Jeremy Wagner's Web Development Blog">
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
+<?php
+if($isHttp2){
+	if($isDevServer === false){
+		?><script src="/js/ga.js?v=<?php echo($versions["ga.js"]); ?>" async defer></script><?php
+	}
+	?><script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async defer></script><?php
+}
+else{
+	if($isDevServer === false){
+		?><script><?php echo(file_get_contents($pathPrefix . "/js/ga.js")); ?></script><?php
+	}
+	?><script><?php echo(file_get_contents($pathPrefix . "/js/load-fonts.js")); ?></script><?php
+}
+?>

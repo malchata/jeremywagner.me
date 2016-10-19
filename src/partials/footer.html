@@ -3,11 +3,7 @@
 </footer>
 <?php
 if($isHttp2 === true){
-	if($isDevServer === false){
-		?><script src="/js/ga.js?v=<?php echo($versions["ga.js"]); ?>" async defer></script><?php
-	}
 	?>
-	<script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async defer></script>
 	<script src="/js/lazyload.js?v=<?php echo($versions["lazyload.js"]); ?>" async defer></script>
 	<script src="/js/debounce.js?v=<?php echo($versions["debounce.js"]); ?>" defer></script>
 	<script src="/js/nav.js?v=<?php echo($versions["nav.js"]); ?>" defer></script>
@@ -15,12 +11,7 @@ if($isHttp2 === true){
 	<?php
 }
 else{
-	if($isDevServer === false){
-		?><script><?php echo(file_get_contents($pathPrefix . "/js/ga.js")); ?></script><?php
-	}
-	?>
-	<script src="/js/scripts.js?v=<?php echo($versions["scripts.js"]); ?>" defer></script>
-	<?php
+	?><script src="/js/scripts.js?v=<?php echo($versions["scripts.js"]); ?>" defer></script><?php
 }
 ?>
 <noscript>
