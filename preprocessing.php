@@ -58,49 +58,6 @@ function fontsLoaded(){
 	}
 }
 
-// Headers
-function generateLinkHeaders($h2, $versions, $isBlog, $isDevServer){
-	// Establish global link headers
-	$headers["Link"] = "</css/global.css?v=" . $versions["global.css"] . ">; rel=preload; as=style";
-
-	// Set headers
-	if($h2 === true){
-		$headers["Link"] .= ",</css/fonts-loaded.css?v=" . $versions["fonts-loaded.css"] . ">; rel=preload; as=style";
-
-			if($isDevServer === false){
-				$headers["Link"] .= ",</js/ga.js?v=" . $versions["ga.js"] . ">; rel=preload; as=script";
-			}
-
-			$headers["Link"] .=",</js/debounce.js?v=" . $versions["debounce.js"] . ">; rel=preload; as=script" .
-			",</js/lazyload.js?v=" . $versions["lazyload.js"] . ">; rel=preload; as=script" .
-			",</js/nav.js?v=" . $versions["nav.js"] . ">; rel=preload; as=script" .
-			",</js/attach-nav.js?v=" . $versions["attach-nav.js"] . ">; rel=preload; as=script" .
-			",</js/load-fonts.js?v=" . $versions["load-fonts.js"] . ">; rel=preload; as=script";
-	}
-	else{
-		$headers["Link"] .= ",</js/scripts.js?v=" . $versions["scripts.js"] . ">; rel=preload; as=script";
-	}
-
-	// Check if this is a blog page.
-	if($isBlog){
-		$headers["Link"] .= ",<https://jeremywagner.disqus.com>; rel=preconnect" .
-			",<https://a.disquscdn.com>; rel=preconnect" .
-			",<https://disqus.com>; rel=preconnect" .
-			",<https://referrer.disqus.com>; rel=preconnect";
-	}
-
-	// Other preconnect headers
-	$headers["Link"] .= ",<https://www.google-analytics.com>; rel=preconnect" .
-			",<https://fonts.gstatic.com>; rel=preconnect" .
-			",<https://fonts.googleapis.com>; rel=preconnect" .
-			",<https://ssl.google-analytics.com>; rel=preconnect";
-
-	// Apply headers
-	foreach($headers as $headerName => $headerValue){
-		header($headerName . ": " . $headerValue);
-	}
-}
-
 // Cache string generator
 function cacheString($cacheKey, $string, $pathPrefix){
 	$checksumCacheDir = "/var/www/caches/cache-keys/";
@@ -243,9 +200,5 @@ function generateImageMarkup($lazy, $picture, $sources, $isAmp, $caption){
 	$markup .= "</figure>";
 
 	return $markup;
-}
-
-if($isAmp === false){
-	generateLinkHeaders($isHttp2, $versions, $isBlog, $isDevServer);
 }
 ?>
