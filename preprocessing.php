@@ -29,6 +29,11 @@ else{
 	$isDevServer = false;
 }
 
+// Returning visitor?
+if(!isset($_COOKIE["pushed"])){
+	setcookie("pushed", "pushed", 0, 2592000, "", ".jeremywagner.me", true);
+}
+
 // Asset versioning
 $versions = [];
 $versions["global.css"] = cacheString("global.css", "/css/global.css", $pathPrefix);
