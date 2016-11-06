@@ -29,11 +29,6 @@ else{
 	$isDevServer = false;
 }
 
-// Returning visitor?
-if(!isset($_COOKIE["pushed"])){
-	setcookie("pushed", "pushed", 0, 2592000, "", ".jeremywagner.me", true);
-}
-
 // Asset versioning
 $versions = [];
 $versions["global.css"] = cacheString("global.css", "/css/global.css", $pathPrefix);
@@ -81,6 +76,47 @@ function cacheString($cacheKey, $string, $pathPrefix){
 		return $checksum;
 	}
 }
+
+// Push function
+function pushAssets($versions){
+	$pushes = array(
+		"/css/global.css" => $versions["global.css"],
+		"/css/fonts-loaded.css" => $versions["fonts-loaded.css"]
+	);
+
+	if(!isset($_COOKIE["h2pushes"])){
+		$pushString = buildPushString($pushes);
+		header($pushString);
+		setcookie("h2pushes", json_encode($pushes), 0, 2592000, "", ".jeremywagner.me", true);
+	}
+	else{
+		$serializedPushes = serialize($pushes);
+
+		if($serializedPushes !== $_COOKIE["h2pushes"]){
+			$oldPushes = json_decode($_COOKIE["h2pushes"], true);
+			$diff = array_diff_assoc($pushes, $oldPushes);
+			$pushString = buildPushString($diff);
+			header($pushString);
+			setcookie("h2pushes", json_encode($pushes), 0, 2592000, "", ".jeremywagner.me", true);
+		}
+	}
+}
+
+function buildPushString($pushes){
+	$pushString = "Link: ";
+
+	foreach($pushes as $asset => $version){
+		$pushString .= "<" . $asset . "?v=" . $version . ">; rel=preload";
+
+		if($asset !== end($pushes)){
+			$pushString .= ",";
+		}
+	}
+
+	return $pushString;
+}
+
+pushAssets($versions);
 
 // Image markup generator
 function generateImageMarkup($lazy, $picture, $sources, $isAmp, $caption){
