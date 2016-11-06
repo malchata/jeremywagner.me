@@ -10,7 +10,6 @@ const gulp = require("gulp"),
 	  autoprefixer = require("autoprefixer"),
 	  autorem = require("autorem"),
 	  cssnano = require("cssnano"),
-	  uncss = require("gulp-uncss"),
 	  data = require("gulp-data"),
 	  nunjucks = require("gulp-nunjucks"),
 	  htmlmin = require("gulp-htmlmin"),
@@ -35,7 +34,7 @@ gulp.task("default", () => {
 	livereload.listen();
 
 	// Watches
-	gulp.watch("src/less/**/*.less", ["uncss"]);
+	gulp.watch("src/less/**/*.less", ["build-css"]);
 	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], ["htmlmin"]);
 	gulp.watch("src/js/**/*.js", ["concat"]);
 	gulp.watch("src/img/**", ["imagemin"]);
@@ -48,7 +47,7 @@ gulp.task("clean", () => {
 });
 
 // build
-gulp.task("build", ["uncss", "htmlmin", "concat", "imagemin", "imagemin-favicon", "copy-files"]);
+gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favicon", "copy-files"]);
 
 /**
  * CSS BUILDING TASK
@@ -71,41 +70,6 @@ gulp.task("build-css", () => {
 			}), autorem(), cssnano()
 		]))
 		.pipe(gulp.dest(dest));
-});
-
-gulp.task("uncss", ["build-css"], () => {
-	let src = "dist/css/global.css",
-		dest = "dist/css",
-		pages = [
-			"dist/*.html",
-			"dist/blog/*.html"
-		];
-
-	return gulp.src(src)
-		.pipe(plumber())
-		.pipe(changed(dest))
-		.pipe(uncss({
-			html: pages
-		}))
-		.pipe(gulp.dest(dest))
-		.pipe(livereload());
-});
-
-gulp.task("uncss-amp", () => {
-	let src = "dist/css/amp.css",
-		dest = "dist/css",
-		pages = [
-			"dist/blog/amp/*.html"
-		];
-
-	return gulp.src(src)
-		.pipe(plumber())
-		.pipe(changed(dest))
-		.pipe(uncss({
-			html: pages
-		}))
-		.pipe(gulp.dest(dest))
-		.pipe(livereload());
 });
 
 /**
