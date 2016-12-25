@@ -1,89 +1,60 @@
 // Get gulp packages
-const gulp = require("gulp"),
-	  util = require("gulp-util"),
-	  plumber = require("gulp-plumber"),
-	  livereload = require("gulp-livereload"),
-	  del = require("del"),
-	  changed = require("gulp-changed"),
-	  less = require("gulp-less"),
-	  postcss = require("gulp-postcss"),
-	  autoprefixer = require("autoprefixer"),
-	  autorem = require("autorem"),
-	  cssnano = require("cssnano"),
-	  data = require("gulp-data"),
-	  nunjucks = require("gulp-nunjucks"),
-	  htmlmin = require("gulp-htmlmin"),
-	  uglify = require("gulp-uglify"),
-	  concat = require("gulp-concat"),
-	  imagemin = require("gulp-imagemin"),
-	  extReplace = require("gulp-ext-replace"),
-	  jpegRecompress = require("imagemin-jpeg-recompress"),
-	  pngQuant = require("imagemin-pngquant"),
-	  svgo = require("imagemin-svgo"),
-	  webp = require("imagemin-webp"),
-	  fs = require("fs"),
-	  path = require("path");
+const gulp = require("gulp");
+const util = require("gulp-util");
+const plumber = require("gulp-plumber");
+const livereload = require("gulp-livereload");
+const del = require("del");
+const changed = require("gulp-changed");
+const less = require("gulp-less");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const autorem = require("autorem");
+const cssnano = require("cssnano");
+const data = require("gulp-data");
+const nunjucks = require("gulp-nunjucks");
+const htmlmin = require("gulp-htmlmin");
+const uglify = require("gulp-uglify");
+const concat = require("gulp-concat");
+const optimizeJS = require("gulp-optimize-js");
+const imagemin = require("gulp-imagemin");
+const extReplace = require("gulp-ext-replace");
+const jpegRecompress = require("imagemin-jpeg-recompress");
+const pngQuant = require("imagemin-pngquant");
+const webp = require("imagemin-webp");
+const fs = require("fs");
+const path = require("path");
 
-/**
- * UTILITY TASKS
- **/
-
-// Watch task
-gulp.task("default", () => {
-	// Reload automatically on changes
-	livereload.listen();
-
-	// Watches
-	gulp.watch("src/less/**/*.less", ["build-css"]);
-	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], ["htmlmin"]);
-	gulp.watch("src/js/**/*.js", ["concat"]);
-	gulp.watch("src/img/**", ["imagemin"]);
-	gulp.watch("src/*.png", ["imagemin-favicon"]);
-});
-
-// clean
-gulp.task("clean", () => {
-	return del(["dist"]);
-});
-
-// build
-gulp.task("build", ["build-css", "htmlmin", "concat", "imagemin", "imagemin-favicon", "copy-files"]);
-
-/**
- * CSS BUILDING TASK
- **/
-
-gulp.task("build-css", () => {
+/*** CSS build task ***/
+const buildCSS = ()=>{
 	let src = ["src/less/global.less", "src/less/fonts-loaded.less", "src/less/http1.less", "src/less/amp.less"],
 		dest = "dist/css";
 
 	return gulp.src(src)
-		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(less().on("error", (err) => {
+		.pipe(less().on("error", (err)=>{
 			util.log(err);
 			this.emit("end");
 		}))
 		.pipe(postcss([
 			autoprefixer({
 				browsers: ["last 3 versions"]
-			}), autorem(), cssnano()
+			}), autorem(), cssnano({
+				safe: true
+			})
 		]))
 		.pipe(gulp.dest(dest));
-});
+};
 
-/**
- * HTML-RELATED TASKS
- **/
+exports.buildCSS = buildCSS;
 
-// nunjucks
-gulp.task("nunjucks", () => {
-	let src = ["src/**/*.html", "!src/partials/**/*.html"],
+/*** HTML tasks ***/
+const buildHTML = ()=>{
+	let src = "src/**/*.html",
 		dest = "dist";
 
 	return gulp.src(src)
 		.pipe(plumber())
-		.pipe(data((file) =>{
+		.pipe(data((file)=>{
 			try{
 				let jsonContent = path.basename(file.path, ".html") + ".json",
 					fileArray = jsonContent.split("/");
@@ -102,30 +73,17 @@ gulp.task("nunjucks", () => {
 			}
 		}))
 		.pipe(nunjucks.compile())
-		.pipe(gulp.dest(dest));
-});
-
-// htmlmin
-gulp.task("htmlmin", ["nunjucks"], () => {
-	let src = "dist/**/*.html",
-		dest = "dist";
-
-	return gulp.src(src)
-		.pipe(plumber())
 		.pipe(htmlmin({
 			collapseWhitespace: true,
 			removeComments: true
 		}))
-		.pipe(gulp.dest(dest))
-		.pipe(livereload());
-});
+		.pipe(gulp.dest(dest));
+};
 
-/**
- * JAVASCRIPT-RELATED TASKS
- **/
+exports.buildHTML = buildHTML;
 
-// uglify
-gulp.task("uglify", () => {
+/*** JavaScript tasks ***/
+const buildJS = ()=>{
 	let src = "src/js/**/*.js",
 		dest = "dist/js";
 
@@ -133,12 +91,12 @@ gulp.task("uglify", () => {
 		.pipe(plumber())
 		.pipe(changed(dest))
 		.pipe(uglify())
+		.pipe(optimizeJS())
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
-});
+};
 
-// Concatenation
-gulp.task("concat", ["uglify"], () => {
+const concatJS = ()=>{
 	let src = [
 			"dist/**/*.js",
 			"!dist/js/scripts.js",
@@ -156,14 +114,13 @@ gulp.task("concat", ["uglify"], () => {
 		.pipe(concat("scripts.js"))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
-});
+};
 
-/**
- * IMAGE PROCESSING TASKS
- **/
+exports.buildJS = buildJS;
+exports.concatJS = concatJS;
 
-// imagemin
-gulp.task("imagemin", ["imagemin-webp"], () => {
+/*** Image optimization tasks ***/
+const optimizeImages = ()=>{
 	let src = "src/img/**/*.{jpg,png,gif,svg}",
 		dest = "dist/img";
 
@@ -176,15 +133,13 @@ gulp.task("imagemin", ["imagemin-webp"], () => {
 			}),
 			pngQuant({
 				quality: "45-90"
-			}),
-			svgo()
+			})
 		]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
-});
+};
 
-// imagemin - webp
-gulp.task("imagemin-webp", () => {
+const generateWebpImages = ()=>{
 	let src = "src/img/**/*.{jpg,png}",
 		dest = "dist/img";
 
@@ -200,10 +155,10 @@ gulp.task("imagemin-webp", () => {
 		.pipe(extReplace(".webp"))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
-});
+};
 
 // imagemin - favicons
-gulp.task("imagemin-favicon", () => {
+const createFavicons = ()=>{
 	let src = "src/*.png",
 		dest = "dist";
 
@@ -216,15 +171,18 @@ gulp.task("imagemin-favicon", () => {
 			}),
 			pngQuant({
 				quality: "45-90"
-			}),
-			svgo()
+			})
 		]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
-});
+};
+
+exports.optimizeImages = optimizeImages;
+exports.generateWebpImages = generateWebpImages;
+exports.createFavicons = createFavicons;
 
 // Copy files
-gulp.task("copy-files", () => {
+const copyFiles = ()=>{
 	let src = ["src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
 		dest = "dist";
 
@@ -232,4 +190,29 @@ gulp.task("copy-files", () => {
 		.pipe(plumber())
 		.pipe(changed(dest))
 		.pipe(gulp.dest(dest));
-});
+};
+
+exports.copyFiles = copyFiles;
+
+/*** Utility Tasks ***/
+const watch = ()=>{
+	livereload.listen();
+
+	gulp.watch("src/less/**/*.less", buildCSS);
+	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
+	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS));
+	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebpImages));
+	gulp.watch("src/*.png", createFavicons);
+};
+
+// clean
+const clean = ()=>{
+	return del("dist");
+};
+
+// build
+const build = gulp.series(clean, gulp.parallel(buildCSS, buildHTML, gulp.series(buildJS, concatJS), optimizeImages, generateWebpImages, createFavicons, copyFiles));
+
+exports.default = watch;
+exports.clean = clean;
+exports.build = build;
