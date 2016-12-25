@@ -41,7 +41,6 @@ $versions["nav.js"] = cacheString("nav.js", "/js/nav.js", $pathPrefix);
 $versions["attach-nav.js"] = cacheString("attach-nav.js", "/js/attach-nav.js", $pathPrefix);
 $versions["load-fonts.js"] = cacheString("load-fonts.js", "/js/load-fonts.js", $pathPrefix);
 
-
 function httpClass($h2){
 	if($h2 === true){
 		return "http2";
