@@ -3,6 +3,7 @@ echo "------------"
 echo "Deploying..."
 echo "------------"
 git pull
+npm update
 gulp build
 rm -rf /var/www/caches/**
 chown -R apache:apache ./dist
