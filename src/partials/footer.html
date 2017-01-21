@@ -15,5 +15,5 @@ else{
 }
 ?>
 <noscript>
-	<img src="/img/global/blank.gif?noscript">
+	<img src="/img/global/blank.gif?ua=<?php echo(urlencode($_SERVER["HTTP_USER_AGENT"])); ?>">
 </noscript>

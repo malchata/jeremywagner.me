@@ -30,9 +30,7 @@ footer,
 header,
 nav,
 section,
-summary,
-audio,
-video{
+summary{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -79,6 +77,8 @@ html{
 body{
 	line-height: 1;
 	background: @white;
+	padding: 10px;
+	overflow-x: hidden;
 }
 
 blockquote,
@@ -90,7 +90,6 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after{
-	content: "";
 	content: none;
 }
 

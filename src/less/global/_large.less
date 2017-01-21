@@ -1,6 +1,7 @@
-@media screen and (min-width: @largeBreakpoint){
+@media (min-width: @largeBreakpoint){
 	body{
 		padding: 20px 20px 0;
+		overflow-y: visible !important;
 	}
 
 	header{
@@ -27,7 +28,6 @@
 		width: percentage(757 / 984);
 		padding: 98px percentage(20 / 984) 20px;
 		background: @lightGrey1;
-		background: linear-gradient(to bottom, @lightGrey1 0%, @lightGrey2 100%);
 		position: relative;
 		z-index: 1;
 
@@ -44,27 +44,67 @@
 		}
 	}
 
+	.summary,
+	.content h2{
+		&:before,
+		&:after{
+			content: "";
+			display: block;
+			transform: skewY(2deg);
+		}
+
+		&:before{
+			height: 16px;
+			background: @white;
+			width: 107.5%;
+			position: relative;
+			left: -3.75%;
+			margin: 48px 0 32px;
+			z-index: 2;
+		}
+
+		&:after{
+			z-index: 1;
+			height: 4px;
+			width: 102.5%;
+			position: absolute;
+			top: 0;
+			left: -1.25%;
+			z-index: 3;
+			border-top: 4px solid @grey3;
+		}
+	}
+
+	.summary:first-child{
+		&:before,
+		&:after{
+			content: none;
+		}
+	}
+
+	#header-image-container,
+	.title-container{
+		position: relative;
+		vertical-align: bottom;
+	}
+
 	#header-image-container{
 		max-width: 163px;
 		width: percentage(163 / 757);
-		vertical-align: bottom;
 		margin: 0;
-		position: relative;
 		z-index: 3;
 	}
 
 	.title-container{
-		vertical-align: bottom;
 		margin: 0 0 5px;
 		width: percentage(594 / 757);
-		position: relative;
 		left: -10%;
 		z-index: 2;
 	}
 
 	.name{
 		font-size: 20px;
-		line-height: 20px;
+		line-height: 1;
 		margin: 0 0 6px;
 		padding: 2px 8px 2px percentage(120/ 757);
 		text-align: left;
@@ -88,7 +128,7 @@
 	.site{
 		margin: 0 0 6px;
 		font-size: 24px;
-		line-height: 24px;
+		line-height: 1;
 		padding: 0 0 0 percentage(120 / 757);
 		text-align: left;
 		white-space: nowrap;
@@ -142,16 +182,16 @@
 	}
 }
 
-@media screen and (min-width: @extraLargeBreakpoint){
+@media (min-width: @extraLargeBreakpoint){
 	.name{
 		font-size: 29px;
-		line-height: 29px;
+		line-height: 1;
 		padding: 2px 8px 2px percentage(110 / 757);
 	}
 
 	.site{
 		font-size: 39px;
-		line-height: 39px;
+		line-height: 1;
 		padding: 0 0 0 percentage(110 / 757);
 	}
 
@@ -173,6 +213,9 @@
 		top: -10px;
 		z-index: 3;
 		border: 1px solid @grey1;
+		width: 35px;
+		height: 44px;
+		background: url("/img/global/book-1x.png");
 	}
 
 	.content{
@@ -180,7 +223,14 @@
 	}
 }
 
-@media screen and (min-width: 1140px){
+@media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-width: @extraLargeBreakpoint){
+	.book-image{
+		background: url("/img/global/book-2x.png");
+		background-size: contain;
+	}
+}
+
+@media (min-width: 1140px){
 	.abbr{
 		display: inline;
 	}
