@@ -13,7 +13,7 @@ echo ""
 echo "----------------"
 echo "Building site..."
 echo "----------------"
-gulp build
+npm run build
 
 echo ""
 echo "---------------------------"
