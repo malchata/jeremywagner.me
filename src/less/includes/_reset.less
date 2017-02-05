@@ -8,7 +8,6 @@ h2,
 h3,
 h4,
 p,
-blockquote,
 a,
 code,
 img,
@@ -17,11 +16,7 @@ b,
 u,
 i,
 li,
-table,
 caption,
-tbody,
-tr,
-td,
 article,
 aside,
 figure,
@@ -30,7 +25,10 @@ footer,
 header,
 nav,
 section,
-summary{
+summary,
+cite,
+q,
+q q{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -81,31 +79,10 @@ body{
 	overflow-x: hidden;
 }
 
-blockquote,
-q{
-	quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after{
-	content: none;
-}
-
-table{
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 img{
 	max-width: 100%;
 	display: inline-block;
 	height: auto;
-}
-
-a{
-	color: @lightBrown;
 }
 
 *{

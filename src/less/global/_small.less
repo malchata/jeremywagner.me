@@ -67,8 +67,21 @@ header,
 }
 
 .site,
-.tagline{
+.tagline,
+code,
+h1,
+h1 a,
+h2,
+h3,
+p,
+.post ul li,
+.post ol li{
 	color: @blue;
+}
+
+a,
+.footer-copy{
+	color: @lightBrown;
 }
 
 .tagline{
@@ -205,7 +218,6 @@ pre{
 code{
 	margin: 0;
 	padding: 0;
-	color: @blue;
 	font: 400 16px/@lineHeightRatio @code;
 }
 
@@ -218,12 +230,15 @@ a{
 .menu-item{
 	font: 700 22px/@lineHeightRatio @sansSerif;
 	text-transform: uppercase;
-	margin: 0 0 24px;
 	position: relative;
 }
 
-.menu-link{
+.menu-link,
+.date{
 	color: @brown;
+}
+
+.menu-link{
 	text-decoration: none;
 }
 
@@ -232,8 +247,6 @@ a{
 }
 
 .summary{
-	margin: 0 0 24px;
-
 	&:last-child{
 		padding: 0;
 		border-bottom: 0;
@@ -248,24 +261,24 @@ a{
 
 p,
 ul,
-ol{
+ol,
+q,
+.summary,
+.menu-item{
 	margin: 0 0 24px;
 }
 
 h1{
 	font: 400 26px/@lineHeightRatio @serif;
-	color: @blue;
 	margin: 0 0 8px;
 
 	a{
-		color: @blue;
 		text-decoration: none;
 	}
 }
 
 p{
 	font: 400 19px/@lineHeightRatio @serif;
-	color: @blue;
 }
 
 p > code,
@@ -278,8 +291,59 @@ a > code{
 
 .date{
 	font-weight: 700;
-	color: @brown;
 	margin: 0 0 8px;
+}
+
+q,
+cite{
+	font: italic 22.8px/@lineHeightRatio @serif;
+	color: lighten(@blue, 16.18%);
+	display: block;
+}
+
+q{
+	border-left: 4px solid @grey2;
+	padding: 0 40px 0 52px;
+	quotes: "“" "”" "‘" "’";
+
+	&:before,
+	&:after{
+		font-size: 64px;
+		display: block;
+		line-height: 1;
+		font-style: normal;
+		color: @grey2;
+	}
+
+	&:before{
+		content: open-quote;
+		text-align: left;
+		margin: 0 0 -36px -40px;
+	}
+
+	&:after{
+		content: close-quote;
+		text-align: right;
+		margin: -36px 0 0 -40px;
+	}
+
+	q{
+		display: inline;
+
+		&:before,
+		&:after{
+			display: inline;
+			font-size: 22.8px;
+			margin: 0;
+			color: lighten(@blue, 16.18%);
+		}
+	}
+}
+
+cite{
+	&:before{
+		content: "\2014";
+	}
 }
 
 figure{
@@ -318,15 +382,17 @@ picture + noscript + figcaption,
 
 		li{
 			font: 400 19px/@lineHeightRatio @serif;
-			color: @blue;
 		}
 	}
 }
 
 h2{
 	font: 700 23px/@lineHeightRatio @serif;
-	color: @blue;
 	position: relative;
+}
+
+h3{
+	font: 400 21px/@lineHeightRatio @serif;
 }
 
 .more{
@@ -350,7 +416,6 @@ footer{
 
 .footer-copy{
 	font: 400 11px/@lineHeightRatio @serif;
-	color: @lightBrown;
 	text-align: center;
 	margin: 0;
 }

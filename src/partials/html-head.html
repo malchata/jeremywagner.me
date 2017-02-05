@@ -8,35 +8,30 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <meta name="google-site-verification" content="x8U1FZK1rB-BGI7Tcw0zOHqHFXxbSSalze8kZ74yU1o">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Tinos:400,700" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700" type="text/css">
 <link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
+<style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style>
 <?php
 if($isBlog){
 	?><link rel="amphtml" href="<?php echo($ampUrl); ?>"><?php
 }
 
-if($isHttp2 === true){
-	?><link rel="stylesheet" href="/css/fonts-loaded.css?v=<?php echo($versions["fonts-loaded.css"]); ?>" type="text/css"><?php
-}
-else{
-	?>
-	<style><?php echo(file_get_contents($pathPrefix . "/css/fonts-loaded.css")); ?></style>
-	<style><?php echo(file_get_contents($pathPrefix . "/css/http1.css")); ?></style>
-	<?php
+if($isHttp2 === false){
+	?><style><?php echo(file_get_contents($pathPrefix . "/css/http1.css")); ?></style><?php
 }
 ?>
 <script>document.documentElement.classList.remove("no-js");</script>
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://jeremywagner.me/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://jeremywagner.me/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://jeremywagner.me/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://jeremywagner.me/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://jeremywagner.me/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://jeremywagner.me/apple-touch-icon-152x152.png">
-<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="https://jeremywagner.me/favicon-16x16.png" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo($currentHost); ?>/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo($currentHost); ?>/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo($currentHost); ?>/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo($currentHost); ?>/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo($currentHost); ?>/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo($currentHost); ?>/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="<?php echo($currentHost); ?>/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="<?php echo($currentHost); ?>/favicon-16x16.png" sizes="16x16">
 <meta name="application-name" content="Jeremy Wagner's Web Development Blog">
 <meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="https://jeremywagner.me/mstile-144x144.png">
+<meta name="msapplication-TileImage" content="<?php echo($currentHost); ?>/mstile-144x144.png">
 <?php
 if($isHttp2){
 	if($isDevServer === false){

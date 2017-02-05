@@ -1,4 +1,7 @@
 <?php
+// The current host root URL (with security context)
+$currentHost = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"];
+
 // Checks to see if a post is a blog
 $isAmp = stristr($_SERVER["REQUEST_URI"], "/blog/amp") !== false;
 $isBlog = stristr($_SERVER["REQUEST_URI"], "/blog") !== false;
@@ -7,13 +10,13 @@ $isHttp2 = stristr($_SERVER["SERVER_PROTOCOL"], "HTTP/2") ? true : false;
 // Path Prefix Variable
 if($isAmp){
 	$pathPrefix = realpath("./../../");
-	$canonicalUrl = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . str_ireplace("/amp/", "/", $_SERVER["REQUEST_URI"]);
-	$pageUrl = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	$canonicalUrl = $currentHost . str_ireplace("/amp/", "/", $_SERVER["REQUEST_URI"]);
+	$pageUrl = $currentHost . $_SERVER["REQUEST_URI"];
 	$ampUrl = str_ireplace("/blog/", "/blog/amp/", $pageUrl);
 }
 elseif($isBlog){
 	$pathPrefix = realpath("./../");
-	$pageUrl = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	$pageUrl = $currentHost . $_SERVER["REQUEST_URI"];
 	$ampUrl = str_ireplace("/blog/", "/blog/amp/", $pageUrl);
 	$pageId = md5($_SERVER["REQUEST_URI"]);
 }
@@ -32,7 +35,6 @@ else{
 // Asset versioning
 $versions = [];
 $versions["global.css"] = cacheString("global.css", "/css/global.css", $pathPrefix);
-$versions["fonts-loaded.css"] = cacheString("fonts-loaded.css", "/css/fonts-loaded.css", $pathPrefix);
 $versions["ga.js"] = cacheString("ga.js", "/js/ga.js", $pathPrefix);
 $versions["scripts.js"] = cacheString("scripts.js", "/js/scripts.js", $pathPrefix);
 $versions["debounce.js"] = cacheString("debounce.js", "/js/debounce.js", $pathPrefix);
@@ -79,8 +81,7 @@ function cacheString($cacheKey, $string, $pathPrefix){
 // Push function
 function pushAssets($versions){
 	$pushes = array(
-		"/css/global.css" => $versions["global.css"],
-		"/css/fonts-loaded.css" => $versions["fonts-loaded.css"]
+		"/css/global.css" => $versions["global.css"]
 	);
 
 	if(!isset($_COOKIE["h2pushes"])){
@@ -95,8 +96,11 @@ function pushAssets($versions){
 			$oldPushes = json_decode($_COOKIE["h2pushes"], true);
 			$diff = array_diff_assoc($pushes, $oldPushes);
 			$pushString = buildPushString($diff);
-			header($pushString);
-			setcookie("h2pushes", json_encode($pushes), 0, 2592000, "", ".jeremywagner.me", true);
+
+			if(count($diff) > 0){
+				header($pushString);
+				setcookie("h2pushes", json_encode($pushes), 0, 2592000, "", ".jeremywagner.me", true);
+			}
 		}
 	}
 }

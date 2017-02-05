@@ -1,0 +1,48 @@
+<?php require_once("../preprocessing.php"); ?>
+<!doctype html>
+<html lang="en" class="no-js <?php echo(httpClass($isHttp2));?> <?php echo(fontsLoaded()); ?>">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin Post -->
+				<article class="post">
+					<h1>Writing</h1>
+					<p>While I have my own blog, I spend most of my time writing for other outlets. Below is a comprehensive list of the articles I've had published in places other than this blog:</p>
+					<h2>A List Apart</h2>
+					<ul>
+						<li><a href="http://alistapart.com/article/using-http-2-responsibly-adapting-for-users" target="_blank" rel="noopener">Using HTTP/2 Responsibly: Adapting for Users</a></li>
+						<li><a href="http://alistapart.com/article/considering-how-we-use-http2" target="_blank" rel="noopener">Considering How We Use HTTP/2</a></li>
+					</ul>
+					<h2>CSS Tricks</h2>
+					<ul>
+						<li><a href="https://css-tricks.com/font-display-masses" target="_blank" rel="noopener"><code>font-display</code> for the Masses</a></li>
+						<li><a href="https://css-tricks.com/using-webp-images" target="_blank" rel="noopener">Using WebP Images</a> (mirrored from <a href="/blog/webp-images">this post</a>)</li>
+						<li><a href="https://css-tricks.com/cache-aware-server-push" target="_blank" rel="noopener">Creating a Cache-aware HTTP/2 Server Push Mechanism</a></li>
+					</ul>
+					<h2>Manning Publications</h2>
+					<ul>
+						<li><a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" target="_blank" rel="noopener">Web Performance in Action</a></li>
+					</ul>
+					<h2>PerfPlanet</h2>
+					<ul>
+						<li><a href="https://calendar.perfplanet.com/2016/speed-versus-speed-to-market" target="_blank" rel="noopener">Speed Versus Speed to Market</a></li>
+					</ul>
+					<h2>Smashing Magazine</h2>
+					<ul>
+						<li><a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli" target="_blank" rel="noopener">Next Generation Server Compression With Brotli</a></li>
+					</ul>
+				</article>
+				<!-- End Post -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>

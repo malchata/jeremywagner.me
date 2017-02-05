@@ -2,7 +2,7 @@
 	"title": "Using WebP Images",
 	"featureImage": "/img/blog/webp-images/modem-2x.png",
 	"date": "April 25, 2016",
-	"updatedate": "September 26, 2016",
+	"updateDate": "September 26, 2016",
 	"description": "Using WebP images can yield substantially lower file sizes for your images, giving way to quicker page load times. Learn how to use them in this post!",
 	"categories": ["images", "web development", "web performance"]
 }
