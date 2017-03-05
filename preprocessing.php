@@ -7,6 +7,14 @@ $isAmp = stristr($_SERVER["REQUEST_URI"], "/blog/amp") !== false;
 $isBlog = stristr($_SERVER["REQUEST_URI"], "/blog") !== false;
 $isHttp2 = stristr($_SERVER["SERVER_PROTOCOL"], "HTTP/2") ? true : false;
 
+// Check for the user agent
+if(isset($_SERVER["HTTP_USER_AGENT"]) === true){
+	$ua = urlencode($_SERVER["HTTP_USER_AGENT"]);
+}
+else{
+	$ua = urlencode("no-user-agent");
+}
+
 // Path Prefix Variable
 if($isAmp){
 	$pathPrefix = realpath("./../../");

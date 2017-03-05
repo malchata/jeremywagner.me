@@ -10,6 +10,12 @@ echo "------------------------"
 npm update
 
 echo ""
+echo "Entering maintenance mode..."
+echo "------------------------"
+mkdir www
+cp maintenance.html www/index.html
+
+echo ""
 echo "----------------"
 echo "Building site..."
 echo "----------------"

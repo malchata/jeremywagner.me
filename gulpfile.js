@@ -1,4 +1,4 @@
-// Get gulp packages
+// Node modules
 const gulp = require("gulp");
 const util = require("gulp-util");
 const plumber = require("gulp-plumber");
@@ -19,10 +19,36 @@ const optimizeJS = require("gulp-optimize-js");
 const imagemin = require("gulp-imagemin");
 const extReplace = require("gulp-ext-replace");
 const jpegRecompress = require("imagemin-jpeg-recompress");
-const pngQuant = require("imagemin-pngquant");
+const optipng = require("imagemin-optipng");
 const webp = require("imagemin-webp");
 const fs = require("fs");
 const path = require("path");
+
+// Options for
+const moduleOpts = {
+	autoprefixer:{
+		browsers: ["last 3 versions"]
+	},
+	cssnano:{
+		safe: true
+	},
+	htmlmin:{
+		collapseWhitespace: true,
+		removeComments: true
+	},
+	jpegRecompress:{
+		min: 30,
+		max: 75,
+		method: "smallfry",
+		loops: 256
+	},
+	optipng:{
+		optimizationLevel: 7
+	},
+	webp:{
+		quality: 60
+	}
+};
 
 /*** CSS build task ***/
 const buildCSS = ()=>{
@@ -36,11 +62,7 @@ const buildCSS = ()=>{
 			this.emit("end");
 		}))
 		.pipe(postcss([
-			autoprefixer({
-				browsers: ["last 3 versions"]
-			}), autorem(), cssnano({
-				safe: true
-			})
+			autoprefixer(moduleOpts.autoprefixer), autorem(), cssnano(moduleOpts.cssnano)
 		]))
 		.pipe(gulp.dest(dest));
 };
@@ -73,10 +95,7 @@ const buildHTML = ()=>{
 			}
 		}))
 		.pipe(nunjucks.compile())
-		.pipe(htmlmin({
-			collapseWhitespace: true,
-			removeComments: true
-		}))
+		.pipe(htmlmin(moduleOpts.htmlmin))
 		.pipe(gulp.dest(dest));
 };
 
@@ -127,14 +146,7 @@ const optimizeImages = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([
-			jpegRecompress({
-				max: 90
-			}),
-			pngQuant({
-				quality: "45-90"
-			})
-		]))
+		.pipe(imagemin([jpegRecompress(moduleOpts.jpegRecompress), optipng(moduleOpts.optipng)]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 };
@@ -146,12 +158,7 @@ const generateWebpImages = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([
-				webp({
-					quality: 65
-				})
-			]
-		))
+		.pipe(imagemin([webp(moduleOpts.webp)]))
 		.pipe(extReplace(".webp"))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
@@ -165,14 +172,7 @@ const createFavicons = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([
-			jpegRecompress({
-				max: 90
-			}),
-			pngQuant({
-				quality: "45-90"
-			})
-		]))
+		.pipe(imagemin([optipng(moduleOpts.optipng)]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 };
