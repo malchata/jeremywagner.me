@@ -27,7 +27,7 @@ const path = require("path");
 // Options for
 const moduleOpts = {
 	autoprefixer:{
-		browsers: ["last 3 versions"]
+		browsers: ["last 2 versions", "> 5%", "ie >= 10", "iOS >= 8"]
 	},
 	cssnano:{
 		safe: true
@@ -38,12 +38,12 @@ const moduleOpts = {
 	},
 	jpegRecompress:{
 		min: 30,
-		max: 75,
+		max: 70,
 		method: "smallfry",
-		loops: 256
+		loops: 512
 	},
 	optipng:{
-		optimizationLevel: 7
+		optimizationLevel: 6
 	},
 	webp:{
 		quality: 60
