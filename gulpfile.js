@@ -21,10 +21,13 @@ const extReplace = require("gulp-ext-replace");
 const jpegRecompress = require("imagemin-jpeg-recompress");
 const optipng = require("imagemin-optipng");
 const webp = require("imagemin-webp");
+const gzip = require("gulp-gzip");
+const brotli = require("gulp-brotli");
 const fs = require("fs");
 const path = require("path");
 
-// Options for
+/*** Module options ***/
+
 const moduleOpts = {
 	autoprefixer:{
 		browsers: ["last 2 versions", "> 5%", "ie >= 10", "iOS >= 8"]
@@ -40,17 +43,31 @@ const moduleOpts = {
 		min: 30,
 		max: 70,
 		method: "smallfry",
-		loops: 512
+		loops: 256
 	},
 	optipng:{
 		optimizationLevel: 6
 	},
 	webp:{
 		quality: 60
+	},
+	brotli:{
+		extension: "br",
+		skipLarger: false,
+		quality: 11,
+		mode: 0,
+		lgblock: 0
+	},
+	gzip:{
+		append: true,
+		gzipOptions:{
+			level: 9
+		}
 	}
 };
 
 /*** CSS build task ***/
+
 const buildCSS = ()=>{
 	let src = ["src/less/global.less", "src/less/fonts-loaded.less", "src/less/http1.less", "src/less/amp.less"],
 		dest = "dist/css";
@@ -70,6 +87,7 @@ const buildCSS = ()=>{
 exports.buildCSS = buildCSS;
 
 /*** HTML tasks ***/
+
 const buildHTML = ()=>{
 	let src = "src/**/*.html",
 		dest = "dist";
@@ -102,6 +120,7 @@ const buildHTML = ()=>{
 exports.buildHTML = buildHTML;
 
 /*** JavaScript tasks ***/
+
 const buildJS = ()=>{
 	let src = "src/js/**/*.js",
 		dest = "dist/js";
@@ -139,6 +158,7 @@ exports.buildJS = buildJS;
 exports.concatJS = concatJS;
 
 /*** Image optimization tasks ***/
+
 const optimizeImages = ()=>{
 	let src = "src/img/**/*.{jpg,png,gif,svg}",
 		dest = "dist/img";
@@ -151,7 +171,7 @@ const optimizeImages = ()=>{
 		.pipe(livereload());
 };
 
-const generateWebpImages = ()=>{
+const generateWebPImages = ()=>{
 	let src = "src/img/**/*.{jpg,png}",
 		dest = "dist/img";
 
@@ -164,7 +184,6 @@ const generateWebpImages = ()=>{
 		.pipe(livereload());
 };
 
-// imagemin - favicons
 const createFavicons = ()=>{
 	let src = "src/*.png",
 		dest = "dist";
@@ -178,10 +197,48 @@ const createFavicons = ()=>{
 };
 
 exports.optimizeImages = optimizeImages;
-exports.generateWebpImages = generateWebpImages;
+exports.generateWebPImages = generateWebPImages;
 exports.createFavicons = createFavicons;
 
-// Copy files
+/*** Compression tasks ***/
+
+const gzipCompress = ()=>{
+	let src = "dist/**/*.{js,css,svg}",
+		dest = "dist";
+
+	return gulp.src(src)
+		.pipe(gzip(moduleOpts.gzip))
+		.pipe(gulp.dest(dest));
+};
+
+const brotliCompress = ()=>{
+	let src = "dist/**/*.{js,css,svg}",
+		dest = "dist";
+
+	return gulp.src(src)
+		.pipe(brotli.compress(moduleOpts.brotli))
+		.pipe(gulp.dest(dest));
+};
+
+exports.gzipCompress = gzipCompress;
+exports.brotliCompress = brotliCompress;
+
+/*** Utility tasks ***/
+
+const watch = ()=>{
+	livereload.listen();
+
+	gulp.watch("src/less/**/*.less", buildCSS);
+	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
+	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS));
+	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
+	gulp.watch("src/*.png", createFavicons);
+};
+
+const clean = ()=>{
+	return del("dist");
+};
+
 const copyFiles = ()=>{
 	let src = ["src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
 		dest = "dist";
@@ -192,27 +249,9 @@ const copyFiles = ()=>{
 		.pipe(gulp.dest(dest));
 };
 
-exports.copyFiles = copyFiles;
-
-/*** Utility Tasks ***/
-const watch = ()=>{
-	livereload.listen();
-
-	gulp.watch("src/less/**/*.less", buildCSS);
-	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
-	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS));
-	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebpImages));
-	gulp.watch("src/*.png", createFavicons);
-};
-
-// clean
-const clean = ()=>{
-	return del("dist");
-};
-
-// build
-const build = gulp.series(clean, gulp.parallel(buildCSS, buildHTML, gulp.series(buildJS, concatJS), optimizeImages, generateWebpImages, createFavicons, copyFiles));
+const build = gulp.series(clean, gulp.parallel(buildCSS, buildHTML, gulp.series(buildJS, concatJS), optimizeImages, generateWebPImages, createFavicons, copyFiles), gulp.parallel(gzipCompress, brotliCompress));
 
 exports.default = watch;
 exports.clean = clean;
+exports.copyFiles = copyFiles;
 exports.build = build;

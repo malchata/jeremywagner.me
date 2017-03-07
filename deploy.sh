@@ -12,8 +12,8 @@ npm update
 echo ""
 echo "Entering maintenance mode..."
 echo "------------------------"
-mkdir www
-cp maintenance.html www/index.html
+mkdir dist
+cp maintenance.html dist/index.html
 
 echo ""
 echo "----------------"
@@ -34,6 +34,12 @@ echo "---------------------------"
 echo "Restarting Apache server..."
 echo "---------------------------"
 /usr/local/apache2/bin/apachectl -k restart
+
+echo ""
+echo "---------------------------"
+echo "Restarting PHP FastCGI service..."
+echo "---------------------------"
+systemctl restart php-fpm
 
 echo ""
 echo "---------"
