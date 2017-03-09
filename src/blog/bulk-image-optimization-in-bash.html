@@ -1,0 +1,27 @@
+<?php require_once("../../preprocessing.php"); ?>
+<!doctype html>
+<html lang="en" class="no-js <?php echo(httpClass($isHttp2));?> <?php echo(fontsLoaded()); ?>">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin Post -->
+				<article class="post">
+					{% include "blog/content/bulk-image-optimization-in-bash.content" %}
+				</article>
+				<!-- End Post -->
+				<!-- Begin Comments -->
+				{% include "partials/disqus.html" %}
+				<!-- End Comments -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>

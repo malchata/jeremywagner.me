@@ -21,6 +21,7 @@ const extReplace = require("gulp-ext-replace");
 const jpegRecompress = require("imagemin-jpeg-recompress");
 const optipng = require("imagemin-optipng");
 const webp = require("imagemin-webp");
+const svgo = require("imagemin-svgo");
 const gzip = require("gulp-gzip");
 const brotli = require("gulp-brotli");
 const fs = require("fs");
@@ -46,17 +47,21 @@ const moduleOpts = {
 		loops: 256
 	},
 	optipng:{
-		optimizationLevel: 6
+		optimizationLevel: 5
+	},
+	svgo:{
+		multipass: true,
+		precision: 2
 	},
 	webp:{
 		quality: 60
 	},
 	brotli:{
 		extension: "br",
-		skipLarger: false,
 		quality: 11,
 		mode: 0,
-		lgblock: 0
+		lgblock: 0,
+		lgwin: 22
 	},
 	gzip:{
 		append: true,
@@ -166,7 +171,7 @@ const optimizeImages = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([jpegRecompress(moduleOpts.jpegRecompress), optipng(moduleOpts.optipng)]))
+		.pipe(imagemin([jpegRecompress(moduleOpts.jpegRecompress), optipng(moduleOpts.optipng), svgo(moduleOpts.svgo)]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 };
