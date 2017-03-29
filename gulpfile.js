@@ -44,7 +44,7 @@ const moduleOpts = {
 		min: 30,
 		max: 70,
 		method: "smallfry",
-		loops: 256
+		loops: 16
 	},
 	optipng:{
 		optimizationLevel: 5
