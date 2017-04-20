@@ -1,0 +1,7 @@
+{
+	"title": "Faster Bulk Image Optimization in Bash",
+	"featureImage": "/img/blog/bulk-image-optimization-in-bash/og-image.png",
+	"date": "April 20, 2017",
+	"description": "Continuing on from an earlier post on optimizing batches of images in bash, I show you how to do it even faster with xargs.",
+	"categories": ["image optimization", "web development", "web performance", "bash"]
+}
