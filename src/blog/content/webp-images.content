@@ -265,7 +265,3 @@ echo(generateImageMarkup(true, true, $sources, $isAmp, "You can't escape it."));
 <p>WebP is a versatile image format that we can serve in place of PNG and JPEG images&mdash; if it's supported. It can yield a substantial reduction in the size of images on your website, and as we know, anything that results in transferring less data lowers page load time.</p>
 <p>Are there cons? A couple. The biggest one is that you're maintaining two sets of images to achieve the best possible support, which may not be possible for your website if there's a huge set of imagery that you need to convert over to WebP. Another is that you'll have to manage a bit of JavaScript if you need to use WebP images in CSS.</p>
 <p>The takeaway is that the relatively low effort is worth the savings you'll realize, savings that will improve the user experience of your website by allowing it to load faster. Users browsing via mobile networks will benefit especially. Now go forward and WebP to your heart's content!</p>
-<p>
-	Cheers,<br>
-	-j
-</p>

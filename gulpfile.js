@@ -44,7 +44,8 @@ const moduleOpts = {
 		min: 30,
 		max: 70,
 		method: "smallfry",
-		loops: 16
+		loops: 12,
+		accurate: false
 	},
 	optipng:{
 		optimizationLevel: 5
@@ -146,9 +147,6 @@ const concatJS = ()=>{
 			"!dist/js/ga.js",
 			"!dist/js/load-fonts.js",
 			"!dist/js/fontfaceobserver.js",
-			"!dist/js/sw-install.js",
-			"!dist/js/sw.js",
-			"!dist/js/caches.js"
 		],
 		dest = "dist/js";
 

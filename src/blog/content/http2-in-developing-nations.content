@@ -109,7 +109,3 @@ $isHttp2 = stristr($_SERVER["SERVER_PROTOCOL"], &quot;HTTP/2&quot;) ? true : fal
 </div>
 <p>With this simple boolean, I can change how I deliver assets on the front end. I can serve image sprites for HTTP/1 users in lieu of separate images by tagging the <code>&lt;html&gt;</code> tag with an <code>http1</code> class that I can target with CSS. I can serve combined CSS and JavaScript files for HTTP/1 users in lieu of more granular ones. I can choose to inline some CSS and scripts for HTTP/1 users, and use <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2" target="_blank" rel="noopener">Server Push</a> for HTTP/2 users.</p>
 <p>There's a lot you can do with this information. Analyze the capabilities of your audience, and make critical decisions based on your findings. The capabilities of users is changing constantly, though, so reassess periodically and see what's worth your time. You can plug in your <a href="https://google.com/analytics" target="_blank" rel="noopener">Google Analytics</a> data into <a href="http://caniuse.com" target="_blank" rel="noopener">caniuse.com</a> to see what features your specific audience supports. Hopefully this gives you some perspective on how we need to think about the capabilities of our users.</p>
-<p>
-	Cheers,<br>
-	-j
-</p>

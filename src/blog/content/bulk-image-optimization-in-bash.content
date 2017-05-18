@@ -61,7 +61,3 @@ find ./ -type f -name '*.svg' -exec svgo -p 1 --multipass {} \;</code></pre>
 <p>If you decide to go to this extreme, I would <i>highly recommend</i> you examine the output. Lowering the precision of vector graphics isn't like lowering the quality setting of a raster image. If the precision of vector shapes is too low, they'll lose subtle (and sometimes not so subtle) details and look malformed.</p>
 <h2>Conclusion</h2>
 <p><code>find</code> is great for a lot of things, <i>especially</i> optimizing images. It's important, though, that you remember a couple things about these examples: One, they overwrite images in their place, essentially clobbering them. So back stuff up before you run anything. Two, you may want to take a look at some of the output after you run the optimizer. Anecdotally, I've had no problems with these methods. The optimizers shown do a great job of shaving off kilobytes without adversely affecting image quality. Give this a shot with your favorite optimizers and share your secrets in the comments!</p>
-<p>
-Cheers<br>
--j
-</p>

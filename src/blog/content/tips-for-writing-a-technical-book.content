@@ -67,7 +67,3 @@ $sources = array(
 echo(generateImageMarkup(true, true, $sources, $isAmp, "The final print of Web Performance in Action."));
 ?>
 <p>When that happens, take a moment to congratulate yourself. Then take some time off. <i>Then</i> plot your next move when you're ready to get back to work.</p>
-<p>
-	Cheers,<br>
-	-j
-</p>

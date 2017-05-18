@@ -113,7 +113,3 @@ function cacheString($cacheKey, $string, $pathPrefix){
 </code></pre></div>
 <p>Boom. My site's global assets are now automatically versioned. Whenever I'm ready to push updated assets to production on this site, I run a deploy script. Part of the deploy script empties the <code>/var/www/caches/</code> directory, which allows new checksums to be generated. These caches stay primed until the next site update. Did I overdo it? Yeah, probably, but the good news is that I don't have to worry about versioning my assets ever again. I just write code, check it into my git repository, and deploy.</p>
 <p>How do <i>you</i> invalidate caches on your site? Any ideas for improvements? Is my process awful? Chime in below!</p>
-<p>
-	Cheers,<br>
-	-j
-</p>

@@ -81,7 +81,3 @@ echo(generateImageMarkup(true, true, $sources, $isAmp, "Note the values of the p
 <h2>Conclusion</h2>
 <p>If you've been referencing cross-origin resources with the protocol-relative URL scheme, it's time to stop. Especially if you're doing so from an insecure origin. You're likely missing out on the performance benefits of HTTP/2, and maybe missing out on Brotli compressed content. If CDNs decide to stop using HTTP altogether, your requests will be burdened by higher latency as redirects to secure resources occur. There may even be more performance benefits that you're missing out on that I haven't listed here. If you know of any, pipe up in the comments!</p>
 <p>Hopefully this little post has proved useful to you. We all have a part in making the web faster for everyone, which is usually no small task. Except for the advice prescribed in this post. It's a small task. If we all embark on it, it can inch us a little bit closer to a faster and more secure web for everybody. It's incremental change we can all get behind.</p>
-<p>
-	Cheers,<br>
-	-j
-</p>

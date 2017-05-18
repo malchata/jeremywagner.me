@@ -129,7 +129,3 @@ echo(generateImageMarkup(true, false, $sources, $isAmp, "Our single SVG image ac
 ?>
 <p>That's it! Of course, this use case is very simple, and there's more capability in using media queries in your SVGs than just inverting fill colors. Experiment with CSS properties you know. See what works, see what doesn't, and <i>always</i> test across browsers.</p>
 <p>For a deeper dive on CSS in your SVGs, check out this <a href="https://www.smashingmagazine.com/2014/11/styling-and-animating-svgs-with-css/" target="_blank" rel="noopener">great article by Sara Soueidan</a> on Smashing Magazine about styling and animating SVGs. There's a lot more under the hood than the example shown in this post.</p>
-<p>
-	Cheers,<br>
-	-j
-</p>
