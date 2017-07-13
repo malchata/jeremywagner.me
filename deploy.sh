@@ -5,17 +5,6 @@ echo "-------------------"
 git pull
 
 echo ""
-echo "Updating node modules..."
-echo "------------------------"
-npm update
-
-echo ""
-echo "Entering maintenance mode..."
-echo "------------------------"
-mkdir dist
-cp maintenance.html dist/index.html
-
-echo ""
 echo "----------------"
 echo "Building site..."
 echo "----------------"

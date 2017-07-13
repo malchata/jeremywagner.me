@@ -119,6 +119,13 @@ function buildPushString($pushes){
 	foreach($pushes as $asset => $version){
 		$pushString .= "<" . $asset . "?v=" . $version . ">; rel=preload";
 
+		if(stristr($asset, ".css") !== false){
+			$pushString .= "; as=style";
+		}
+		elseif(stristr($asset, ".js") !== false){
+			$pushString .= "; as=script";
+		}
+
 		if($asset !== end($pushes)){
 			$pushString .= ",";
 		}
