@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <p class="date">{{date}}</p>
 <p>This isn't a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
-<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" target="_blank" rel="noopener">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site's logo a different treatment for each breakpoint.</p>
+<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" rel="noopener">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site's logo a different treatment for each breakpoint.</p>
 <?php
 $sources = array(
 	"source" => array(
@@ -52,7 +52,7 @@ echo(generateImageMarkup(true, true, $sources, $isAmp, "I concur, Mr. Scott."));
 <p>Or I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
 <p>Thankfully, it dawned on me to use CSS in this SVG image. Because CSS is valid in SVG, that also means you can use media queries!</p>
 <h2>Wait, Media Queries in SVG?</h2>
-<p>SVG is XML, and while HTML isn't strictly XML, XML-derived schemas and HTML are all part of that soup. Hell, you can even inline SVG right into your HTML <a href="http://caniuse.com/#feat=svg-html5" target="_blank" rel="noopener">in most browsers</a>.</p>
+<p>SVG is XML, and while HTML isn't strictly XML, XML-derived schemas and HTML are all part of that soup. Hell, you can even inline SVG right into your HTML <a href="http://caniuse.com/#feat=svg-html5" rel="noopener">in most browsers</a>.</p>
 <p>Like HTML, SVG supports CSS. So unsurprisingly, media query support is a part of SVG. I learned this bit of trivia when I attended a conference some years ago. Of course, this nugget of information was filed away in the back of my brain, forgotten until such a scenario came where I could put it to use.</p>
 <p>Thankfully, the only difference between the two logo treatments are that the colors are inverted. I opened the SVG in my text editor (and ran it through a pretty printer to restore the formatting lost to minification) and observed the following code near the top:</p>
 <div class="code-container"><pre><code>
@@ -112,7 +112,7 @@ echo(generateImageMarkup(true, false, $sources, $isAmp, "The mobile logo treatme
 &lt;/style&gt;
 </code></pre></div>
 <p>The new media query works in a mobile first fashion, since the site itself uses a mobile-first responsive design approach. For mobile devices, we have the white logo treatment. Then, when the logo width hits a width of <code>300px</code>, we invert the color scheme for desktop devices.</p>
-<p>To see the logo in action, head over to <a href="http://weeklytimber.com" target="_blank" rel="noopener">http://weeklytimber.com</a> and resize the browser window. The logo treatment is the same image source (<code>logo.svg</code>) but the media query allows us to invert the fill colors, thus eliminating the need for a second image file. If you pull the logo up directly at <a href="http://weeklytimber.com/img/logo.svg" target="_blank" rel="noopener">http://weeklytimber.com/img/logo.svg</a>, you can resize the browser window to see the color scheme flip at the <code>300px</code> threshold.</p>
+<p>To see the logo in action, head over to <a href="http://weeklytimber.com" rel="noopener">http://weeklytimber.com</a> and resize the browser window. The logo treatment is the same image source (<code>logo.svg</code>) but the media query allows us to invert the fill colors, thus eliminating the need for a second image file. If you pull the logo up directly at <a href="http://weeklytimber.com/img/logo.svg" rel="noopener">http://weeklytimber.com/img/logo.svg</a>, you can resize the browser window to see the color scheme flip at the <code>300px</code> threshold.</p>
 <?php
 $sources = array(
 	"img" => array(
@@ -128,4 +128,4 @@ $sources = array(
 echo(generateImageMarkup(true, false, $sources, $isAmp, "Our single SVG image accommodating both logo treatments."));
 ?>
 <p>That's it! Of course, this use case is very simple, and there's more capability in using media queries in your SVGs than just inverting fill colors. Experiment with CSS properties you know. See what works, see what doesn't, and <i>always</i> test across browsers.</p>
-<p>For a deeper dive on CSS in your SVGs, check out this <a href="https://www.smashingmagazine.com/2014/11/styling-and-animating-svgs-with-css/" target="_blank" rel="noopener">great article by Sara Soueidan</a> on Smashing Magazine about styling and animating SVGs. There's a lot more under the hood than the example shown in this post.</p>
+<p>For a deeper dive on CSS in your SVGs, check out this <a href="https://www.smashingmagazine.com/2014/11/styling-and-animating-svgs-with-css/" rel="noopener">great article by Sara Soueidan</a> on Smashing Magazine about styling and animating SVGs. There's a lot more under the hood than the example shown in this post.</p>

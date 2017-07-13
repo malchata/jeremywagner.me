@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <p class="date">{{date}}</p>
-<p><i><a href="https://medium.com/@jeremywagner/tips-for-writing-a-technical-book-5867777bf580" target="_blank" rel="noopener">This article is also on Medium</a>!</i></p>
-<p>I spent the last year writing a technical book for Manning Publications, and it's finally out! The book is called <i><a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" target="_blank" rel="noopener">Web Performance in Action</a></i>. The process was something I wanted to fully document, but it became clear to me that nobody would find such an overly-specific, long-winded screed worth reading.</p>
+<p><i><a href="https://medium.com/@jeremywagner/tips-for-writing-a-technical-book-5867777bf580" rel="noopener">This article is also on Medium</a>!</i></p>
+<p>I spent the last year writing a technical book for Manning Publications, and it's finally out! The book is called <i><a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" rel="noopener">Web Performance in Action</a></i>. The process was something I wanted to fully document, but it became clear to me that nobody would find such an overly-specific, long-winded screed worth reading.</p>
 <p>So instead, I said &quot;to hell with it&quot; and slapped a clickbait title on this thing. If you've ever entertained the notion of writing a technical book, these are some tips that served me well during the process. Well, for <i>me</i> at least. Your mileage will vary, of course.</p>
 <h2>1) Don't do it for the money</h2>
 <p>Getting published can do a lot for you. It can raise your profile. It could help you get booked to speak at major conferences. It can command respect from others in the industry if your book becomes well regarded. What it probably <i>won't</i> do is make you gobs and gobs of cash.</p>
