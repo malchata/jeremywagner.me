@@ -19,7 +19,7 @@ const optimizeJS = require("gulp-optimize-js");
 const imagemin = require("gulp-imagemin");
 const extReplace = require("gulp-ext-replace");
 const jpegRecompress = require("imagemin-jpeg-recompress");
-const optipng = require("imagemin-optipng");
+const pngquant = require("imagemin-pngquant");
 const webp = require("imagemin-webp");
 const svgo = require("imagemin-svgo");
 const gzip = require("gulp-gzip");
@@ -30,43 +30,45 @@ const path = require("path");
 /*** Module options ***/
 
 const moduleOpts = {
-	autoprefixer:{
+	autoprefixer: {
 		browsers: ["last 2 versions", "> 5%", "ie >= 10", "iOS >= 8"]
 	},
-	cssnano:{
+	cssnano: {
 		safe: true
 	},
-	htmlmin:{
+	htmlmin: {
 		collapseWhitespace: true,
-		removeComments: true
+		removeComments: true,
+		cssmin: true,
+		jsmin: true
 	},
-	jpegRecompress:{
+	jpegRecompress: {
 		min: 30,
 		max: 70,
 		method: "smallfry",
 		loops: 16,
 		accurate: true
 	},
-	optipng:{
-		optimizationLevel: 5
+	pngquant: {
+		speed: 1
 	},
-	svgo:{
+	svgo: {
 		multipass: true,
-		precision: 2
+		precision: 1
 	},
-	webp:{
+	webp: {
 		quality: 60
 	},
-	brotli:{
+	brotli: {
 		extension: "br",
 		quality: 11,
 		mode: 0,
 		lgblock: 0,
 		lgwin: 22
 	},
-	gzip:{
+	gzip: {
 		append: true,
-		gzipOptions:{
+		gzipOptions: {
 			level: 9
 		}
 	}
@@ -75,11 +77,10 @@ const moduleOpts = {
 /*** CSS build task ***/
 
 const buildCSS = ()=>{
-	let src = ["src/less/global.less", "src/less/fonts-loaded.less", "src/less/http1.less", "src/less/amp.less"],
+	let src = ["src/less/global.less"],
 		dest = "dist/css";
 
 	return gulp.src(src)
-		.pipe(changed(dest))
 		.pipe(less().on("error", (err)=>{
 			util.log(err);
 			this.emit("end");
@@ -133,7 +134,6 @@ const buildJS = ()=>{
 
 	return gulp.src(src)
 		.pipe(plumber())
-		.pipe(changed(dest))
 		.pipe(uglify())
 		.pipe(optimizeJS())
 		.pipe(gulp.dest(dest))
@@ -144,7 +144,6 @@ const concatJS = ()=>{
 	let src = [
 			"dist/**/*.js",
 			"!dist/js/scripts.js",
-			"!dist/js/ga.js",
 			"!dist/js/load-fonts.js",
 			"!dist/js/fontfaceobserver.js",
 		],
@@ -169,7 +168,7 @@ const optimizeImages = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([jpegRecompress(moduleOpts.jpegRecompress), optipng(moduleOpts.optipng), svgo(moduleOpts.svgo)]))
+		.pipe(imagemin([jpegRecompress(moduleOpts.jpegRecompress), pngquant(moduleOpts.pngquant), svgo(moduleOpts.svgo)]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 };
@@ -194,7 +193,7 @@ const createFavicons = ()=>{
 	return gulp.src(src)
 		.pipe(plumber())
 		.pipe(changed(dest))
-		.pipe(imagemin([optipng(moduleOpts.optipng)]))
+		.pipe(imagemin([pngquant(moduleOpts.pngquant)]))
 		.pipe(gulp.dest(dest))
 		.pipe(livereload());
 };
@@ -231,9 +230,9 @@ exports.brotliCompress = brotliCompress;
 const watch = ()=>{
 	livereload.listen();
 
-	gulp.watch("src/less/**/*.less", buildCSS);
+	gulp.watch("src/less/**/*.less", gulp.series(buildCSS, buildHTML));
 	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
-	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS));
+	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS, buildHTML));
 	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
 	gulp.watch("src/*.png", createFavicons);
 };
@@ -248,7 +247,6 @@ const copyFiles = ()=>{
 
 	return gulp.src(src)
 		.pipe(plumber())
-		.pipe(changed(dest))
 		.pipe(gulp.dest(dest));
 };
 

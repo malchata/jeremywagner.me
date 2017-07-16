@@ -40,7 +40,6 @@ header,
 
 #jeremy{
 	padding-top: percentage(321.515 / 224.226);
-	background: url("/img/global/jeremy.svg") no-repeat;
 }
 
 .title-container{
@@ -168,7 +167,6 @@ nav{
 }
 
 .twitter,
-.linked-in,
 .github,
 .email{
 	display: inline-block;
@@ -176,25 +174,33 @@ nav{
 	margin: 0 11px 0 0;
 }
 
+.twitter,
+.github,
+.email,
+#jeremy{
+	background: url("../img/global/sprite.svg") no-repeat;
+	background-size: 312.23px 409.51px;
+}
+
 .twitter{
-	background: url("../img/global/icon-twitter.svg") no-repeat;
+	background-position: 0 0;
 	height: 17.845px;
 }
 
-.linked-in{
-	background: url("../img/global/icon-linked-in.svg") no-repeat;
-	height: 24.444px;
-}
-
 .github{
-	background: url("../img/global/icon-github.svg") no-repeat;
+	background-position: -44px -44px;
 	height: 21.457px;
 }
 
 .email{
-	background: url("../img/global/icon-email.svg") no-repeat;
+	background-position: -66px -66px;
 	height: 22px;
 	margin: 0;
+}
+
+#jeremy{
+	background-position: right bottom;
+	background-size: 139.24611776% 127.37041818%;
 }
 
 .footer-copy{

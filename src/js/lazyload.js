@@ -12,6 +12,7 @@
 			document.addEventListener("touchmove", lazyLoader.scanImages);
 			window.addEventListener("orientationchange", lazyLoader.scanImages);
 			window.addEventListener("resize", lazyLoader.scanImages);
+			console.log("rar!");
 		},
 		destroy: function(){
 			document.removeEventListener("scroll", lazyLoader.scanImages);

@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <p class="date">{{date}}</p>
-<p><i>Hey, guys! I talk about this topic (and many others) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener">my upcoming book from Manning publications</a>. You can get 39% off with the code <code>wagnerdz</code>. I hope you like this post!</i></p>
+<p><em>Hey, guys! I talk about this topic (and many others) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener">my upcoming book from Manning publications</a>. You can get 39% off with the code <code>wagnerdz</code>. I hope you like this post!</em></p>
 <p>Browser caches are great. With a good <code>cache-control</code> policy, you can take advantage of the browser cache to seriously increase the speed of return visits to your site. On a multi-page site where many resources are shared across pages, a primed browser cache can reduce load times when users navigate to subsequent pages.</p>
 <p>What sucks, though, is when you have to bust a cache for an asset that changes. Cache busting (or cache invalidation, as it is commonly known) is what we must do when we change an asset, but want to make sure the browser downloads the new version of it.</p>
 <p>Let's say you have a CSS file named <code>global.css</code>, and the response headers for it look something like this:</p>
@@ -17,39 +17,29 @@ cache-control: public, max-age=2592000
 	<li><code>max-age=2592000</code> says this resource is good to keep for 2,592,000 seconds from the time it was first fetched (that's 30 days for you humans reading this).</li>
 </ol>
 <p>This all works wonderfully until you have to make a change to that asset. Because what ends up happening is if a user who has previously visited your site returns with a primed cache, the browser looks at the <code>cache-control</code> policy for that asset. If the time specified in the <code>max-age</code> directive hasn't elapsed, the asset is still considered &quot;fresh&quot; as far as the browser is concerned. The browser doesn't know (or particularly care) that you have a newer version of it on the server. It will happily chug along with the outdated version in its cache until the expiration time has been reached.</p>
-<p>So that's no good, and there needs to be a solution. &quot;Just reload the page!&quot; you might hear someone say. Indeed, that does work. On a side note, tell that one to your client. They love hearing <i>that</i> one. For real. Try it and report back to me.</p>
+<p>So that's no good, and there needs to be a solution. &quot;Just reload the page!&quot; you might hear someone say. Indeed, that does work. On a side note, tell that one to your client. They love hearing <em>that</em> one. For real. Try it and report back to me.</p>
 <?php
 $sources = array(
 	"img" => array(
 		"src" => "/img/blog/bust-caches-like-a-pro/angry.jpg"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/bust-caches-like-a-pro/angry.jpg",
-		"width" => "260",
-		"height" => "194"
 	)
 );
-echo(generateImageMarkup(true, false, $sources, $isAmp, "Hey, valued customer! How do you feel about telling your users to reload?"));
+echo(generateImageMarkup(true, false, $sources, "Hey, valued customer! How do you feel about telling your users to reload?"));
 ?>
-<p><i>Anywho</i>, you might have run into this problem, and you probably already know about the solution. In case you don't, the way we force the browser to grab a copy of a changed asset without regard to its <code>cache-control</code> policy (or depending on users to reload the page) is to version it using a query string. Below is an example of doing this in a CSS include via the <code>&lt;link&gt;</code> tag:</p>
+<p><em>Anywho</em>, you might have run into this problem, and you probably already know about the solution. In case you don't, the way we force the browser to grab a copy of a changed asset without regard to its <code>cache-control</code> policy (or depending on users to reload the page) is to version it using a query string. Below is an example of doing this in a CSS include via the <code>&lt;link&gt;</code> tag:</p>
 <div class="code-container"><pre><code>
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/global.css?v=1&quot;&gt;
 </code></pre></div>
 <p>See that little query string in the <code>href</code> attribute? That part that says <code>?v=1</code>? The browser makes a distinction between an asset URI of <code>css/global.css</code> and <code>css/global.css?v=1</code>. This is great, because as long as your site's HTML isn't being aggressively cached (which you shouldn't do for this very reason), you can update the reference to an asset with a query string. When you do this, the new asset will get picked up by visitors, even those who are returning with a primed cache containing an old version of it. Neat!</p>
 <h2>For those that loathe busywork</h3>
-<p>&quot;Yeah, whatever. Thanks buddy. I get to muck around with query strings every time I change something on my site, now. A real prince <i>you</i> are, pal.&quot; I understand. I hate busywork, too. This is where a back end language like PHP comes in handy. By using the language's <a href="http://php.net/md5_file" rel="noopener"><code>md5_file</code></a> function, we can create an MD5 checksum of the asset we want to version, and use <i>that</i> as the value in the query string parameter. This works great because the checksum is generated based on the contents of the file, and not some other arbitrary aspect of it. If you push a new version of your site to production, and your assets never change, the checksum value stays the same. It only changes if the file contents do. This behavior is preferred to using something like a file's last modified time, where accidental modifications of a file in production can force a download of an asset that might not actually have changed at all.</p>
+<p>&quot;Yeah, whatever. Thanks buddy. I get to muck around with query strings every time I change something on my site, now. A real prince <em>you</em> are, pal.&quot; I understand. I hate busywork, too. This is where a back end language like PHP comes in handy. By using the language's <a href="http://php.net/md5_file" rel="noopener"><code>md5_file</code></a> function, we can create an MD5 checksum of the asset we want to version, and use <em>that</em> as the value in the query string parameter. This works great because the checksum is generated based on the contents of the file, and not some other arbitrary aspect of it. If you push a new version of your site to production, and your assets never change, the checksum value stays the same. It only changes if the file contents do. This behavior is preferred to using something like a file's last modified time, where accidental modifications of a file in production can force a download of an asset that might not actually have changed at all.</p>
 <?php
 $sources = array(
 	"img" => array(
 		"src" => "/img/blog/bust-caches-like-a-pro/hammer-man.svg"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/bust-caches-like-a-pro/hammer-man.svg",
-		"width" => "382",
-		"height" => "422"
 	)
 );
-echo(generateImageMarkup(true, false, $sources, $isAmp, "I have come to help you bust your caches."));
+echo(generateImageMarkup(true, false, $sources, "I have come to help you bust your caches."));
 ?>
 <p>Okay, enough of the malarkey. Let's look at an example. I use the following approach on this site, and it works well for my purposes. It starts off with an array of assets I want to version like so:</p>
 <div class="code-container"><pre><code>
@@ -86,7 +76,7 @@ mkdir -p /var/www/caches
 <div class="code-container"><pre><code>
 tmpfs /var/www/caches tmpfs size=4m,uid=1001,gid=1001,mode=0755 0 0
 </code></pre></div>
-<p>For those of you uninitiated to how this works, we're mounting a <code>tmpfs</code> volume at <code>/var/www/caches</code>. We set a <code>size</code> value of <code>4m</code>, which means we're allocating 4 megabytes to the volume. For the purposes of caching checksum strings, that's <i>way</i> more than what's needed, but it's good to have room to grow. The <code>uid</code> and <code>gid</code> values are the IDs for the the user and group that own the volume. In this case, the user and group is the owner of the <code>httpd</code> server process specified in my server configuration. <code>mode</code> is the <code>chmod</code> value that defines the permissions for the volume. In this case, I specified <code>0755</code>, which means I want everybody to be able to read and execute contents on the volume, but I only want the <code>httpd</code> process owner to be able to read, execute <i>and</i> write to the <code>tmpfs</code> volume. The last two <code>0</code>s turn off automatic backups and integrity (<code>fsck</code>) checking. After adding this new volume, I'll run <code>mount -a</code>, which will mount all drives mentioned in <code>/etc/fstab</code> (at least in CentOS.) Because this definition is in <code>fstab</code>, it'll get remounted if the system reboots.</p>
+<p>For those of you uninitiated to how this works, we're mounting a <code>tmpfs</code> volume at <code>/var/www/caches</code>. We set a <code>size</code> value of <code>4m</code>, which means we're allocating 4 megabytes to the volume. For the purposes of caching checksum strings, that's <em>way</em> more than what's needed, but it's good to have room to grow. The <code>uid</code> and <code>gid</code> values are the IDs for the the user and group that own the volume. In this case, the user and group is the owner of the <code>httpd</code> server process specified in my server configuration. <code>mode</code> is the <code>chmod</code> value that defines the permissions for the volume. In this case, I specified <code>0755</code>, which means I want everybody to be able to read and execute contents on the volume, but I only want the <code>httpd</code> process owner to be able to read, execute <em>and</em> write to the <code>tmpfs</code> volume. The last two <code>0</code>s turn off automatic backups and integrity (<code>fsck</code>) checking. After adding this new volume, I'll run <code>mount -a</code>, which will mount all drives mentioned in <code>/etc/fstab</code> (at least in CentOS.) Because this definition is in <code>fstab</code>, it'll get remounted if the system reboots.</p>
 <p>All that's left to do now is modify the <code>cacheString</code> function to read from/write to the <code>tmpfs</code> volume for checksum strings:</p>
 <div class="code-container"><pre><code>
 function cacheString($cacheKey, $string, $pathPrefix){
@@ -112,4 +102,4 @@ function cacheString($cacheKey, $string, $pathPrefix){
 }
 </code></pre></div>
 <p>Boom. My site's global assets are now automatically versioned. Whenever I'm ready to push updated assets to production on this site, I run a deploy script. Part of the deploy script empties the <code>/var/www/caches/</code> directory, which allows new checksums to be generated. These caches stay primed until the next site update. Did I overdo it? Yeah, probably, but the good news is that I don't have to worry about versioning my assets ever again. I just write code, check it into my git repository, and deploy.</p>
-<p>How do <i>you</i> invalidate caches on your site? Any ideas for improvements? Is my process awful? Chime in below!</p>
+<p>How do <em>you</em> invalidate caches on your site? Any ideas for improvements? Is my process awful? Chime in below!</p>

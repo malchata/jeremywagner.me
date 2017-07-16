@@ -21,21 +21,16 @@ $sources = array(
 	),
 	"img" => array(
 		"src" => "/img/blog/stop-using-the-protocol-relative-url/gomer-pyle-1x.jpg"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/stop-using-the-protocol-relative-url/gomer-pyle-1x.jpg",
-		"width" => "384",
-		"height" => "216"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, $isAmp, "What could possibly go wrong?"));
+echo(generateImageMarkup(true, true, $sources, "What could possibly go wrong?"));
 ?>
-<p>When Paul Irish wrote about this in 2010, it was a great piece of advice. We were living in a time when sites only adopted HTTPS when absolutely necessary. The web is a different place now, though. We're rapidly moving toward a &quot;secure by default&quot; mindset, even for content that may not be considered especially sensitive. This is a <i>good thing</i>.</p>
+<p>When Paul Irish wrote about this in 2010, it was a great piece of advice. We were living in a time when sites only adopted HTTPS when absolutely necessary. The web is a different place now, though. We're rapidly moving toward a &quot;secure by default&quot; mindset, even for content that may not be considered especially sensitive. This is a <em>good thing</em>.</p>
 <p>Paul Irish has since changed his stance, and now advises against using this URL scheme to reference cross-origin resources. His rationale is that while using the scheme on HTTPS pages is safe, the reverse is not true. Using the scheme on a non-secure page will retrieve cross-origin assets in a non-secure fashion. This isn't good, and it's rather easy to just slap an <code>https://</code> protocol on your URLs to ensure that your site is completely secure.</p>
 <p>The problem isn't just with security, however. This URL scheme has the potential to hurt performance. Many of the new and shiny features that are starting to come into prominence will only work if SSL is enabled, and if you're using CDN-hosted resources over HTTP, you're missing out.</p>
 <h2>HTTP/2</h2>
-<p>The biggest thing you're missing out on if you use the protocol-relative URL scheme on non-secure pages is HTTP/2. HTTP/2 solves a number of performance problems for us. The big problem it solves is head of line blocking. In HTTP/1, requests are batched together and executed in small batches (usually six at a time). The next batch of requests, however, can't begin to download until <i>all</i> of the requests in the previous batch have completed.</p>
-<p>If you have a website that grabs a lot of resources from a single CDN over an insecure connection, this could be problematic if you use the protocol-relative URL scheme on a non-secure page. You could be forcing a <i>downgrade</i> to HTTP/1, thus incurring a performance penalty. Below, you can see a request for <code>jquery.min.js</code> on <a href="https://cdnjs.com" rel="noopener">Cloudflare's CDN</a> on both HTTP and HTTPS:</p>
+<p>The biggest thing you're missing out on if you use the protocol-relative URL scheme on non-secure pages is HTTP/2. HTTP/2 solves a number of performance problems for us. The big problem it solves is head of line blocking. In HTTP/1, requests are batched together and executed in small batches (usually six at a time). The next batch of requests, however, can't begin to download until <em>all</em> of the requests in the previous batch have completed.</p>
+<p>If you have a website that grabs a lot of resources from a single CDN over an insecure connection, this could be problematic if you use the protocol-relative URL scheme on a non-secure page. You could be forcing a <em>downgrade</em> to HTTP/1, thus incurring a performance penalty. Below, you can see a request for <code>jquery.min.js</code> on <a href="https://cdnjs.com" rel="noopener">Cloudflare's CDN</a> on both HTTP and HTTPS:</p>
 <?php
 $sources = array(
 	"source" => array(
@@ -50,23 +45,18 @@ $sources = array(
 	),
 	"img" => array(
 		"src" => "/img/blog/stop-using-the-protocol-relative-url/https-vs-http-1x.png"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/stop-using-the-protocol-relative-url/https-vs-http-1x.png",
-		"width" => "359",
-		"height" => "98"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, $isAmp, "Note the values of the protocol and scheme columns."));
+echo(generateImageMarkup(true, true, $sources, "Note the values of the protocol and scheme columns."));
 ?>
 <p>When the resource is requested over HTTPS, the value of the protocol column is &quot;h2&quot;, which signifies that the resource is being transmitted using HTTP/2. However, when the same resource is requested on the same domain over an insecure HTTP connection, the connection downgrades to HTTP/1.1.</p>
 <p>Avoiding head of line blocking isn't the only reason to embrace HTTP/2. This new protocol compresses headers that are transmitted with requests and responses, something that HTTP/1 doesn't do. If you want to shave a few more bytes off of those requests, then slap that <code>https://</code> on your CDN references.</p>
-<p><b>Side note:</b> HTTP/2 isn't the only protocol you could be missing out on. Google Fonts uses the QUIC protocol, which uses UDP instead of TCP. Like HTTP/2, this protocol requires an HTTPS connection.</p>
+<p><strong>Side note:</strong> HTTP/2 isn't the only protocol you could be missing out on. Google Fonts uses the QUIC protocol, which uses UDP instead of TCP. Like HTTP/2, this protocol requires an HTTPS connection.</p>
 <h2>Brotli</h2>
 <p>Google's been hard at work on <a href="https://github.com/google/brotli">Brotli</a>, its contender to the venerable gzip. Brotli support now ships with Chrome as of version 50, and Firefox has supported it since version 44. Other Chromium-based browsers such as Opera 38+ are throwing in support for it as well.</p>
 <p><a href="http://google-opensource.blogspot.com/2015/09/introducing-brotli-new-compression.html" rel="noopener">Google has sung the praises of Brotli</a>, and is even used for offline compression of WOFF2 font files, yielding additional savings over its WOFF predecessor. When used on web servers, it can be a mixed blessing. I'm currently using a build of <a href="https://github.com/kjdev/apache-mod-brotli" rel="noopener">mod_brotli</a> for this site, and it yields a modest performance gain of only around 3-5% at the default settings when compared to gzip's defaults.</p>
-<p>In my book <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" rel="noopener"><i>Web Performance in Action</i></a>, I noted that the gains are relatively modest unless you're using very high compression settings. The problem with this, though, is that the compression takes so long that it actually performs <i>worse</i> than gzip when you factor in latency. There are some ways around this, particularly if you cache the compressed result on disk, and serve that content on subsequent requests. This approach is called static compression. With it, we can realize some serious performance gains using Brotli without suffering from its current performance problems at high compression settings.</p>
-<p>The thing about Brotli is that, like HTTP/2, you <i>must</i> be using HTTPS in order to benefit from it. Currently, Google Fonts serves CSS using Brotli (and HTTP/2!) over HTTPS, and gzip over HTTP. This may not sound like a big deal, but there are two things to remember about Brotli:</p>
+<p>In my book <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" rel="noopener"><em>Web Performance in Action</em></a>, I noted that the gains are relatively modest unless you're using very high compression settings. The problem with this, though, is that the compression takes so long that it actually performs <em>worse</em> than gzip when you factor in latency. There are some ways around this, particularly if you cache the compressed result on disk, and serve that content on subsequent requests. This approach is called static compression. With it, we can realize some serious performance gains using Brotli without suffering from its current performance problems at high compression settings.</p>
+<p>The thing about Brotli is that, like HTTP/2, you <em>must</em> be using HTTPS in order to benefit from it. Currently, Google Fonts serves CSS using Brotli (and HTTP/2!) over HTTPS, and gzip over HTTP. This may not sound like a big deal, but there are two things to remember about Brotli:</p>
 <ol>
 	<li>Not all CDNs have adopted Brotli, but they likely will at some point. When they eventually do, they have tremendous resources to statically compress content and serve it to the client without performance penalties.</li>
 	<li>Brotli is a nascent technology compared to gzip, which has been around for quite a long time. As Brotli is further developed, it could improve.</li>

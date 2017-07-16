@@ -2,18 +2,11 @@
 	<p class="footer-copy">All content &copy; 2016-<?php echo(date("Y")); ?> Jeremy Wagner, unless where otherwise noted.</p>
 </footer>
 <?php
-if($isHttp2 === true){
-	?>
-	<script src="/js/lazyload.js?v=<?php echo($versions["lazyload.js"]); ?>" async defer></script>
-	<script src="/js/debounce.js?v=<?php echo($versions["debounce.js"]); ?>" defer></script>
-	<script src="/js/nav.js?v=<?php echo($versions["nav.js"]); ?>" defer></script>
-	<script src="/js/attach-nav.js?v=<?php echo($versions["attach-nav.js"]); ?>" defer></script>
-	<?php
-}
-else{
-	?><script src="/js/scripts.js?v=<?php echo($versions["scripts.js"]); ?>" defer></script><?php
+if($isDevServer === false){
+	?><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-3517427-21', 'auto');ga('send', 'pageview');</script><?php
 }
 ?>
+<script src="/js/scripts.js?v=<?php echo($versions["scripts.js"]); ?>" async defer></script>
 <noscript>
 	<img src="/img/global/blank.gif?ua=<?php echo($ua); ?>">
 </noscript>

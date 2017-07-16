@@ -16,14 +16,9 @@ $sources = array(
 	),
 	"img" => array(
 		"src" => "/img/blog/svg-media-query/weekly-timber-1x.png"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/svg-media-query/weekly-timber-1x.png",
-		"width" => "960",
-		"height" => "402"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, $isAmp, "The site logo appears on mobile in the upper left hand corner in white, and on desktop just above the navigation in green."));
+echo(generateImageMarkup(true, true, $sources, "The site logo appears on mobile in the upper left hand corner in white, and on desktop just above the navigation in green."));
 ?>
 <p>As it tends to happen, I overlooked this detail until after the client approved the designs, so I was on the hook. Being borderline obsessive about website optimization, I knew I couldn't slap this together without thinking things over. I had two options. I could use two different images, which brought on slight discomfort.</p>
 <?php
@@ -40,14 +35,9 @@ $sources = array(
 	),
 	"img" => array(
 		"src" => "/img/blog/svg-media-query/i-am-dead-inside.jpg"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/svg-media-query/i-am-dead-inside.jpg",
-		"width" => "500",
-		"height" => "281"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, $isAmp, "I concur, Mr. Scott."));
+echo(generateImageMarkup(true, true, $sources, "I concur, Mr. Scott."));
 ?>
 <p>Or I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
 <p>Thankfully, it dawned on me to use CSS in this SVG image. Because CSS is valid in SVG, that also means you can use media queries!</p>
@@ -73,14 +63,9 @@ echo(generateImageMarkup(true, true, $sources, $isAmp, "I concur, Mr. Scott."));
 $sources = array(
 	"img" => array(
 		"src" => "/img/blog/svg-media-query/weekly-logo-1x.png"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/svg-media-query/weekly-logo-1x.png",
-		"width" => "363",
-		"height" => "153"
 	)
 );
-echo(generateImageMarkup(true, false, $sources, $isAmp, "The mobile logo treatment."));
+echo(generateImageMarkup(true, false, $sources, "The mobile logo treatment."));
 ?>
 <p>So what we're grappling with here is a logo that's mostly white, but the tree on the right has a green stroke behind it to prevent it from bleeding into the rest of the logo. This is all well and good until you realize that this same logo has to exist on a white background when it hits the larger breakpoint. White on white just isn't going to work, so we need to use a media query to help us out.</p>
 <h2>How Media Queries Work in SVG</h2>
@@ -118,14 +103,9 @@ $sources = array(
 	"img" => array(
 		"srcset" => "/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x",
 		"src" => "/img/blog/svg-media-query/new-treatment-1x.png"
-	),
-	"amp-img" => array(
-		"src" => "/img/blog/svg-media-query/new-treatment-1x.png",
-		"width" => "937",
-		"height" => "260"
 	)
 );
-echo(generateImageMarkup(true, false, $sources, $isAmp, "Our single SVG image accommodating both logo treatments."));
+echo(generateImageMarkup(true, false, $sources, "Our single SVG image accommodating both logo treatments."));
 ?>
-<p>That's it! Of course, this use case is very simple, and there's more capability in using media queries in your SVGs than just inverting fill colors. Experiment with CSS properties you know. See what works, see what doesn't, and <i>always</i> test across browsers.</p>
+<p>That's it! Of course, this use case is very simple, and there's more capability in using media queries in your SVGs than just inverting fill colors. Experiment with CSS properties you know. See what works, see what doesn't, and <em>always</em> test across browsers.</p>
 <p>For a deeper dive on CSS in your SVGs, check out this <a href="https://www.smashingmagazine.com/2014/11/styling-and-animating-svgs-with-css/" rel="noopener">great article by Sara Soueidan</a> on Smashing Magazine about styling and animating SVGs. There's a lot more under the hood than the example shown in this post.</p>
