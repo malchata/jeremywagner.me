@@ -1,15 +1,4 @@
 <?php
-$lastModifiedTime = filemtime(__FILE__);
-
-// Always send headers
-header("Last-Modified: " . gmdate("D, d M Y H:i:s", $lastModifiedTime) . " GMT");
-
-// Exit if not modified
-if(@strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"]) == $lastModifiedTime){
-	header("HTTP/1.1 304 Not Modified");
-	exit;
-}
-
 // The current host root URL (with security context)
 $currentHost = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"];
 
