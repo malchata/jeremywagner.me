@@ -78,5 +78,5 @@
 		}
 	};
 
-	document.onreadystatechange = lazyLoader.init;
+	window.addEventListener("load", lazyLoader.init);
 })(window, document);
