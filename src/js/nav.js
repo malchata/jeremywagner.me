@@ -1,5 +1,5 @@
 (function(window, document){
-	document.addEventListener("DOMContentLoaded", function(){
+	window.addEventListener("onload", function(){
 		bodyElement = document.getElementsByTagName("body")[0];
 		navIcon = document.getElementById("nav-icon");
 		navTrigger = document.getElementById("nav-trigger");
@@ -28,5 +28,5 @@
 			pageFade.classList.remove("show");
 			bodyElement.style.overflowY = "visible";
 		}
-	});
+	}, false);
 })(window, document);
