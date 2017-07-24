@@ -7,13 +7,8 @@
 <meta name="og:description" content="{{description}}">
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700" type="text/css">
 <link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
 <script>document.documentElement.classList.remove("no-js");</script>
-<?php if(isset($_COOKIE["fonts-loaded"]) === false){
-	?><script src="/js/load-fonts.js?v=<?php echo($versions["load-fonts.js"]); ?>" async></script><?php
-}
-?>
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo($currentHost); ?>/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo($currentHost); ?>/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo($currentHost); ?>/apple-touch-icon-72x72.png">

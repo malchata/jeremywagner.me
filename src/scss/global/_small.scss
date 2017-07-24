@@ -10,7 +10,7 @@ header,
 
 #page-fade{
 	position: fixed;
-	background: @translucentBlack;
+	background: $translucentBlack;
 	display: none;
 	z-index: 3;
 
@@ -51,13 +51,13 @@ header,
 .site{
 	text-align: center;
 	text-transform: uppercase;
-	font: 700 16px/1 @sansSerif;
+	font: 700 16px/#{1} $montserrat, sans-serif;
 	margin: 0 0 8px;
 }
 
 .name{
-	background: @blue;
-	color: @lightBlue;
+	background: $blue;
+	color: $lightBlue;
 	padding: 3px 0;
 }
 
@@ -75,17 +75,17 @@ h3,
 p,
 .post ul li,
 .post ol li{
-	color: @blue;
+	color: $blue;
 }
 
 a,
 .footer-copy{
-	color: @lightBrown;
+	color: $lightBrown;
 }
 
 .tagline{
 	display: none;
-	font: 400 11px/@lineHeightRatio @sansSerif;
+	font: 700 11px/#{$lineHeightRatio} $montserrat, sans-serif;
 }
 
 #nav-icon{
@@ -96,11 +96,11 @@ a,
 	height: 32px;
 	top: 20px;
 	right: 10px;
-	transition: all @longDuration @jauntyEasing;
+	transition: all $longDuration $jauntyEasing;
 }
 
 .bar{
-	background: @lightBrown;
+	background: $lightBrown;
 	position: absolute;
 	left: 0;
 	width: 100%;
@@ -109,18 +109,18 @@ a,
 
 	&:nth-child(2){
 		top: 0;
-		transition: opacity @longDuration @jauntyEasing;
+		transition: opacity $longDuration $jauntyEasing;
 	}
 
 	&:nth-child(3),
 	&:nth-child(4){
 		top: 12px;
-		transition: transform @longerDuration @jauntyEasing;
+		transition: transform $longerDuration $jauntyEasing;
 	}
 
 	&:nth-child(5){
 		top: 24px;
-		transition: opacity @longDuration @jauntyEasing;
+		transition: opacity $longDuration $jauntyEasing;
 	}
 }
 
@@ -148,13 +148,13 @@ a,
 }
 
 nav{
-	background: @beige;
+	background: $beige;
 	position: fixed;
 	top: 0;
 	right: 0;
 	padding: 20px 60px 20px 20px;
 	transform: translateX(100%);
-	transition: transform @shortDuration ease-in-out;
+	transition: transform $shortDuration ease-in-out;
 	z-index: 4;
 
 	&.open{
@@ -212,7 +212,7 @@ nav{
 }
 
 .code-container{
-	background: @lightBlue;
+	background: $lightBlue;
 	border-radius: 2px;
 }
 
@@ -224,7 +224,7 @@ pre{
 code{
 	margin: 0;
 	padding: 0;
-	font: 400 16px/@lineHeightRatio @code;
+	font: 400 16px/#{$lineHeightRatio} $code;
 }
 
 a{
@@ -234,14 +234,14 @@ a{
 }
 
 .menu-item{
-	font: 700 22px/@lineHeightRatio @sansSerif;
+	font: 700 22px/#{$lineHeightRatio} $montserrat, sans-serif;
 	text-transform: uppercase;
 	position: relative;
 }
 
 .menu-link,
 .date{
-	color: @brown;
+	color: $brown;
 }
 
 .menu-link{
@@ -275,7 +275,7 @@ q,
 }
 
 h1{
-	font: 400 26px/@lineHeightRatio @serif;
+	font: 400 26px/#{$lineHeightRatio} $serif;
 	margin: 0 0 8px;
 
 	a{
@@ -284,7 +284,7 @@ h1{
 }
 
 p{
-	font: 400 19px/@lineHeightRatio @serif;
+	font: 400 19px/#{$lineHeightRatio} $serif;
 }
 
 p > code,
@@ -292,7 +292,7 @@ li > code,
 a > code{
 	border-radius: 2px;
 	padding: 1px 2px;
-	background: @lightBlue;
+	background: $lightBlue;
 }
 
 .date{
@@ -302,13 +302,13 @@ a > code{
 
 q,
 cite{
-	font: italic 22.8px/@lineHeightRatio @serif;
-	color: lighten(@blue, 16.18%);
+	font: italic 22.8px/#{$lineHeightRatio} $serif;
+	color: lighten($blue, 16.18%);
 	display: block;
 }
 
 q{
-	border-left: 4px solid @grey2;
+	border-left: 4px solid $grey2;
 	padding: 0 40px 0 52px;
 	quotes: "“" "”" "‘" "’";
 
@@ -318,7 +318,7 @@ q{
 		display: block;
 		line-height: 1;
 		font-style: normal;
-		color: @grey2;
+		color: $grey2;
 	}
 
 	&:before{
@@ -341,7 +341,7 @@ q{
 			display: inline;
 			font-size: 22.8px;
 			margin: 0;
-			color: lighten(@blue, 16.18%);
+			color: lighten($blue, 16.18%);
 		}
 	}
 }
@@ -362,14 +362,14 @@ figure{
 figcaption{
 	span{
 		padding: 5px 8px;
-		font: 400 18px/@lineHeightRatio @serif;
+		font: 400 18px/#{$lineHeightRatio} $serif;
 		text-align: center;
 	}
 }
 
 .figure-image{
-	color: @lightBlue;
-	border-color: @lightBlue;
+	color: $lightBlue;
+	border-color: $lightBlue;
 }
 
 picture + figcaption,
@@ -387,30 +387,30 @@ picture + noscript + figcaption,
 		padding: 0 0 0 18px;
 
 		li{
-			font: 400 19px/@lineHeightRatio @serif;
+			font: 400 19px/#{$lineHeightRatio} $serif;
 		}
 	}
 }
 
 h2{
-	font: 700 23px/@lineHeightRatio @serif;
+	font: 700 23px/#{$lineHeightRatio} $serif;
 	position: relative;
 }
 
 h3{
-	font: 400 21px/@lineHeightRatio @serif;
+	font: 400 21px/#{$lineHeightRatio} $serif;
 }
 
 .more{
 	padding: 5px 7px;
-	font: 400 20px/@lineHeightRatio @serif;
+	font: 400 20px/#{$lineHeightRatio} $serif;
 	text-decoration: none;
 }
 
 .more,
 figcaption span{
-	color: @white;
-	background: @lightBrown;
+	color: $white;
+	background: $lightBrown;
 	display: inline-block;
 }
 
@@ -421,7 +421,7 @@ footer{
 }
 
 .footer-copy{
-	font: 400 11px/@lineHeightRatio @serif;
+	font: 400 11px/#{$lineHeightRatio} $serif;
 	text-align: center;
 	margin: 0;
 }

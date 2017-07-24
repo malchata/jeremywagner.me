@@ -1,4 +1,4 @@
-@media (min-width: @largeBreakpoint){
+@media (min-width: $largeBreakpoint){
 	body{
 		padding: 20px 20px 0;
 		overflow-y: visible !important;
@@ -7,7 +7,7 @@
 	header{
 		margin: 0 0 -76px;
 		padding: 0 0 0 percentage(20 / 984);
-		max-width: @maxContainerWidth;
+		max-width: $maxContainerWidth;
 		width: percentage(757 / 984);
 	}
 
@@ -18,7 +18,7 @@
 	}
 
 	.columns{
-		max-width: @maxContainerWidth;
+		max-width: $maxContainerWidth;
 		overflow: auto;
 		margin: 0 auto;
 	}
@@ -36,14 +36,14 @@
 		float: left;
 		width: percentage(757 / 984);
 		padding: 98px percentage(20 / 984) 20px;
-		background: @lightGrey1;
+		background: $lightGrey1;
 		position: relative;
 		z-index: 1;
 
 		&:before{
 			width: 100%;
 			height: 100px;
-			background: @lightGrey1;
+			background: $lightGrey1;
 			position: absolute;
 			left: 0;
 			top: -22px;
@@ -60,7 +60,7 @@
 
 		&:before{
 			height: 16px;
-			background: @white;
+			background: $white;
 			width: 107.5%;
 			position: relative;
 			left: -3.75%;
@@ -76,7 +76,7 @@
 			top: 0;
 			left: -1.25%;
 			z-index: 3;
-			border-top: 4px solid @grey3;
+			border-top: 4px solid $grey3;
 		}
 	}
 
@@ -121,7 +121,7 @@
 			content: "";
 			height: 100%;
 			width: 32px;
-			background: @blue;
+			background: $blue;
 			position: absolute;
 			top: 0;
 			right: -8px;
@@ -165,7 +165,7 @@
 	}
 
 	#nav-container{
-		transition: top @shortDuration ease-out;
+		transition: top $shortDuration ease-out;
 		max-width: 262.75px;
 	}
 
@@ -187,7 +187,7 @@
 	}
 }
 
-@media (min-width: @extraLargeBreakpoint){
+@media (min-width: $extraLargeBreakpoint){
 	.name{
 		font-size: 29px;
 		line-height: 1;
@@ -217,7 +217,7 @@
 		left: -42.5px;
 		top: -10px;
 		z-index: 3;
-		border: 1px solid @grey1;
+		border: 1px solid $grey1;
 		width: 35px;
 		height: 44px;
 		background: url("/img/global/book-1x.png");
@@ -228,7 +228,7 @@
 	}
 }
 
-@media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-width: @extraLargeBreakpoint){
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-width: $extraLargeBreakpoint){
 	.book-image{
 		background: url("/img/global/book-2x.png");
 		background-size: contain;

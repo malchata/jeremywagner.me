@@ -5,7 +5,8 @@ const plumber = require("gulp-plumber");
 const livereload = require("gulp-livereload");
 const del = require("del");
 const changed = require("gulp-changed");
-const less = require("gulp-less");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const autorem = require("autorem");
@@ -26,6 +27,9 @@ const gzip = require("gulp-gzip");
 const brotli = require("gulp-brotli");
 const fs = require("fs");
 const path = require("path");
+const ttf2eot = require("gulp-ttf2eot");
+const ttf2woff = require("gulp-ttf2woff");
+const ttf2woff2 = require("gulp-ttf2woff2");
 
 /*** Module options ***/
 
@@ -77,17 +81,14 @@ const moduleOpts = {
 /*** CSS build task ***/
 
 const buildCSS = ()=>{
-	let src = ["src/less/global.less"],
+	let src = ["src/scss/global.scss"],
 		dest = "dist/css";
 
 	return gulp.src(src)
-		.pipe(less().on("error", (err)=>{
-			util.log(err);
-			this.emit("end");
-		}))
-		.pipe(postcss([
-			autoprefixer(moduleOpts.autoprefixer), autorem(), cssnano(moduleOpts.cssnano)
-		]))
+		.pipe(plumber())
+		.pipe(sass().on("error", sass.logError))
+		.pipe(postcss([autoprefixer(moduleOpts.autoprefixer), autorem(), cssnano(moduleOpts.cssnano)]))
+		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest(dest));
 };
 
@@ -143,9 +144,7 @@ const buildJS = ()=>{
 const concatJS = ()=>{
 	let src = [
 			"dist/**/*.js",
-			"!dist/js/scripts.js",
-			"!dist/js/load-fonts.js",
-			"!dist/js/fontfaceobserver.js",
+			"!dist/js/scripts.js"
 		],
 		dest = "dist/js";
 
@@ -225,16 +224,58 @@ const brotliCompress = ()=>{
 exports.gzipCompress = gzipCompress;
 exports.brotliCompress = brotliCompress;
 
+/*** Font Tasks ***/
+
+const copyTTF = ()=>{
+	let src = "src/fonts/montserrat-bold-subset.ttf",
+		dest = "dist/css/fonts";
+
+	return gulp.src(src)
+		.pipe(gulp.dest(dest));
+};
+
+const convertToEOT = ()=>{
+	let src = "src/fonts/montserrat-bold-subset.ttf",
+		dest = "dist/css/fonts";
+
+	return gulp.src(src)
+		.pipe(ttf2eot())
+		.pipe(gulp.dest(dest));
+};
+
+const convertToWOFF = ()=>{
+	let src = "src/fonts/montserrat-bold-subset.ttf",
+		dest = "dist/css/fonts";
+
+	return gulp.src(src)
+		.pipe(ttf2woff())
+		.pipe(gulp.dest(dest));
+}
+
+const convertToWOFF2 = ()=>{
+	let src = "src/fonts/montserrat-bold-subset.ttf",
+		dest = "dist/css/fonts";
+
+	return gulp.src(src)
+		.pipe(ttf2woff2())
+		.pipe(gulp.dest(dest));
+}
+
+const convertFonts = gulp.parallel(copyTTF, convertToEOT, convertToWOFF, convertToWOFF2);
+
+exports.convertFonts = convertFonts;
+
 /*** Utility tasks ***/
 
 const watch = ()=>{
 	livereload.listen();
 
-	gulp.watch("src/less/**/*.less", gulp.series(buildCSS, buildHTML));
+	gulp.watch("src/scss/**/*.scss", gulp.series(buildCSS, buildHTML));
 	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
 	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS, buildHTML));
 	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
 	gulp.watch("src/*.png", createFavicons);
+	gulp.watch("src/fonts/montserrat-bold-subset.ttf", convertFonts);
 };
 
 const clean = ()=>{
@@ -250,9 +291,9 @@ const copyFiles = ()=>{
 		.pipe(gulp.dest(dest));
 };
 
-const build = gulp.series(clean, gulp.parallel(buildCSS, buildHTML, gulp.series(buildJS, concatJS), optimizeImages, generateWebPImages, createFavicons, copyFiles), gulp.parallel(gzipCompress, brotliCompress));
+const build = gulp.series(clean, gulp.parallel(buildCSS, buildHTML, gulp.series(buildJS, concatJS), optimizeImages, generateWebPImages, createFavicons, copyFiles, convertFonts), gulp.parallel(gzipCompress, brotliCompress));
 
-exports.default = watch;
+exports.default = gulp.series(build, watch);
 exports.clean = clean;
 exports.copyFiles = copyFiles;
 exports.build = build;

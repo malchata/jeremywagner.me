@@ -34,16 +34,8 @@ else{
 // Asset versioning
 $versions = array(
 	"global.css" => cacheString("global.css", "/css/global.css", $pathPrefix),
-	"scripts.js" => cacheString("scripts.js", "/js/scripts.js", $pathPrefix),
-	"load-fonts.js" => cacheString("load-fonts.js", "/js/load-fonts.js", $pathPrefix)
+	"scripts.js" => cacheString("scripts.js", "/js/scripts.js", $pathPrefix)
 );
-
-// Font Loading Class Control
-function fontsLoaded(){
-	if(isset($_COOKIE["fonts-loaded"])){
-		return "fonts-loaded";
-	}
-}
 
 // Cache string generator
 function cacheString($cacheKey, $string, $pathPrefix){
