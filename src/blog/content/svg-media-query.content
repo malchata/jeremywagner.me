@@ -62,6 +62,7 @@ echo(generateImageMarkup(true, true, $sources, "I concur, Mr. Scott."));
 <?php
 $sources = array(
 	"img" => array(
+		"placeholder-src" => "/img/blog/svg-media-query/weekly-logo-1x-placeholder.jpg",
 		"src" => "/img/blog/svg-media-query/weekly-logo-1x.png"
 	)
 );

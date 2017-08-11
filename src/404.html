@@ -1,0 +1,26 @@
+<?php require_once("../preprocessing.php"); ?>
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin 404 Message -->
+				<article class="post summary">
+					<h1>Uh oh! I couldn't find that!</h1>
+					<p>This is a tad embarrassing, but I couldn't find that thing you wanted. Maybe <a href="/">head off to the home page</a> and start from there? Geez, I'm really sorry about this.</p>
+					<a href="/" class="more">&laquo; Go Home</a>
+				</article>
+				<!-- End 404 Message -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>
