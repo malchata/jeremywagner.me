@@ -1,7 +1,0 @@
-{
-	"title": "Simplify, Simplify",
-	"featureImage": "/img/blog/simplify-simplify/og-image.png",
-	"date": "August 2, 2017",
-	"description": "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!",
-	"categories": ["image optimization", "web development", "web performance", "bash"]
-}
