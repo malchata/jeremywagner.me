@@ -48,7 +48,7 @@
     "gulp-postcss": "^7.0.0",
     "gulp-prepack": "0.0.2",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.0",
+    "gulp-sourcemaps": "^2.6.1",
     "gulp-ttf2eot": "^1.1.2",
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^2.0.2",

@@ -33,28 +33,9 @@ else{
 
 // Asset versioning
 $versions = array(
-	"global.css" => cacheString("global.css", "/css/global.css", $pathPrefix),
-	"scripts.js" => cacheString("scripts.js", "/js/scripts.js", $pathPrefix)
+	"global.css" => crc32(file_get_contents($pathPrefix . "/css/global.css")),
+	"scripts.js" => crc32(file_get_contents($pathPrefix . "/js/scripts.js"))
 );
-
-// Cache string generator
-function cacheString($cacheKey, $string, $pathPrefix){
-	$checksumCacheDir = "/var/www/caches/cache-keys/";
-	$checksumCache = "/var/www/caches/cache-keys/" . $cacheKey;
-
-	if(file_exists($checksumCache)){
-		return file_get_contents($checksumCache);
-	}
-	else{
-		if(is_dir($checksumCacheDir) === false){
-			mkdir($checksumCacheDir, 0755);
-		}
-
-		$checksum = substr(md5_file($pathPrefix . $string), 0, 8);
-		file_put_contents($checksumCache, $checksum, LOCK_EX);
-		return $checksum;
-	}
-}
 
 // Image markup generator
 function generateImageMarkup($lazy, $picture, $sources, $caption){
