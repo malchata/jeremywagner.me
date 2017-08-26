@@ -168,33 +168,42 @@ nav{
 
 .twitter,
 .github,
-.email{
+.email,
+.rss{
 	display: inline-block;
 	width: 22px;
 	margin: 0 11px 0 0;
+	font-size: 0;
 }
 
 .twitter,
 .github,
 .email,
+.rss,
 #jeremy{
 	background: url("../img/global/sprite.svg") no-repeat;
-	background-size: 312.23px 409.51px;
+	background-size: 312.2px 409.5px;
+	vertical-align: bottom;
 }
 
 .twitter{
 	background-position: 0 0;
-	height: 17.845px;
+	height: 17.913px;
 }
 
 .github{
 	background-position: -44px -44px;
-	height: 21.457px;
+	height: 21.776px;
 }
 
 .email{
 	background-position: -66px -66px;
 	height: 22px;
+}
+
+.rss{
+	background-position: -22px -22px;
+	height: 22.96px;
 	margin: 0;
 }
 

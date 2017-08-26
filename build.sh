@@ -1,9 +1,3 @@
-clear
-echo "-------------------"
-echo "Pulling from git..."
-echo "-------------------"
-git pull
-
 echo ""
 echo "----------------"
 echo "Building site..."

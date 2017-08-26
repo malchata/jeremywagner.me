@@ -2,21 +2,15 @@
 // The current host root URL (with security context)
 $currentHost = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"];
 
+// The current page
+$pageUrl = $currentHost . $_SERVER["REQUEST_URI"];
+
 // Checks to see if a post is a blog
 $isBlog = stristr($_SERVER["REQUEST_URI"], "/blog") !== false;
-
-// Check for the user agent
-if(isset($_SERVER["HTTP_USER_AGENT"]) === true){
-	$ua = urlencode($_SERVER["HTTP_USER_AGENT"]);
-}
-else{
-	$ua = urlencode("no-user-agent");
-}
 
 // Path Prefix Variable
 if($isBlog){
 	$pathPrefix = realpath("./../");
-	$pageUrl = $currentHost . $_SERVER["REQUEST_URI"];
 	$pageId = md5($_SERVER["REQUEST_URI"]);
 }
 else{
@@ -33,8 +27,8 @@ else{
 
 // Asset versioning
 $versions = array(
-	"global.css" => crc32(file_get_contents($pathPrefix . "/css/global.css")),
-	"scripts.js" => crc32(file_get_contents($pathPrefix . "/js/scripts.js"))
+	"global.css" => substr(md5_file($pathPrefix . "/css/global.css"), 0, 8),
+	"scripts.js" => substr(md5_file($pathPrefix . "/js/scripts.js"), 0, 8)
 );
 
 // Image markup generator

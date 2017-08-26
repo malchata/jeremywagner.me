@@ -4,7 +4,8 @@
   "description": "Just my blog.",
   "main": "Gruntfile.js",
   "scripts": {
-    "build": "gulp build"
+    "build": "npx gulp build",
+    "watch": "npx gulp"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,12 @@
     "development"
   ],
   "author": "Jeremy Wagner <jeremy.l.wagner@gmail.com> (https://jeremywagner.me/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/malchata/jeremywagner.me/issues"
   },
   "homepage": "https://github.com/malchata/jeremywagner.me#readme",
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer": "^7.1.2",
     "autorem": "^0.1.1",
     "cssnano": "^3.10.0",
@@ -34,6 +35,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-brotli": "^1.2.0",
     "gulp-changed": "^3.1.0",
+    "gulp-cli": "^1.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-data": "^1.2.1",
     "gulp-ext-replace": "^0.3.0",

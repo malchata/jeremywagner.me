@@ -7,7 +7,7 @@
 <meta name="og:description" content="{{description}}">
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
-<link rel="stylesheet" href="/css/global.css?v=<?php echo($versions["global.css"]); ?>" type="text/css">
+<link rel="stylesheet" href="/css/global.<?php echo($versions["global.css"]); ?>.css" type="text/css">
 <script>document.documentElement.classList.remove("no-js");</script>
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo($currentHost); ?>/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo($currentHost); ?>/apple-touch-icon-114x114.png">
@@ -17,6 +17,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo($currentHost); ?>/apple-touch-icon-152x152.png">
 <link rel="icon" type="image/png" href="<?php echo($currentHost); ?>/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="<?php echo($currentHost); ?>/favicon-16x16.png" sizes="16x16">
+<link rel="canonical" href="<?php echo($pageUrl); ?>">
 <meta name="application-name" content="Jeremy Wagner's Web Development Blog">
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="<?php echo($currentHost); ?>/mstile-144x144.png">

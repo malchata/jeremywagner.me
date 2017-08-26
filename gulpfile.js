@@ -89,7 +89,8 @@ const buildCSS = ()=>{
 		.pipe(sass().on("error", sass.logError))
 		.pipe(postcss([autoprefixer(moduleOpts.autoprefixer), autorem(), cssnano(moduleOpts.cssnano)]))
 		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest(dest));
+		.pipe(gulp.dest(dest))
+		.pipe(livereload());
 };
 
 exports.buildCSS = buildCSS;
@@ -276,6 +277,7 @@ const watch = ()=>{
 	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
 	gulp.watch("src/*.png", createFavicons);
 	gulp.watch("src/fonts/montserrat-bold-subset.ttf", convertFonts);
+	gulp.watch(["src/*.xml", "src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"], copyFiles);
 };
 
 const clean = ()=>{
@@ -283,7 +285,7 @@ const clean = ()=>{
 };
 
 const copyFiles = ()=>{
-	let src = ["src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
+	let src = ["src/*.xml", "src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
 		dest = "dist";
 
 	return gulp.src(src)
