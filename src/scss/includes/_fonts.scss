@@ -6,6 +6,6 @@
 		 url("fonts/montserrat-bold-subset.woff") format("woff"),
 		 url("fonts/montserrat-bold-subset.eot") format("embedded-opentype"),
 		 url("fonts/montserrat-bold-subset.ttf") format("truetype");
-	font-display: optional;
+	font-display: swap;
 	unicode-range: U+20,U+27,U+2E,U+41-50,U+52-57,U+59;
 }
