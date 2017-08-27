@@ -8,7 +8,26 @@
 <meta name="og:title" content="{{title}}">
 <meta name="og:image" content="{{featureImage}}">
 <link rel="stylesheet" href="/css/global.<?php echo($versions["global.css"]); ?>.css" type="text/css">
-<script>document.documentElement.classList.remove("no-js");</script>
+<script>
+	document.documentElement.classList.remove("no-js");
+
+	var supportsWoff2 = (function(win){
+		if(!("FontFace" in win)) return false;
+
+		var f = new FontFace('t', 'url("data:application/font-woff2;base64,d09GMgABAAAAAADcAAoAAAAAAggAAACWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABk4ALAoUNAE2AiQDCAsGAAQgBSAHIBtvAcieB3aD8wURQ+TZazbRE9HvF5vde4KCYGhiCgq/NKPF0i6UIsZynbP+Xi9Ng+XLbNlmNz/xIBBqq61FIQRJhC/+QA/08PJQJ3sK5TZFMlWzC/iK5GUN40psgqvxwBjBOg6JUSJ7ewyKE2AAaXZrfUB4v+hze37ugJ9d+DeYqiDwVgCawviwVFGnuttkLqIMGivmDg") format("woff2")', {});
+		f.load()['catch'](function(){});
+
+		return f.status == 'loading' || f.status == 'loaded';
+	})(this);
+
+	var fontPreload = document.createElement("link");
+	fontPreload.rel = "preload";
+	fontPreload.as = "font";
+
+	supportsWoff2 === true ? fontPreload.href = "/css/fonts/montserrat-bold-subset.woff2" : fontPreload.href = "/css/fonts/montserrat-bold-subset.woff";
+
+	document.getElementsByTagName("head")[0].appendChild(fontPreload);
+</script>
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo($currentHost); ?>/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo($currentHost); ?>/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo($currentHost); ?>/apple-touch-icon-72x72.png">
