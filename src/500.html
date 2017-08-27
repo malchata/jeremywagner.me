@@ -1,0 +1,26 @@
+<?php require_once("../preprocessing.php"); ?>
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		{% include "partials/html-head.html" %}
+	</head>
+	<body>
+		<div id="page-fade"></div>
+		<!-- Begin Content -->
+		<section class="columns">
+			{% include "partials/header.html" %}
+			{% include "partials/nav.html" %}
+			<section class="content">
+				<!-- Begin 404 Message -->
+				<article class="post summary">
+					<h1>Something bad happened.</h1>
+					<p>Oh, man. I don't know how to break it to you, but it seems we've hit a snag with your request. Maybe try refreshing the page to see if this message goes away? If that doesn't work, <a href="/" rel="noopener">you should head back to the home page</a>.</p>
+					<a href="/" class="more">&laquo; Go Home</a>
+				</article>
+				<!-- End 404 Message -->
+			</section>
+		</section>
+		<!-- End Content -->
+		{% include "partials/footer.html" %}
+	</body>
+</html>
