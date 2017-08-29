@@ -277,7 +277,7 @@ const watch = ()=>{
 	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
 	gulp.watch("src/*.png", createFavicons);
 	gulp.watch("src/fonts/montserrat-bold-subset.ttf", convertFonts);
-	gulp.watch(["src/*.xml", "src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"], copyFiles);
+	gulp.watch(["src/*.xml", "src/*.txt", "src/*.ico", "src/google7b88ad726109dad3.html"], copyFiles);
 };
 
 const clean = ()=>{
@@ -285,7 +285,7 @@ const clean = ()=>{
 };
 
 const copyFiles = ()=>{
-	let src = ["src/*.xml", "src/robots.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
+	let src = ["src/*.xml", "src/*.txt", "src/*.ico", "src/google7b88ad726109dad3.html"],
 		dest = "dist";
 
 	return gulp.src(src)

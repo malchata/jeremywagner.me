@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/malchata/jeremywagner.me#readme",
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
+    "autoprefixer": "^7.1.3",
     "autorem": "^0.1.1",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",

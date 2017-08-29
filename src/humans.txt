@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jeremy Wagner -- Developer, Author -- @malchata
+    David Tesch -- Designer
+
+# THANKS
+
+    David Tesch
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, PHP
+    Apache Server Configs, Meyer Reset, Node, Nunjucks, gulp
