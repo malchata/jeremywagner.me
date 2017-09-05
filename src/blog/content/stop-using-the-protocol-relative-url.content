@@ -20,7 +20,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/stop-using-the-protocol-relative-url/gomer-pyle-1x.jpg"
+		"src" => "/img/blog/stop-using-the-protocol-relative-url/gomer-pyle-1x.jpg",
+		"width" => "384",
+		"height" => "216"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "What could possibly go wrong?"));
@@ -44,7 +46,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/stop-using-the-protocol-relative-url/https-vs-http-1x.png"
+		"src" => "/img/blog/stop-using-the-protocol-relative-url/https-vs-http-1x.png",
+		"width" => "359",
+		"height" => "98"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Note the values of the protocol and scheme columns."));

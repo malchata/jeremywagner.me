@@ -21,7 +21,9 @@ cache-control: public, max-age=2592000
 <?php
 $sources = array(
 	"img" => array(
-		"src" => "/img/blog/bust-caches-like-a-pro/angry.jpg"
+		"src" => "/img/blog/bust-caches-like-a-pro/angry.jpg",
+		"width" => "260",
+		"height" => "194"
 	)
 );
 echo(generateImageMarkup(true, false, $sources, "Hey, valued customer! How do you feel about telling your users to reload?"));
@@ -32,16 +34,7 @@ echo(generateImageMarkup(true, false, $sources, "Hey, valued customer! How do yo
 </code></pre></div>
 <p>See that little query string in the <code>href</code> attribute? That part that says <code>?v=1</code>? The browser makes a distinction between an asset URI of <code>css/global.css</code> and <code>css/global.css?v=1</code>. This is great, because as long as your site's HTML isn't being aggressively cached (which you shouldn't do for this very reason), you can update the reference to an asset with a query string. When you do this, the new asset will get picked up by visitors, even those who are returning with a primed cache containing an old version of it. Neat!</p>
 <h2>For those that loathe busywork</h3>
-<p>&quot;Yeah, whatever. Thanks buddy. I get to muck around with query strings every time I change something on my site, now. A real prince <em>you</em> are, pal.&quot; I understand. I hate busywork, too. This is where a back end language like PHP comes in handy. By using the language's <a href="http://php.net/md5_file" rel="noopener"><code>md5_file</code></a> function, we can create an MD5 checksum of the asset we want to version, and use <em>that</em> as the value in the query string parameter. This works great because the checksum is generated based on the contents of the file, and not some other arbitrary aspect of it. If you push a new version of your site to production, and your assets never change, the checksum value stays the same. It only changes if the file contents do. This behavior is preferred to using something like a file's last modified time, where accidental modifications of a file in production can force a download of an asset that might not actually have changed at all.</p>
-<?php
-$sources = array(
-	"img" => array(
-		"src" => "/img/blog/bust-caches-like-a-pro/hammer-man.svg"
-	)
-);
-echo(generateImageMarkup(true, false, $sources, "I have come to help you bust your caches."));
-?>
-<p>Okay, enough of the malarkey. Let's look at an example. I use the following approach on this site, and it works well for my purposes. It starts off with an array of assets I want to version like so:</p>
+<p>&quot;Yeah, whatever. Thanks buddy. I get to muck around with query strings every time I change something on my site, now. A real prince <em>you</em> are, pal.&quot; I understand. I hate busywork, too. This is where a back end language like PHP comes in handy. By using the language's <a href="http://php.net/md5_file" rel="noopener"><code>md5_file</code></a> function, we can create an MD5 checksum of the asset we want to version, and use <em>that</em> as the value in the query string parameter. This works great because the checksum is generated based on the contents of the file, and not some other arbitrary aspect of it. If you push a new version of your site to production, and your assets never change, the checksum value stays the same. It only changes if the file contents do. This behavior is preferred to using something like a file's last modified time, where accidental modifications of a file in production can force a download of an asset that might not actually have changed at all. Let's look at an example. I use the following approach on this site, and it works well for my purposes. It starts off with an array of assets I want to version like so:</p>
 <div class="code-container"><pre><code>
 $versions = []; // Creates an empty array
 $versions[&quot;global.css&quot;] = cacheString(&quot;/css/global.css&quot;, $pathPrefix);

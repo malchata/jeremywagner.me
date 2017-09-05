@@ -16,7 +16,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/http2-in-developing-nations/internet-speed-developed-nations-1x.png"
+		"src" => "/img/blog/http2-in-developing-nations/internet-speed-developed-nations-1x.png",
+		"width" => "416",
+		"height" => "361"
 	)
 );
 echo(generateImageMarkup(false, true, $sources, "Average and peak internet speeds in the top 8 developed nations by population."));
@@ -35,7 +37,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/http2-in-developing-nations/internet-speed-developing-nations-1x.png"
+		"src" => "/img/blog/http2-in-developing-nations/internet-speed-developing-nations-1x.png",
+		"width" => "413",
+		"height" => "361"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Average and peak internet speeds in the top 8 developing nations by population."));
@@ -54,7 +58,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/http2-in-developing-nations/http2-support-developed-nations-1x.png"
+		"src" => "/img/blog/http2-in-developing-nations/http2-support-developed-nations-1x.png",
+		"width" => "450",
+		"height" => "351"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Browser support of HTTP/2 in the top 8 developed nations by population."));
@@ -74,7 +80,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/http2-in-developing-nations/http2-support-developing-nations-1x.png"
+		"src" => "/img/blog/http2-in-developing-nations/http2-support-developing-nations-1x.png",
+		"width" => "447",
+		"height" => "347"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Browser support of HTTP/2 in the top 8 developing nations by population."));

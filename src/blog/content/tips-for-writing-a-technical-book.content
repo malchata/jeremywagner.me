@@ -56,7 +56,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/tips-for-writing-a-technical-book/final-book-print-1x.jpg"
+		"src" => "/img/blog/tips-for-writing-a-technical-book/final-book-print-1x.jpg",
+		"width" => "600",
+		"height" => "315"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "The final print of Web Performance in Action."));

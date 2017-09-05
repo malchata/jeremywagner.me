@@ -15,7 +15,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/svg-media-query/weekly-timber-1x.png"
+		"src" => "/img/blog/svg-media-query/weekly-timber-1x.png",
+		"width" => "960",
+		"height" => "402"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "The site logo appears on mobile in the upper left hand corner in white, and on desktop just above the navigation in green."));
@@ -34,10 +36,12 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/svg-media-query/i-am-dead-inside.jpg"
+		"src" => "/img/blog/svg-media-query/i-am-dead-inside.jpg",
+		"width" => "500",
+		"height" => "281"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, "I concur, Mr. Scott."));
+echo(generateImageMarkup(true, true, $sources, "I concur."));
 ?>
 <p>Or I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
 <p>Thankfully, it dawned on me to use CSS in this SVG image. Because CSS is valid in SVG, that also means you can use media queries!</p>
@@ -62,8 +66,9 @@ echo(generateImageMarkup(true, true, $sources, "I concur, Mr. Scott."));
 <?php
 $sources = array(
 	"img" => array(
-		"placeholder-src" => "/img/blog/svg-media-query/weekly-logo-1x-placeholder.jpg",
-		"src" => "/img/blog/svg-media-query/weekly-logo-1x.png"
+		"src" => "/img/blog/svg-media-query/weekly-logo-1x.png",
+		"width" => "363",
+		"height" => "153"
 	)
 );
 echo(generateImageMarkup(true, false, $sources, "The mobile logo treatment."));
@@ -83,6 +88,7 @@ echo(generateImageMarkup(true, false, $sources, "The mobile logo treatment."));
     .st0{
         fill: #fff;
     }
+
     .st1{
         fill: #197f21;
     }
@@ -91,6 +97,7 @@ echo(generateImageMarkup(true, false, $sources, "The mobile logo treatment."));
         .st0{
             fill: #197f21;
         }
+
         .st1{
             fill: #fff;
         }
@@ -103,7 +110,9 @@ echo(generateImageMarkup(true, false, $sources, "The mobile logo treatment."));
 $sources = array(
 	"img" => array(
 		"srcset" => "/img/blog/svg-media-query/new-treatment-1x.png 1x, /img/blog/svg-media-query/new-treatment-2x.png 2x",
-		"src" => "/img/blog/svg-media-query/new-treatment-1x.png"
+		"src" => "/img/blog/svg-media-query/new-treatment-1x.png",
+		"width" => "937",
+		"height" => "260"
 	)
 );
 echo(generateImageMarkup(true, false, $sources, "Our single SVG image accommodating both logo treatments."));

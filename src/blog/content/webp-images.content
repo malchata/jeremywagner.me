@@ -16,7 +16,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/webp-images/modem-1x.png"
+		"src" => "/img/blog/webp-images/modem-1x.png",
+		"width" => "320",
+		"height" => "176"
 	)
 );
 echo(generateImageMarkup(false, true, $sources, "I thought we moved past this, already."));
@@ -44,7 +46,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/webp-images/tacos-1x.jpg"
+		"src" => "/img/blog/webp-images/tacos-1x.jpg",
+		"width" => "385",
+		"height" => "108"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Can you tell the difference? (Hint: the WebP version is on the right.)"));
@@ -54,7 +58,9 @@ echo(generateImageMarkup(true, true, $sources, "Can you tell the difference? (Hi
 <?php
 $sources = array(
 	"img" => array(
-		"src" => "/img/blog/webp-images/bateman.gif"
+		"src" => "/img/blog/webp-images/bateman.gif",
+		"width" => "500",
+		"height" => "213"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Thought so."));
@@ -78,7 +84,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/webp-images/webp-plugin-1x.png"
+		"src" => "/img/blog/webp-images/webp-plugin-1x.png",
+		"width" => "645",
+		"height" => "393"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "Lots going on here, huh?"));
@@ -121,7 +129,9 @@ node webp.js
 <?php
 $sources = array(
 	"img" => array(
-		"src" => "/img/blog/webp-images/bateman-3.gif"
+		"src" => "/img/blog/webp-images/bateman-3.gif",
+		"width" => "500",
+		"height" => "257"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "&quot;Have you ever seen my WebPs?&quot;"));
@@ -147,7 +157,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/webp-images/broken-webp-1x.png"
+		"src" => "/img/blog/webp-images/broken-webp-1x.png",
+		"width" => "357",
+		"height" => "222"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "WHAT HAPPENED"));
@@ -195,7 +207,9 @@ $sources = array(
 		)
 	),
 	"img" => array(
-		"src" => "/img/blog/webp-images/screams.jpg"
+		"src" => "/img/blog/webp-images/screams.jpg",
+		"width" => "498",
+		"height" => "246"
 	)
 );
 echo(generateImageMarkup(true, true, $sources, "You can't escape it."));
