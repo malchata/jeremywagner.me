@@ -25,7 +25,7 @@ $sources = array(
 		"height" => "216"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, "What could possibly go wrong?"));
+echo(generateImageMarkup(true, true, $sources, "What could possibly go wrong?", $saveData));
 ?>
 <p>When Paul Irish wrote about this in 2010, it was a great piece of advice. We were living in a time when sites only adopted HTTPS when absolutely necessary. The web is a different place now, though. We're rapidly moving toward a &quot;secure by default&quot; mindset, even for content that may not be considered especially sensitive. This is a <em>good thing</em>.</p>
 <p>Paul Irish has since changed his stance, and now advises against using this URL scheme to reference cross-origin resources. His rationale is that while using the scheme on HTTPS pages is safe, the reverse is not true. Using the scheme on a non-secure page will retrieve cross-origin assets in a non-secure fashion. This isn't good, and it's rather easy to just slap an <code>https://</code> protocol on your URLs to ensure that your site is completely secure.</p>

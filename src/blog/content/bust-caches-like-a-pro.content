@@ -26,7 +26,7 @@ $sources = array(
 		"height" => "194"
 	)
 );
-echo(generateImageMarkup(true, false, $sources, "Hey, valued customer! How do you feel about telling your users to reload?"));
+echo(generateImageMarkup(true, false, $sources, "Hey, valued customer! How do you feel about telling your users to reload?", $saveData));
 ?>
 <p><em>Anywho</em>, you might have run into this problem, and you probably already know about the solution. In case you don't, the way we force the browser to grab a copy of a changed asset without regard to its <code>cache-control</code> policy (or depending on users to reload the page) is to version it using a query string. Below is an example of doing this in a CSS include via the <code>&lt;link&gt;</code> tag:</p>
 <div class="code-container"><pre><code>

@@ -1,0 +1,25 @@
+<?php
+$posts = [];
+$currentHost = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/";
+$dir = new DirectoryIterator(realpath(__dir__ . "/../src/blog/metadata"));
+
+foreach($dir as $fileInfo){
+	if(!$fileInfo->isDot()){
+		$postData = json_decode(file_get_contents($fileInfo->getPathname()), true);
+		$postTime = isset($postData["updateDate"]) === true ? $postData["updateDate"] : $postData["date"];
+		$posts[strtotime($postTime)] = array(
+			"lastmod" => date("Y-m-d", strtotime($postTime)),
+			"loc" => $currentHost . "blog/" . str_replace(".json", "", $fileInfo->getFilename()) . "/"
+		);
+	}
+}
+
+krsort($posts);
+
+echo ("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc><?php echo($currentHost); ?></loc></url>
+<?php
+foreach($posts as $post){
+	?><url><loc><?php echo($post["loc"]); ?></loc><lastmod><?php echo($post["lastmod"]); ?></lastmod></url><?php
+}
+?></urlset>

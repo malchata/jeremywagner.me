@@ -1,8 +1,14 @@
 <header>
 	<a href="/">
-		<div id="header-image-container">
-			<div id="jeremy"></div>
-		</div>
+		<?php
+		if($saveData === false){
+			?>
+			<div id="header-image-container">
+				<div id="jeremy"></div>
+			</div>
+			<?php
+		}
+		?>
 		<div class="title-container">
 			<h1 class="name">JEREMY WAGNER'S</h1>
 			<h2 class="site">WEB DEV<span class="abbr">ELOPMENT</span> BLOG</h2>

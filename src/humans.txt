@@ -4,7 +4,7 @@
 # TEAM
 
     Jeremy Wagner -- Developer, Author -- @malchata
-    David Tesch -- Designer
+    David Tesch -- Designer -- @flipty
 
 # THANKS
 

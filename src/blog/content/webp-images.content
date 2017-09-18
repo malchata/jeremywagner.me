@@ -63,7 +63,7 @@ $sources = array(
 		"height" => "213"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, "Thought so."));
+echo(generateImageMarkup(true, true, $sources, "Thought so.", $saveData));
 ?>
 <p>It's important to remember though that WebP is <strong><em>not a replacement</em></strong> for JPEG and PNG images. It's a format you can serve to browsers that can use it, but you should keep your older images on hand for other browsers. This is the nature of developing for the web: Have your Plan A ready for browsers that can handle it, and have your Plan B (and maybe Plan C) ready for those browsers that are less capable.</p>
 <p>Enough with the disclaimers. Let's optimize!</p>
@@ -134,7 +134,7 @@ $sources = array(
 		"height" => "257"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, "&quot;Have you ever seen my WebPs?&quot;"));
+echo(generateImageMarkup(true, true, $sources, "&quot;Have you ever seen my WebPs?&quot;", $saveData));
 ?>
 <p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 <h2>Using WebP in HTML</h2>
@@ -212,9 +212,9 @@ $sources = array(
 		"height" => "246"
 	)
 );
-echo(generateImageMarkup(true, true, $sources, "You can't escape it."));
+echo(generateImageMarkup(true, true, $sources, "You can't escape it.", $saveData));
 ?>
-<p>Yeah, that's how most developers feel about it, but the user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" rel="noopener">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>&lt;html&gt;</code> element.</p>
+<p>The user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" rel="noopener">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>&lt;html&gt;</code> element.</p>
 <p>To get around this, we'll start by adding a class of <code>no-js</code> to the <code>&lt;html&gt;</code> tag:</p>
 <div class="code-container"><pre><code>
 &lt;html class=&quot;no-js&quot;&gt;

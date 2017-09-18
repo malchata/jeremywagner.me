@@ -47,6 +47,12 @@ header,
 	width: percentage(195 / 350);
 }
 
+.save-data{
+	.title-container{
+		width: percentage(283 / 350);
+	}
+}
+
 .name,
 .site{
 	text-align: center;
@@ -63,6 +69,12 @@ header,
 
 .abbr{
 	display: none;
+}
+
+.save-data{
+	.abbr{
+		display: inline;
+	}
 }
 
 .site,
@@ -174,15 +186,8 @@ nav{
 	width: 22px;
 	margin: 0 11px 0 0;
 	font-size: 0;
-}
-
-.twitter,
-.github,
-.email,
-.rss,
-#jeremy{
-	background: url("../img/global/sprite-v2.svg") no-repeat;
-	background-size: 312.2px 409.5px;
+	background: url("../img/global/icons.svg") no-repeat;
+	background-size: 88px;
 	vertical-align: bottom;
 }
 
@@ -193,7 +198,7 @@ nav{
 
 .github{
 	background-position: -44px -44px;
-	height: 21.776px;
+	height: 21.737px;
 }
 
 .email{
@@ -203,13 +208,12 @@ nav{
 
 .rss{
 	background-position: -22px -22px;
-	height: 22.96px;
+	height: 22.901px;
 	margin: 0;
 }
 
 #jeremy{
-	background-position: right bottom;
-	background-size: 139.24611776% 127.37041818%;
+	background: url("../img/global/jeremy.svg") no-repeat;
 }
 
 .footer-copy{

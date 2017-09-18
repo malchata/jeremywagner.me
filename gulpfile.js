@@ -65,10 +65,7 @@ const moduleOpts = {
 	},
 	brotli: {
 		extension: "br",
-		quality: 11,
-		mode: 0,
-		lgblock: 0,
-		lgwin: 22
+		quality: 11
 	},
 	gzip: {
 		append: true,
@@ -271,9 +268,9 @@ exports.convertFonts = convertFonts;
 const watch = ()=>{
 	livereload.listen();
 
-	gulp.watch("src/scss/**/*.scss", gulp.series(buildCSS, buildHTML));
+	gulp.watch("src/scss/**/*.scss", gulp.series(buildCSS));
 	gulp.watch(["src/**/*.html", "src/**/*.json", "src/**/*.content"], buildHTML);
-	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS, buildHTML));
+	gulp.watch("src/js/**/*.js", gulp.series(buildJS, concatJS));
 	gulp.watch("src/img/**", gulp.parallel(optimizeImages, generateWebPImages));
 	gulp.watch("src/*.png", createFavicons);
 	gulp.watch("src/fonts/montserrat-bold-subset.ttf", convertFonts);
