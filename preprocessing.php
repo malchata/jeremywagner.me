@@ -138,15 +138,4 @@ function generateImageMarkup($lazy, $picture, $sources, $caption, $saveData = fa
 		return $markup;
 	}
 }
-
-// Adapted from this solution: https://stackoverflow.com/questions/1583740/304-not-modified-and-front-end-caching
-function send304IfNotModified($uri){
-	$lastModifiedTime = filemtime($uri);
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s", $lastModifiedTime) . " GMT");
-
-	if(@strtotime($_SERVER["HTTP_IF_MODIFIED_SINCE"]) == $lastModifiedTime){
-		header("HTTP/1.1 304 Not Modified");
-		exit;
-	}
-}
 ?>
