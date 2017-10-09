@@ -1,8 +1,0 @@
-{
-	"title": "Stop Using the Protocol-relative URL",
-	"featureImage": "/img/blog/stop-using-the-protocol-relative-url/og-image.png",
-	"date": "July 22, 2016",
-	"updateDate": "March 5, 2017",
-	"description": "Using the protocol-relative URL has long been touted as a best practice, but its continued use can be detrimental to performance. Read on to find out more.",
-	"categories": ["web performance", "protocol-relative-url", "ssl", "http2", "brotli"]
-}

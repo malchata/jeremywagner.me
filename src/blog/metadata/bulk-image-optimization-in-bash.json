@@ -1,7 +1,0 @@
-{
-	"title": "Bulk Image Optimization in Bash",
-	"featureImage": "/img/blog/bulk-image-optimization-in-bash/og-image.png",
-	"date": "March 9, 2017",
-	"description": "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!",
-	"categories": ["image optimization", "web development", "web performance", "bash"]
-}
