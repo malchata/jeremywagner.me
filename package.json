@@ -1,0 +1,44 @@
+{
+  "name": "jeremywagner.me",
+  "version": "2.0.0",
+  "description": "Jeremy Wagner's Web Development Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malchata/jeremywagner.me.git"
+  },
+  "author": "Jeremy Wagner <jeremy.l.wagner@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malchata/jeremywagner.me/issues"
+  },
+  "homepage": "https://github.com/malchata/jeremywagner.me#readme",
+  "dependencies": {
+    "autoprefixer": "^7.1.5",
+    "autorem": "^0.1.1",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "compression": "^1.7.1",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
+    "express": "^4.16.1",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
+    "imagemin-webpack-plugin": "^1.5.2",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "preact": "^8.2.5",
+    "preact-render-to-string": "^3.6.3",
+    "preact-router": "^2.5.7",
+    "sass-loader": "^6.0.6",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "webpack": "^3.6.0"
+  }
+}

@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 316">
+	<defs>
+		<style>
+			.cls-1 {
+				isolation: isolate;
+			}
+
+			.cls-2 {
+				fill: url("#linear-gradient");
+			}
+
+			.cls-3,
+			.cls-4,
+			.cls-5 {
+				opacity: 0.33;
+				mix-blend-mode: screen;
+			}
+
+			.cls-3 {
+				fill: url("#linear-gradient-2");
+			}
+
+			.cls-4 {
+				fill: url("#linear-gradient-3");
+			}
+
+			.cls-5 {
+				fill: url("#linear-gradient-4");
+			}
+
+			.cls-6 {
+				fill: url("#linear-gradient-5");
+			}
+
+			.cls-7 {
+				fill: #d0c5c6;
+			}
+
+			.cls-7,
+			.cls-8 {
+				opacity: 0.5;
+				mix-blend-mode: color-dodge;
+			}
+
+			.cls-9 {
+				fill: #f5e6e8;
+			}
+
+			.cls-3 {
+				-webkit-animation: move-one 120s linear 0s infinite backwards;
+				-moz-animation: move-one 120s linear 0s infinite backwards;
+				-o-animation: move-one 120s linear 0s infinite backwards;
+				animation: move-one 120s linear 0s infinite backwards;
+			}
+
+			.cls-4 {
+				-webkit-animation: move-two 150s linear 0s infinite backwards;
+				-moz-animation: move-two 150s linear 0s infinite backwards;
+				-o-animation: move-two 150s linear 0s infinite backwards;
+				animation: move-two 150s linear 0s infinite backwards;
+			}
+
+			.cls-5 {
+				-webkit-animation: move-three 90s linear 0s infinite backwards;
+				-moz-animation: move-three 90s linear 0s infinite backwards;
+				-o-animation: move-three 90s linear 0s infinite backwards;
+				animation: move-three 90s linear 0s infinite backwards;
+			}
+
+			.cls-8{
+				-webkit-animation: flicker 1s linear 0s infinite backwards;
+				-moz-animation: flicker 1s linear 0s infinite backwards;
+				-o-animation: flicker 1s linear 0s infinite backwards;
+				animation: flicker 1s linear 0s infinite backwards;
+			}
+
+			#star-2{
+				-webkit-animation-delay: 66ms;
+				-moz-animation-delay: 66ms;
+				-o-animation-delay: 66ms;
+			}
+
+			#star-3{
+				-webkit-animation-delay: 99ms;
+				-moz-animation-delay: 99ms;
+				-o-animation-delay: 99ms;
+			}
+
+			#star-4{
+				-webkit-animation-delay: 133ms;
+				-moz-animation-delay: 133ms;
+				-o-animation-delay: 133ms;
+			}
+
+			#star-5{
+				-webkit-animation-delay: 166ms;
+				-moz-animation-delay: 166ms;
+				-o-animation-delay: 166ms;
+			}
+
+			#star-6{
+				-webkit-animation-delay: 199ms;
+				-moz-animation-delay: 199ms;
+				-o-animation-delay: 199ms;
+			}
+
+			#star-7{
+				-webkit-animation-delay: 233ms;
+				-moz-animation-delay: 233ms;
+				-o-animation-delay: 233ms;
+			}
+
+			@-webkit-keyframes flicker {
+				0%,
+				11%,
+				19%,
+				20%,
+				24%,
+				28%,
+				4%,
+				40%,
+				44%,
+				46%,
+				56%,
+				60%,
+				68%,
+				72%,
+				93%,
+				97%,
+				to {
+					opacity: 0.5;
+				}
+
+				10%,
+				38%,
+				6% {
+					opacity: 0.4;
+				}
+				14%,
+				17%,
+				8% {
+					opacity: 0.6;
+				}
+				12% {
+					opacity: 0.7;
+				}
+				16% {
+					opacity: 0.75;
+				}
+				26% {
+					opacity: 0.74;
+				}
+				42%,
+				70%,
+				95% {
+					opacity: 0.65;
+				}
+				58% {
+					opacity: 0.8;
+				}
+			}
+			@-webkit-keyframes move-one {
+				from {
+					-webkit-transform: translateX(-687.5%);
+				}
+
+				to {
+					-webkit-transform: translateX(150%);
+				}
+			}
+			@-webkit-keyframes move-two {
+				from {
+					-webkit-transform: translateX(-457.5%);
+				}
+
+				to {
+					-webkit-transform: translateX(175%);
+				}
+			}
+			@-webkit-keyframes move-three {
+				from {
+					-webkit-transform: translateX(-125%);
+				}
+				to {
+					-webkit-transform: translateX(650%);
+				}
+			}
+
+		</style>
+		<linearGradient id="linear-gradient" x1="720" y1="2.49" x2="720" y2="305.65" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#122635"/>
+			<stop offset="0.08" stop-color="#192f42"/>
+			<stop offset="0.16" stop-color="#233d55"/>
+			<stop offset="0.17" stop-color="#264159"/>
+			<stop offset="0.33" stop-color="#41637f"/>
+			<stop offset="0.49" stop-color="#587992"/>
+			<stop offset="0.61" stop-color="#63839b"/>
+			<stop offset="0.67" stop-color="#8f8489"/>
+			<stop offset="0.76" stop-color="#c88471"/>
+			<stop offset="0.83" stop-color="#ec8563"/>
+			<stop offset="0.87" stop-color="#f9855d"/>
+			<stop offset="1" stop-color="#fe8f45"/>
+		</linearGradient>
+		<linearGradient id="linear-gradient-2" x1="1291.83" y1="162.31" x2="1291.83" y2="228.5" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#63839b"/>
+			<stop offset="0.8" stop-color="#f5e6e8"/>
+			<stop offset="1" stop-color="#e69d8d"/>
+		</linearGradient>
+		<linearGradient id="linear-gradient-3" x1="1089.13" y1="54.17" x2="1089.13" y2="89.12" xlink:href="#linear-gradient-2"/>
+		<linearGradient id="linear-gradient-4" x1="43.17" y1="129.56" x2="263.43" y2="129.56" xlink:href="#linear-gradient-2"/>
+		<linearGradient id="linear-gradient-5" x1="865.97" y1="168.59" x2="865.97" y2="305.33" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#122635"/>
+			<stop offset="0.38" stop-color="#121f28"/>
+			<stop offset="1" stop-color="#110e0a"/>
+		</linearGradient>
+	</defs>
+	<title>skyline</title>
+	<g class="cls-1">
+		<g id="Layer_1" data-name="Layer 1">
+			<rect class="cls-2" width="1440" height="316"/>
+			<path class="cls-3" d="M1189.65,224q42.7-.44,85.37-2.36c18.67-.87,37.46-1.76,56-4.29a159,159,0,0,0,27.51-6.42c6.06-2,14.05-6.84,20.63-6.39,6.39.43,16.55,11,14.58,17.5-.9,3,.22,1.38-3,2-8.71,1.56-19.19,0-28,0H1189.65Z"/>
+			<path class="cls-4" d="M1223.06,94a141,141,0,0,1-28.76-7c-12.16-4.47-24.56,2.86-35.66-5.6-13-9.92-17.85-13.88-35.49-11.54C1066.74,77.3,1012.64,93.51,955.2,94Z"/>
+			<path class="cls-5" d="M43.17,137.19c37.26-1.13,74.55-2.88,111.69-6.06,30.26-2.59,86.07-22.6,108.57,6.06Z"/>
+			<polyline
+				class="cls-6"
+				points="1440 316 1440 246.25 1428.67 246.25 1428.67 239.61 1388.83 239.61 1388.83 247.91 1334.04 247.91 1332.38 249.57 1332.38 312.66 1269.29 310.44 1269.29 299.38 1257.11 299.38 1257.11 192.01 1244.94 192.01 1244.94 152.17 1241.62 147.74 1241.62 121.17 1207.3 116.75 1175.2 116.75 1171.88 118.96 1171.88 200.87 1156.39 200.87 1156.39 209.72 1144.21 209.72 1126.5 214.15 1126.5 262.85 1118.76 262.85 1118.76 188.69 1087.77 187.59 1087.77 179.84 1071.16 178.73 1021.36 178.73 1021.36 188.69 991.47 188.69 991.47 300.48 978.19 300.48 978.19 161.02 974.87 157.7 974.87 82.44 895.17 82.44 895.17 155.49 891.85 159.91 891.85 304.91 873.04 304.91 873.04 254 836.51 254 836.51 195.33 833.19 195.33 833.19 173.2 786.7 173.2 782.28 176.52 782.28 184.26 755.71 184.26 749.07 188.69 749.07 217.47 721.4 217.47 714.76 221.9 714.76 267.28 661.63 265.06 661.63 275.02 640.6 275.02 640.6 258.42 600.75 258.42 600.75 262.85 593.01 262.85 593.01 209.72 571.98 207.51 571.98 201.97 568.66 201.97 568.66 139.99 537.66 139.99 537.66 178.73 508.89 178.73 508.89 215.26 503.35 215.26 503.35 249.57 455.76 245.14 455.76 195.33 453.55 193.12 435.84 193.12 435.84 183.16 418.13 183.16 418.13 186.48 387.13 186.48 387.13 182.05 316.3 182.05 316.3 192.01 296.37 192.01 296.37 199.76 291.95 199.76 291.95 316"/>
+			<path class="cls-7" d="M691.18,55.31A24,24,0,0,1,672.69,16a24,24,0,1,0,33.79,33.79A23.9,23.9,0,0,1,691.18,55.31Z"/>
+			<g class="cls-8" id="star-1">
+				<path class="cls-9" d="M272.29,80.81a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-2">
+				<path class="cls-9" d="M128.29,19.81a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-3">
+				<path class="cls-9" d="M815.88,81.86a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-4">
+				<path class="cls-9" d="M1066.88,113.86a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-5">
+				<path class="cls-9" d="M1038.88,16.86a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-6">
+				<path class="cls-9" d="M1264.09,96.84a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+			<g class="cls-8" id="star-7">
+				<path class="cls-9" d="M533.5,26a1.66,1.66,0,0,0,0-3.32,1.66,1.66,0,0,0,0,3.32Z"/>
+			</g>
+		</g>
+	</g>
+</svg>
