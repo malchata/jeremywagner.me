@@ -12,13 +12,11 @@
 		<link href="<%= htmlWebpackPlugin.files.css %>" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-			<div class="skyline"></div>
-			<div class="wrapper">
-				<h1 class="name">Jeremy Wagner's</h1>
-				<h2 class="site">Web Dev Blog</h2>
-			</div>
-		</header>
+		<div class="skyline"></div>
+		<main>
+			<%= htmlWebpackPlugin.options.render("header") %>
+			<%= htmlWebpackPlugin.options.render("navigation") %>
+		</main>
 		<script src="<%= htmlWebpackPlugin.files.js %>"></script>
 	</body>
 </html>

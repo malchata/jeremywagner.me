@@ -1,12 +1,23 @@
-const fs = require("fs");
-const path = require("path");
-const webpack = require("webpack");
-const ImageminPlugin = require("imagemin-webpack-plugin").default;
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const exclusions = /node_modules/i;
+import fs from "fs";
+import path from "path";
+import webpack from "webpack";
+import ImageminPlugin from "imagemin-webpack-plugin";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CleanWebpackPlugin from "clean-webpack-plugin";
+import renderToString from "preact-render-to-string";
+import { h } from "preact";
 
+// These are components
+import Header from "./src/components/Header";
+import Navigation from "./src/components/Navigation";
+
+const components = {
+	header: Header,
+	navigation: Navigation
+};
+
+const exclusions = /node_modules/i;
 let nodeModules = {};
 
 fs.readdirSync("node_modules").filter((x)=>{
@@ -80,7 +91,11 @@ const webTarget = {
 				collapseWhitespace: true,
 				minifyJS: true
 			},
-			title: "Home"
+			title: "Home",
+			render(component, props){
+				let vnode = h(components[component], props);
+				return renderToString(vnode);
+			}
 		}),
 		new ImageminPlugin({
 			svgo: {
@@ -89,12 +104,7 @@ const webTarget = {
 			}
 		}),
 		new ExtractTextPlugin("css/styles.[hash:8].css"),
-		new webpack.optimize.UglifyJsPlugin()//,
-		// new webpack.DefinePlugin({
-		// 	"process.env": {
-		// 		"NODE_ENV": JSON.stringify("production")
-		// 	}
-		// })
+		new webpack.optimize.UglifyJsPlugin()
 	]
 }
 

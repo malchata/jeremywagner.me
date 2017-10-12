@@ -1,0 +1,72 @@
+nav{
+	padding: 0 $mobileGutter;
+	margin: 1ch 0 0;
+}
+
+.nav-item{
+	font-family: $fredokaOne;
+	display: inline-block;
+	@include fluid-type(320px, 960px, 16px, 32px);
+	line-height: 1.618;
+
+	&:after{
+		content: "//";
+		color: $coral;
+		margin: 0 1ch;
+		@include fluid-type(320px, 960px, 12px, 24px);
+	}
+
+	&:last-child{
+		&:after{
+			content: none;
+		}
+	}
+}
+
+.nav-link{
+	color: $lightBlue;
+}
+
+#social-nav{
+	margin: 16px 0 0;
+	font-size: 0;
+}
+
+.social{
+	background-image: url("../images/social-icons.svg");
+	background-size: 80px 77px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 20px 0 0;
+
+	a{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.twitter{
+	width: 20.1px;
+	height: 16.213px;
+	background-position: 0 0;
+}
+
+.github{
+	width: 19.847px;
+	height: 19.939px;
+	background-position: -20.1px -16.213px;
+}
+
+.email{
+	width: 20.1px;
+	height: 20.1px;
+	background-position: -40.2px -36.313px;
+}
+
+.rss{
+	width: 20px;
+	height: 20.9px;
+	background-position: -60.2px -57.213px;
+	margin: 0;
+}
