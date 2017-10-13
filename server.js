@@ -5,6 +5,7 @@ import compression from "compression";
 import render from "preact-render-to-string";
 import { h } from "preact";
 
+const root = path.join(__dirname, "dist");
 const app = new express();
 const staticOptions = {
 	etag: false,
@@ -15,11 +16,11 @@ const staticOptions = {
 	}
 }
 const pageMarkup = {
-	index: fs.readFileSync(path.join(__dirname, "index.html")).toString()
+	index: fs.readFileSync(path.join(root, "index.html")).toString()
 };
 
-app.use("/css", express.static(path.join(__dirname, "css"), staticOptions));
-app.use("/images", express.static(path.join(__dirname, "images"), staticOptions));
+app.use("/css", express.static(path.join(root, "css"), staticOptions));
+app.use("/images", express.static(path.join(root, "images"), staticOptions));
 app.use(compression());
 
 app.get("/", (req, res)=>{
@@ -27,4 +28,4 @@ app.get("/", (req, res)=>{
 	res.send(pageMarkup.index);
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);

@@ -1,6 +1,4 @@
-import fs from "fs";
 import path from "path";
-import webpack from "webpack";
 import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -18,40 +16,6 @@ const components = {
 };
 
 const exclusions = /node_modules/i;
-let nodeModules = {};
-
-fs.readdirSync("node_modules").filter((x)=>{
-	return [".bin"].indexOf(x) === -1;
-}).forEach((mod)=>{
-	nodeModules[mod] = "commonjs " + mod;
-});
-
-const nodeTarget = {
-	entry: "./server.js",
-	target: "node",
-	externals: nodeModules,
-	node: {
-		__dirname: false,
-		__filename: false
-	},
-	output: {
-		filename: "server.js",
-		path: path.resolve(__dirname, "dist"),
-		publicPath: "/"
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: exclusions,
-				use: "babel-loader"
-			}
-		]
-	},
-	plugins: [
-		new CleanWebpackPlugin("./dist")
-	]
-};
 
 const webTarget = {
 	entry: "./src/index.js",
@@ -108,4 +72,4 @@ const webTarget = {
 	]
 }
 
-module.exports = [nodeTarget, webTarget];
+module.exports = [webTarget];
