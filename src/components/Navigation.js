@@ -1,3 +1,4 @@
+import { Link } from "preact-router/match";
 import { h, render, Component } from "preact";
 
 export default class Navigation extends Component{

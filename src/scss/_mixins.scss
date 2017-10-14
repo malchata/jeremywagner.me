@@ -1,7 +1,0 @@
-@function strip-unit($value){
-	 @return $value / ($value * 0 + 1);
-}
-
-@mixin fluid-type($min-vw, $max-vw, $min-font, $max-font){
-	font-size: calc(#{$min-font} + #{strip-unit($max-font - $min-font)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-}

@@ -1,0 +1,17 @@
+:root{
+	/* Colors */
+	--black: #110e0a;
+	--white: #f5e6e8;
+	--coral: #f9855d;
+	--indigo: #233d55;
+	--light-blue: #b0d9f2;
+
+	/* Spatial */
+	--mobile-gutter: 8px;
+	--desktop-gutter: 16px;
+
+	/* Fonts */
+	--fredoka-one: "Fredoka One", cursive;
+	--monoton: "Monoton", cursive;
+	--fira-sans: "Fira Sans", sans-serif;
+}

@@ -1,24 +1,24 @@
 .skyline{
 	background: top 0 left 99% url("../images/skyline.svg") no-repeat;
 	background-size: auto 101%;
-	padding-top: percentage(96 / 320);
+	padding-top: 30%; /* 96px / 320px */
 	margin: 0 0 8px;
 }
 
 .name,
 .site{
 	line-height: 1;
-	color: $coral;
+	color: var(--coral);
 }
 
 .name{
-	font-family: $fredokaOne;
-	@include fluid-type(320px, 960px, 24px, 72px);
+	font-family: var(--fredoka-one);
+	/*@include fluid-type(320px, 960px, 24px, 72px);*/
 }
 
 .site{
-	font-family: $monoton;
-	@include fluid-type(320px, 960px, 32px, 96px);
+	font-family: var(--monoton);
+	/*@include fluid-type(320px, 960px, 32px, 96px);*/
 	text-transform: uppercase;
 	word-spacing: .225ch;
 	margin: .25ch 0 0;

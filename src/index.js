@@ -1,4 +1,7 @@
 import { h, render } from "preact";
-import Styles from "./scss/styles.scss";
+import App from "./components/App";
+import Styles from "./css/styles.css";
 
-//render(<FilterableCountryList stats={stats}/>, document.getElementById("main"));
+const mainElement = document.getElementsByTagName("main")[0];
+
+render(<App/>, mainElement, mainElement.lastChild);
