@@ -22,6 +22,12 @@
 				<% } %>
 			</div>
 		</main>
-		<script src="<%= htmlWebpackPlugin.files.js %>"></script>
+		<% for (var chunk of webpack.chunks) {
+			for (var file of chunk.files) {
+			%>
+			<script src="<%= file.entry %>"></script><%
+			}
+		} %>
+		<script defer src="<%= htmlWebpackPlugin.files.js %>"></script>
 	</body>
 </html>

@@ -7,7 +7,7 @@ export default class Routes extends Component{
 		super(props);
 	}
 
-	getContent(contentModule){
+	getContentModule(url, cb, props){
 		return new Promise(resolve=>{
 			System.import(contentModule).then(module => module.default);
 		});
@@ -16,7 +16,7 @@ export default class Routes extends Component{
 	render(){
 		return (
 			<Router>
-				<AsyncRoute path="/blog/using-webp-images" getComponent={this.getContent("../routes/using-webp-images/index")}/>
+				<AsyncRoute path="/blog/using-webp-images" getComponent={this.getContentModule("../routes/using-webp-images/index")}/>
 			</Router>
 		);
 	}

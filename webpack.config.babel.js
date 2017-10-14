@@ -5,6 +5,8 @@ import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
+import InlineChunkManifestHtmlWebpackPlugin from "inline-chunk-manifest-html-webpack-plugin";
+import WebpackManifestPlugin from "webpack-manifest-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 const { render } = renderToString;
@@ -44,6 +46,7 @@ let htmlOutputs = [
 ];
 
 let entryPoints = {
+	"vendors": ["preact", "preact-router", "preact-async-route"],
 	"index": "./src/index.js"
 }
 
@@ -76,7 +79,7 @@ module.exports = {
 	entry: entryPoints,
 	target: "web",
 	output: {
-		filename: "js/[name].[hash:8].js",
+		filename: "js/[name].[chunkhash:8].js",
 		path: webRoot,
 		publicPath: "/"
 	},
@@ -110,7 +113,18 @@ module.exports = {
 				precision: 1
 			}
 		}),
-		new ExtractTextPlugin("css/styles.[hash:8].css"),
+		new ExtractTextPlugin("css/styles.[chunkhash:8].css"),
+		new webpack.optimize.CommonsChunkPlugin({
+			names: ["vendors", "runtime", "manifest"],
+			minChunks: Infinity
+		}),
+		new InlineChunkManifestHtmlWebpackPlugin({
+			dropAsset: true,
+			// manifestPlugins: [
+			// 	new WebpackManifestPlugin()
+			// ],
+			manifestVariable: "manifest"
+		}),
 		new webpack.optimize.UglifyJsPlugin()
 	]
 };
