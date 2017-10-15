@@ -4,9 +4,9 @@ import webpack from "webpack";
 import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import CleanWebpackPlugin from "clean-webpack-plugin";
 import InlineChunkManifestHtmlWebpackPlugin from "inline-chunk-manifest-html-webpack-plugin";
 import WebpackManifestPlugin from "webpack-manifest-plugin";
+import CleanWebpackPlugin from "clean-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 const { render } = renderToString;
@@ -23,6 +23,11 @@ const exclusions = /node_modules/i;
 const htmlTemplate = path.join(__dirname, "src/html/template.html");
 const webRoot = path.join(__dirname, "dist");
 const routes = path.join(__dirname, "src", "routes");
+const htmlminOptions = {
+	removeComments: true,
+	collapseWhitespace: true,
+	minifyJS: true
+};
 
 let htmlOutputs = [
 	new HtmlWebpackPlugin({
@@ -30,12 +35,8 @@ let htmlOutputs = [
 		filename: path.join(webRoot, "index.html"),
 		inject: false,
 		hash: false,
-		chunks: ["index"],
-		minify: {
-			removeComments: true,
-			collapseWhitespace: true,
-			minifyJS: true
-		},
+		chunks: ["runtime", "vendors", "index"],
+		minify: htmlminOptions,
 		blogPost: false,
 		title: "Home",
 		render(component, props){
@@ -60,12 +61,8 @@ fs.readdirSync(routes).forEach((route)=>{
 		filename: path.join(webRoot, "blog", route, "index.html"),
 		inject: false,
 		hash: false,
-		chunks: ["index"],
-		minify: {
-			removeComments: true,
-			collapseWhitespace: true,
-			minifyJS: true
-		},
+		chunks: ["runtime", "vendors", "index"],
+		minify: htmlminOptions,
 		blogPost: true,
 		title: metadata.title,
 		render(component, props){
@@ -106,6 +103,15 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(webRoot),
+		new InlineChunkManifestHtmlWebpackPlugin({
+			manifestPlugins: [
+				new WebpackManifestPlugin()
+			],
+			manifestVariable: "manifest"
+		}),
+		new WebpackManifestPlugin({
+			basePath: "/"
+		}),
 		...htmlOutputs,
 		new ImageminPlugin({
 			svgo: {
@@ -115,15 +121,8 @@ module.exports = {
 		}),
 		new ExtractTextPlugin("css/styles.[chunkhash:8].css"),
 		new webpack.optimize.CommonsChunkPlugin({
-			names: ["vendors", "runtime", "manifest"],
+			names: ["runtime", "vendors"],
 			minChunks: Infinity
-		}),
-		new InlineChunkManifestHtmlWebpackPlugin({
-			dropAsset: true,
-			// manifestPlugins: [
-			// 	new WebpackManifestPlugin()
-			// ],
-			manifestVariable: "manifest"
 		}),
 		new webpack.optimize.UglifyJsPlugin()
 	]

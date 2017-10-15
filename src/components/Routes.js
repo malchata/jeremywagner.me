@@ -9,14 +9,14 @@ export default class Routes extends Component{
 
 	getContentModule(url, cb, props){
 		return new Promise(resolve=>{
-			System.import(contentModule).then(module => module.default);
+			System.import(manifest[`/${props.slug}.js`]).then(module => module.default);
 		});
 	}
 
 	render(){
 		return (
 			<Router>
-				<AsyncRoute path="/blog/using-webp-images" getComponent={this.getContentModule("../routes/using-webp-images/index")}/>
+				<AsyncRoute path="/blog/:slug" getComponent={this.getContentModule}/>
 			</Router>
 		);
 	}

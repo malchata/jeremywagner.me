@@ -16,8 +16,5 @@ const staticOptions = {
 }
 
 app.use(express.static(webRoot));
-app.get("/content/:component", (req, res)=>{
-
-});
 app.use(compression());
 app.listen(process.env.PORT || 8080);
