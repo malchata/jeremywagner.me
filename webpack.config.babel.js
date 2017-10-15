@@ -4,8 +4,6 @@ import webpack from "webpack";
 import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import InlineChunkManifestHtmlWebpackPlugin from "inline-chunk-manifest-html-webpack-plugin";
-import WebpackManifestPlugin from "webpack-manifest-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
@@ -46,15 +44,10 @@ let htmlOutputs = [
 	})
 ];
 
-let entryPoints = {
-	"vendors": ["preact", "preact-router", "preact-async-route"],
-	"index": "./src/index.js"
-}
-
 fs.readdirSync(routes).forEach((route)=>{
 	let metadata = require(path.resolve(path.join(routes, route, "index.js"))).Metadata;
 	components.content = require(path.resolve(path.join(routes, route, "index.js"))).default;
-	entryPoints[route] = path.resolve(path.join(routes, route, "index.js"));
+	//entryPoints[route] = path.resolve(path.join(routes, route, "index.js"));
 
 	htmlOutputs.push(new HtmlWebpackPlugin({
 		template: htmlTemplate,
@@ -62,6 +55,7 @@ fs.readdirSync(routes).forEach((route)=>{
 		inject: false,
 		hash: false,
 		chunks: ["runtime", "vendors", "index"],
+		excludeChunks: route,
 		minify: htmlminOptions,
 		blogPost: true,
 		title: metadata.title,
@@ -73,7 +67,10 @@ fs.readdirSync(routes).forEach((route)=>{
 });
 
 module.exports = {
-	entry: entryPoints,
+	entry: {
+		"vendors": ["preact", "preact-router", "preact-async-route"],
+		"index": "./src/index.js"
+	},
 	target: "web",
 	output: {
 		filename: "js/[name].[chunkhash:8].js",
@@ -103,15 +100,6 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(webRoot),
-		new InlineChunkManifestHtmlWebpackPlugin({
-			manifestPlugins: [
-				new WebpackManifestPlugin()
-			],
-			manifestVariable: "manifest"
-		}),
-		new WebpackManifestPlugin({
-			basePath: "/"
-		}),
 		...htmlOutputs,
 		new ImageminPlugin({
 			svgo: {

@@ -25,6 +25,5 @@
 		<% for(chunk in htmlWebpackPlugin.files.js){ %>
 			<script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
 		<% } %>
-		<%=htmlWebpackPlugin.files.webpackChunkManifest%>
 	</body>
 </html>

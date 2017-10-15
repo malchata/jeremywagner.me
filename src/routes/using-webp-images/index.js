@@ -5,7 +5,7 @@ export const Metadata = {
 	title: "Using WebP Images"
 };
 
-export default class UsingWebPImages extends Component{
+export default class Content extends Component{
 	constructor(props){
 		super(props);
 	}

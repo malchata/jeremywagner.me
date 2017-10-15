@@ -5,11 +5,13 @@ import { h, render, Component } from "preact";
 export default class Routes extends Component{
 	constructor(props){
 		super(props);
+		this.initial = true;
 	}
 
 	getContentModule(url, cb, props){
-		return new Promise(resolve=>{
-			System.import(manifest[`/${props.slug}.js`]).then(module => module.default);
+		return System.import(`../routes/${props.slug}/index`).then(module=>{
+			document.title = `${module.Metadata.title} - Jeremy Wagner`;
+			return module.default;
 		});
 	}
 
