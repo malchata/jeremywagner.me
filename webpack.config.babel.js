@@ -7,7 +7,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
-const { render } = renderToString;
 
 // These are global component definitions
 import Header from "./src/components/Header";
@@ -33,7 +32,8 @@ let htmlOutputs = [
 		filename: path.join(webRoot, "index.html"),
 		inject: false,
 		hash: false,
-		chunks: ["runtime", "vendors", "index"],
+		chunks: ["index"],
+		excludeChunks: ["yall", "runtime"],
 		minify: htmlminOptions,
 		blogPost: false,
 		title: "Home",
@@ -47,15 +47,14 @@ let htmlOutputs = [
 fs.readdirSync(routes).forEach((route)=>{
 	let metadata = require(path.resolve(path.join(routes, route, "index.js"))).Metadata;
 	components.content = require(path.resolve(path.join(routes, route, "index.js"))).default;
-	//entryPoints[route] = path.resolve(path.join(routes, route, "index.js"));
 
 	htmlOutputs.push(new HtmlWebpackPlugin({
 		template: htmlTemplate,
 		filename: path.join(webRoot, "blog", route, "index.html"),
 		inject: false,
 		hash: false,
-		chunks: ["runtime", "vendors", "index"],
-		excludeChunks: route,
+		chunks: ["index", "yall"],
+		excludeChunks: ["runtime"],
 		minify: htmlminOptions,
 		blogPost: true,
 		title: metadata.title,
@@ -68,12 +67,12 @@ fs.readdirSync(routes).forEach((route)=>{
 
 module.exports = {
 	entry: {
-		"vendors": ["preact", "preact-router", "preact-async-route"],
-		"index": "./src/index.js"
+		"index": "./src/index.js",
+		"yall": "./src/js/yall.js"
 	},
 	target: "web",
 	output: {
-		filename: "js/[name].[chunkhash:8].js",
+		filename: "js/[name].[hash:8].js",
 		path: webRoot,
 		publicPath: "/"
 	},
@@ -107,11 +106,15 @@ module.exports = {
 				precision: 1
 			}
 		}),
-		new ExtractTextPlugin("css/styles.[chunkhash:8].css"),
+		new ExtractTextPlugin("css/styles.[contenthash:8].css"),
+		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
-			names: ["runtime", "vendors"],
-			minChunks: Infinity
+			names: ["yall"]
 		}),
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.DefinePlugin({
+			"process.env": {
+				"NODE_ENV": JSON.stringify("production")
+			}
+		})
 	]
 };

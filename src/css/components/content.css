@@ -1,0 +1,5 @@
+h1{
+	color: var(--white);
+	background: var(--coral);
+	font-family: var(--fredoka-one);
+}

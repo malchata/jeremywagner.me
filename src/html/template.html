@@ -14,13 +14,11 @@
 	<body>
 		<div class="skyline"></div>
 		<main>
-			<div>
-				<%= htmlWebpackPlugin.options.render("header") %>
-				<%= htmlWebpackPlugin.options.render("navigation") %>
-				<% if(htmlWebpackPlugin.options.blogPost == true){ %>
-					<%= htmlWebpackPlugin.options.render("content") %>
-				<% } %>
-			</div>
+			<%= htmlWebpackPlugin.options.render("header") %>
+			<%= htmlWebpackPlugin.options.render("navigation") %>
+			<% if(htmlWebpackPlugin.options.blogPost == true){ %>
+				<%= htmlWebpackPlugin.options.render("content") %>
+			<% } %>
 		</main>
 		<% for(chunk in htmlWebpackPlugin.files.js){ %>
 			<script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
