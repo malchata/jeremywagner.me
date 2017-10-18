@@ -21,7 +21,9 @@
 			<% } %>
 		</main>
 		<% for(chunk in htmlWebpackPlugin.files.js){ %>
-			<script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+			<% if(htmlWebpackPlugin.files.js[chunk].indexOf("index") === -1 && htmlWebpackPlugin.options.blogPost == true){ %>
+				<script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+			<% } %>
 		<% } %>
 	</body>
 </html>
