@@ -11,6 +11,7 @@ import renderToString from "preact-render-to-string";
 // These are global component definitions
 import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
+import Image from "./src/components/Image";
 
 const components = {
 	header: Header,

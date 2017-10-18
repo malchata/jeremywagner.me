@@ -1,5 +1,115 @@
+article{
+	background: var(--white);
+}
+
 h1{
 	color: var(--white);
 	background: var(--coral);
 	font-family: var(--fredoka-one);
+	padding: .4ch var(--mobile-gutter);
+	line-height: 1.618;
+	font-size: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)));
+	margin: 0 0 .4ch;
+}
+
+h2{
+	padding: .4ch var(--mobile-gutter);
+	background: var(--indigo);
+	font-family: var(--fredoka-one);
+	color: var(--white);
+	font-size: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1.618;
+	margin: 0 0 .4ch;
+}
+
+h2 a{
+	color: var(--white);
+	display: flex;
+}
+
+h2 a[href]:before{
+	color: var(--light-blue);
+	content: "#\00a0";
+	transition: .25s color ease-out;
+}
+
+h2 a:hover:before{
+	color: var(--coral);
+}
+
+.editors-note{
+	font-style: italic;
+}
+
+li,
+p{
+	font-family: var(--fira-sans);
+	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	color: var(--black);
+	line-height: 1.618;
+}
+
+p{
+	padding: 0 var(--mobile-gutter);
+	margin: 0 0 1.92ch;
+}
+
+p a{
+	color: var(--black);
+	box-shadow: inset 0 -.5ch 0 var(--trans-coral);
+}
+
+p a:hover{
+	box-shadow: inset 0 -.5ch 0 var(--coral);
+	background: var(--coral);
+	color: var(--white);
+}
+
+.date{
+	font-weight: 700;
+	color: var(--coral);
+	font-family: var(--fira-sans);
+	font-size: calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)));
+}
+
+figure{
+	text-align: center;
+	padding: 0 var(--mobile-gutter);
+}
+
+figure img{
+	display: block;
+	margin: 0 auto;
+}
+
+figcaption{
+	color: var(--white);
+	font-family: var(--fira-sans);
+	background: var(--coral);
+	padding: .8ch 1.25ch;
+	line-height: 1.618;
+	display: inline-block;
+	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	margin: 1.92ch 0 2.51328ch;
+}
+
+code{
+	font-family: var(--code);
+	line-height: 1.618;
+}
+
+.code-container{
+	background: var(--light-blue);
+	border-radius: 4px 0 0 4px;
+	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	margin: 0 0 1.92ch var(--mobile-gutter);
+}
+
+pre{
+	padding: 27px 16px 27px 32px;
+	overflow-x: auto;
+}
+
+pre code{
+	color: var(--indigo);
 }

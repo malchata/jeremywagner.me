@@ -6,15 +6,15 @@ nav{
 .nav-item{
 	font-family: var(--fredoka-one);
 	display: inline-block;
-	/*@include fluid-type(320px, 960px, 16px, 32px);*/
 	line-height: 1.618;
+	font-size: calc(100% + (32 - 16) * ((100vw - 320px) / (960 - 320)));
 }
 
 .nav-item:after{
 	content: "//";
 	color: var(--coral);
 	margin: 0 1ch;
-	/*@include fluid-type(320px, 960px, 12px, 24px);*/
+	font-size: calc(75% + (24 - 12) * ((100vw - 320px) / (960 - 320)));
 }
 
 .nav-item:last-child:after{
@@ -23,10 +23,11 @@ nav{
 
 .nav-link{
 	color: var(--light-blue);
+	text-decoration: underline;
 }
 
 #social-nav{
-	margin: 16px 0 0;
+	margin: 16px 0 36px;
 	font-size: 0;
 }
 

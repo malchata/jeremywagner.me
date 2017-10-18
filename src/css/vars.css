@@ -1,10 +1,13 @@
 :root{
 	/* Colors */
 	--black: #110e0a;
-	--white: #f5e6e8;
+	--white: #fffcf2;
 	--coral: #f9855d;
 	--indigo: #233d55;
 	--light-blue: #b0d9f2;
+
+	/* Translucent Colors */
+	--trans-coral: rgba(249, 133, 93, .5);
 
 	/* Spatial */
 	--mobile-gutter: 8px;
@@ -14,4 +17,5 @@
 	--fredoka-one: "Fredoka One", cursive;
 	--monoton: "Monoton", cursive;
 	--fira-sans: "Fira Sans", sans-serif;
+	--code: "Monaco", "Consolas", monospace;
 }

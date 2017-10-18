@@ -54,6 +54,12 @@ body{
 	color: #fff;
 }
 
+img{
+	max-width: 100%;
+	display: inline-block;
+	height: auto;
+}
+
 ol,
 ul{
 	list-style: none;
@@ -62,4 +68,8 @@ ul{
 blockquote,
 q{
 	quotes: none;
+}
+
+a{
+	text-decoration: none;
 }

@@ -11,7 +11,7 @@ export default class Image extends Component{
 
 		if(props.lazy === true){
 			imageMarkup = <figure>
-				<img className={this.lazyClass} src={props.placeholder} data-src={props.src} data-srcset={props.srcset} alt={props.caption} title={props.caption}/>
+				<img className={this.lazyClass} src={props.placeholder} data-src={props.src} data-srcset={props.srcset} alt={props.caption} title={props.caption} width={props.width} height={props.height}/>
 				<noscript>
 					<img src={props.src} srcset={props.srcset} alt={props.caption} title={props.caption} width={props.width} height={props.height}/>
 				</noscript>
@@ -25,12 +25,11 @@ export default class Image extends Component{
 			</figure>;
 		}
 
-		return (
-			{imageMarkup}
-		);
+		return (imageMarkup);
 	}
 }
 
 Image.defaultProps = {
-	lazy: false
-}
+	lazy: false,
+	srcset: null
+};
