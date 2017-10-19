@@ -131,7 +131,7 @@ imagemin([JPEGImages], outputFolder, {
   <source srcset="img/creakyOldJPEG.jpg" type="image/jpeg">
   <img src="img/creakyOldJPEG.jpg" alt="Alt Text!">
 </picture>`}</CodeBlock>
-				<p>This is probably your best best for the broadest possible compatibility because it will work in every single browser, not just those that support the <code>{`<picture>`}</code> element. The reason for this is that browsers that don't support <code>{`<picture>`}</code> will just display whatever source is specified in the <code>{`<img>`}</code> tag. If you need full code{`<picture>`} support, you can always drop in <a href="https://github.com/scottjehl/picturefill" rel="noopener">Scott Jehl's super-slick Picturefill script</a>.</p>
+				<p>This is probably your best best for the broadest possible compatibility because it will work in every single browser, not just those that support the <code>{`<picture>`}</code> element. The reason for this is that browsers that don't support <code>{`<picture>`}</code> will just display whatever source is specified in the <code>{`<img>`}</code> tag. If you need full <code>{`<picture>`}</code> support, you can always drop in <a href="https://github.com/scottjehl/picturefill" rel="noopener">Scott Jehl's super-slick Picturefill script</a>.</p>
 				<SubHeading deepLink={"using-in-css"}>Using WebP in CSS</SubHeading>
 				<p>The picture (see what I did there?) gets more complicated when you need to use WebP images in CSS. Unlike the <code>{`<picture>`}</code> element in HTML which falls back gracefully to the <code>{`<img>`}</code> element in all browsers, CSS doesn't provide a built-in solution for fallback images that's optimal. Solutions such as multiple backgrounds end up downloading both resources in some cases, which is a big optimization no no. The solution lies in feature detection.</p>
 				<p><a href="http://modernizr.com/" rel="noopener">Modernizr</a> is a well-known feature detection library that detects available features in browsers. WebP support just so happens to be one of those detections. Even better, you can do a custom Modernizr build with only WebP detection <a href="https://modernizr.com/download" rel="noopener">on the download page</a>, which allows you to detect WebP support with very low overhead.</p>
@@ -140,7 +140,7 @@ imagemin([JPEGImages], outputFolder, {
 					<li>The <code>webp</code> class is added when the browser supports WebP.</li>
 					<li>The <code>no-webp</code> class is added when the browser doesn't support WebP.</li>
 				</ol>
-				<p>With these classes, you'll be able to use CSS to load background images according to a browser's capability by targeting the class on the code{`<html>`} tag:</p>
+				<p>With these classes, you'll be able to use CSS to load background images according to a browser's capability by targeting the class on the <code>{`<html>`}</code> tag:</p>
 				<CodeBlock>{`.no-webp .elementWithBackgroundImage{
   background-image: url("image.jpg");
 }
@@ -161,11 +161,11 @@ imagemin([JPEGImages], outputFolder, {
 				<p>The user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" rel="noopener">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>{`<html>`}</code> element.</p>
 				<p>To get around this, we'll start by adding a class of <code>{`no-js`}</code> to the <code>{`<html>`}</code> tag:</p>
 				<CodeBlock>{`<html class="no-js">`}</CodeBlock>
-				<p>We'll then write a small piece of inline script that we'll place before any code{`<link>`} or code{`<script>`} tags:</p>
+				<p>We'll then write a small piece of inline script that we'll place before any <code>{`<link>`}</code> or <code>{`<script>`}</code> tags:</p>
 				<CodeBlock>{`<script>
   document.documentElement.classList.remove("no-js");
 </script>`}</CodeBlock>
-				<p>This will remove the <code>{`no-js`}</code> class on the code{`<html>`} element when parsed.</p>
+				<p>This will remove the <code>{`no-js`}</code> class on the <code>{`<html>`}</code> element when parsed.</p>
 				<p>So what good does this do us? When JavaScript is disabled, this small script never runs, so the <code>{`no-js`}</code> class will stay on the element. This means we can can add another rule to provide an image type that has the widest support:</p>
 				<CodeBlock>{`.no-js .elementWithBackgroundImage{
   background-image: url("image.jpg");
