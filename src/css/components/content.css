@@ -1,5 +1,6 @@
 article{
 	background: var(--white);
+	padding: 0 0 1.92ch;
 }
 
 h1{
@@ -9,7 +10,7 @@ h1{
 	padding: .4ch var(--mobile-gutter);
 	line-height: 1.618;
 	font-size: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)));
-	margin: 0 0 .4ch;
+	margin: 0 0 .96ch;
 }
 
 h2{
@@ -19,7 +20,7 @@ h2{
 	color: var(--white);
 	font-size: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)));
 	line-height: 1.618;
-	margin: 0 0 .4ch;
+	margin: 0 0 .96ch;
 }
 
 h2 a{
@@ -41,6 +42,16 @@ h2 a:hover:before{
 	font-style: italic;
 }
 
+article ol,
+article ul{
+	margin: 0 0 1.92ch 18px;
+	padding: 0 var(--mobile-gutter);
+}
+
+ol{
+	list-style-type: decimal;
+}
+
 li,
 p{
 	font-family: var(--fira-sans);
@@ -54,13 +65,19 @@ p{
 	margin: 0 0 1.92ch;
 }
 
-p a{
+article p a,
+article li a{
 	color: var(--black);
 	box-shadow: inset 0 -.5ch 0 var(--trans-coral);
+	transition: .25s color ease-out, .25s background-color ease-out;
 }
 
-p a:hover{
-	box-shadow: inset 0 -.5ch 0 var(--coral);
+article *:last-child{
+	margin-bottom: 0;
+}
+
+p a:hover,
+li a:hover{
 	background: var(--coral);
 	color: var(--white);
 }
@@ -74,7 +91,7 @@ p a:hover{
 
 figure{
 	text-align: center;
-	padding: 0 var(--mobile-gutter);
+	padding: .59328ch var(--mobile-gutter);
 }
 
 figure img{

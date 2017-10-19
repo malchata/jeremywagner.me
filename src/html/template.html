@@ -14,6 +14,7 @@
 	<body>
 		<div class="skyline"></div>
 		<main>
+			<%= htmlWebpackPlugin.options.render("illustration") %>
 			<%= htmlWebpackPlugin.options.render("header") %>
 			<%= htmlWebpackPlugin.options.render("navigation") %>
 			<% if(htmlWebpackPlugin.options.blogPost == true){ %>

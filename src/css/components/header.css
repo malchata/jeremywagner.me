@@ -1,3 +1,7 @@
+header{
+	padding: 0 var(--mobile-gutter);
+}
+
 .skyline{
 	background: top 0 left 95% url("../images/skyline.svg") no-repeat;
 	background-size: auto 101%;
@@ -16,6 +20,7 @@
 .name{
 	font-family: var(--fredoka-one);
 	font-size: calc(150% + (72 - 24) * ((100vw - 320px) / (960 - 320)));
+	margin: 0 0 .4ch
 }
 
 .site{
@@ -24,4 +29,10 @@
 	text-transform: uppercase;
 	word-spacing: .225ch;
 	margin: .25ch 0 0;
+}
+
+@media (min-width: var(--large)){
+	#jeremy{
+		padding-top: 100%;
+	}
 }

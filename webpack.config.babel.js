@@ -9,11 +9,13 @@ import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
 // These are global component definitions
+import Illustration from "./src/components/Illustration";
 import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
 import Image from "./src/components/Image";
 
 const components = {
+	illustration: Illustration,
 	header: Header,
 	navigation: Navigation
 };
@@ -94,7 +96,7 @@ module.exports = {
 			{
 				test: /\.(png|gif|jpe?g|svg)$/,
 				exclude: exclusions,
-				use: "file-loader?name=images/[name].[hash:8].[ext]"
+				use: "file-loader?name=images/[name].[ext]"
 			}
 		]
 	},

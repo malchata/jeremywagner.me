@@ -186,6 +186,17 @@
 				}
 			}
 
+			@media (prefers-reduced-motion: reduce){
+				.cls-3,
+				.cls-4,
+				.cls-5,
+				.cls-8{
+					-webkit-animation: none 0s linear 0s infinite backwards;
+					-moz-animation: none 0s linear 0s infinite backwards;
+					-o-animation: none 0s linear 0s infinite backwards;
+					animation: none 0s linear 0s infinite backwards;
+				}
+			}
 		</style>
 		<linearGradient id="linear-gradient" x1="720" y1="2.49" x2="720" y2="305.65" gradientUnits="userSpaceOnUse">
 			<stop offset="0" stop-color="#122635"/>

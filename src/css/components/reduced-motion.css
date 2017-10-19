@@ -1,0 +1,7 @@
+@media (prefers-reduced-motion: reduce){
+	h2 a[href]:before,
+	article p a,
+	article li a{
+		transition: none;
+	}
+}
