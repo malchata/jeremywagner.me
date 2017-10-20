@@ -130,3 +130,12 @@ pre{
 pre code{
 	color: var(--indigo);
 }
+
+@media screen and (min-width: 800px){
+	main{
+		padding: 0 0 0 var(--desktop-gutter);
+		display: grid;
+		grid-template-columns: 22.2222222222% 1fr; /* 320px / 1440px */
+		grid-column-gap: 32px;
+	}
+}

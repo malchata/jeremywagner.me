@@ -69,3 +69,9 @@ nav{
 	background-position: -60.2px -57.213px;
 	margin: 0;
 }
+
+@media screen and (min-width: 800px){
+	nav{
+		padding: 0;
+	}
+}

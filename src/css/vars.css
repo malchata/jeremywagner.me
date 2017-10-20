@@ -12,14 +12,11 @@
 
 	/* Spatial */
 	--mobile-gutter: 2.5%; /* 8px / 320px */
-	--desktop-gutter: 16px;
+	--desktop-gutter: 1.1111111111%; /* 16px / 1440px */
 
 	/* Fonts */
 	--fredoka-one: "Fredoka One", cursive;
 	--monoton: "Monoton", cursive;
 	--fira-sans: "Fira Sans", sans-serif;
 	--code: "Monaco", "Consolas", monospace;
-
-	/* Breakpoints */
-	--large: 800px;
 }

@@ -1,7 +1,6 @@
 module.exports = {
 	plugins: [
 		require("postcss-easy-import"),
-		require("postcss-media-variables"),
 		require("postcss-css-variables"),
 		require("autorem"),
 		require("autoprefixer")({
