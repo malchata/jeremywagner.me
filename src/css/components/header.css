@@ -32,20 +32,21 @@ header{
 }
 
 @media screen and (min-width: 800px){
-	.skyline{
-		background-position: 50% 0;
-		background-size: auto 103%;
-		padding-top: 21.9444444444%; /* 316px / 1440px */
-		margin: 0;
-	}
+	@supports (display: grid){
+		.skyline{
+			background-position: 50% 0;
+			background-size: auto 100%;
+			padding-top: 21.9444444444%; /* 316px / 1440px */
+			margin: 0;
+		}
 
-	header{
-		padding: 0;
-	}
+		header{
+			padding: 0;
+		}
 
-	#jeremy{
-		padding-top: 100%;
-		background-size: 100%;
-		background: url("../images/jeremy.svg") no-repeat;
+		#jeremy{
+			background-size: auto 100%;
+			background: url("../images/jeremy.svg") no-repeat;
+		}
 	}
 }

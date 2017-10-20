@@ -71,7 +71,15 @@ nav{
 }
 
 @media screen and (min-width: 800px){
-	nav{
-		padding: 0;
+	@supports (display: grid){
+		nav{
+			padding: 0;
+		}
+
+		.nav-item:after{
+			content: none;
+			display: block;
+			text-align: center;
+		}
 	}
 }
