@@ -31,11 +31,11 @@ header{
 	margin: .25ch 0 0;
 }
 
-@media screen and (min-width: 800px){
-	@supports (display: grid){
+@media (min-width: 800px){
+	/*@supports (display: grid){*/
 		.skyline{
 			background-position: 50% 0;
-			background-size: auto 100%;
+			background-size: auto 101.5%;
 			padding-top: 21.9444444444%; /* 316px / 1440px */
 			margin: 0;
 		}
@@ -45,8 +45,28 @@ header{
 		}
 
 		#jeremy{
-			background-size: auto 100%;
-			background: url("../images/jeremy.svg") no-repeat;
+			position: relative;
 		}
-	}
+
+		#jeremy:before{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding-top: 100%;
+			width: 100%;
+			display: block;
+			background: url("../images/jeremy.svg") no-repeat;
+			background-size: 100%;
+			content: "";
+			font-size: 0;
+		}
+
+		.name{
+			font-size: calc(175% + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
+		}
+
+		.site{
+			font-size: calc(350% + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
+		}
+	/*}*/
 }

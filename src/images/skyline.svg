@@ -47,10 +47,10 @@
 			}
 
 			.cls-3 {
-				-webkit-animation: move-one 120s linear 0s infinite backwards;
-				-moz-animation: move-one 120s linear 0s infinite backwards;
-				-o-animation: move-one 120s linear 0s infinite backwards;
-				animation: move-one 120s linear 0s infinite backwards;
+				-webkit-animation: move-one 120s linear 20s infinite backwards;
+				-moz-animation: move-one 120s linear 20s infinite backwards;
+				-o-animation: move-one 120s linear 20s infinite backwards;
+				animation: move-one 120s linear 20s infinite backwards;
 			}
 
 			.cls-4 {
@@ -61,10 +61,10 @@
 			}
 
 			.cls-5 {
-				-webkit-animation: move-three 90s linear 0s infinite backwards;
-				-moz-animation: move-three 90s linear 0s infinite backwards;
-				-o-animation: move-three 90s linear 0s infinite backwards;
-				animation: move-three 90s linear 0s infinite backwards;
+				-webkit-animation: move-three 90s linear 10s infinite backwards;
+				-moz-animation: move-three 90s linear 10s infinite backwards;
+				-o-animation: move-three 90s linear 10s infinite backwards;
+				animation: move-three 90s linear 10s infinite backwards;
 			}
 
 			.cls-8{

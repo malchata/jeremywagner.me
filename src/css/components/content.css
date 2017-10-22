@@ -1,6 +1,7 @@
 article{
 	background: var(--white);
 	padding: 0 0 1.92ch;
+	overflow-x: hidden;
 }
 
 h1{
@@ -76,8 +77,8 @@ article *:last-child{
 	margin-bottom: 0;
 }
 
-p a:hover,
-li a:hover{
+article p a:hover,
+article li a:hover{
 	background: var(--coral);
 	color: var(--white);
 }
@@ -91,7 +92,7 @@ li a:hover{
 
 figure{
 	text-align: center;
-	padding: .59328ch var(--mobile-gutter);
+	padding: 2.51328ch var(--mobile-gutter);
 }
 
 figure img{
@@ -118,7 +119,6 @@ code{
 .code-container{
 	background: var(--light-blue);
 	border-radius: 4px 0 0 4px;
-	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
 	margin: 0 0 1.92ch var(--mobile-gutter);
 }
 
@@ -129,15 +129,34 @@ pre{
 
 pre code{
 	color: var(--indigo);
+	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
 }
 
-@media screen and (min-width: 800px){
-	@supports (display: grid){
+@media (min-width: 800px){
+	/*@supports (display: grid){*/
 		main{
 			padding: 0 0 0 var(--desktop-gutter);
 			display: grid;
 			grid-template-columns: 22.2222222222% 1fr; /* 320px / 1440px */
-			grid-gap: 2.2222222222%; /* 32px / 1440px */
+			grid-gap: 3ch 2.2222222222%; /* 32px / 1440px */
+			margin: -1ch 0 0;
 		}
-	}
+
+		h1{
+		}
+
+		h2{
+		}
+
+		li,
+		p,
+		figcaption,
+		pre code{
+			font-size: calc(100% + (20.944 - 16) * ((100vw - 800px) / (1440 - 800)));
+		}
+
+		.date{
+			font-size: calc(118.75% + (24.871 - 19) * ((100vw - 800px) / (1440 - 800)));
+		}
+	/*}*/
 }

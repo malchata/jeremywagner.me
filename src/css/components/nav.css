@@ -70,16 +70,21 @@ nav{
 	margin: 0;
 }
 
-@media screen and (min-width: 800px){
-	@supports (display: grid){
+@media (min-width: 800px){
+	/*@supports (display: grid){*/
 		nav{
 			padding: 0;
 		}
 
-		.nav-item:after{
-			content: none;
+		.nav-item{
 			display: block;
 			text-align: center;
+			font-size: calc(152.7883880825% + (32 - 24.4461420932) * ((100vw - 800px) / (1440 - 800)));
+			margin: 0 0 .8ch;
 		}
-	}
+
+		.nav-item:after{
+			content: none;
+		}
+	/*}*/
 }
