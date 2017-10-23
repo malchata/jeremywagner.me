@@ -12,72 +12,67 @@ import renderToString from "preact-render-to-string";
 import Illustration from "./src/components/Illustration";
 import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
-import Image from "./src/components/Image";
 
-const components = {
+const exclusions = /node_modules/i;
+const webRoot = path.join(__dirname, "dist");
+
+let components = {
 	illustration: Illustration,
 	header: Header,
 	navigation: Navigation
 };
-const exclusions = /node_modules/i;
-const htmlTemplate = path.join(__dirname, "src/html/template.html");
-const webRoot = path.join(__dirname, "dist");
-const routes = path.join(__dirname, "src", "routes");
-const htmlminOptions = {
-	removeComments: true,
-	collapseWhitespace: true,
-	minifyJS: true
+let entryPoints = {
+	"styles": "./src/css/styles.css",
+	"yall": "./src/js/yall.js"
 };
+let htmlOutputs = [];
 
-let htmlOutputs = [
-	new HtmlWebpackPlugin({
-		template: htmlTemplate,
-		filename: path.join(webRoot, "index.html"),
-		inject: false,
-		hash: false,
-		chunks: ["index"],
-		excludeChunks: ["yall", "runtime"],
-		minify: htmlminOptions,
-		blogPost: false,
-		title: "Home",
-		render(component, props){
-			let vnode = h(components[component], props);
-			return renderToString(vnode);
+function buildRoutes(routes){
+	fs.readdirSync(routes).forEach((route)=>{
+		if(route.indexOf("index.js") !== -1){
+			let routeModule = require(path.join(routes, route));
+			let metadata = routeModule.Metadata;
+			components.content = routeModule.default;
+
+			let routeParts = routes.split(path.sep);
+			let entryPointName = routeParts[routeParts.length - 1] === "routes" ? "index" : routeParts[routeParts.length - 1];
+			entryPoints[entryPointName] = path.join(routes, route);
+
+			htmlOutputs.push(new HtmlWebpackPlugin({
+				template: path.join(__dirname, "src/html/template.html"),
+				filename: path.join(routes.replace("src/routes", "dist"), "index.html"),
+				inject: false,
+				hash: false,
+				minify: {
+					removeComments: true,
+					collapseWhitespace: true,
+					minifyJS: true
+				},
+				chunks: ["styles", "yall", entryPointName],
+				title: metadata.title,
+				description: metadata.description,
+				render: function(component, props){
+					let vnode = h(components[component], props);
+					return renderToString(vnode);
+				}
+			}));
 		}
-	})
-];
 
-fs.readdirSync(routes).forEach((route)=>{
-	let metadata = require(path.resolve(path.join(routes, route, "index.js"))).Metadata;
-	components.content = require(path.resolve(path.join(routes, route, "index.js"))).default;
-
-	htmlOutputs.push(new HtmlWebpackPlugin({
-		template: htmlTemplate,
-		filename: path.join(webRoot, "blog", route, "index.html"),
-		inject: false,
-		hash: false,
-		chunks: ["index", "yall"],
-		excludeChunks: ["runtime"],
-		minify: htmlminOptions,
-		blogPost: true,
-		title: metadata.title,
-		render(component, props){
-			let vnode = h(components[component], props);
-			return renderToString(vnode);
+		if(fs.lstatSync(path.join(routes, route)).isDirectory() === true){
+			buildRoutes(path.join(routes, route));
 		}
-	}));
-});
+	});
+}
+
+buildRoutes(path.join(__dirname, "src", "routes"));
 
 module.exports = {
-	entry: {
-		"index": "./src/index.js",
-		"yall": "./src/js/yall.js"
-	},
-	target: "web",
+	entry: entryPoints,
 	output: {
-		filename: "js/[name].[hash:8].js",
+		filename: "js/[name].[chunkhash].js",
 		path: webRoot,
-		publicPath: "/"
+		publicPath: "/",
+		hashDigestLength: 8
 	},
 	module: {
 		rules: [
@@ -102,17 +97,17 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(webRoot),
-		...htmlOutputs,
+		new ExtractTextPlugin("css/styles.[contenthash:8].css"),
 		new ImageminPlugin({
 			svgo: {
 				multipass: true,
 				precision: 1
 			}
 		}),
-		new ExtractTextPlugin("css/styles.[contenthash:8].css"),
+		...htmlOutputs,
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
-			names: ["yall"]
+			names: ["runtime"]
 		}),
 		new webpack.DefinePlugin({
 			"process.env": {

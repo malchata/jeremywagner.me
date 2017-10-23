@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title><%= htmlWebpackPlugin.options.title %> - Jeremy Wagner</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- <link rel="manifest" href="/manifest.json"> -->
@@ -18,14 +19,12 @@
 			<%= htmlWebpackPlugin.options.render("illustration") %>
 			<%= htmlWebpackPlugin.options.render("header") %>
 			<%= htmlWebpackPlugin.options.render("navigation") %>
-			<% if(htmlWebpackPlugin.options.blogPost == true){ %>
-				<%= htmlWebpackPlugin.options.render("content") %>
-			<% } %>
+			<%= htmlWebpackPlugin.options.render("content") %>
 		</main>
-		<% for(chunk in htmlWebpackPlugin.files.js){ %>
+		<!-- <% for(chunk in htmlWebpackPlugin.files.js){ %>
 			<% if(htmlWebpackPlugin.files.js[chunk].indexOf("index") === -1 && htmlWebpackPlugin.options.blogPost == true){ %>
 				<script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
 			<% } %>
-		<% } %>
+		<% } %> -->
 	</body>
 </html>

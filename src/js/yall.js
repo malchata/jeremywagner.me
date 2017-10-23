@@ -1,5 +1,5 @@
 /**
- * yall.js version 1.1.1
+ * yall.js version 1.1.2
  * Yet Another Lazy loader
  **/
 
@@ -16,12 +16,11 @@
 		pr = "prototype",
 		io = "IntersectionObserver",
 		ioe = io + "Entry",
-		ln = "length",
 		dss = "data-srcset",
 		// Placeholders used for event handler strings.
 		documentEvents = ["scroll", "touchmove"],
 		windowEvents = ["orientationchange", "resize"],
-		// Tracks if yall is currently processing. Used for throttling. Only matters if IntersectionObserver is unsupported.
+		// Tracks if yall is currently processing. Used for throttling. Only relevant if IntersectionObserver is unsupported.
 		active = 0,
 		// Placeholder for elements
 		elements,
@@ -45,7 +44,9 @@
 			replaceAttr(img, "data-src", "src");
 			replaceAttr(img, dss, "srcset");
 			img.classList.remove("lazy");
-			elements.splice(elements.indexOf(img), 1);
+			elements = elements.filter(function(e){
+				return e !== img;
+			});
 		},
 		// A multiple event binding handler.
 		multiBind = function(obj, handlers, fn, remove){
@@ -55,7 +56,7 @@
 		},
 		// The guts of the lazy loader (now only used when IntersectionObserver is not supported)
 		yall = function(){
-			if(!elements[ln]){
+			if(!elements.length){
 				// There are no more elements to lazy load, so we'll unbind everything.
 				multiBind(document, documentEvents, yall, 1);
 				multiBind(window, windowEvents, yall, 1);
@@ -82,17 +83,14 @@
 		elements = Array[pr].slice.call(document[qsa]("img.lazy"));
 
 		// We're only going to do stuff if we found `img.lazy` elements
-		if(elements[ln]){
+		if(elements.length){
 			// This compatibility check has been taken from https://github.com/WICG/IntersectionObserver/blob/gh-pages/polyfill/intersection-observer.js
 			if(io in window && ioe in window && "intersectionRatio" in window[ioe][pr]){
 				var imageObserver = new window[io](function(entries, observer){
 					entries[fe](function(entry){
 						if(entry.isIntersecting){
 							loadImage(entry.target);
-
-							if(!elements[ln]){
-								observer.disconnect();
-							}
+							imageObserver.unobserve(entry.target);
 						}
 					});
 				});
