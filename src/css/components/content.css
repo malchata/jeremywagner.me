@@ -1,7 +1,7 @@
 article{
 	background: var(--white);
 	padding: 0 0 1.92ch;
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 }
 
 h1{
@@ -73,7 +73,7 @@ article li a{
 	transition: .25s color ease-out, .25s background-color ease-out;
 }
 
-article *:last-child{
+article > :last-child{
 	margin-bottom: 0;
 }
 
@@ -142,10 +142,82 @@ pre code{
 			margin: -1ch 0 0;
 		}
 
-		h1{
+		section{
+			overflow-x: hidden;
 		}
 
+		article{
+			width: 97.7777777778%; /* 1056px / 1080px */
+			margin: 0 0 0 auto;
+			position: relative;
+		}
+
+		article:before,
+		article:after,
+		h1:before,
+		h1:after,
+		h2:before,
+		h2:after{
+			content: "";
+			font-size: 0;
+			background: var(--white);
+			width: 0.3093518519%; /* 3.341px / 1080px */
+			position: absolute;
+			min-width: 3px;
+			display: block;
+		}
+
+		article:before{
+			left: -1.1111111111%; /* 8px / 1080px */
+			height: calc(100% - 16px);
+			top: 8px;
+		}
+
+		article:after{
+			top: 16px;
+			left: -2.2222222222%; /* 24px / 1080px */
+			height: calc(100% - 32px);
+		}
+
+		h1,
 		h2{
+			position: relative;
+		}
+
+		h1:before,
+		h1:after,
+		h2:before,
+		h2:after{
+			height: 100%;
+			position: absolute;
+			bottom: 0;
+			z-index: 3;
+		}
+
+		h1:before{
+			background: var(--coral);
+			left: -1.1111111111%; /* 8px / 1080px */
+			height: calc(100% - 8px);
+		}
+
+		h1:after{
+			background: var(--coral);
+			left: -2.2222222222%; /* 24px / 1080px */
+			height: calc(100% - 16px);
+		}
+
+		h2:before,
+		h2:after{
+			background: var(--indigo);
+			height: 100%;
+		}
+
+		h2:before{
+			left: -1.1111111111%; /* 8px / 1080px */
+		}
+
+		h2:after{
+			left: -2.2222222222%; /* 24px / 1080px */
 		}
 
 		li,

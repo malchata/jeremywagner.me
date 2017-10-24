@@ -65,6 +65,13 @@ header{
 			font-size: calc(175% + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
 		}
 
+		.name:before,
+		.name:after,
+		.site:before,
+		.site:after{
+			content: none;
+		}
+
 		.site{
 			font-size: calc(350% + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
 		}

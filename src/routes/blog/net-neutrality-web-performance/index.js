@@ -10,15 +10,17 @@ export const Metadata = {
 	description: "If net neutrality falls, web performance best practices may be all we've got to stem the tide of abuses on the part of internet service providers."
 };
 
+export const Excerpt = <div className="excerpt">
+	<h1>{Metadata.title}</h1>
+	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
+	<p>I read and write often about web performance. As time has gone on, I've found myself less drawn to the technical aspects of the issue — the human side of web performance proves far more intriguing. I'm interested in how our actions as designers and developers makes life easier for users. Performance is a vital part of the user experience. Those who appreciate its importance aren't simply improving performance metrics, they're improving users' lives. I find my work most rewarding when I know I've built a site that's fast, or if I've remedied performance problems on ailing sites. To me, that's the good fight, and I sleep best when I've fought it.</p>
+</div>;
+
 export default class Content extends Component{
 	render(){
 		return (
 			<article>
-				<h1>{Metadata.title}</h1>
-				<p className="date">{Metadata.date}{Metadata.updateDate !== null ? ` (updated ${Metadata.updateDate})` : null}</p>
-				<div className="excerpt">
-					<p>I read and write often about web performance. As time has gone on, I've found myself less drawn to the technical aspects of the issue — the human side of web performance proves far more intriguing. I'm interested in how our actions as designers and developers makes life easier for users. Performance is a vital part of the user experience. Those who appreciate its importance aren't simply improving performance metrics, they're improving users' lives. I find my work most rewarding when I know I've built a site that's fast, or if I've remedied performance problems on ailing sites. To me, that's the good fight, and I sleep best when I've fought it.</p>
-				</div>
+				{Excerpt}
 				<p>In that fight, the adversary of performance is the lay of the land between the server and the browser. It's an adversary we can't vanquish. We can only diminish its effects through sound design and architectural decisions. Unlike villains in familiar stories, the journey of data between the server and the browser is not often a sentient adversary. It's a coldly neutral foe. At least, that's generally how it's been for web designers and developers in The United States.</p>
 				<p>Until recently.</p>
 				<p>We went through one of the most bizarre election seasons last year, the outcome of which became a harbinger for many harsh realities that may yet come to pass —one of which is that net neutrality may very well cease to exist. No matter where your beliefs fall in the political spectrum, the death of net neutrality will impact you as a practitioner of the web, and not for the better.</p>

@@ -7,20 +7,23 @@ export const Metadata = {
 	title: "Using WebP Images",
 	date: "25 April, 2016",
 	updateDate: "26 September, 2016",
-	description: "Using WebP images can yield substantially lower file sizes for your images, giving way to quicker page load times. Learn how to use them in this post!"
+	description: "Using WebP images can yield substantially lower file sizes for your images, giving way to quicker page load times. Learn how to use them in this post!",
+	canonical: "https://css-tricks.com/using-webp-images/"
 };
+
+export const Excerpt = <div className="excerpt">
+	<h1>{Metadata.title}</h1>
+	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
+	<p className="editors-note">This article has been updated to reflect changes in the <code>imagemin</code> API.</p>
+	<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
+	<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
+</div>;
 
 export default class Content extends Component{
 	render(){
 		return (
 			<article>
-				<h1>{Metadata.title}</h1>
-				<p className="date">{Metadata.date}{Metadata.updateDate !== null ? ` (updated ${Metadata.updateDate})` : null}</p>
-				<div className="excerpt">
-					<p className="editors-note">This article has been updated to reflect changes in the <code>imagemin</code> API.</p>
-					<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
-					<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
-				</div>
+				{Excerpt}
 				<Image
 					src={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508210556/jeremywagner.me/using-webp-images/modem-1x.png"}
 					srcset={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508210556/jeremywagner.me/using-webp-images/modem-1x.png 1x, http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508210556/jeremywagner.me/using-webp-images/modem-2x.png 2x"}

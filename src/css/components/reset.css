@@ -65,6 +65,14 @@ ul{
 	list-style: none;
 }
 
+em{
+	font-style: italic;
+}
+
+strong{
+	font-weight: 700;
+}
+
 blockquote,
 q{
 	quotes: none;
@@ -72,4 +80,10 @@ q{
 
 a{
 	text-decoration: none;
+}
+
+.sticky{
+	position: fixed;
+	top: 0;
+	z-index: 4;
 }
