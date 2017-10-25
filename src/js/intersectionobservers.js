@@ -1,13 +1,18 @@
 if("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype){
 	document.addEventListener("DOMContentLoaded", ()=>{
-		let subHeads = Array.prototype.slice.call(document.querySelector("article h2"));
-
 		let subHeadObserver = new IntersectionObserver((entries, observer)=>{
 			entries.forEach((entry)=>{
-				// Some code later.
+				// Code here
 			});
 		});
 
-		subHeads.forEach((subHead)=>subHeadObserver.observe(subHead));
+		let navObserver = new IntersectionObserver((entries, observer)=>{
+			entries.forEach((entry)=>{
+				// Code here
+			});
+		});
+
+		document.querySelectorAll("article h2").forEach((subHead)=>subHeadObserver.observe(subHead));
+		navObserver.observe(document.querySelector("nav"));
 	});
 }

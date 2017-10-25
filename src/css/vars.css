@@ -15,8 +15,8 @@
 	--desktop-gutter: 1.1111111111%; /* 16px / 1440px */
 
 	/* Fonts */
-	--fredoka-one: "Fredoka One", cursive;
-	--monoton: "Monoton", cursive;
+	--fredoka-one: "Fredoka One", sans-serif;
+	--monoton: "Monoton", sans-serif;
 	--fira-sans: "Fira Sans", sans-serif;
 	--code: "Monaco", "Consolas", monospace;
 }

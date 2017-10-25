@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jeremy Wagner -- Designer, Developer, Author -- @malchata
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript, SVG
+    Webpack, PostCSS, Express, Node, Preact

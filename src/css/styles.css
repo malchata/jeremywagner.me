@@ -1,7 +1,10 @@
 /* Necessities */
 @import "./vars.css";
 
-/* Necessities */
+/* Fonts */
+@import "./fonts.css";
+
+/* Components */
 @import "./components/reset.css";
 @import "./components/header.css";
 @import "./components/nav.css";

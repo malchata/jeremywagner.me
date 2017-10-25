@@ -5,7 +5,8 @@ import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
-import CompressionPlugin from "compression-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+//import CompressionWebpackPlugin from "compression-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
@@ -98,6 +99,11 @@ module.exports = {
 				test: /\.(png|gif|jpe?g|svg)$/,
 				exclude: exclusions,
 				use: "file-loader?name=images/[name].[hash:8].[ext]"
+			},
+			{
+				test: /\.(ttf|eot|woff2?)$/,
+				exclude: exclusions,
+				use: "file-loader?name=css/fonts/[name].[hash:8].[ext]"
 			}
 		]
 	},
@@ -111,12 +117,19 @@ module.exports = {
 			}
 		}),
 		...htmlOutputs,
+		new CopyWebpackPlugin([
+			{
+				from: path.join(__dirname, "src", "*.txt"),
+				to: path.join(__dirname, "dist"),
+				flatten: true
+			}
+		]),
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
 			names: ["vendors", "app"],
 			minChunks: Infinity
 		}),
-		// new CompressionPlugin({
+		// new CompressionWebpackPlugin({
 		// 	test: /\.(html|svg|ttf|eot|css|js)/i
 		// }),
 		// new webpack.DefinePlugin({
