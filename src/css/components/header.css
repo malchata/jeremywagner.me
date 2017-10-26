@@ -32,7 +32,7 @@ header{
 }
 
 @media (min-width: 800px){
-	/*@supports (display: grid){*/
+	@supports (display: grid){
 		.skyline{
 			background-position: 50% 0;
 			background-size: auto 101.5%;
@@ -75,5 +75,5 @@ header{
 		.site{
 			font-size: calc(350% + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
 		}
-	/*}*/
+	}
 }

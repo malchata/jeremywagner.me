@@ -34,18 +34,18 @@
 			}
 		},
 		// The handler to load the image
-		loadImage = function(img){
-			if(img[pn].tagName == "PICTURE"){
-				Array[pr].slice.call(img[pn][qsa]("source"))[fe](function(source){
+		loadMedia = function(media){
+			if(media[pn].tagName == "PICTURE"){
+				Array[pr].slice.call(media[pn][qsa]("source"))[fe](function(source){
 					replaceAttr(source, dss, "srcset");
 				});
 			}
 
-			replaceAttr(img, "data-src", "src");
-			replaceAttr(img, dss, "srcset");
-			img.classList.remove("lazy");
+			replaceAttr(media, "data-src", "src");
+			replaceAttr(media, dss, "srcset");
+			media.classList.remove("lazy");
 			elements = elements.filter(function(e){
-				return e !== img;
+				return e !== media;
 			});
 		},
 		// A multiple event binding handler.
@@ -67,9 +67,9 @@
 				active = 1;
 
 				setTimeout(function(){
-					elements[fe](function(img){
-						if((img[gbcr]().top <= window.innerHeight && img[gbcr]().bottom >= 0) && getComputedStyle(img).display != "none"){
-							loadImage(img);
+					elements[fe](function(media){
+						if((media[gbcr]().top <= window.innerHeight && media[gbcr]().bottom >= 0) && getComputedStyle(media).display != "none"){
+							loadMedia(media);
 						}
 					});
 
@@ -80,23 +80,23 @@
 
 	// Everything's kicked off on DOMContentLoaded
 	multiBind(document, ["DOMContentLoaded"], function(){
-		elements = Array[pr].slice.call(document[qsa]("img.lazy"));
+		elements = Array[pr].slice.call(document[qsa](".lazy"));
 
-		// We're only going to do stuff if we found `img.lazy` elements
+		// We're only going to do stuff if we found `.lazy` elements
 		if(elements.length){
 			// This compatibility check has been taken from https://github.com/WICG/IntersectionObserver/blob/gh-pages/polyfill/intersection-observer.js
 			if(io in window && ioe in window && "intersectionRatio" in window[ioe][pr]){
 				var imageObserver = new window[io](function(entries, observer){
 					entries[fe](function(entry){
 						if(entry.isIntersecting){
-							loadImage(entry.target);
+							loadMedia(entry.target);
 							imageObserver.unobserve(entry.target);
 						}
 					});
 				});
 
-				elements[fe](function(img){
-					imageObserver.observe(img);
+				elements[fe](function(media){
+					imageObserver.observe(media);
 				});
 			}
 			else{

@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
+import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "Using WebP Images",
@@ -14,7 +15,7 @@ export const Metadata = {
 export const Excerpt = <div className="excerpt">
 	<h1>{Metadata.title}</h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
-	<p className="editors-note">This article has been updated to reflect changes in the <code>imagemin</code> API.</p>
+	<p className="editors-note">This article has been updated to reflect changes in the <code>{`imagemin`}</code> API.</p>
 	<p>We've all been there before: You're browsing a website that has a ton of huge and beautiful images of delicious food, or maybe that new gadget you've been eyeballing. These images tug at your senses, and for content authors, they're essential in moving people to do things.</p>
 	<p>Except that these images are downright huge. Like really huge. On a doddering mobile connection, you can even see these images unfurl before you like a descending window shade. You're suddenly reminded of the bad old days of dial-up connections.</p>
 </div>;
@@ -79,11 +80,11 @@ export default class Content extends Component{
 				<p>My big complaint with the WebP Photoshop plugin is two-fold: There isn't a Save for Web interface for it so that I can preview what an image will look like with the settings I've chosen, and I'd have to create a batch process to save out a bunch of images. My second gripe probably isn't a hurdle for you if you like batch processing in Photoshop, but I'm more of a coder, so my preference is to use Node to convert many images at once.</p>
 				<SubHeading deepLink={"converting-with-node"}>Converting images to WebP with Node.js</SubHeading>
 				<a name="converting-with-node"></a>
-				<p><a href="http://nodejs.org/" rel="noopener">Node.js</a> is awesome, as you may or may not be able to agree with, depending on your feelings and experience with it. For jack of all tradesmen such as myself, it's less about the fact that it brings JavaScript to the server and more that it's a productivity tool that I can use while I write code. In this article, we're going to use Node to convert your JPEGs and PNGs to WebP images en masse with the use of a Node package called <code>imagemin</code>.</p>
-				<p><code>imagemin</code> is the Swiss Army Knife of image processors in Node, but we'll just focus on using it to convert all of our JPEGs and PNGs to WebPs (whew!) Don't fret, though! Even if you've never used Node before, this article will walk you through everything. If the idea of using Node bugs you, you can use the WebP Photoshop plugin and skip ahead.</p>
-				<p>The first thing you'll want to do is <a href="http://nodejs.org/en/download" rel="noopener">download Node.js</a> and install it. This should only take you five minutes. Once installed, open a terminal/command line window and go to your web project's root folder. From there, just use Node Package Manager (<code>npm</code>) to install <code>imagemin</code> and the <code>imagemin-webp</code> plugin:</p>
+				<p><a href="http://nodejs.org/" rel="noopener">Node.js</a> is awesome, as you may or may not be able to agree with, depending on your feelings and experience with it. For jack of all tradesmen such as myself, it's less about the fact that it brings JavaScript to the server and more that it's a productivity tool that I can use while I write code. In this article, we're going to use Node to convert your JPEGs and PNGs to WebP images en masse with the use of a Node package called <code>{`imagemin`}</code>.</p>
+				<p><code>{`imagemin`}</code> is the Swiss Army Knife of image processors in Node, but we'll just focus on using it to convert all of our JPEGs and PNGs to WebPs (whew!) Don't fret, though! Even if you've never used Node before, this article will walk you through everything. If the idea of using Node bugs you, you can use the WebP Photoshop plugin and skip ahead.</p>
+				<p>The first thing you'll want to do is <a href="http://nodejs.org/en/download" rel="noopener">download Node.js</a> and install it. This should only take you five minutes. Once installed, open a terminal/command line window and go to your web project's root folder. From there, just use Node Package Manager (<code>{`npm`}</code>) to install <code>{`imagemin`}</code> and the <code>{`imagemin-webp`}</code> plugin:</p>
 				<CodeBlock>{`npm install imagemin imagemin-webp`}</CodeBlock>
-				<p>This install may take up to a minute. When finished, open your text editor and create a new file named <code>webp.js</code> in your web project's root folder. Type the script below into the file:</p>
+				<p>This install may take up to a minute. When finished, open your text editor and create a new file named <code>{`webp.js`}</code> in your web project's root folder. Type the script below into the file:</p>
 				<CodeBlock>{`var imagemin = require("imagemin");    // The imagemin module
 var webp = require("imagemin-webp");   // imagemin's WebP plugin
 var outputFolder = "./img";            // Output folder
@@ -101,10 +102,10 @@ imagemin([JPEGImages], outputFolder, {
     quality: 65 // Quality setting from 0 to 100
   })]
 });`}</CodeBlock>
-				<p>This script will process all JPEG and PNG images in the img folder and convert them to WebP. When converting PNG images, we set the <code>lossless</code> option to <code>true</code>. When converting JPEG images, we set the quality option to 65. Feel free to experiment with these settings to get different results. You can experiment with even more settings at the <a href="http://www.npmjs.com/package/imagemin-webp" rel="noopener"><code>imagemin-webp</code> plugin page</a>.</p>
-				<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>PNGImages</code> and <code>JPEGImages</code> variables. This script also assumes you want the WebP output to go into the <code>img</code> folder. If you don't want that, change the value of the <code>outputFolder</code> variable to whatever you need. Once you're ready, run the script like so:</p>
+				<p>This script will process all JPEG and PNG images in the img folder and convert them to WebP. When converting PNG images, we set the <code>{`lossless`}</code> option to <code>{`true`}</code>. When converting JPEG images, we set the quality option to 65. Feel free to experiment with these settings to get different results. You can experiment with even more settings at the <a href="http://www.npmjs.com/package/imagemin-webp" rel="noopener"><code>{`imagemin-webp`}</code> plugin page</a>.</p>
+				<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>{`PNGImages`}</code> and <code>{`JPEGImages`}</code> variables. This script also assumes you want the WebP output to go into the <code>{`img`}</code> folder. If you don't want that, change the value of the <code>{`outputFolder`}</code> variable to whatever you need. Once you're ready, run the script like so:</p>
 				<CodeBlock>{`node webp.js`}</CodeBlock>
-				<p>This will process all of the images and dump their WebP counterparts into the <code>img</code> folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <strong>1.04</strong> MB without any perceptible loss in visual quality. That's a <em>62% reduction</em> without much effort!</p>
+				<p>This will process all of the images and dump their WebP counterparts into the <code>{`img`}</code> folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <strong>1.04</strong> MB without any perceptible loss in visual quality. That's a <em>62% reduction</em> without much effort!</p>
 				<Image
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508379806/jeremywagner.me/using-webp-images/bateman-3-placeholder.jpg"}
@@ -115,7 +116,7 @@ imagemin([JPEGImages], outputFolder, {
 				/>
 				<p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 				<SubHeading deepLink={"using-in-html"}>Using WebP in HTML</SubHeading>
-				<p>Using a WebP image in HTML is like using any other kind of image, right? Just slap that sucker into the <code>{`<img>`}</code> tag's <code>src</code> attribute and away you go!</p>
+				<p>Using a WebP image in HTML is like using any other kind of image, right? Just slap that sucker into the <code>{`<img>`}</code> tag's <code>{`src`}</code> attribute and away you go!</p>
 				<CodeBlock>{`<!-- Nothing possibly can go wrong with this, right? -->
 <img src="img/myAwesomeWebPImage.webp" alt="WebP rules.">`}</CodeBlock>
 				<p>This will work great&mdash;but only for browsers that support it. Woe betide those unlucky users who wander by your site when all you're using is WebP:</p>
@@ -140,17 +141,17 @@ imagemin([JPEGImages], outputFolder, {
 				<p><a href="http://modernizr.com/" rel="noopener">Modernizr</a> is a well-known feature detection library that detects available features in browsers. WebP support just so happens to be one of those detections. Even better, you can do a custom Modernizr build with only WebP detection <a href="https://modernizr.com/download" rel="noopener">on the download page</a>, which allows you to detect WebP support with very low overhead.</p>
 				<p>When you add this custom build to your website via the <code>{`<script>`}</code> tag, it will automatically add one of two classes to the <code>{`<html>`}</code> element:</p>
 				<ol>
-					<li>The <code>webp</code> class is added when the browser supports WebP.</li>
-					<li>The <code>no-webp</code> class is added when the browser doesn't support WebP.</li>
+					<li>The <code>{`webp`}</code> class is added when the browser supports WebP.</li>
+					<li>The <code>{`no-webp`}</code> class is added when the browser doesn't support WebP.</li>
 				</ol>
 				<p>With these classes, you'll be able to use CSS to load background images according to a browser's capability by targeting the class on the <code>{`<html>`}</code> tag:</p>
-				<CodeBlock>{`.no-webp .elementWithBackgroundImage{
+				<CodeBlock>{`.no-webp .elementWithBackgroundImage\{
   background-image: url("image.jpg");
-}
+\}
 
-.webp .elementWithBackgroundImage{
+.webp .elementWithBackgroundImage\{
   background-image: url("image.webp");
-}`}</CodeBlock>
+\}`}</CodeBlock>
 				<SubHeading deepLink={"fallback-with-javascript-disabled"}>What about users with JavaScript disabled?</SubHeading>
 				<p>If you're depending on Modernizr, you have to think about users with JavaScript disabled. Sorry, but it's the way things are.</p>
 				<Image
@@ -170,9 +171,9 @@ imagemin([JPEGImages], outputFolder, {
 </script>`}</CodeBlock>
 				<p>This will remove the <code>{`no-js`}</code> class on the <code>{`<html>`}</code> element when parsed.</p>
 				<p>So what good does this do us? When JavaScript is disabled, this small script never runs, so the <code>{`no-js`}</code> class will stay on the element. This means we can can add another rule to provide an image type that has the widest support:</p>
-				<CodeBlock>{`.no-js .elementWithBackgroundImage{
+				<CodeBlock>{`.no-js .elementWithBackgroundImage\{
   background-image: url("image.jpg");
-}`}</CodeBlock>
+\}`}</CodeBlock>
 				<p>This does everything we need. If JavaScript is running, the small inline script is run and removes the <code>{`no-js`}</code> class before the CSS is parsed, so the JPEG is never downloaded in a WebP-capable browser. If JavaScript is indeed turned off, then the class is not removed and the more compatible image format is used.</p>
 				<p>Now that we've done all of this, these are the use cases we can expect:</p>
 				<ol>
@@ -185,6 +186,7 @@ imagemin([JPEGImages], outputFolder, {
 				<p>WebP is a versatile image format that we can serve in place of PNG and JPEG images&mdash;if it's supported. It can yield a substantial reduction in the size of images on your website, and as we know, anything that results in transferring less data lowers page load time.</p>
 				<p>Are there cons? A couple. The biggest one is that you're maintaining two sets of images to achieve the best possible support, which may not be possible for your website if there's a huge set of imagery that you need to convert over to WebP. Another is that you'll have to manage a bit of JavaScript if you need to use WebP images in CSS.</p>
 				<p>The takeaway is that the relatively low effort is worth the savings you'll realize, savings that will improve the user experience of your website by allowing it to load faster. Users browsing via mobile networks will benefit especially. Now go forward and WebP to your heart's content!</p>
+				<SignOff/>
 			</article>
 		);
 	}

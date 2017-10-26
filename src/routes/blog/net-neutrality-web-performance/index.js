@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
+import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "Without Net Neutrality, Performance Will Matter More Than Ever",
@@ -44,6 +45,7 @@ export default class Content extends Component{
 				<p>Net neutrality's fate is uncertain, but not sealed. <a href="https://medium.com/r/?url=https%3A%2F%2Fconsumercomplaints.fcc.gov%2Fhc%2Fen-us" rel="noopener">Voice your opposition to the FCC</a>. <a href="http://www.house.gov/representatives/" rel="noopener">Contact your representatives</a> and <a href="https://www.senate.gov/general/contact_information/senators_cfm.cfm" rel="noopener">senators</a>. Keep the pressure on. It could pay off. If it doesn't?</p>
 				<p>Then you better knuckle down and focus on speed.</p>
 				<p><em>Thanks to Susanna Kline for editing this piece.</em></p>
+				<SignOff/>
 			</article>
 		);
 	}

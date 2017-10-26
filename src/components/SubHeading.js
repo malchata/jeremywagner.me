@@ -7,9 +7,9 @@ export default class SubHeading extends Component{
 
 	render(props){
 		return (
-			<h2>
+			<h2 id={props.deepLink}>
 				<a name={props.deepLink}></a>
-				<a href={`#${props.deepLink}`}>{props.children}</a>
+				<a class="subhead" href={`#${props.deepLink}`}>{props.children}</a>
 			</h2>
 		);
 	}

@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
+import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "Tips for Writing a Technical Book",
@@ -71,6 +72,7 @@ export default class Content extends Component{
 					height={315}
 				/>
 				<p>When that happens, take a moment to congratulate yourself. Then take some time off. Then plot your next move when you're ready to get back to work.</p>
+				<SignOff/>
 			</article>
 		);
 	}

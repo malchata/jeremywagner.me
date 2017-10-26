@@ -1,7 +1,5 @@
 article{
 	background: var(--white);
-	padding: 0 0 1.92ch;
-	/*overflow-x: hidden;*/
 }
 
 h1{
@@ -24,18 +22,24 @@ h2{
 	margin: 0 0 .96ch;
 }
 
-h2 a{
+.sentinel{
+	height: 1px;
+	z-index: 1000;
+	background: var(--coral);
+}
+
+.subhead{
 	color: var(--white);
 	display: flex;
 }
 
-h2 a[href]:before{
+.subhead:before{
 	color: var(--light-blue);
 	content: "#\00a0";
 	transition: .25s color ease-out;
 }
 
-h2 a:hover:before{
+.subhead:hover:before{
 	color: var(--coral);
 }
 
@@ -81,6 +85,10 @@ article p a:hover,
 article li a:hover{
 	background: var(--coral);
 	color: var(--white);
+}
+
+article h1:last-child{
+	text-align: right;
 }
 
 .date{
@@ -133,7 +141,7 @@ pre code{
 }
 
 @media (min-width: 800px){
-	/*@supports (display: grid){*/
+	@supports (display: grid){
 		main{
 			padding: 0 0 0 var(--desktop-gutter);
 			display: grid;
@@ -206,6 +214,12 @@ pre code{
 			height: calc(100% - 16px);
 		}
 
+		article h1:last-child:before,
+		article h1:last-child:after{
+			bottom: auto;
+			top: 0;
+		}
+
 		h2:before,
 		h2:after{
 			background: var(--indigo);
@@ -230,5 +244,5 @@ pre code{
 		.date{
 			font-size: calc(118.75% + (24.871 - 19) * ((100vw - 800px) / (1440 - 800)));
 		}
-	/*}*/
+	}
 }

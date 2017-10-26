@@ -59,8 +59,10 @@ function buildRoutes(routes){
 				}
 			};
 
-			if(typeof metadata.canonical === "string"){
-				htmlOpts.canonical = metadata.canonical;
+			if(typeof metadata.canonical !== "undefined"){
+				htmlOpts = Object.assign(htmlOpts, {
+					canonical: metadata.canonical
+				});
 			}
 
 			htmlOutputs.push(new HtmlWebpackPlugin(htmlOpts));

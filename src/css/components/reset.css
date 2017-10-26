@@ -81,9 +81,3 @@ q{
 a{
 	text-decoration: none;
 }
-
-.sticky{
-	position: fixed;
-	top: 0;
-	z-index: 4;
-}

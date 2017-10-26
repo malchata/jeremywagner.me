@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
+import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "CSS is Broken: My Dime a Dozen Opinion",
@@ -29,6 +30,7 @@ export default class Content extends Component{
 				<p>CSS isn't the problem. The problem is that it's a difficult and nuanced language that's changing more rapidly now than it ever has. That causes frustration. Frustration instills all sorts of negative feelings from aversion to self-loathing. <em>Frustration</em> is the problem.</p>
 				<p>Please, if you don't understand something about CSS, ask a dev who's familiar with it. Many aspects of web development come and go, but CSS is here to stay. So is JavaScript. You need to know how to use these tools, and most importantly, you need to know when to ask for help. You will improve the web development community for your trouble.</p>
 				<p className="editors-note">Thank you to Keith Grant for looking over this post and giving his feedback. Check out what he has to say on this topic, too.</p>
+				<SignOff/>
 			</article>
 		);
 	}
