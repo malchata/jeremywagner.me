@@ -16,6 +16,9 @@
 		pr = "prototype",
 		io = "IntersectionObserver",
 		ioe = io + "Entry",
+		s = "src",
+		ss = "srcset",
+		ds = "data-src",
 		dss = "data-srcset",
 		// Placeholders used for event handler strings.
 		documentEvents = ["scroll", "touchmove"],
@@ -35,14 +38,22 @@
 		},
 		// The handler to load the image
 		loadMedia = function(media){
-			if(media[pn].tagName == "PICTURE"){
-				Array[pr].slice.call(media[pn][qsa]("source"))[fe](function(source){
-					replaceAttr(source, dss, "srcset");
+			if(media.tagName == "VIDEO"){
+				media[qsa]("source")[fe](function(video){
+					media.play();
 				});
 			}
+			else{
+				if(media[pn].tagName == "PICTURE"){
+					Array[pr].slice.call(media[pn][qsa]("source"))[fe](function(source){
+						replaceAttr(source, dss, ss);
+					});
+				}
 
-			replaceAttr(media, "data-src", "src");
-			replaceAttr(media, dss, "srcset");
+				replaceAttr(media, ds, s);
+				replaceAttr(media, dss, ss);
+			}
+
 			media.classList.remove("lazy");
 			elements = elements.filter(function(e){
 				return e !== media;

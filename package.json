@@ -36,6 +36,7 @@
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "imagemin-webpack-plugin": "^1.5.2",
+    "lighthouse-ci": "github:ebidel/lighthouse-ci",
     "postcss-css-variables": "^0.8.0",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.0.8",

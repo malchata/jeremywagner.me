@@ -54,7 +54,8 @@ body{
 	color: #fff;
 }
 
-img{
+img,
+video{
 	max-width: 100%;
 	display: inline-block;
 	height: auto;

@@ -103,7 +103,8 @@ figure{
 	padding: 2.51328ch var(--mobile-gutter);
 }
 
-figure img{
+figure img,
+figure video{
 	display: block;
 	margin: 0 auto;
 }

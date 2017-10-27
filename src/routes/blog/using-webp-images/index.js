@@ -1,6 +1,7 @@
 import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
+import Video from "../../../components/Video";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
 
@@ -53,10 +54,10 @@ export default class Content extends Component{
 				/>
 				<p>In the above example, the visual differences are almost imperceptible, yet the differences in file size are substantial. The JPEG version on the left weighs in at 56.7 KB, and the WebP version on the right is nearly one third smaller at 38 KB. Not a bad improvement, especially when you consider that the visual quality between the two are pretty much the same.</p>
 				<p>So the next question (of course) is "what's the browser support?" Not as slim as you might think. Since WebP is a Google technology, support for it is fixed to Chromium-based browsers. These browsers make up a significant portion of users worldwide, however, meaning that <a href="http://caniuse.com/#search=webp" rel="noopener">nearly 67% of browsers in use support WebP</a> at the time of this writing. If you had the chance to make your website faster for two thirds of your users, would you pass it up?</p>
-				<Image
+				<Video
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508295315/jeremywagner.me/using-webp-images/bateman-1-placeholder.jpg"}
-					src={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508210556/jeremywagner.me/using-webp-images/bateman.gif"}
+					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.webm", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.ogv", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.mp4"]}
 					caption={"Thought so."}
 					width={500}
 					height={213}
