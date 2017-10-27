@@ -5,6 +5,8 @@ install:
   - npm install
 script:
   - npm run build
+after_success:
+  - node node_modules/lighthouse-ci/runlighthouse.js https://new.jeremywagner.me
 branches:
   only:
     - redesign

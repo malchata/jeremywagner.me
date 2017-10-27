@@ -1,0 +1,9 @@
+apps:
+  - script: npm run server
+    instances: 8
+    watch: true
+    exec_mode: cluster
+    name: 'jeremywagner.me'
+    env:
+      NODE_ENV: production
+      PORT: 80
