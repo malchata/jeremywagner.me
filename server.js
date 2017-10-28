@@ -2,6 +2,7 @@ require("babel-register");
 import fs from "fs";
 import path from "path";
 import express from "express";
+import compression from "shrink-ray";
 import http from "http";
 import https from "https";
 import mime from "mime";
@@ -10,14 +11,9 @@ import { h } from "preact";
 const webRoot = path.join(__dirname, "dist");
 const app = new express();
 const staticOptions = {
-	etag: false,
 	setHeaders: (res, path, stat)=>{
 		let resourceHints = [];
 
-		// Remove headers advertising server
-		res.removeHeader("X-Powered-By");
-
-		// Caching policies
 		if(mime.getType(path) === "text/html"){
 			res.setHeader("Cache-Control", "private, no-cache, no-store");
 		}
@@ -26,6 +22,7 @@ const staticOptions = {
 		}
 
 		if(process.env.NODE_ENV === "production"){
+			res.removeHeader("X-Powered-By");
 			res.setHeader("Service-Worker-Allowed", "/");
 			res.setHeader("Strict-Transport-Security", "max-age=31536000");
 		}
@@ -42,6 +39,12 @@ const staticOptions = {
 	}
 }
 
+app.use(compression({
+	threshold: 0,
+	cache: (req, res)=>{
+		return true;
+	}
+}));
 app.use(express.static(webRoot, staticOptions));
 
 // Set up HTTP

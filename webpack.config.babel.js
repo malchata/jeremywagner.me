@@ -6,7 +6,6 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import CompressionWebpackPlugin from "compression-webpack-plugin";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
@@ -136,9 +135,6 @@ module.exports = {
 		new webpack.optimize.CommonsChunkPlugin({
 			names: ["vendors", "app"],
 			minChunks: Infinity
-		}),
-		new CompressionWebpackPlugin({
-			test: /\.(html|svg|ttf|eot|css|js)/i
 		}),
 		new webpack.DefinePlugin({
 			"process.env": {
