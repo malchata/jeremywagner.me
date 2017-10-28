@@ -1,9 +1,14 @@
 apps:
-  - script: npm run server
+  - script: ./daemon.js
     instances: 8
     watch: true
     exec_mode: cluster
-    name: 'jeremywagner.me'
+    name: 'webdevblog'
     env:
       NODE_ENV: production
       PORT: 80
+      SSL_PORT: 443
+      SSL_CERT: /etc/ssl/crt/jeremywagner.me.crt
+      SSL_KEY: /etc/ssl/crt/jeremywagner.me.key
+      SSL_CA: /etc/ssl/crt/jeremywagner.me.ca-bundle
+      SSL_CHAIN: /etc/ssl/crt/

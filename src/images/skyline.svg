@@ -1,66 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 316">
 	<defs>
 		<style>
-			.cls-1 {
+			.cls-1{
 				isolation: isolate;
 			}
 
-			.cls-2 {
+			.cls-2{
 				fill: url("#linear-gradient");
 			}
 
 			.cls-3,
 			.cls-4,
-			.cls-5 {
+			.cls-5{
 				opacity: 0.33;
 				mix-blend-mode: screen;
 			}
 
-			.cls-3 {
+			.cls-3{
 				fill: url("#linear-gradient-2");
 			}
 
-			.cls-4 {
+			.cls-4{
 				fill: url("#linear-gradient-3");
 			}
 
-			.cls-5 {
+			.cls-5{
 				fill: url("#linear-gradient-4");
 			}
 
-			.cls-6 {
+			.cls-6{
 				fill: url("#linear-gradient-5");
 			}
 
-			.cls-7 {
+			.cls-7{
 				fill: #d0c5c6;
 			}
 
 			.cls-7,
-			.cls-8 {
+			.cls-8{
 				opacity: 0.5;
 				mix-blend-mode: color-dodge;
 			}
 
-			.cls-9 {
+			.cls-9{
 				fill: #f5e6e8;
 			}
 
-			.cls-3 {
+			.cls-3{
 				-webkit-animation: move-one 120s linear 20s infinite backwards;
 				-moz-animation: move-one 120s linear 20s infinite backwards;
 				-o-animation: move-one 120s linear 20s infinite backwards;
 				animation: move-one 120s linear 20s infinite backwards;
 			}
 
-			.cls-4 {
+			.cls-4{
 				-webkit-animation: move-two 150s linear 0s infinite backwards;
 				-moz-animation: move-two 150s linear 0s infinite backwards;
 				-o-animation: move-two 150s linear 0s infinite backwards;
 				animation: move-two 150s linear 0s infinite backwards;
 			}
 
-			.cls-5 {
+			.cls-5{
 				-webkit-animation: move-three 90s linear 10s infinite backwards;
 				-moz-animation: move-three 90s linear 10s infinite backwards;
 				-o-animation: move-three 90s linear 10s infinite backwards;
@@ -78,39 +78,45 @@
 				-webkit-animation-delay: 66ms;
 				-moz-animation-delay: 66ms;
 				-o-animation-delay: 66ms;
+				animation-delay: 66ms;
 			}
 
 			#star-3{
 				-webkit-animation-delay: 99ms;
 				-moz-animation-delay: 99ms;
 				-o-animation-delay: 99ms;
+				animation-delay: 99ms;
 			}
 
 			#star-4{
 				-webkit-animation-delay: 133ms;
 				-moz-animation-delay: 133ms;
 				-o-animation-delay: 133ms;
+				animation-delay: 133ms;
 			}
 
 			#star-5{
 				-webkit-animation-delay: 166ms;
 				-moz-animation-delay: 166ms;
 				-o-animation-delay: 166ms;
+				animation-delay: 166ms;
 			}
 
 			#star-6{
 				-webkit-animation-delay: 199ms;
 				-moz-animation-delay: 199ms;
 				-o-animation-delay: 199ms;
+				animation-delay: 199ms;
 			}
 
 			#star-7{
 				-webkit-animation-delay: 233ms;
 				-moz-animation-delay: 233ms;
 				-o-animation-delay: 233ms;
+				animation-delay: 233ms;
 			}
 
-			@-webkit-keyframes flicker {
+			@-webkit-keyframes flicker{
 				0%,
 				11%,
 				19%,
@@ -127,62 +133,80 @@
 				72%,
 				93%,
 				97%,
-				to {
+				to{
 					opacity: 0.5;
 				}
 
 				10%,
 				38%,
-				6% {
+				6%{
 					opacity: 0.4;
 				}
 				14%,
 				17%,
-				8% {
+				8%{
 					opacity: 0.6;
 				}
-				12% {
+				12%{
 					opacity: 0.7;
 				}
-				16% {
+				16%{
 					opacity: 0.75;
 				}
-				26% {
+				26%{
 					opacity: 0.74;
 				}
 				42%,
 				70%,
-				95% {
+				95%{
 					opacity: 0.65;
 				}
-				58% {
+				58%{
 					opacity: 0.8;
 				}
 			}
-			@-webkit-keyframes move-one {
-				from {
+			@-webkit-keyframes move-one{
+				from{
 					-webkit-transform: translateX(-687.5%);
+					-moz-transform: translateX(-687.5%);
+					-o-transform: translateX(-687.5%);
+					transform: translateX(-687.5%);
 				}
 
-				to {
+				to{
 					-webkit-transform: translateX(150%);
+					-moz-transform: translateX(150%);
+					-o-transform: translateX(150%);
+					transform: translateX(150%);
 				}
 			}
-			@-webkit-keyframes move-two {
-				from {
+			@-webkit-keyframes move-two{
+				from{
 					-webkit-transform: translateX(-457.5%);
+					-moz-transform: translateX(-457.5%);
+					-o-transform: translateX(-457.5%);
+					transform: translateX(-457.5%);
 				}
 
-				to {
+				to{
 					-webkit-transform: translateX(175%);
+					-moz-transform: translateX(175%);
+					-o-transform: translateX(175%);
+					-transform: translateX(175%);
 				}
 			}
-			@-webkit-keyframes move-three {
-				from {
+			@-webkit-keyframes move-three{
+				from{
 					-webkit-transform: translateX(-125%);
+					-moz-transform: translateX(-125%);
+					-o-transform: translateX(-125%);
+					transform: translateX(-125%);
 				}
-				to {
+				to{
 					-webkit-transform: translateX(650%);
+					-moz-transform: translateX(650%);
+					-o-transform: translateX(650%);
+					transform: translateX(650%);
 				}
 			}
 
