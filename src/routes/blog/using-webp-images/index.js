@@ -32,6 +32,7 @@ export default class Content extends Component{
 					caption={"I thought we moved past this, already."}
 					width={320}
 					height={176}
+					critical={false}
 				/>
 				<p>This is a problem. You need to make sure that these images aren't causing your audience to become impatient. Impatience begets fidgeting. Once your users are fidgeting, they're thinking about moving on. They will leave. Worse yet, they'll go to someplace else. Someplace that's not your website.</p>
 				<p>Images represent a significant part of content on the web, and for good reason. The written word is a powerful form of expression, but nothing evokes those primal feelings like a good visual can. The problem is walking the tightrope between visually rich content and the speedy delivery of it.</p>
@@ -61,6 +62,7 @@ export default class Content extends Component{
 					caption={"Thought so."}
 					width={500}
 					height={213}
+					critical={false}
 				/>
 				<p>It's important to remember though that WebP is <em>not a replacement</em> for JPEG and PNG images. It's a format you can serve to browsers that can use it, but you should keep your older images on hand for other browsers. This is the nature of developing for the web: Have your Plan A ready for browsers that can handle it, and have your Plan B (and maybe Plan C) ready for those browsers that are less capable.</p>
 				<p>Enough with the disclaimers. Let's optimize!</p>
@@ -107,13 +109,14 @@ imagemin([JPEGImages], outputFolder, {
 				<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>{`PNGImages`}</code> and <code>{`JPEGImages`}</code> variables. This script also assumes you want the WebP output to go into the <code>{`img`}</code> folder. If you don't want that, change the value of the <code>{`outputFolder`}</code> variable to whatever you need. Once you're ready, run the script like so:</p>
 				<CodeBlock>{`node webp.js`}</CodeBlock>
 				<p>This will process all of the images and dump their WebP counterparts into the <code>{`img`}</code> folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <strong>1.04</strong> MB without any perceptible loss in visual quality. That's a <em>62% reduction</em> without much effort!</p>
-				<Image
+				<Video
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508379806/jeremywagner.me/using-webp-images/bateman-3-placeholder.jpg"}
-					src={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508210556/jeremywagner.me/using-webp-images/bateman-3.gif"}
+					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.webm"],["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.ogv"],["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.mp4"]}
 					caption={"Have you ever seen my WebPs?"}
 					width={500}
 					height={257}
+					critical={false}
 				/>
 				<p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 				<SubHeading deepLink={"using-in-html"}>Using WebP in HTML</SubHeading>
@@ -162,6 +165,7 @@ imagemin([JPEGImages], outputFolder, {
 					caption={"You can\'t escape it"}
 					width={498}
 					height={246}
+					critical={false}
 				/>
 				<p>The user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" rel="noopener">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>{`<html>`}</code> element.</p>
 				<p>To get around this, we'll start by adding a class of <code>{`no-js`}</code> to the <code>{`<html>`}</code> tag:</p>

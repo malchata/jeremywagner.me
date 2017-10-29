@@ -1,6 +1,5 @@
 import { h, render, Component } from "preact";
 import SubHeading from "../../../components/SubHeading";
-import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
 

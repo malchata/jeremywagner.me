@@ -8,6 +8,8 @@ import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
 import ManifestWebpackPlugin from "webpack-manifest-plugin";
+import CompressionWebpackPlugin from "compression-webpack-plugin";
+import BrotliWebpackPlugin from "brotli-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
@@ -53,10 +55,6 @@ function buildRoutes(routes){
 					header: renderToString(<Header/>),
 					navigation: renderToString(<Navigation/>),
 					content: renderToString(<Content/>)
-				},
-				render: function(component, props){
-					let vnode = h(components[component], props);
-					return renderToString(vnode);
 				}
 			};
 

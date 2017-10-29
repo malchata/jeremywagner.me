@@ -19,15 +19,19 @@ export default class Video extends Component{
 			type = "video/mp4";
 		}
 
-		return <source type={type} src={source.replace("http://", "https://")}/>;
+		return props.lazy === true ? <source type={type} data-src={source.replace("http://", "https://")}/> : <source type={type} src={source.replace("http://", "https://")}/>;
 	}
 
 	render(props){
+		if(props.critical === false && props.saveData === true){
+			return null;
+		}
+
 		let videoMarkup;
 
 		if(props.lazy){
 			videoMarkup = <figure>
-				<video class={this.lazyClass} poster={props.placeholder.replace("http://", "https://")} width={props.width} height={props.height} preload="none" loop muted>
+				<video class={this.lazyClass} poster={props.placeholder.replace("http://", "https://")} width={props.width} height={props.height} autoplay loop muted>
 					{props.sources.map((source)=>this.getSource(source, props))}
 				</video>
 				<figcaption>{props.caption}</figcaption>
@@ -47,5 +51,8 @@ export default class Video extends Component{
 }
 
 Video.defaultProps = {
-	lazy: false
+	lazy: false,
+	placeholder: null,
+	saveData: false,
+	critical: true
 };

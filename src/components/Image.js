@@ -7,6 +7,10 @@ export default class Image extends Component{
 	}
 
 	render(props){
+		if(props.critical === false && props.saveData === true){
+			return null;
+		}
+
 		let imageMarkup;
 
 		if(typeof props.srcset === "string"){
@@ -45,5 +49,7 @@ Image.defaultProps = {
 	lazy: false,
 	src: null,
 	srcset: null,
-	placeholder: null
+	placeholder: null,
+	saveData: false,
+	critical: true
 };

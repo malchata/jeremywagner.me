@@ -39,8 +39,9 @@ export default class Content extends Component{
 					caption={"I concur."}
 					width={500}
 					height={281}
+					critical={false}
 				/>
-				<p>Or I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
+				<p><em>Or</em> I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
 				<p>Thankfully, it dawned on me to use CSS in this SVG image. Because CSS is valid in SVG, that also means you can use media queries!</p>
 				<SubHeading deepLink={"media-queries-in-svg"}>Wait, media queries in SVG?</SubHeading>
 				<p>SVG is XML, and while HTML isn't strictly XML, XML-derived schemas and HTML are all part of that soup. Hell, you can even inline SVG right into your HTML <a href="http://caniuse.com/#feat=svg-html5" rel="noopener">in most browsers</a>.</p>

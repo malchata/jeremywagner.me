@@ -39,9 +39,10 @@
 		// The handler to load the image
 		loadMedia = function(media){
 			if(media.tagName == "VIDEO"){
-				media[qsa]("source")[fe](function(video){
-					media.play();
+				media[qsa]("source")[fe](function(source){
+					replaceAttr(source, ds, s);
 				});
+				media.load();
 			}
 			else{
 				if(media[pn].tagName == "PICTURE"){
