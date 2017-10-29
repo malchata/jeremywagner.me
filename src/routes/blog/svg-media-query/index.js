@@ -43,7 +43,7 @@ export default class Content extends Component{
 				/>
 				<p><em>Or</em> I could do the sensible thing and find a way to get by with a single SVG image. The optimized and compressed version of the SVG is only about 17.3 KB, but duplicating an image is something you'd like to prevent if you can, right? What if you're still on an HTTP/1 server where requests aren't as cheap as they are on HTTP/2? What if your target audience is on a slower connection? It behooves us all to walk with care in situations such as these.</p>
 				<p>Thankfully, it dawned on me to use CSS in this SVG image. Because CSS is valid in SVG, that also means you can use media queries!</p>
-				<SubHeading deepLink={"media-queries-in-svg"}>Wait, media queries in SVG?</SubHeading>
+				<SubHeading>Wait, media queries in SVG?</SubHeading>
 				<p>SVG is XML, and while HTML isn't strictly XML, XML-derived schemas and HTML are all part of that soup. Hell, you can even inline SVG right into your HTML <a href="http://caniuse.com/#feat=svg-html5" rel="noopener">in most browsers</a>.</p>
 				<p>Like HTML, SVG supports CSS. So unsurprisingly, media query support is a part of SVG. I learned this bit of trivia when I attended a conference some years ago. Of course, this nugget of information was filed away in the back of my brain, forgotten until such a scenario came where I could put it to use.</p>
 				<p>Thankfully, the only difference between the two logo treatments are that the colors are inverted. I opened the SVG in my text editor (and ran it through a pretty printer to restore the formatting lost to minification) and observed the following code near the top:</p>
@@ -67,7 +67,7 @@ export default class Content extends Component{
 					height={153}
 				/>
 				<p>So what we're grappling with here is a logo that's mostly white, but the tree on the right has a green stroke behind it to prevent it from bleeding into the rest of the logo. This is all well and good until you realize that this same logo has to exist on a white background when it hits the larger breakpoint. White on white just isn't going to work, so we need to use a media query to help us out.</p>
-				<SubHeading deepLink={"how-media-queries-work-in-svg"}>How media queries work in SVG</SubHeading>
+				<SubHeading>How media queries work in SVG</SubHeading>
 				<p>How media queries work in HTML documents is an easy concept to grasp: The browser window is a certain amount of pixels in width, and we specify some styles that take at and above (or below) a certain screen width.</p>
 				<p>CSS media queries in SVG work in the same way, but the threshold is determined differently than within an HTML document. When you specify a <code>{`min-width`}</code> or <code>{`max-width`}</code> media query for an SVG, it doesn't query the width of the browser, but rather the width of the element that contains the SVG. If you have an SVG referenced by an <code>{`<img>`}</code> tag and you want new styles to kick in when that <code>{`<img>`}</code> element is <code>{`300px`}</code> or wider, you'd use this media query:</p>
 				<CodeBlock>{`@media screen and (min-width: 300px)\{
