@@ -2,11 +2,11 @@ require("babel-register");
 import fs from "fs";
 import path from "path";
 import express from "express";
-import compression from "shrink-ray";
 import http from "http";
 import https from "https";
 import mime from "mime";
 import { h } from "preact";
+import AssetManifest from "./dist/asset-manifest.json";
 
 const webRoot = path.join(__dirname, "dist");
 const app = new express();
@@ -27,6 +27,11 @@ const staticOptions = {
 			res.setHeader("Strict-Transport-Security", "max-age=31536000");
 		}
 
+		if(mime.getType(path) === "text/html"){
+			resourceHints.push(`<${AssetManifest["app.css"]}>; rel=preload; as=style`);
+			resourceHints.push(`<${AssetManifest["images/skyline.svg"]}>; rel=preload; as=image; nopush`);
+		}
+
 		if(path.indexOf("/blog/") && mime.getType(path) === "text/html"){
 			resourceHints.push("<https://res.cloudinary.com/>; rel=preconnect; crossorigin");
 		}
@@ -39,12 +44,6 @@ const staticOptions = {
 	}
 }
 
-app.use(compression({
-	threshold: 0,
-	cache: (req, res)=>{
-		return true;
-	}
-}));
 app.use(express.static(webRoot, staticOptions));
 
 // Set up HTTP

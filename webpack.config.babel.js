@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
+import ManifestWebpackPlugin from "webpack-manifest-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
@@ -130,6 +131,10 @@ module.exports = {
 			globDirectory: webRoot,
 			globPatterns: ["**\/*.{js,css,svg,woff2}"],
 			swDest: path.join(webRoot, "js", "sw.js")
+		}),
+		new ManifestWebpackPlugin({
+			publicPath: "/",
+			fileName: "asset-manifest.json"
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
