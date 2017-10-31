@@ -128,6 +128,12 @@ module.exports = {
 				precision: 1
 			}
 		}),
+		new CompressionWebpackPlugin({
+			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
+		}),
+		new BrotliWebpackPlugin({
+			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
+		}),
 		...htmlOutputs,
 		new CopyWebpackPlugin([
 			{
@@ -143,13 +149,7 @@ module.exports = {
 		}),
 		new ManifestWebpackPlugin({
 			publicPath: "/",
-			fileName: "asset-manifest.json"
-		}),
-		new CompressionWebpackPlugin({
-			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
-		}),
-		new BrotliWebpackPlugin({
-			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
+			fileName: "assets.json"
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({

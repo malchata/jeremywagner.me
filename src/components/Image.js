@@ -15,7 +15,7 @@ export default class Image extends Component{
 
 		if(typeof props.srcset === "string"){
 			props.srcset = props.srcset.indexOf("http://") !== -1 ? props.srcset.split("http://").join("https://") : props.srcset;
-			props.srcset = props.saveData === true ? props.srcset.split("/f_auto,q_auto/").join("/f_auto,q_auto:eco/") : props.srcset;
+			props.srcset = props.saveData === true ? null : props.srcset;
 		}
 
 		if(typeof props.src === "string"){
