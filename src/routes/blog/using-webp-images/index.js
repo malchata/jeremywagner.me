@@ -22,7 +22,11 @@ export const Excerpt = <div className="excerpt">
 </div>;
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				{Excerpt}
@@ -33,6 +37,7 @@ export default class Content extends Component{
 					width={320}
 					height={176}
 					critical={false}
+					saveData={props.saveData}
 				/>
 				<p>This is a problem. You need to make sure that these images aren't causing your audience to become impatient. Impatience begets fidgeting. Once your users are fidgeting, they're thinking about moving on. They will leave. Worse yet, they'll go to someplace else. Someplace that's not your website.</p>
 				<p>Images represent a significant part of content on the web, and for good reason. The written word is a powerful form of expression, but nothing evokes those primal feelings like a good visual can. The problem is walking the tightrope between visually rich content and the speedy delivery of it.</p>
@@ -52,6 +57,7 @@ export default class Content extends Component{
 					caption={"Can you tell the difference? (Hint: the WebP version is on the right.)"}
 					width={385}
 					height={108}
+					saveData={props.saveData}
 				/>
 				<p>In the above example, the visual differences are almost imperceptible, yet the differences in file size are substantial. The JPEG version on the left weighs in at 56.7 KB, and the WebP version on the right is nearly one third smaller at 38 KB. Not a bad improvement, especially when you consider that the visual quality between the two are pretty much the same.</p>
 				<p>So the next question (of course) is "what's the browser support?" Not as slim as you might think. Since WebP is a Google technology, support for it is fixed to Chromium-based browsers. These browsers make up a significant portion of users worldwide, however, meaning that <a href="http://caniuse.com/#search=webp" rel="noopener">nearly 67% of browsers in use support WebP</a> at the time of this writing. If you had the chance to make your website faster for two thirds of your users, would you pass it up?</p>
@@ -63,6 +69,7 @@ export default class Content extends Component{
 					width={500}
 					height={213}
 					critical={false}
+					saveData={props.saveData}
 				/>
 				<p>It's important to remember though that WebP is <em>not a replacement</em> for JPEG and PNG images. It's a format you can serve to browsers that can use it, but you should keep your older images on hand for other browsers. This is the nature of developing for the web: Have your Plan A ready for browsers that can handle it, and have your Plan B (and maybe Plan C) ready for those browsers that are less capable.</p>
 				<p>Enough with the disclaimers. Let's optimize!</p>
@@ -78,6 +85,7 @@ export default class Content extends Component{
 					caption={"Lots going on here, huh?"}
 					width={645}
 					height={393}
+					saveData={props.saveData}
 				/>
 				<p>The settings dialogue for lossy WebP gives more flexibility for configuring the output. You can adjust the image quality by using a slider from 0 to 100, set the strength of the filtering profile to get lower file sizes (at the expense of visual quality, of course) and adjust noise filtering and sharpness.</p>
 				<p>My big complaint with the WebP Photoshop plugin is two-fold: There isn't a Save for Web interface for it so that I can preview what an image will look like with the settings I've chosen, and I'd have to create a batch process to save out a bunch of images. My second gripe probably isn't a hurdle for you if you like batch processing in Photoshop, but I'm more of a coder, so my preference is to use Node to convert many images at once.</p>
@@ -116,6 +124,7 @@ imagemin([JPEGImages], outputFolder, {
 					width={500}
 					height={257}
 					critical={false}
+					saveData={props.saveData}
 				/>
 				<p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 				<SubHeading>Using WebP in HTML</SubHeading>
@@ -131,6 +140,7 @@ imagemin([JPEGImages], outputFolder, {
 					caption={"WHAT HAPPENED"}
 					width={357}
 					height={222}
+					saveData={props.saveData}
 				/>
 				<p>It sucks, sure, but that's just the way front end development is, so buck up. Some features just aren't going to work in every browser, and that's not going to change anytime soon. The easiest way we can make this work is to use the <code>{`<picture>`}</code> element to specify a set of fallbacks like so:</p>
 				<CodeBlock>{`<picture>
@@ -165,6 +175,7 @@ imagemin([JPEGImages], outputFolder, {
 					width={498}
 					height={246}
 					critical={false}
+					saveData={props.saveData}
 				/>
 				<p>The user who has JavaScript disabled is someone you do have to think about. <a href="https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/" rel="noopener">It's more of a potential issue than you might think it is</a>, so if you're going to use feature detection that can leave some of your users in the dark, you'll need to test with JavaScript disabled. With the feature detection classes used above, JavaScript-less browsers won't even show a background image. This is because the disabled script never gets to add the detection classes to the <code>{`<html>`}</code> element.</p>
 				<p>To get around this, we'll start by adding a class of <code>{`no-js`}</code> to the <code>{`<html>`}</code> tag:</p>

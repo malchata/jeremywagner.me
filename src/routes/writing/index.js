@@ -8,7 +8,11 @@ export const Metadata = {
 };
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				<h1>{Metadata.title}</h1>

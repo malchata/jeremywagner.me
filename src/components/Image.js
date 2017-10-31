@@ -15,14 +15,17 @@ export default class Image extends Component{
 
 		if(typeof props.srcset === "string"){
 			props.srcset = props.srcset.indexOf("http://") !== -1 ? props.srcset.split("http://").join("https://") : props.srcset;
+			props.srcset = props.saveData === true ? props.srcset.split("/f_auto,q_auto/").join("/f_auto,q_auto:eco/") : props.srcset;
 		}
 
 		if(typeof props.src === "string"){
 			props.src = props.src.indexOf("http://") !== -1 ? props.src.split("http://").join("https://") : props.src;
+			props.src = props.saveData === true ? props.src.split("/f_auto,q_auto/").join("/f_auto,q_auto:eco/") : props.src;
 		}
 
 		if(typeof props.placeholder === "string"){
 			props.placeholder = props.placeholder.indexOf("http://") !== -1 ? props.placeholder.split("http://").join("https://") : props.placeholder;
+			props.placeholder = props.saveData === true ? props.placeholder.split("/f_auto,q_auto/").join("/f_auto,q_auto:eco/") : props.placeholder;
 		}
 
 		if(props.lazy === true){

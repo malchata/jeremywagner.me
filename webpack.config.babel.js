@@ -50,21 +50,32 @@ function buildRoutes(routes){
 				chunks: ["app", entryPointName],
 				title: metadata.title,
 				description: metadata.description,
+				saveData: false,
 				components: {
 					illustration: renderToString(<Illustration/>),
 					header: renderToString(<Header/>),
 					navigation: renderToString(<Navigation/>),
-					content: renderToString(<Content/>)
+					content: renderToString(<Content saveData={false}/>)
 				}
 			};
 
-			if(typeof metadata.canonical !== "undefined"){
+			if(typeof metadata.canonical === "string"){
 				htmlOpts = Object.assign(htmlOpts, {
 					canonical: metadata.canonical
 				});
 			}
 
 			htmlOutputs.push(new HtmlWebpackPlugin(htmlOpts));
+			htmlOutputs.push(new HtmlWebpackPlugin(Object.assign(htmlOpts, {
+				filename: path.join(routes.replace("src/routes", "dist"), "index.savedata.html"),
+				saveData: true,
+				components: {
+					illustration: renderToString(<Illustration/>),
+					header: renderToString(<Header/>),
+					navigation: renderToString(<Navigation/>),
+					content: renderToString(<Content saveData={true}/>)
+				}
+			})));
 		}
 
 		if(fs.lstatSync(path.join(routes, route)).isDirectory() === true){
@@ -133,6 +144,12 @@ module.exports = {
 		new ManifestWebpackPlugin({
 			publicPath: "/",
 			fileName: "asset-manifest.json"
+		}),
+		new CompressionWebpackPlugin({
+			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
+		}),
+		new BrotliWebpackPlugin({
+			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({

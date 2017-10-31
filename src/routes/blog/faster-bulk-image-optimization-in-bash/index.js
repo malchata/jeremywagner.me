@@ -16,7 +16,11 @@ export const Excerpt = <div className="excerpt">
 </div>;
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				{Excerpt}

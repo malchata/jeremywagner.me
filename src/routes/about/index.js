@@ -9,7 +9,11 @@ export const Metadata = {
 };
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				<h1>{Metadata.title}</h1>
@@ -20,6 +24,8 @@ export default class Content extends Component{
 					caption={"Yes, it\'s cold here. No, we don\'t all talk like the cast in Fargo."}
 					width={400}
 					height={267}
+					critical={false}
+					saveData={props.saveData}
 				/>
 				<SubHeading deepLink={"writing"}>Writing</SubHeading>
 				<p>I'm the author of the Manning Publications book <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener"><em>Web Performance in Action</em></a>. This title is available for preorder and early preview through <a href="https://www.manning.com/meap-program" rel="noopener">Manning's MEAP Program</a>. The book centers on the importance of web performance, and teaches the many aspects of improving this vital aspect of your websites using plain and approachable language.</p>

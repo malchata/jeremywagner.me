@@ -30,8 +30,13 @@ export default class Video extends Component{
 		let videoMarkup;
 
 		if(props.lazy){
+			if(typeof props.placeholder === "string"){
+				props.placeholder = props.placeholder.indexOf("http://") !== -1 ? props.placeholder.split("http://").join("https://") : props.placeholder;
+				props.placeholder = props.saveData === true ? props.split("/f_auto,q_auto/").join("/f_auto,q_auto:eco/") : props.placeholder;
+			}
+
 			videoMarkup = <figure>
-				<video class={this.lazyClass} poster={props.placeholder.replace("http://", "https://")} width={props.width} height={props.height} autoplay loop muted>
+				<video class={this.lazyClass} poster={props.placeholder} width={props.width} height={props.height} autoplay loop muted>
 					{props.sources.map((source)=>this.getSource(source, props))}
 				</video>
 				<figcaption>{props.caption}</figcaption>

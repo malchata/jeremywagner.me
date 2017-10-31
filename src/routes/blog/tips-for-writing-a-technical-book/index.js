@@ -17,7 +17,11 @@ export const Excerpt = <div className="excerpt">
 </div>;
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				{Excerpt}
@@ -69,6 +73,7 @@ export default class Content extends Component{
 					caption={"The final print of Web Performance in Action."}
 					width={600}
 					height={315}
+					saveData={props.saveData}
 				/>
 				<p>When that happens, take a moment to congratulate yourself. Then take some time off. Then plot your next move when you're ready to get back to work.</p>
 				<SignOff/>

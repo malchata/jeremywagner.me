@@ -20,7 +20,11 @@ export const Excerpt = <div className="excerpt">
 </div>;
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				{Excerpt}
@@ -30,6 +34,7 @@ export default class Content extends Component{
 					caption={"Average and peak internet speeds in the top 8 developed nations by population."}
 					width={416}
 					height={361}
+					saveData={props.saveData}
 				/>
 				<p>Seems pretty much par for the course. South Korea leads by quite a bit, but beyond that, most other developed nations are pretty comparable. Now let's see what internet infrastructure looks like in the top 8 developing nations by population:</p>
 				<Image
@@ -40,6 +45,7 @@ export default class Content extends Component{
 					caption={"Average and peak internet speeds in the top 8 developing nations by population."}
 					width={413}
 					height={361}
+					saveData={props.saveData}
 				/>
 				<p>Now we're looking at a completely different picture. Forget about peak speeds for a minute, and just look at average speeds. Developing nations have much more fragile internet infrastructure by comparison. Now let's correlate this information to HTTP/2 support. What does browser support for HTTP/2 look like in the same set of developed nations? As always, <a href="http://caniuse.com/#search=http2" rel="noopener">data from caniuse.com</a> gives us an idea:</p>
 				<Image
@@ -50,6 +56,7 @@ export default class Content extends Component{
 					caption={"Browser support of HTTP/2 in the top 8 developed nations by population."}
 					width={450}
 					height={351}
+					saveData={props.saveData}
 				/>
 				<p>Not too bad. Support ranges between 65% and 85%. There is a grey area here in the way of what caniuse considers &quot;partial support&quot;, which means that some browsers may or may not support the protocol based on any number of conditions. A good example of this concept is IE11. On Windows 10, IE11 supports HTTP/2, but not on earlier versions of Windows.</p>
 				<p>Okay, let's get out of the weeds. What does HTTP/2 support in browsers look like in developing nations?</p>
@@ -61,6 +68,7 @@ export default class Content extends Component{
 					caption={"Browser support of HTTP/2 in the top 8 developing nations by population."}
 					width={447}
 					height={347}
+					saveData={props.saveData}
 				/>
 				<p>If you care about web performance, then this correlation should be illuminating for you. What we're seeing is that developing nations with a poorer quality of internet infrastructure don't have the same support for HTTP/2 in the browser that those in the developed world do.</p>
 				<p>So what does this mean? Consider for a moment that these people are visiting sites that may be HTTP/2-enabled. Those same sites may also be optimized for HTTP/2, which means they're abandoning HTTP/1 optimization patterns. What happens when someone using a browser incapable of understanding HTTP/2 visits that site? The connection downgrades to HTTP/1. This means that all of your HTTP/2-specific optimizations are now <em>detrimental</em> to those users.</p>

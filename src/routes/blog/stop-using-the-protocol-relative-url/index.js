@@ -20,7 +20,11 @@ export const Excerpt = <div className="excerpt">
 </div>;
 
 export default class Content extends Component{
-	render(){
+	constructor(props){
+		super(props);
+	}
+
+	render(props){
 		return (
 			<article>
 				{Excerpt}
@@ -33,6 +37,7 @@ export default class Content extends Component{
 					width={384}
 					height={216}
 					critical={false}
+					saveData={props.saveData}
 				/>
 				<p>When Paul Irish wrote about this in 2010, it was a great piece of advice. We were living in a time when sites only adopted HTTPS when absolutely necessary. The web is a different place now, though. We're rapidly moving toward a "secure by default" mindset, even for content that may not be considered especially sensitive. This is a <em>good thing</em>.</p>
 				<p>Paul Irish has since changed his stance, and now advises against using this URL scheme to reference cross-origin resources. His rationale is that while using the scheme on HTTPS pages is safe, the reverse is not true. Using the scheme on a non-secure page will retrieve cross-origin assets in a non-secure fashion. This isn't good, and it's rather easy to just slap an <code>{`https://`}</code> protocol on your URLs to ensure that your site is completely secure.</p>
@@ -48,6 +53,7 @@ export default class Content extends Component{
 					caption={"Note the values of the protocol and scheme columns."}
 					width={359}
 					height={98}
+					saveData={props.saveData}
 				/>
 				<p>When the resource is requested over HTTPS, the value of the protocol column is "h2", which signifies that the resource is being transmitted using HTTP/2. However, when the same resource is requested on the same domain over an insecure HTTP connection, the connection downgrades to HTTP/1.1.</p>
 				<p>Avoiding head of line blocking isn't the only reason to embrace HTTP/2. This new protocol compresses headers that are transmitted with requests and responses, something that HTTP/1 doesn't do. If you want to shave a few more bytes off of those requests, then slap that <code>{`https://`}</code> on your CDN references.</p>
