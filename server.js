@@ -26,31 +26,22 @@ const viewHandler = (req, res, next)=>{
 	let resourceHints = [
 		`<${assets["app.css"]}>; rel=preload; as=style`,
 		`<${assets["images/skyline.svg"]}>; rel=preload; as=image; nopush`,
-		`<${assets["css/fonts/monoton.woff2"]}>; rel=preload; as=font; nopush`,
-		`<${assets["css/fonts/fredokaone.woff2"]}>; rel=preload; as=font; nopush`
+		// `<${assets["css/fonts/monoton.woff2"]}>; rel=preload; as=font; nopush`,
+		// `<${assets["css/fonts/fredokaone.woff2"]}>; rel=preload; as=font; nopush`
 	];
-	let contentEncoding;
-
-	// Determine the accept-encoding preference
-	contentEncoding = null;
+	let viewRef = saveData === true ? join(webRoot, req.params.slug, "index.savedata.html") : join(webRoot, req.params.slug, "index.html");
+	let contentEncoding = null;
 
 	if(acceptedEncodings.indexOf("br") !== -1){
 		contentEncoding = "br";
+		viewRef = `${viewRef}.br`;
 	}
 	else if(acceptedEncodings.indexOf("gzip") !== -1){
 		contentEncoding = "gzip"
-	}
-
-	// Get view information
-	let viewRef = saveData === true ? join(webRoot, req.params.slug, "index.savedata.html") : join(webRoot, req.params.slug, "index.html");
-
-	// Modify the view based on the content encoding value
-	if(contentEncoding === "br"){
-		viewRef = `${viewRef}.br`;
-	}
-	else if(contentEncoding === "gzip"){
 		viewRef = `${viewRef}.gz`;
 	}
+
+	console.log(viewRef);
 
 	// Point to a blog entry if need be
 	if(isBlogEntry === true){
@@ -85,7 +76,6 @@ const viewHandler = (req, res, next)=>{
 };
 
 const assetHandler = (req, res, next)=>{
-	// Get asset information
 	let assetRef = join(webRoot, req.path);
 	let contentType = mime.getType(assetRef);
 	let contentEncoding = null;
@@ -110,7 +100,7 @@ const assetHandler = (req, res, next)=>{
 	let headers = {
 		"Vary": "Accept-Encoding",
 		"Cache-Control": "public, max-age=31557600",
-		"Content-Type": contentType
+		"Content-Type": ["text/css", "image/svg+xml", "application/javascript", "application/x-javascript", "text/xml", "text/plain", "text/html", "text/javascript"].indexOf(contentType) !== -1 ? `${contentType}; charset=UTF-8` : contentType
 	};
 
 	// Check if we need to set a Content-Encoding header and change the view
@@ -132,8 +122,8 @@ app.get("*", (req, res, next)=>{
 	res.setHeader("Service-Worker-Allowed", "/");
 	next();
 });
+app.get(["/writing", "/about", "/hire", "/blog/:slug"], viewHandler);
 app.get(assetRoutes, assetHandler);
-app.get(["/writing", "/about", "/hire", "/:blog/:slug"], viewHandler);
 
 // Set up HTTP
 const httpServer = http.createServer(app);

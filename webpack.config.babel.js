@@ -128,12 +128,6 @@ module.exports = {
 				precision: 1
 			}
 		}),
-		new CompressionWebpackPlugin({
-			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
-		}),
-		new BrotliWebpackPlugin({
-			test: /\.(html?|txt|css|js|svg|ttf|eot|xml)/i
-		}),
 		...htmlOutputs,
 		new CopyWebpackPlugin([
 			{
@@ -142,11 +136,11 @@ module.exports = {
 				flatten: true
 			}
 		]),
-		new WorkboxWebpackPlugin({
-			globDirectory: webRoot,
-			globPatterns: ["**\/*.{js,css,svg,woff2}"],
-			swDest: path.join(webRoot, "js", "sw.js")
-		}),
+		// new WorkboxWebpackPlugin({
+		// 	globDirectory: webRoot,
+		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
+		// 	swDest: path.join(webRoot, "js", "sw.js")
+		// }),
 		new ManifestWebpackPlugin({
 			publicPath: "/",
 			fileName: "assets.json"
@@ -160,6 +154,12 @@ module.exports = {
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
 			}
-		})
+		}),
+		new CompressionWebpackPlugin({
+			test: /\.(html|txt|css|js|svg|ttf|eot|xml)/i
+		}),
+		new BrotliWebpackPlugin({
+			test: /\.(html|txt|css|js|svg|ttf|eot|xml)/i
+		}),
 	]
 };

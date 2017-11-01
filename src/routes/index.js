@@ -1,7 +1,5 @@
 import { h, render, Component } from "preact";
-import SubHeading from "../components/SubHeading";
-import Image from "../components/Image";
-import CodeBlock from "../components/CodeBlock";
+import ContentExcerpts from "../components/ContentExcerpts";
 
 export const Metadata = {
 	title: "Home",
@@ -14,8 +12,6 @@ export default class Content extends Component{
 	}
 
 	render(props){
-		return (
-			<p>what up doge</p>
-		);
+		return (<ContentExcerpts/>);
 	}
 }
