@@ -10,6 +10,7 @@ import WorkboxWebpackPlugin from "workbox-webpack-plugin";
 import ManifestWebpackPlugin from "webpack-manifest-plugin";
 import CompressionWebpackPlugin from "compression-webpack-plugin";
 import BrotliWebpackPlugin from "brotli-webpack-plugin";
+import FaviconsWebpackPlugin from "favicons-webpack-plugin";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
@@ -122,13 +123,33 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(webRoot),
 		new ExtractTextPlugin("css/styles.[contenthash:8].css"),
+		new FaviconsWebpackPlugin({
+			logo: "./src/icons/favicon.png",
+			prefix: "/",
+			emitStats: true,
+			title: "Jeremy Wagner's Web Development Blog",
+			statsFilename: "icons.json",
+			icons:{
+				appleStartup: false,
+				firefox: false
+			}
+		}),
 		new ImageminPlugin({
 			svgo: {
 				multipass: true,
-				precision: 1
+				precision: 2
 			}
 		}),
 		...htmlOutputs,
+		// new WorkboxWebpackPlugin({
+		// 	globDirectory: webRoot,
+		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
+		// 	swDest: path.join(webRoot, "js", "sw.js")
+		// }),
+		new webpack.optimize.CommonsChunkPlugin({
+			names: ["vendors", "app"],
+			minChunks: Infinity
+		}),
 		new CopyWebpackPlugin([
 			{
 				from: path.join(__dirname, "src", "*.txt"),
@@ -136,30 +157,23 @@ module.exports = {
 				flatten: true
 			}
 		]),
-		// new WorkboxWebpackPlugin({
-		// 	globDirectory: webRoot,
-		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
-		// 	swDest: path.join(webRoot, "js", "sw.js")
-		// }),
-		new ManifestWebpackPlugin({
-			publicPath: "/",
-			fileName: "assets.json"
-		}),
-		new webpack.optimize.UglifyJsPlugin(),
-		new webpack.optimize.CommonsChunkPlugin({
-			names: ["vendors", "app"],
-			minChunks: Infinity
-		}),
 		new webpack.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
 			}
 		}),
+		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({
-			test: /\.(html|txt|css|js|svg|ttf|eot|xml)/i
+			test: /\.(html|txt|css|js|svg|ttf|eot|xml)$/ig,
+			minRatio: 1
 		}),
 		new BrotliWebpackPlugin({
-			test: /\.(html|txt|css|js|svg|ttf|eot|xml)/i
+			test: /\.(html|txt|css|js|svg|ttf|eot|xml)$/ig,
+			minRatio: 1
 		}),
+		new ManifestWebpackPlugin({
+			publicPath: "/",
+			fileName: "assets.json"
+		})
 	]
 };

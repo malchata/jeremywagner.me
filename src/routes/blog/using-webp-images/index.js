@@ -119,7 +119,7 @@ imagemin([JPEGImages], outputFolder, {
 				<Video
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508379806/jeremywagner.me/using-webp-images/bateman-3-placeholder.jpg"}
-					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.webm"],["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.ogv"],["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.mp4"]}
+					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.webm", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.ogv", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.mp4"]}
 					caption={"Have you ever seen my WebPs?"}
 					width={500}
 					height={257}

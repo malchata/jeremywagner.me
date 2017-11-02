@@ -5,20 +5,16 @@ article{
 h1{
 	color: var(--white);
 	background: var(--coral);
-	font-family: var(--fredoka-one);
 	padding: .4ch var(--mobile-gutter);
-	line-height: 1.618;
-	font-size: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)));
+	font: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
 	margin: 0 0 .96ch;
 }
 
 h2{
 	padding: .4ch var(--mobile-gutter);
 	background: var(--indigo);
-	font-family: var(--fredoka-one);
 	color: var(--white);
-	font-size: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)));
-	line-height: 1.618;
+	font: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
 	margin: 0 0 .96ch;
 }
 
@@ -59,10 +55,8 @@ ol{
 
 li,
 p{
-	font-family: var(--fira-sans);
-	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	font: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
 	color: var(--black);
-	line-height: 1.618;
 }
 
 p{
@@ -92,10 +86,8 @@ article h1:last-child{
 }
 
 .date{
-	font-weight: 700;
 	color: var(--coral);
-	font-family: var(--fira-sans);
-	font-size: calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)));
+	font: 700 calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
 }
 
 figure{
@@ -111,12 +103,10 @@ figure video{
 
 figcaption{
 	color: var(--white);
-	font-family: var(--fira-sans);
 	background: var(--coral);
 	padding: .8ch 1.25ch;
-	line-height: 1.618;
 	display: inline-block;
-	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	font: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
 	margin: 1.92ch 0 2.51328ch;
 }
 

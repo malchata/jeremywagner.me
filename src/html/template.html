@@ -18,7 +18,7 @@
 		<script>document.documentElement.classList.remove("no-js");</script>
 		<link href="<%= htmlWebpackPlugin.files.css %>" rel="stylesheet">
 	</head>
-	<body>
+	<body<% if(htmlWebpackPlugin.options.saveData === true){ %> class="save-data"<% } %>>
 		<div class="skyline"></div>
 		<main>
 			<%= htmlWebpackPlugin.options.components.illustration %>

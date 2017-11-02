@@ -7,19 +7,21 @@ import https from "https";
 import mime from "mime";
 import { h } from "preact";
 import assets from "./dist/assets.json";
+import icons from "./dist/icons.json";
 
 const webRoot = join(__dirname, "dist");
 const app = new express();
 
-let viewCache = {};
-let assetCache = {};
-let assetRoutes = [];
+let itemCache = {};
+let assetRoutes = [...icons.files];
+assetRoutes.push("/humans.txt", "/robots.txt", "license.txt");
 
 for(let asset in assets){
 	assetRoutes.push(assets[asset]);
 }
 
 const viewHandler = (req, res, next)=>{
+	console.dir(req.path);
 	let saveData = req.headers["save-data"] === "on" ? true : false;
 	let acceptedEncodings = req.headers["accept-encoding"].split(", ");
 	let isBlogEntry = req.path.indexOf("/blog/") !== -1 ? true : false;
@@ -50,8 +52,8 @@ const viewHandler = (req, res, next)=>{
 	}
 
 	// Examine the view cache first
-	if(typeof viewCache[viewRef] === "undefined"){
-		viewCache[viewRef] = new Buffer(readFileSync(viewRef));
+	if(typeof itemCache[viewRef] === "undefined"){
+		itemCache[viewRef] = new Buffer(readFileSync(viewRef));
 	}
 
 	// Set headers
@@ -72,7 +74,7 @@ const viewHandler = (req, res, next)=>{
 		res.setHeader(header, headers[header]);
 	}
 
-	res.send(viewCache[viewRef]);
+	res.send(itemCache[viewRef]);
 };
 
 const assetHandler = (req, res, next)=>{
@@ -93,8 +95,8 @@ const assetHandler = (req, res, next)=>{
 		}
 	}
 
-	if(typeof assetCache[assetRef] === "undefined"){
-		assetCache[assetRef] = new Buffer(readFileSync(assetRef));
+	if(typeof itemCache[assetRef] === "undefined"){
+		itemCache[assetRef] = new Buffer(readFileSync(assetRef));
 	}
 
 	let headers = {
@@ -108,13 +110,12 @@ const assetHandler = (req, res, next)=>{
 		headers["Content-Encoding"] = contentEncoding;
 	}
 
-	// Set all the headers
 	for(let header in headers){
 		res.setHeader(header, headers[header]);
 	}
 
-	res.send(assetCache[assetRef]);
-}
+	res.send(itemCache[assetRef]);
+};
 
 app.get("*", (req, res, next)=>{
 	res.removeHeader("X-Powered-By");
@@ -122,8 +123,9 @@ app.get("*", (req, res, next)=>{
 	res.setHeader("Service-Worker-Allowed", "/");
 	next();
 });
-app.get(["/writing", "/about", "/hire", "/blog/:slug"], viewHandler);
 app.get(assetRoutes, assetHandler);
+app.get(["/:slug", "/blog/:slug"], viewHandler);
+//app.get(["/rss.xml", "/sitemap.xml"], textHandler);
 
 // Set up HTTP
 const httpServer = http.createServer(app);

@@ -18,14 +18,12 @@ header{
 }
 
 .name{
-	font-family: var(--fredoka-one);
-	font-size: calc(150% + (72 - 24) * ((100vw - 320px) / (960 - 320)));
+	font: calc(150% + (72 - 24) * ((100vw - 320px) / (960 - 320)))/1 var(--fredoka-one);
 	margin: 0 0 .4ch
 }
 
 .site{
-	font-family: var(--monoton);
-	font-size: calc(200% + (96 - 32) * ((100vw - 320px) / (960 - 320)));
+	font: calc(200% + (96 - 32) * ((100vw - 320px) / (960 - 320)))/1 var(--monoton);
 	text-transform: uppercase;
 	word-spacing: .225ch;
 	margin: .25ch 0 0;

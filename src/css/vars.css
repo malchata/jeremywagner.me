@@ -17,6 +17,7 @@
 	/* Fonts */
 	--fredoka-one: "Fredoka One", sans-serif;
 	--monoton: "Monoton", sans-serif;
-	--fira-sans: "Fira Sans", sans-serif;
-	--code: "Monaco", "Consolas", monospace;
+	--fira-sans: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--system-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--code: "Consolas", "Monaco", monospace;
 }

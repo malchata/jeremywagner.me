@@ -47,24 +47,24 @@
 			}
 
 			.cls-3{
-				-webkit-animation: move-one 120s linear 20s infinite backwards;
-				-moz-animation: move-one 120s linear 20s infinite backwards;
-				-o-animation: move-one 120s linear 20s infinite backwards;
-				animation: move-one 120s linear 20s infinite backwards;
+				-webkit-animation: move-one 150s linear 0s infinite backwards;
+				-moz-animation: move-one 150s linear 0s infinite backwards;
+				-o-animation: move-one 150s linear 0s infinite backwards;
+				animation: move-one 150s linear 0s infinite backwards;
 			}
 
 			.cls-4{
-				-webkit-animation: move-two 150s linear 0s infinite backwards;
-				-moz-animation: move-two 150s linear 0s infinite backwards;
-				-o-animation: move-two 150s linear 0s infinite backwards;
-				animation: move-two 150s linear 0s infinite backwards;
+				-webkit-animation: move-two 120s linear 10s infinite backwards;
+				-moz-animation: move-two 120s linear 10s infinite backwards;
+				-o-animation: move-two 120s linear 10s infinite backwards;
+				animation: move-two 120s linear 10s infinite backwards;
 			}
 
 			.cls-5{
-				-webkit-animation: move-three 90s linear 10s infinite backwards;
-				-moz-animation: move-three 90s linear 10s infinite backwards;
-				-o-animation: move-three 90s linear 10s infinite backwards;
-				animation: move-three 90s linear 10s infinite backwards;
+				-webkit-animation: move-three 90s linear 5s infinite backwards;
+				-moz-animation: move-three 90s linear 5s infinite backwards;
+				-o-animation: move-three 90s linear 5s infinite backwards;
+				animation: move-three 90s linear 5s infinite backwards;
 			}
 
 			.cls-8{
@@ -167,46 +167,46 @@
 			}
 			@-webkit-keyframes move-one{
 				from{
-					-webkit-transform: translateX(-687.5%);
-					-moz-transform: translateX(-687.5%);
-					-o-transform: translateX(-687.5%);
-					transform: translateX(-687.5%);
+					-webkit-transform: translateX(-98%);
+					-moz-transform: translateX(-98%);
+					-o-transform: translateX(-98%);
+					transform: translateX(-98%);
 				}
 
 				to{
-					-webkit-transform: translateX(150%);
-					-moz-transform: translateX(150%);
-					-o-transform: translateX(150%);
-					transform: translateX(150%);
+					-webkit-transform: translateX(20%);
+					-moz-transform: translateX(20%);
+					-o-transform: translateX(20%);
+					transform: translateX(20%);
 				}
 			}
 			@-webkit-keyframes move-two{
 				from{
-					-webkit-transform: translateX(-457.5%);
-					-moz-transform: translateX(-457.5%);
-					-o-transform: translateX(-457.5%);
-					transform: translateX(-457.5%);
+					-webkit-transform: translateX(-86%);
+					-moz-transform: translateX(-86%);
+					-o-transform: translateX(-86%);
+					transform: translateX(-86%);
 				}
 
 				to{
-					-webkit-transform: translateX(175%);
-					-moz-transform: translateX(175%);
-					-o-transform: translateX(175%);
-					-transform: translateX(175%);
+					-webkit-transform: translateX(37%);
+					-moz-transform: translateX(37%);
+					-o-transform: translateX(37%);
+					-transform: translateX(37%);
 				}
 			}
 			@-webkit-keyframes move-three{
 				from{
-					-webkit-transform: translateX(-125%);
-					-moz-transform: translateX(-125%);
-					-o-transform: translateX(-125%);
-					transform: translateX(-125%);
+					-webkit-transform: translateX(-19%);
+					-moz-transform: translateX(-19%);
+					-o-transform: translateX(-19%);
+					transform: translateX(-19%);
 				}
 				to{
-					-webkit-transform: translateX(650%);
-					-moz-transform: translateX(650%);
-					-o-transform: translateX(650%);
-					transform: translateX(650%);
+					-webkit-transform: translateX(104%);
+					-moz-transform: translateX(104%);
+					-o-transform: translateX(104%);
+					transform: translateX(104%);
 				}
 			}
 
