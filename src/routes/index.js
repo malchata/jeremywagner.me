@@ -3,7 +3,8 @@ import ContentExcerpts from "../components/ContentExcerpts";
 
 export const Metadata = {
 	title: "Home",
-	description: "The web development blog of developer, author and speaker Jeremy Wagner."
+	description: "The web development blog of developer, author and speaker Jeremy Wagner.",
+	date: "4 November, 2016"
 };
 
 export default class Content extends Component{

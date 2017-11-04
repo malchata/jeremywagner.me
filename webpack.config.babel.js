@@ -19,6 +19,10 @@ import Illustration from "./src/components/Illustration";
 import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
 
+// These are XML feeds
+import RSSFeed from "./src/components/RSSFeed";
+import Sitemap from "./src/components/Sitemap";
+
 const exclusions = /node_modules/i;
 const webRoot = path.join(__dirname, "dist");
 
@@ -26,7 +30,17 @@ let entryPoints = {
 	"vendors": ["preact", "preact-render-to-string"],
 	"app": "./src/js/app.js"
 };
-let htmlOutputs = [];
+let markupOutputs = [];
+let xmlOutputOptions = {
+	template: path.join(__dirname, "src/xml/template.xml"),
+	inject: false,
+	hash: false,
+	minify: {
+		removeComments: true,
+		collapseWhitespace: true,
+		minifyJS: true
+	}
+};
 
 function buildRoutes(routes){
 	fs.readdirSync(routes).forEach((route)=>{
@@ -66,8 +80,8 @@ function buildRoutes(routes){
 				});
 			}
 
-			htmlOutputs.push(new HtmlWebpackPlugin(htmlOpts));
-			htmlOutputs.push(new HtmlWebpackPlugin(Object.assign(htmlOpts, {
+			markupOutputs.push(new HtmlWebpackPlugin(htmlOpts));
+			markupOutputs.push(new HtmlWebpackPlugin(Object.assign(htmlOpts, {
 				filename: path.join(routes.replace("src/routes", "dist"), "index.savedata.html"),
 				saveData: true,
 				components: {
@@ -86,6 +100,20 @@ function buildRoutes(routes){
 }
 
 buildRoutes(path.join(__dirname, "src", "routes"));
+
+markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
+	filename: path.join(webRoot, "rss.xml"),
+	title: "Jeremy Wagner's Web Development Blog",
+	components: {
+		content: renderToString(<RSSFeed/>, {}, {}, false, false, [])
+	}
+})));
+markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
+	filename: path.join(webRoot, "sitemap.xml"),
+	components: {
+		content: renderToString(<Sitemap/>)
+	}
+})));
 
 module.exports = {
 	entry: entryPoints,
@@ -140,7 +168,7 @@ module.exports = {
 				precision: 2
 			}
 		}),
-		...htmlOutputs,
+		...markupOutputs,
 		// new WorkboxWebpackPlugin({
 		// 	globDirectory: webRoot,
 		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
@@ -164,12 +192,14 @@ module.exports = {
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({
-			test: /\.(html|txt|css|js|svg|ttf|eot|xml)$/ig,
-			minRatio: 1
+			test: /\.(html?|css|js|svg|ttf|eot)$/,
+			minRatio: 1,
+			threshold: 0
 		}),
 		new BrotliWebpackPlugin({
-			test: /\.(html|txt|css|js|svg|ttf|eot|xml)$/ig,
-			minRatio: 1
+			test: /\.(html?|css|js|svg|ttf|eot)$/,
+			minRatio: 1,
+			threshold: 0
 		}),
 		new ManifestWebpackPlugin({
 			publicPath: "/",

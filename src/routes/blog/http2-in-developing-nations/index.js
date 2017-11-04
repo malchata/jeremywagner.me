@@ -7,8 +7,7 @@ import SignOff from "../../../components/SignOff";
 export const Metadata = {
 	title: "HTTP/2 in Developing Nations",
 	date: "6 October, 2016",
-	description: "Using WebP images can yield substantially lower file sizes for your images, giving way to quicker page load times. Learn how to use them in this post!",
-	canonical: "https://css-tricks.com/using-webp-images/"
+	description: "I did some research on HTTP/2 support in browsers in developed and developing nations. Results within."
 };
 
 export const Excerpt = <div className="excerpt">

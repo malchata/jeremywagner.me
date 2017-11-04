@@ -4,7 +4,8 @@ import SignOff from "../../components/SignOff";
 
 export const Metadata = {
 	title: "Let's Work Together",
-	description: "I do freelance work. Maybe you need someone to work on your next web project. I might be the person you need. Let's talk!"
+	description: "I do freelance work. Maybe you need someone to work on your next web project. I might be the person you need. Let's talk!",
+	date: "4 November, 2016"
 };
 
 export default class Content extends Component{

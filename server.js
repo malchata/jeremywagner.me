@@ -13,12 +13,8 @@ const webRoot = join(__dirname, "dist");
 const app = new express();
 
 let itemCache = {};
-let assetRoutes = [...icons.files];
-assetRoutes.push("/humans.txt", "/robots.txt", "license.txt");
-
-for(let asset in assets){
-	assetRoutes.push(assets[asset]);
-}
+let assetRoutes = [...assets, ...icons.files];
+assetRoutes.push("/humans.txt", "/robots.txt", "/license.txt", "/rss.xml", "/sitemap.xml");
 
 const viewHandler = (req, res, next)=>{
 	console.dir(req.path);
@@ -82,7 +78,7 @@ const assetHandler = (req, res, next)=>{
 	let contentType = mime.getType(assetRef);
 	let contentEncoding = null;
 
-	if(/\.(txt|css|js|ttf|eot|svg)$/i.test(assetRef) === true){
+	if(/\.(css|js|ttf|eot|svg)$/i.test(assetRef) === true){
 		let acceptedEncodings = req.headers["accept-encoding"].split(", ");
 
 		if(acceptedEncodings.indexOf("br") !== -1){
@@ -125,7 +121,6 @@ app.get("*", (req, res, next)=>{
 });
 app.get(assetRoutes, assetHandler);
 app.get(["/:slug", "/blog/:slug"], viewHandler);
-//app.get(["/rss.xml", "/sitemap.xml"], textHandler);
 
 // Set up HTTP
 const httpServer = http.createServer(app);

@@ -4,7 +4,8 @@ import SignOff from "../../components/SignOff";
 
 export const Metadata = {
 	title: "Stuff I Wrote",
-	description: ""
+	description: "A list of my published articles.",
+	date: "4 November, 2016"
 };
 
 export default class Content extends Component{
