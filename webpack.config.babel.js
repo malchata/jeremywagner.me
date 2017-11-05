@@ -157,6 +157,7 @@ module.exports = {
 			emitStats: true,
 			title: "Jeremy Wagner's Web Development Blog",
 			statsFilename: "icons.json",
+			inject: false,
 			icons:{
 				appleStartup: false,
 				firefox: false

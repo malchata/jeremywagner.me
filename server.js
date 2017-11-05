@@ -13,7 +13,12 @@ const webRoot = join(__dirname, "dist");
 const app = new express();
 
 let itemCache = {};
-let assetRoutes = [...assets, ...icons.files];
+let assetRoutes = [...icons.files];
+
+Object.keys(assets).forEach((asset)=>{
+	assetRoutes.push(assets[asset]);
+});
+
 assetRoutes.push("/humans.txt", "/robots.txt", "/license.txt", "/rss.xml", "/sitemap.xml");
 
 const viewHandler = (req, res, next)=>{
@@ -38,8 +43,6 @@ const viewHandler = (req, res, next)=>{
 		contentEncoding = "gzip"
 		viewRef = `${viewRef}.gz`;
 	}
-
-	console.log(viewRef);
 
 	// Point to a blog entry if need be
 	if(isBlogEntry === true){

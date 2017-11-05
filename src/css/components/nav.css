@@ -15,7 +15,7 @@ nav{
 	content: "//";
 	color: var(--coral);
 	margin: 0 1ch;
-	font-size: calc(75% + (24 - 12) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
+	font: calc(75% + (24 - 12) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
 }
 
 .nav-item:last-child:after{
