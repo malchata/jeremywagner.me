@@ -19,20 +19,26 @@ Object.keys(assets).forEach((asset)=>{
 	assetRoutes.push(assets[asset]);
 });
 
-assetRoutes.push("/humans.txt", "/robots.txt", "/license.txt", "/rss.xml", "/sitemap.xml");
+assetRoutes.push("/humans.txt", "/robots.txt", "/license.txt", /*"/rss.xml", */"/sitemap.xml");
 
 const viewHandler = (req, res, next)=>{
-	console.dir(req.path);
+	let slug;
+
+	if(req.path === "/"){
+		slug = "/";
+	}
+	else{
+		slug = req.params.slug;
+	}
+
 	let saveData = req.headers["save-data"] === "on" ? true : false;
 	let acceptedEncodings = req.headers["accept-encoding"].split(", ");
 	let isBlogEntry = req.path.indexOf("/blog/") !== -1 ? true : false;
 	let resourceHints = [
 		`<${assets["app.css"]}>; rel=preload; as=style`,
-		`<${assets["images/skyline.svg"]}>; rel=preload; as=image; nopush`,
-		// `<${assets["css/fonts/monoton.woff2"]}>; rel=preload; as=font; nopush`,
-		// `<${assets["css/fonts/fredokaone.woff2"]}>; rel=preload; as=font; nopush`
+		`<${assets["images/skyline.svg"]}>; rel=preload; as=image; nopush`
 	];
-	let viewRef = saveData === true ? join(webRoot, req.params.slug, "index.savedata.html") : join(webRoot, req.params.slug, "index.html");
+	let viewRef = saveData === true ? join(webRoot, slug, "index.savedata.html") : join(webRoot, slug, "index.html");
 	let contentEncoding = null;
 
 	if(acceptedEncodings.indexOf("br") !== -1){
@@ -123,7 +129,7 @@ app.get("*", (req, res, next)=>{
 	next();
 });
 app.get(assetRoutes, assetHandler);
-app.get(["/:slug", "/blog/:slug"], viewHandler);
+app.get(["/", "/:slug", "/blog/:slug"], viewHandler);
 
 // Set up HTTP
 const httpServer = http.createServer(app);

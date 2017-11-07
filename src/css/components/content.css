@@ -6,7 +6,7 @@ h1{
 	color: var(--white);
 	background: var(--coral);
 	padding: .4ch var(--mobile-gutter);
-	font: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
+	font: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fredoka-one);
 	margin: 0 0 .96ch;
 }
 
@@ -14,7 +14,7 @@ h2{
 	padding: .4ch var(--mobile-gutter);
 	background: var(--indigo);
 	color: var(--white);
-	font: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fredoka-one);
+	font: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fredoka-one);
 	margin: 0 0 .96ch;
 }
 
@@ -87,7 +87,7 @@ article h1:last-child{
 
 .date{
 	color: var(--coral);
-	font: 700 calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
+	font: 700 calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fira-sans);
 }
 
 figure{
@@ -119,6 +119,7 @@ code{
 	background: var(--light-blue);
 	border-radius: 4px 0 0 4px;
 	margin: 0 0 1.92ch var(--mobile-gutter);
+	box-shadow: rgba(35, 61, 85, .25) 2px 2px 0 inset;
 }
 
 pre{

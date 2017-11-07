@@ -38,6 +38,7 @@ nav{
 	width: 6.5789473684%; /* 20px / 304px */
 	margin: 0 6.5789473684% 0 0; /* 20px / 304px */
 	vertical-align: middle;
+	max-width: 32px;
 }
 
 .social-item:last-child{

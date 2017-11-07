@@ -101,13 +101,13 @@ function buildRoutes(routes){
 
 buildRoutes(path.join(__dirname, "src", "routes"));
 
-markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
-	filename: path.join(webRoot, "rss.xml"),
-	title: "Jeremy Wagner's Web Development Blog",
-	components: {
-		content: renderToString(<RSSFeed/>, {}, {}, false, false, [])
-	}
-})));
+// markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
+// 	filename: path.join(webRoot, "rss.xml"),
+// 	title: "Jeremy Wagner's Web Development Blog",
+// 	components: {
+// 		content: renderToString(<RSSFeed/>, {}, {xml: true}, false, false, [])
+// 	}
+// })));
 markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
 	filename: path.join(webRoot, "sitemap.xml"),
 	components: {
