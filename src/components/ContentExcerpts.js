@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import SignOff from "./SignOff";
 
 export const blogExcerpts = [
 	require("../routes/blog/net-neutrality-web-performance/index.js").Excerpt,
@@ -39,6 +40,7 @@ export default class ContentExcerpts extends Component{
 		return (
 			<article class="excerpts">
 				{blogExcerpts}
+				<SignOff/>
 			</article>
 		);
 	}
