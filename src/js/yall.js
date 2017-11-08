@@ -1,5 +1,5 @@
 /**
- * yall.js version 1.1.2
+ * yall.js version 1.2.0
  * Yet Another Lazy loader
  **/
 
@@ -7,7 +7,7 @@
 	var
 		// The primary goal here is to keep this script as small as possible
 		// while maintaining functionality. The uglifier goes a long way,
-		// but we can take things a bit farther by saving strings for
+		// but we can take things a bit farther by saving references for
 		// frequently used method and strings.
 		fe = "forEach",
 		qsa = "querySelectorAll",
@@ -18,8 +18,9 @@
 		ioe = io + "Entry",
 		s = "src",
 		ss = "srcset",
-		ds = "data-src",
-		dss = "data-srcset",
+		d = "data-",
+		ds = d + s,
+		dss = d + ss,
 		// Placeholders used for event handler strings.
 		documentEvents = ["scroll", "touchmove"],
 		windowEvents = ["orientationchange", "resize"],
@@ -36,12 +37,13 @@
 				node.removeAttribute(sourceAttr);
 			}
 		},
-		// The handler to load the image
+		// The handler to load the media
 		loadMedia = function(media){
 			if(media.tagName == "VIDEO"){
-				media[qsa]("source")[fe](function(source){
+				Array[pr].slice.call(media[qsa]("source"))[fe](function(source){
 					replaceAttr(source, ds, s);
 				});
+
 				media.load();
 			}
 			else{
@@ -56,6 +58,7 @@
 			}
 
 			media.classList.remove("lazy");
+
 			elements = elements.filter(function(e){
 				return e !== media;
 			});
@@ -98,17 +101,17 @@
 		if(elements.length){
 			// This compatibility check has been taken from https://github.com/WICG/IntersectionObserver/blob/gh-pages/polyfill/intersection-observer.js
 			if(io in window && ioe in window && "intersectionRatio" in window[ioe][pr]){
-				var imageObserver = new window[io](function(entries, observer){
+				var mediaObserver = new window[io](function(entries, observer){
 					entries[fe](function(entry){
 						if(entry.isIntersecting){
 							loadMedia(entry.target);
-							imageObserver.unobserve(entry.target);
+							mediaObserver.unobserve(entry.target);
 						}
 					});
 				});
 
 				elements[fe](function(media){
-					imageObserver.observe(media);
+					mediaObserver.observe(media);
 				});
 			}
 			else{
