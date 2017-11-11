@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import SignOff from "../../../components/SignOff";
@@ -6,15 +7,16 @@ import SignOff from "../../../components/SignOff";
 export const Metadata = {
 	title: "Tips for Writing a Technical Book",
 	date: "21 January, 2017",
-	description: "My book Web Performance in Action is now published by Manning Publications. Here's some tips I've discovered after a year of writing my first technical book."
+	description: "My book Web Performance in Action is now published by Manning Publications. Here's some tips I've discovered after a year of writing my first technical book.",
+	slug: "/blog/tips-for-writing-a-technical-book/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>I spent the last year writing a technical book for Manning Publications, and it's finally out! The book is called <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" rel="noopener"><em>Web Performance in Action</em></a>. The process was something I wanted to fully document, but it became clear to me that nobody would find such an overly-specific, long-winded screed worth reading.</p>
 	<p>So instead, I said &quot;to hell with it&quot; and slapped a clickbait title on this thing. If you've ever entertained the notion of writing a technical book, these are some tips that served me well during the process. Well, for <em>me</em> at least. Your mileage will vary, of course.</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -24,7 +26,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<SubHeading>Don't do it for the money</SubHeading>
 				<p>Getting published can do a lot for you. It can raise your profile. It could help you get booked to speak at major conferences. It can command respect from others in the industry if your book becomes well regarded. What it probably <em>won't</em> do is make you gobs and gobs of cash.</p>
 				<p>Sure, it's possible <em>if</em> you write a book that hits the mark. Or if it spawns more than one edition. Don't operate under this presumption, though. If you want to invest a year (or more) in writing a technical book, you should do it because you love to teach and write.</p>

@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
@@ -6,15 +7,16 @@ import SignOff from "../../../components/SignOff";
 export const Metadata = {
 	title: "Bulk Image Optimization in Bash",
 	date: "9 March, 2017",
-	description: "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!"
+	description: "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!",
+	slug: "/blog/bulk-image-optimization-in-bash/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>Have you ever needed to optimize a bunch of images in a folder on your computer, but you don't want to go through the hassle of writing an build system to take care of it? Then bash and your image optimization binary of choice are your best friends. I've had situations where I just needed to pull down files from a website already in production, optimize images, and re-upload everything. The exact syntax depends on the optimizer you use, but your workhorse will be the <code>{`find`}</code> command.</p>
 	<p><code>{`find`}</code> is a command that, well, finds stuff. For example, if I wanted to find all files in the current directory and its subdirectories with a <code>{`.jpg`}</code> extension, I could run this command:</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -24,7 +26,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<CodeBlock>{`find ./ -type f -name '*.jpg'`}</CodeBlock>
 				<p>This will dump a list of files ending in the <code>{`.jpg`}</code> extension to the terminal like so:</p>
 				<CodeBlock>{`./images/george.jpg

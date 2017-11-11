@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
@@ -8,16 +9,17 @@ export const Metadata = {
 	title: "Stop Using the Protocol-relative URL",
 	date: "22 July, 2016",
 	updateDate: "5 March, 2017",
-	description: "Using the protocol-relative URL has long been touted as a best practice, but its continued use can be detrimental to performance. Read on to find out more."
+	description: "Using the protocol-relative URL has long been touted as a best practice, but its continued use can be detrimental to performance. Read on to find out more.",
+	slug: "/stop-using-the-protocol-relative-url/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>Paul Irish <a href="http://www.paulirish.com/2010/the-protocol-relative-url" rel="noopener">wrote about the protocol-relative URL</a> way back in 2010. It was a convenient little post that advised developers to abandon absolute protocol URL schemes using <code>{`http://`}</code> or <code>{`https://`}</code> in favor of a protocol-relative variant that looks something like this:</p>
 	<CodeBlock>{`<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>`}</CodeBlock>
 	<p>This convenient syntax eliminates the need for developers to construct URLs based on the user's current security context. If this syntax was used on an HTTP page to include something from a CDN, it retrieved the HTTP version. If the user used it on an HTTPS page, it retrieved the HTTPS version. Seems like a hell of an idea, right?</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -27,7 +29,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<Image
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1509294660/jeremywagner.me/stop-using-the-protocol-relative-url/gomer-pyle-placeholder.jpg"}

@@ -4,6 +4,7 @@ import webpack from "webpack";
 import ImageminPlugin from "imagemin-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import XmlWebpackPlugin from "xml-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
@@ -20,7 +21,7 @@ import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
 
 // These are XML feeds
-import RSSFeed from "./src/components/RSSFeed";
+import { RSSFeed } from "./src/components/RSSFeed";
 import Sitemap from "./src/components/Sitemap";
 
 const exclusions = /node_modules/i;
@@ -101,18 +102,20 @@ function buildRoutes(routes){
 
 buildRoutes(path.join(__dirname, "src", "routes"));
 
-// markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
-// 	filename: path.join(webRoot, "rss.xml"),
-// 	title: "Jeremy Wagner's Web Development Blog",
-// 	components: {
-// 		content: renderToString(<RSSFeed/>, {}, {xml: true}, false, false, [])
-// 	}
-// })));
+markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
+	filename: path.join(webRoot, "rss.xml"),
+	title: "Jeremy Wagner's Web Development Blog",
+	components: {
+		content: RSSFeed
+	},
+	xhtml: true
+})));
 markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
 	filename: path.join(webRoot, "sitemap.xml"),
 	components: {
 		content: renderToString(<Sitemap/>)
-	}
+	},
+	xhtml: true
 })));
 
 module.exports = {
@@ -193,12 +196,12 @@ module.exports = {
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({
-			test: /\.(html?|css|js|svg|ttf|eot)$/,
+			test: /\.(html?|xml|css|js|svg|ttf|eot)$/,
 			minRatio: 1,
 			threshold: 0
 		}),
 		new BrotliWebpackPlugin({
-			test: /\.(html?|css|js|svg|ttf|eot)$/,
+			test: /\.(html?|xml|css|js|svg|ttf|eot)$/,
 			minRatio: 1,
 			threshold: 0
 		}),

@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
@@ -7,15 +8,16 @@ import SignOff from "../../../components/SignOff";
 export const Metadata = {
 	title: "Cutting Cruft with an SVG Media Query",
 	date: "25 May, 2016",
-	description: "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!"
+	description: "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!",
+	slug: "/blog/svg-media-query/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>This isn't a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
 	<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" rel="noopener">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site's logo a different treatment for each breakpoint.</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -25,7 +27,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<Image
 					lazy={true}
 					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1509076518/jeremywagner.me/svg-media-query/weekly-timber-placeholder.jpg"}

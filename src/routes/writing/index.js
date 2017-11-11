@@ -5,7 +5,9 @@ import SignOff from "../../components/SignOff";
 export const Metadata = {
 	title: "Stuff I Wrote",
 	description: "A list of my published articles.",
-	date: "4 November, 2016"
+	date: "4 November, 2016",
+	sitemapPriority: 0.75,
+	slug: "/writing/"
 };
 
 export default class Content extends Component{

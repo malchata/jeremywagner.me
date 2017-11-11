@@ -1,4 +1,5 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
@@ -7,16 +8,17 @@ import SignOff from "../../../components/SignOff";
 export const Metadata = {
 	title: "HTTP/2 in Developing Nations",
 	date: "6 October, 2016",
-	description: "I did some research on HTTP/2 support in browsers in developed and developing nations. Results within."
+	description: "I did some research on HTTP/2 support in browsers in developed and developing nations. Results within.",
+	slug: "/blog/http2-in-developing-nations/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p className="editors-note">Hey, guys! I talk about HTTP/2 (and other stuff) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener">my upcoming book from Manning publications</a> on web performance. Maybe check it out if that's your kind of thing. In any event, I hope you like this post!</p>
 	<p>I've been doing some research on HTTP/2 use across the world in preparation for an article on another outlet. In doing so, I've observed some compelling relationships between HTTP/2 support by browser, the developing world, and internet infrastructure quality.</p>
 	<p>In developed nations, we see often see that internet infrastructure quality is pretty good in comparison to developing nations. That's not to say that some developed nations couldn't stand to do better, but they're often better by comparison. Let's take a quick look at this graph of average and peak connection speeds in the world's top 8 developing nations by population, courtesy of <a href="https://content.akamai.com/pg7162-q2-soti-connectivity-report.html" rel="noopener">Akamai's second quarter State of the Internet Report for 2016</a>:</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -26,7 +28,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<Image
 					src={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1509303727/jeremywagner.me/http2-in-developing-nations/internet-speed-developed-nations-1x.png"}
 					srcset={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1509303727/jeremywagner.me/http2-in-developing-nations/internet-speed-developed-nations-1x.png 1x, http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1509303727/jeremywagner.me/http2-in-developing-nations/internet-speed-developed-nations-2x.png 2x"}

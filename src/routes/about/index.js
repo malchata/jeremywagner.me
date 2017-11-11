@@ -6,7 +6,9 @@ import SignOff from "../../components/SignOff";
 export const Metadata = {
 	title: "About",
 	description: "A little biography of web developer, author, and speaker Jeremy Wagner.",
-	date: "4 November, 2017"
+	date: "4 November, 2017",
+	sitemapPriority: 0.5,
+	slug: "/about/"
 };
 
 export default class Content extends Component{

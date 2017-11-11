@@ -1,18 +1,20 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "CSS is Broken: My Dime a Dozen Opinion",
 	date: "3 April, 2017",
-	description: "In which I offer an opinion on how CSS is not broken. An opinion nobody asked for."
+	description: "In which I offer an opinion on how CSS is not broken. An opinion nobody asked for.",
+	slug: "/blog/css-is-broken-my-dime-a-dozen-opinion/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>The latest web development shitstorm on Twitter has been "CSS is broken". To no one's surprise, this has provoked heated discussions on the perceived flaws of CSS, and what can be done to "fix" what's "broken" in the language. Here's my opinion, such as it is.</p>
 	<p>Web development is a broad spectrum of varying skills. Any one developer exists in a spot in the spectrum, with skills varying in breadth and depth. On one extreme exists developers that feel JavaScript is their primary tool for solving problems, while CSS is a necessary evil for establishing a look and feel for a page. On the other extreme, there are developers (some identifying as designers) who see CSS as an essential part of the web developer's trinity, but shy away from using JavaScript extensively. Most of us exist somewhere between the extremes, but we tend to lean one way or the other (if you don't count those rare devs who seem magically capable of doing everything).</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -22,7 +24,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<p>This assessment is not unique, and I'm certain it's been made in one form or another long before I deigned to write this little screed, but there's value in repainting the picture. We each exist at some point within this incredibly broad spectrum of ability and talent. We're going to feel more or less comfortable about different technologies, libraries and frameworks based on where we exist on the spectrum. Moreover, our experiences influence our development preferences.</p>
 				<p>That said, I feel the sentiment that CSS is broken is misguided. It makes no more sense than someone who dismisses reactive programming in JavaScript as "broken". To say something is broken strongly implies that it is useless. I still struggle to put the pieces together when it comes to fully understanding React, but I would be a damn fool to say it's "broken". React is proven. It has incredible utility and power. I could only be speaking out of frustration if I were to deride it.</p>
 				<p>So when I hear developers say that "CSS is broken", I only hear frustration. These people are asking for features to make CSS seem less broken to them. Encapsulation and scope are the usual gripes I read about, that CSS is inherently flawed because everything exists in the global scope.</p>

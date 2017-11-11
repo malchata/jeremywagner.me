@@ -1,19 +1,21 @@
 import { h, render, Component } from "preact";
+import Excerpt from "../../../components/Excerpt";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
 
 export const Metadata = {
 	title: "Faster Bulk Image Optimization in Bash",
 	date: "20 April, 2017",
-	description: "Continuing on from an earlier post on optimizing batches of images in bash, I show you how to do it even faster with xargs."
+	description: "Continuing on from an earlier post on optimizing batches of images in bash, I show you how to do it even faster with xargs.",
+	slug: "/blog/faster-bulk-image-optimization-in-bash/"
 };
 
-export const Excerpt = <div className="excerpt">
-	<h1>{Metadata.title}</h1>
+export const BlogExcerpt = <Excerpt>
+	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p><a href="/blog/bulk-image-optimization-in-bash" rel="noopener">In an earlier post</a>, I talked about how you could use the <code>{`find`}</code> command in bash to find all files of a specific extension and pass them along to the image optimizer of your choosing. In instances where I don't have time to automate this task with a tool such as gulp, this has proved incredibly valuable.</p>
 	<p>Lately I've had to convert large batches of images for various projects. The <code>{`find`}</code> command, while serviceable in its own right with the <code>{`-exec`}</code> flag, only allows for serial processing of the files it finds. This is where <code>{`xargs`}</code> came in handy. With <code>{`xargs`}</code> I had a way of doing this work in parallel. I recently optimized a batch of about 500 JPEGs using jpeg-recompress. Below was the non-<code>{`xargs`}</code> way of accomplishing this task:</p>
-</div>;
+</Excerpt>;
 
 export default class Content extends Component{
 	constructor(props){
@@ -23,7 +25,7 @@ export default class Content extends Component{
 	render(props){
 		return (
 			<article>
-				{Excerpt}
+				{BlogExcerpt}
 				<CodeBlock>{`find ./ -type f -name '*.jpg' -exec jpeg-recompress --min 30 --max 70 --method smallfry --accurate --strip \{\} \{\} \\;`}</CodeBlock>
 				<p>If you're not sure of all the parameters in this command, run jpeg-recompress with the <code>{`--help`}</code> flag and read <a href="/blog/bulk-image-optimization-in-bash">my earlier post</a> for some context. All I'm doing is passing files found by <code>{`find`}</code> one by one to jpeg-recompress with the <code>{`-exec`}</code> flag. The <code>{`\{\}`}</code> placeholders are file references. In my testing, the above command took roughly <strong>2 minutes and 10 seconds</strong> to complete. Now what about <code>{`xargs`}</code>? Let's first see how it's used in conjunction with <code>{`find`}</code>:</p>
 				<CodeBlock>{`find ./ -type f -name '*.jpg' | xargs -P 32 -I \{\} jpeg-recompress --min 30 --max 70 --method smallfry --accurate --strip \{\} \{\}`}</CodeBlock>
