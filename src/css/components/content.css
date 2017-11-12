@@ -164,20 +164,21 @@ pre code{
 		h2:after{
 			content: "";
 			font-size: 0;
-			background: var(--white);
-			width: 0.3093518519%; /* 3.341px / 1080px */
+			width: .3093518519%; /* 3.341px / 1080px */
 			position: absolute;
 			min-width: 3px;
 			display: block;
 		}
 
 		article:before{
+			background: var(--white-dark);
 			left: -1.1111111111%; /* 8px / 1080px */
 			height: calc(100% - 16px);
 			top: 8px;
 		}
 
 		article:after{
+			background: var(--white-darkest);
 			top: 16px;
 			left: -2.2222222222%; /* 24px / 1080px */
 			height: calc(100% - 32px);
@@ -199,13 +200,13 @@ pre code{
 		}
 
 		h1:before{
-			background: var(--coral);
+			background: var(--coral-dark);
 			left: -1.1111111111%; /* 8px / 1080px */
 			height: calc(100% - 8px);
 		}
 
 		h1:after{
-			background: var(--coral);
+			background: var(--coral-darkest);
 			left: -2.2222222222%; /* 24px / 1080px */
 			height: calc(100% - 16px);
 		}
@@ -223,15 +224,16 @@ pre code{
 
 		h2:before,
 		h2:after{
-			background: var(--indigo);
 			height: 100%;
 		}
 
 		h2:before{
+			background: var(--indigo-dark);
 			left: -1.1111111111%; /* 8px / 1080px */
 		}
 
 		h2:after{
+			background: var(--indigo-darkest);
 			left: -2.2222222222%; /* 24px / 1080px */
 		}
 

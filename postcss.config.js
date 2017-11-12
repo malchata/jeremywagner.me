@@ -4,7 +4,7 @@ module.exports = {
 		require("postcss-css-variables"),
 		require("autorem"),
 		require("autoprefixer")({
-			browsers: ["last 2 versions", "> 5%", "ie >= 10", "iOS >= 8"]
+			browsers: ["last 3 versions", "> 2.5%", "ie >= 11", "iOS >= 9"]
 		}),
 		require("cssnano")
 	]
