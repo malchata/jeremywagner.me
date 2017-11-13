@@ -1,14 +1,14 @@
 import fs from "fs";
 import path from "path";
 import webpack from "webpack";
-import ImageminPlugin from "imagemin-webpack-plugin";
+import ImageminWebpackPlugin from "imagemin-webpack-plugin";
+import ImageminPngQuant from "imagemin-pngquant";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import XmlWebpackPlugin from "xml-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import WorkboxWebpackPlugin from "workbox-webpack-plugin";
-import ManifestWebpackPlugin from "webpack-manifest-plugin";
+//import WorkboxWebpackPlugin from "workbox-webpack-plugin";
 import CompressionWebpackPlugin from "compression-webpack-plugin";
 import BrotliWebpackPlugin from "brotli-webpack-plugin";
 import FaviconsWebpackPlugin from "favicons-webpack-plugin";
@@ -31,16 +31,10 @@ let entryPoints = {
 	"vendors": ["preact", "preact-render-to-string"],
 	"app": "./src/js/app.js"
 };
-let markupOutputs = [];
+let htmlOutputs = [];
+let xmlOutputs = [];
 let xmlOutputOptions = {
-	template: path.join(__dirname, "src/xml/template.xml"),
-	inject: false,
-	hash: false,
-	minify: {
-		removeComments: true,
-		collapseWhitespace: true,
-		minifyJS: true
-	}
+	template: path.join(__dirname, "src/xml/template.ejs")
 };
 
 function buildRoutes(routes){
@@ -81,8 +75,8 @@ function buildRoutes(routes){
 				});
 			}
 
-			markupOutputs.push(new HtmlWebpackPlugin(htmlOpts));
-			markupOutputs.push(new HtmlWebpackPlugin(Object.assign(htmlOpts, {
+			htmlOutputs.push(new HtmlWebpackPlugin(htmlOpts));
+			htmlOutputs.push(new HtmlWebpackPlugin(Object.assign(htmlOpts, {
 				filename: path.join(routes.replace("src/routes", "dist"), "index.savedata.html"),
 				saveData: true,
 				components: {
@@ -102,21 +96,18 @@ function buildRoutes(routes){
 
 buildRoutes(path.join(__dirname, "src", "routes"));
 
-markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
-	filename: path.join(webRoot, "rss.xml"),
-	title: "Jeremy Wagner's Web Development Blog",
-	components: {
+xmlOutputs.push(Object.assign(xmlOutputOptions, {
+	filename: "rss.xml",
+	data: {
 		content: RSSFeed
-	},
-	xhtml: true
-})));
-markupOutputs.push(new HtmlWebpackPlugin(Object.assign(xmlOutputOptions, {
-	filename: path.join(webRoot, "sitemap.xml"),
-	components: {
+	}
+}));
+xmlOutputs.push(Object.assign(xmlOutputOptions, {
+	filename: "sitemap.xml",
+	data: {
 		content: renderToString(<Sitemap/>)
-	},
-	xhtml: true
-})));
+	}
+}));
 
 module.exports = {
 	entry: entryPoints,
@@ -166,13 +157,24 @@ module.exports = {
 				firefox: false
 			}
 		}),
-		new ImageminPlugin({
+		new ImageminWebpackPlugin({
 			svgo: {
 				multipass: true,
-				precision: 2
+				precision: 1
 			}
 		}),
-		...markupOutputs,
+		new ImageminWebpackPlugin({
+			test: /(android-chrome|apple-touch|favicon).*\.(png|ico)$/i,
+			plugins: [
+				ImageminPngQuant({
+					speed: 1
+				})
+			]
+		}),
+		...htmlOutputs,
+		new XmlWebpackPlugin({
+			files: xmlOutputs
+		}),
 		// new WorkboxWebpackPlugin({
 		// 	globDirectory: webRoot,
 		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
@@ -204,10 +206,6 @@ module.exports = {
 			test: /\.(html?|xml|css|js|svg|ttf|eot)$/,
 			minRatio: 1,
 			threshold: 0
-		}),
-		new ManifestWebpackPlugin({
-			publicPath: "/",
-			fileName: "assets.json"
 		})
 	]
 };
