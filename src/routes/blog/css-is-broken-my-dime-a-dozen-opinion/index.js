@@ -1,6 +1,7 @@
 import { h, render, Component } from "preact";
 import Excerpt from "../../../components/Excerpt";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "CSS is Broken: My Dime a Dozen Opinion",
@@ -14,6 +15,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>The latest web development shitstorm on Twitter has been "CSS is broken". To no one's surprise, this has provoked heated discussions on the perceived flaws of CSS, and what can be done to "fix" what's "broken" in the language. Here's my opinion, such as it is.</p>
 	<p>Web development is a broad spectrum of varying skills. Any one developer exists in a spot in the spectrum, with skills varying in breadth and depth. On one extreme exists developers that feel JavaScript is their primary tool for solving problems, while CSS is a necessary evil for establishing a look and feel for a page. On the other extreme, there are developers (some identifying as designers) who see CSS as an essential part of the web developer's trinity, but shy away from using JavaScript extensively. Most of us exist somewhere between the extremes, but we tend to lean one way or the other (if you don't count those rare devs who seem magically capable of doing everything).</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

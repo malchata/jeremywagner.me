@@ -4,6 +4,7 @@ import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Cutting Cruft with an SVG Media Query",
@@ -17,6 +18,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>This isn't a huge success story, but I thought it was sufficiently spiffy to warrant a short post about an SVG media query that helped me to cut an unnecessary image from a client's website while still accommodating their design. Who knows? This short post may help you some day.</p>
 	<p>Not too long ago, I developed a static site for <a href="http://weeklytimber.com" rel="noopener">Weekly Timber &amp; Pulp</a>, a logging business in Central Wisconsin. The designer on the project whipped up some comps with two breakpoints: One for phones and tablets in portrait view, and another for tablets in landscape view and larger. The designer is a good friend of mine, and loves to throw me a curve ball every now and again. So he gave the site's logo a different treatment for each breakpoint.</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

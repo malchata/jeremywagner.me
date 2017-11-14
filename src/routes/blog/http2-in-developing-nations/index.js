@@ -4,6 +4,7 @@ import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "HTTP/2 in Developing Nations",
@@ -18,6 +19,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="editors-note">Hey, guys! I talk about HTTP/2 (and other stuff) in <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener">my upcoming book from Manning publications</a> on web performance. Maybe check it out if that's your kind of thing. In any event, I hope you like this post!</p>
 	<p>I've been doing some research on HTTP/2 use across the world in preparation for an article on another outlet. In doing so, I've observed some compelling relationships between HTTP/2 support by browser, the developing world, and internet infrastructure quality.</p>
 	<p>In developed nations, we see often see that internet infrastructure quality is pretty good in comparison to developing nations. That's not to say that some developed nations couldn't stand to do better, but they're often better by comparison. Let's take a quick look at this graph of average and peak connection speeds in the world's top 8 developing nations by population, courtesy of <a href="https://content.akamai.com/pg7162-q2-soti-connectivity-report.html" rel="noopener">Akamai's second quarter State of the Internet Report for 2016</a>:</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

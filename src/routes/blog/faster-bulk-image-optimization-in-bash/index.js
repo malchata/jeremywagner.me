@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import Excerpt from "../../../components/Excerpt";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Faster Bulk Image Optimization in Bash",
@@ -15,6 +16,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p><a href="/blog/bulk-image-optimization-in-bash" rel="noopener">In an earlier post</a>, I talked about how you could use the <code>{`find`}</code> command in bash to find all files of a specific extension and pass them along to the image optimizer of your choosing. In instances where I don't have time to automate this task with a tool such as gulp, this has proved incredibly valuable.</p>
 	<p>Lately I've had to convert large batches of images for various projects. The <code>{`find`}</code> command, while serviceable in its own right with the <code>{`-exec`}</code> flag, only allows for serial processing of the files it finds. This is where <code>{`xargs`}</code> came in handy. With <code>{`xargs`}</code> I had a way of doing this work in parallel. I recently optimized a batch of about 500 JPEGs using jpeg-recompress. Below was the non-<code>{`xargs`}</code> way of accomplishing this task:</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

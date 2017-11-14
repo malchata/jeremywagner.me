@@ -3,6 +3,7 @@ import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Bulk Image Optimization in Bash",
@@ -16,6 +17,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>Have you ever needed to optimize a bunch of images in a folder on your computer, but you don't want to go through the hassle of writing an build system to take care of it? Then bash and your image optimization binary of choice are your best friends. I've had situations where I just needed to pull down files from a website already in production, optimize images, and re-upload everything. The exact syntax depends on the optimizer you use, but your workhorse will be the <code>{`find`}</code> command.</p>
 	<p><code>{`find`}</code> is a command that, well, finds stuff. For example, if I wanted to find all files in the current directory and its subdirectories with a <code>{`.jpg`}</code> extension, I could run this command:</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

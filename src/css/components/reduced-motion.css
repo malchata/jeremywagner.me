@@ -1,7 +1,8 @@
 @media (prefers-reduced-motion: reduce){
 	h2 a[href]:before,
 	article p a,
-	article li a{
+	article li a,
+	.arrow{
 		transition: none;
 	}
 }

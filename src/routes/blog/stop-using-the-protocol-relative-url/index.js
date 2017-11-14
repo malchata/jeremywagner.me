@@ -4,6 +4,7 @@ import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import CodeBlock from "../../../components/CodeBlock";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Stop Using the Protocol-relative URL",
@@ -19,6 +20,7 @@ export const BlogExcerpt = <Excerpt>
 	<p>Paul Irish <a href="http://www.paulirish.com/2010/the-protocol-relative-url" rel="noopener">wrote about the protocol-relative URL</a> way back in 2010. It was a convenient little post that advised developers to abandon absolute protocol URL schemes using <code>{`http://`}</code> or <code>{`https://`}</code> in favor of a protocol-relative variant that looks something like this:</p>
 	<CodeBlock>{`<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>`}</CodeBlock>
 	<p>This convenient syntax eliminates the need for developers to construct URLs based on the user's current security context. If this syntax was used on an HTTP page to include something from a CDN, it retrieved the HTTP version. If the user used it on an HTTPS page, it retrieved the HTTPS version. Seems like a hell of an idea, right?</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

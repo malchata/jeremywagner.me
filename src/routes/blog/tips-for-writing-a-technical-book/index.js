@@ -3,6 +3,7 @@ import Excerpt from "../../../components/Excerpt";
 import SubHeading from "../../../components/SubHeading";
 import Image from "../../../components/Image";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Tips for Writing a Technical Book",
@@ -16,6 +17,7 @@ export const BlogExcerpt = <Excerpt>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>I spent the last year writing a technical book for Manning Publications, and it's finally out! The book is called <a href="https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090" rel="noopener"><em>Web Performance in Action</em></a>. The process was something I wanted to fully document, but it became clear to me that nobody would find such an overly-specific, long-winded screed worth reading.</p>
 	<p>So instead, I said "to hell with it" and slapped a clickbait title on this thing. If you've ever entertained the notion of writing a technical book, these are some tips that served me well during the process. Well, for <em>me</em> at least. Your mileage will vary, of course.</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{

@@ -1,6 +1,7 @@
 import { h, render, Component } from "preact";
 import Excerpt from "../../../components/Excerpt";
 import SignOff from "../../../components/SignOff";
+import ReadMore from "../../../components/ReadMore";
 
 export const Metadata = {
 	title: "Without Net Neutrality, Performance Will Matter More Than Ever",
@@ -14,6 +15,7 @@ export const BlogExcerpt = <Excerpt>
 	<h1><a class="head" href={Metadata.slug} rel="noopener">{Metadata.title}</a></h1>
 	<p className="date">{Metadata.date}{typeof Metadata.updateDate === "string" ? ` (updated ${Metadata.updateDate})` : null}</p>
 	<p>I read and write often about web performance. As time has gone on, I've found myself less drawn to the technical aspects of the issue — the human side of web performance proves far more intriguing. I'm interested in how our actions as designers and developers makes life easier for users. Performance is a vital part of the user experience. Those who appreciate its importance aren't simply improving performance metrics, they're improving users' lives. I find my work most rewarding when I know I've built a site that's fast, or if I've remedied performance problems on ailing sites. To me, that's the good fight, and I sleep best when I've fought it.</p>
+	<ReadMore link={Metadata.slug}/>
 </Excerpt>;
 
 export default class Content extends Component{
