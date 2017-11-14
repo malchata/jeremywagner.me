@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+	<channel>
+		<title><%= rss.title %></title>
+		<description><%= rss.description %></description>
+		<link><%= rss.link %></link>
+		<%_ rss.items.forEach(function(item){ _%>
+			<item>
+				<title><%= item.title %></title>
+				<description><%= item.description %></description>
+				<link><%= item.link %></link>
+				<pubDate><%= item.pubDate %></pubDate>
+			</item>
+		<%_ }) _%>
+	</channel>
+</rss>

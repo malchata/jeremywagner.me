@@ -1,5 +1,5 @@
 import { h, render, Component } from "preact";
-import { ContentMap } from "../components/ContentMap";
+import ContentMap from "../components/ContentMap";
 
 export const Metadata = {
 	title: "Home",
@@ -7,7 +7,7 @@ export const Metadata = {
 	date: "4 November, 2016",
 	slug: "/",
 	sitemapPriority: 0.875
-};
+}
 
 export default class Content extends Component{
 	constructor(props){

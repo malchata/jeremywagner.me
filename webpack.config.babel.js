@@ -21,10 +21,10 @@ import Header from "./src/components/Header";
 import Navigation from "./src/components/Navigation";
 
 // These are XML feeds
-import { RSSFeed } from "./src/components/RSSFeed";
-import Sitemap from "./src/components/Sitemap";
+import rss from "./src/routes/rss";
+import sitemap from "./src/routes/sitemap";
 
-const exclusions = /node_modules/i;
+const node_exclusions = /node_modules/i;
 const webRoot = path.join(__dirname, "dist");
 
 let entryPoints = {
@@ -32,10 +32,6 @@ let entryPoints = {
 	"app": "./src/js/app.js"
 };
 let htmlOutputs = [];
-let xmlOutputs = [];
-let xmlOutputOptions = {
-	template: path.join(__dirname, "src/xml/template.ejs")
-};
 
 function buildRoutes(routes){
 	fs.readdirSync(routes).forEach((route)=>{
@@ -96,18 +92,22 @@ function buildRoutes(routes){
 
 buildRoutes(path.join(__dirname, "src", "routes"));
 
-xmlOutputs.push(Object.assign(xmlOutputOptions, {
-	filename: "rss.xml",
-	data: {
-		content: RSSFeed
+let xmlOutputs = [
+	{
+		template: path.join(__dirname, "src", "xml", "rss.ejs"),
+		filename: "rss.xml",
+		data: {
+			rss: rss
+		}
+	},
+	{
+		template: path.join(__dirname, "src", "xml", "sitemap.ejs"),
+		filename: "sitemap.xml",
+		data: {
+			sitemap: sitemap
+		}
 	}
-}));
-xmlOutputs.push(Object.assign(xmlOutputOptions, {
-	filename: "sitemap.xml",
-	data: {
-		content: renderToString(<Sitemap/>)
-	}
-}));
+];
 
 module.exports = {
 	entry: entryPoints,
@@ -119,25 +119,25 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				exclude: exclusions,
+				test: /\.js?$/,
+				exclude: node_exclusions,
 				use: "babel-loader"
 			},
 			{
 				test: /\.css$/,
-				exclude: exclusions,
+				exclude: node_exclusions,
 				use: ExtractTextPlugin.extract({
 					use: "css-loader!postcss-loader"
 				})
 			},
 			{
 				test: /\.(png|gif|jpe?g|svg)$/,
-				exclude: exclusions,
+				exclude: node_exclusions,
 				use: "file-loader?name=images/[name].[hash:8].[ext]"
 			},
 			{
 				test: /\.(ttf|eot|woff2?)$/,
-				exclude: exclusions,
+				exclude: node_exclusions,
 				use: "file-loader?name=css/fonts/[name].[hash:8].[ext]"
 			}
 		]
@@ -194,7 +194,8 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
-			}
+			},
+			"global.GENTLY": false
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({

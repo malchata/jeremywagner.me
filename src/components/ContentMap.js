@@ -1,4 +1,4 @@
-export const ContentMap = {
+export default {
 	"/": {
 		metadata: require("../routes/index.js").Metadata
 	},
@@ -49,4 +49,4 @@ export const ContentMap = {
 			metadata: require("../routes/blog/using-webp-images/index.js").Metadata
 		}
 	}
-};
+}
