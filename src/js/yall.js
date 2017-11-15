@@ -45,6 +45,7 @@
 				});
 
 				media.load();
+				media.play();
 			}
 			else{
 				if(media[pn].tagName == "PICTURE"){
