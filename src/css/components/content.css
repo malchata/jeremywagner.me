@@ -6,7 +6,9 @@ h1{
 	color: var(--white);
 	background: var(--coral);
 	padding: .4ch var(--mobile-gutter);
-	font: calc(150% + (31.416 - 24) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fredoka-one);
+	font-size: calc(24px + (31.416 - 24) * ((100vw - 320px) / (960 - 320)));
+	font-family: var(--fredoka-one);
+	line-height: 1.309;
 	margin: 0 0 .96ch;
 }
 
@@ -14,7 +16,9 @@ h2{
 	padding: .4ch var(--mobile-gutter);
 	background: var(--indigo);
 	color: var(--white);
-	font: calc(120% + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fredoka-one);
+	font-size: calc(19.2px + (25.1328 - 19.2) * ((100vw - 320px) / (960 - 320)));
+	font-family: var(--fredoka-one);
+	line-height: 1.309;
 	margin: 0 0 .96ch;
 }
 
@@ -59,7 +63,9 @@ ol{
 
 li,
 p{
-	font: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
+	font-size: calc(16px + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1.618;
+	font-family: var(--fira-sans);
 	color: var(--black);
 }
 
@@ -91,7 +97,10 @@ article h1:last-child{
 
 .date,
 .read-more{
-	font: 700 calc(125% + (26.18 - 20) * ((100vw - 320px) / (960 - 320)))/1.309 var(--fira-sans);
+	font-weight: 700;
+	font-size: calc(20px + (26.18 - 20) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1.309;
+	font-family: var(--fira-sans);
 }
 
 .date{
@@ -134,7 +143,9 @@ figcaption{
 	background: var(--coral);
 	padding: .8ch 1.25ch;
 	display: inline-block;
-	font: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)))/1.618 var(--fira-sans);
+	font-size: calc(16px + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1.618;
+	font-family: var(--fira-sans);
 	margin: 1.92ch 0 2.51328ch;
 }
 
@@ -157,7 +168,7 @@ pre{
 
 pre code{
 	color: var(--indigo);
-	font-size: calc(100% + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
+	font-size: calc(16px + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
 }
 
 @media (min-width: 800px){
@@ -265,12 +276,12 @@ pre code{
 		p,
 		figcaption,
 		pre code{
-			font-size: calc(100% + (20.944 - 16) * ((100vw - 800px) / (1440 - 800)));
+			font-size: calc(16px + (20.944 - 16) * ((100vw - 800px) / (1440 - 800)));
 		}
 
 		.date,
 		.read-more{
-			font-size: calc(118.75% + (24.871 - 19) * ((100vw - 800px) / (1440 - 800)));
+			font-size: calc(19px + (24.871 - 19) * ((100vw - 800px) / (1440 - 800)));
 		}
 	}
 }
