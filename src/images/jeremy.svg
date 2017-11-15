@@ -93,20 +93,18 @@
         fill: url(#linear-gradient-2);
       }
 
-	  .cls-20,
-	  .cls-4{
-		  -webkit-animation: flicker 8s linear 0s infinite backwards;
-		  -moz-animation: flicker 8s linear 0s infinite backwards;
-		  -o-animation: flicker 8s linear 0s infinite backwards;
-		  animation: flicker 8s linear 0s infinite backwards;
-	  }
-
 	  .cls-20{
 	  	-webkit-animation-delay: .1s;
 		-moz-animation-delay: .1s;
+        -ms-animation-delay: .1s;
 		-o-animation-delay: .1s;
 		animation-delay: .1s;
 	  }
+
+      .cls-4,
+      .cls-20{
+        display: none;
+      }
 
       .cls-21 {
         fill: #777;
@@ -133,7 +131,7 @@
         fill: #b0d9f2;
       }
 
-	  @-webkit-keyframes flicker{
+	  @keyframes flicker{
 		  0%,
 		  11%,
 		  19%,
@@ -188,10 +186,23 @@
 		  .cls-4{
 			  -webkit-animation: none 0s linear 0s infinite backwards;
 			  -moz-animation: none 0s linear 0s infinite backwards;
+              -ms-animation: none 0s linear 0s infinite backwards;
 			  -o-animation: none 0s linear 0s infinite backwards;
 			  animation: none 0s linear 0s infinite backwards;
 		  }
 	  }
+
+      @supports (mix-blend-mode: color-burn){
+        .cls-20,
+        .cls-4{
+            -webkit-animation: flicker 8s linear 0s infinite backwards;
+            -moz-animation: flicker 8s linear 0s infinite backwards;
+            -ms-animation: flicker 8s linear 0s infinite backwards;
+            -o-animation: flicker 8s linear 0s infinite backwards;
+            animation: flicker 8s linear 0s infinite backwards;
+            display: inline;
+        }
+      }
     </style>
     <linearGradient id="linear-gradient" x1="188.16" y1="17.18" x2="146.16" y2="230.18" gradientUnits="userSpaceOnUse">
       <stop offset="0.25" stop-color="#e4eef9"/>

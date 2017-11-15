@@ -18,12 +18,16 @@ header{
 }
 
 .name{
-	font: calc(150% + (72 - 24) * ((100vw - 320px) / (960 - 320)))/1 var(--fredoka-one);
+	font-size: calc(24px + (72 - 24) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1;
+	font-family: var(--fredoka-one);
 	margin: 0 0 .4ch
 }
 
 .site{
-	font: calc(200% + (96 - 32) * ((100vw - 320px) / (960 - 320)))/1 var(--monoton);
+	font-size: calc(32px + (96 - 32) * ((100vw - 320px) / (960 - 320)));
+	line-height: 1;
+	font-family: var(--monoton);
 	text-transform: uppercase;
 	word-spacing: .225ch;
 	margin: .25ch 0 0;
@@ -60,7 +64,7 @@ header{
 		}
 
 		.name{
-			font-size: calc(175% + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
+			font-size: calc(28px + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
 		}
 
 		.name:before,
@@ -71,7 +75,7 @@ header{
 		}
 
 		.site{
-			font-size: calc(350% + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
+			font-size: calc(56px + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
 		}
 	}
 }

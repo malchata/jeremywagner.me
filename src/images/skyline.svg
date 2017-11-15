@@ -49,6 +49,7 @@
 			.cls-3{
 				-webkit-animation: move-one 150s linear 0s infinite backwards;
 				-moz-animation: move-one 150s linear 0s infinite backwards;
+				-ms-animation: move-one 150s linear 0s infinite backwards;
 				-o-animation: move-one 150s linear 0s infinite backwards;
 				animation: move-one 150s linear 0s infinite backwards;
 			}
@@ -56,6 +57,7 @@
 			.cls-4{
 				-webkit-animation: move-two 120s linear 10s infinite backwards;
 				-moz-animation: move-two 120s linear 10s infinite backwards;
+				-ms-animation: move-two 120s linear 10s infinite backwards;
 				-o-animation: move-two 120s linear 10s infinite backwards;
 				animation: move-two 120s linear 10s infinite backwards;
 			}
@@ -63,6 +65,7 @@
 			.cls-5{
 				-webkit-animation: move-three 90s linear 5s infinite backwards;
 				-moz-animation: move-three 90s linear 5s infinite backwards;
+				-ms-animation: move-three 90s linear 5s infinite backwards;
 				-o-animation: move-three 90s linear 5s infinite backwards;
 				animation: move-three 90s linear 5s infinite backwards;
 			}
@@ -70,6 +73,7 @@
 			.cls-8{
 				-webkit-animation: flicker 1s linear 0s infinite backwards;
 				-moz-animation: flicker 1s linear 0s infinite backwards;
+				-ms-animation: flicker 1s linear 0s infinite backwards;
 				-o-animation: flicker 1s linear 0s infinite backwards;
 				animation: flicker 1s linear 0s infinite backwards;
 			}
@@ -77,6 +81,7 @@
 			#star-2{
 				-webkit-animation-delay: 66ms;
 				-moz-animation-delay: 66ms;
+				-ms-animation-delay: 66ms;
 				-o-animation-delay: 66ms;
 				animation-delay: 66ms;
 			}
@@ -84,6 +89,7 @@
 			#star-3{
 				-webkit-animation-delay: 99ms;
 				-moz-animation-delay: 99ms;
+				-ms-animation-delay: 99ms;
 				-o-animation-delay: 99ms;
 				animation-delay: 99ms;
 			}
@@ -91,6 +97,7 @@
 			#star-4{
 				-webkit-animation-delay: 133ms;
 				-moz-animation-delay: 133ms;
+				-ms-animation-delay: 133ms;
 				-o-animation-delay: 133ms;
 				animation-delay: 133ms;
 			}
@@ -98,6 +105,7 @@
 			#star-5{
 				-webkit-animation-delay: 166ms;
 				-moz-animation-delay: 166ms;
+				-ms-animation-delay: 166ms;
 				-o-animation-delay: 166ms;
 				animation-delay: 166ms;
 			}
@@ -105,6 +113,7 @@
 			#star-6{
 				-webkit-animation-delay: 199ms;
 				-moz-animation-delay: 199ms;
+				-ms-animation-delay: 199ms;
 				-o-animation-delay: 199ms;
 				animation-delay: 199ms;
 			}
@@ -112,11 +121,12 @@
 			#star-7{
 				-webkit-animation-delay: 233ms;
 				-moz-animation-delay: 233ms;
+				-ms-animation-delay: 233ms;
 				-o-animation-delay: 233ms;
 				animation-delay: 233ms;
 			}
 
-			@-webkit-keyframes flicker{
+			@keyframes flicker{
 				0%,
 				11%,
 				19%,
@@ -165,7 +175,7 @@
 					opacity: 0.8;
 				}
 			}
-			@-webkit-keyframes move-one{
+			@keyframes move-one{
 				from{
 					-webkit-transform: translateX(-98%);
 					-moz-transform: translateX(-98%);
@@ -180,7 +190,7 @@
 					transform: translateX(20%);
 				}
 			}
-			@-webkit-keyframes move-two{
+			@keyframes move-two{
 				from{
 					-webkit-transform: translateX(-86%);
 					-moz-transform: translateX(-86%);
@@ -195,7 +205,7 @@
 					-transform: translateX(37%);
 				}
 			}
-			@-webkit-keyframes move-three{
+			@keyframes move-three{
 				from{
 					-webkit-transform: translateX(-19%);
 					-moz-transform: translateX(-19%);
