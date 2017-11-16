@@ -33,7 +33,7 @@ let entryPoints = {
 };
 let htmlOutputs = [];
 
-buildRoutes = (routes)=>{
+const buildRoutes = (routes)=>{
 	fs.readdirSync(routes).forEach((route)=>{
 		if(route.indexOf("index.js") !== -1){
 			let routeModule = require(path.join(routes, route));
