@@ -11,7 +11,7 @@ export const Metadata = {
 	date: "22 July, 2016",
 	updateDate: "5 March, 2017",
 	description: "Using the protocol-relative URL has long been touted as a best practice, but its continued use can be detrimental to performance. Read on to find out more.",
-	slug: "/stop-using-the-protocol-relative-url/"
+	slug: "/blog/stop-using-the-protocol-relative-url/"
 };
 
 export const BlogExcerpt = <Excerpt>
