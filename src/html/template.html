@@ -6,9 +6,6 @@
 		<% if(typeof htmlWebpackPlugin.options.canonical === "string"){ %>
 			<link rel="canonical" href="<%= htmlWebpackPlugin.options.canonical %>">
 		<% } %>
-		<!-- Remove on launch -->
-		<meta name="robots" content="noindex, nofollow, nocache">
-		<!-- Remove on launch -->
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
 		<meta name="og:description" content="<%= htmlWebpackPlugin.options.description %>">

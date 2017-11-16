@@ -39,25 +39,14 @@
 		},
 		// The handler to load the media
 		loadMedia = function(media){
-			if(media.tagName == "VIDEO"){
-				Array[pr].slice.call(media[qsa]("source"))[fe](function(source){
-					replaceAttr(source, ds, s);
+			if(media[pn].tagName == "PICTURE"){
+				Array[pr].slice.call(media[pn][qsa]("source"))[fe](function(source){
+					replaceAttr(source, dss, ss);
 				});
-
-				media.load();
-				media.play();
-			}
-			else{
-				if(media[pn].tagName == "PICTURE"){
-					Array[pr].slice.call(media[pn][qsa]("source"))[fe](function(source){
-						replaceAttr(source, dss, ss);
-					});
-				}
-
-				replaceAttr(media, ds, s);
-				replaceAttr(media, dss, ss);
 			}
 
+			replaceAttr(media, ds, s);
+			replaceAttr(media, dss, ss);
 			media.classList.remove("lazy");
 
 			elements = elements.filter(function(e){

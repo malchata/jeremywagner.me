@@ -33,7 +33,7 @@ let entryPoints = {
 };
 let htmlOutputs = [];
 
-function buildRoutes(routes){
+buildRoutes = (routes)=>{
 	fs.readdirSync(routes).forEach((route)=>{
 		if(route.indexOf("index.js") !== -1){
 			let routeModule = require(path.join(routes, route));
@@ -109,7 +109,7 @@ let xmlOutputs = [
 	}
 ];
 
-module.exports = {
+export default {
 	entry: entryPoints,
 	output: {
 		filename: "js/[name].[chunkhash:8].js",

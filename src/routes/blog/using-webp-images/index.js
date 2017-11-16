@@ -65,16 +65,6 @@ export default class Content extends Component{
 				/>
 				<p>In the above example, the visual differences are almost imperceptible, yet the differences in file size are substantial. The JPEG version on the left weighs in at 56.7 KB, and the WebP version on the right is nearly one third smaller at 38 KB. Not a bad improvement, especially when you consider that the visual quality between the two are pretty much the same.</p>
 				<p>So the next question (of course) is "what's the browser support?" Not as slim as you might think. Since WebP is a Google technology, support for it is fixed to Chromium-based browsers. These browsers make up a significant portion of users worldwide, however, meaning that <a href="http://caniuse.com/#search=webp" rel="noopener">nearly 67% of browsers in use support WebP</a> at the time of this writing. If you had the chance to make your website faster for two thirds of your users, would you pass it up?</p>
-				<Video
-					lazy={true}
-					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508295315/jeremywagner.me/using-webp-images/bateman-1-placeholder.jpg"}
-					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.webm", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.ogv", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509066934/bateman_xrk1jh.mp4"]}
-					caption={"Thought so."}
-					width={500}
-					height={213}
-					critical={false}
-					saveData={props.saveData}
-				/>
 				<p>It's important to remember though that WebP is <em>not a replacement</em> for JPEG and PNG images. It's a format you can serve to browsers that can use it, but you should keep your older images on hand for other browsers. This is the nature of developing for the web: Have your Plan A ready for browsers that can handle it, and have your Plan B (and maybe Plan C) ready for those browsers that are less capable.</p>
 				<p>Enough with the disclaimers. Let's optimize!</p>
 				<SubHeading>Converting your images to WebP</SubHeading>
@@ -120,16 +110,6 @@ imagemin([JPEGImages], outputFolder, {
 				<p>This script assumes that all of your JPEG and PNG images are in a folder named img. If this isn't the case, you can change the values of the <code>{`PNGImages`}</code> and <code>{`JPEGImages`}</code> variables. This script also assumes you want the WebP output to go into the <code>{`img`}</code> folder. If you don't want that, change the value of the <code>{`outputFolder`}</code> variable to whatever you need. Once you're ready, run the script like so:</p>
 				<CodeBlock>{`node webp.js`}</CodeBlock>
 				<p>This will process all of the images and dump their WebP counterparts into the <code>{`img`}</code> folder. What benefits you realize will depend on the images you're converting. In my case, a folder with JPEGs totaling roughly 2.75 MB was trimmed down to <strong>1.04</strong> MB without any perceptible loss in visual quality. That's a <em>62% reduction</em> without much effort!</p>
-				<Video
-					lazy={true}
-					placeholder={"http://res.cloudinary.com/drp9iwjqz/image/upload/f_auto,q_auto/v1508379806/jeremywagner.me/using-webp-images/bateman-3-placeholder.jpg"}
-					sources={["http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.webm", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.ogv", "http://res.cloudinary.com/drp9iwjqz/video/upload/v1509291984/jeremywagner.me/using-webp-images/bateman-3.mp4"]}
-					caption={"Have you ever seen my WebPs?"}
-					width={500}
-					height={257}
-					critical={false}
-					saveData={props.saveData}
-				/>
 				<p>Now that all of your images are converted, you're ready to start using them. Let's jump in and put them to use!</p>
 				<SubHeading>Using WebP in HTML</SubHeading>
 				<p>Using a WebP image in HTML is like using any other kind of image, right? Just slap that sucker into the <code>{`<img>`}</code> tag's <code>{`src`}</code> attribute and away you go!</p>
