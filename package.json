@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack",
-    "watch": "npx webpack --hot --watch"
+    "watch": "npx webpack --hot --watch",
+    "writeconf": "npx babel-node write-client-hints.js > /usr/local/apache2/conf/hints.conf"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
   },
   "homepage": "https://github.com/malchata/jeremywagner.me#readme",
   "dependencies": {
-    "autoprefixer": "^7.1.6",
+    "autoprefixer": "^7.2.2",
     "autorem": "^0.1.1",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -27,7 +28,7 @@
     "brotli-webpack-plugin": "^0.5.0",
     "clean-webpack-plugin": "^0.1.17",
     "compression-webpack-plugin": "^1.0.1",
-    "copy-webpack-plugin": "^4.2.1",
+    "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -38,11 +39,12 @@
     "imagemin-webpack-plugin": "^1.5.2",
     "postcss-css-variables": "^0.8.0",
     "postcss-easy-import": "^3.0.0",
-    "postcss-loader": "^2.0.8",
+    "postcss-loader": "^2.0.9",
     "preact": "^8.2.6",
     "preact-render-to-string": "^3.7.0",
     "string-loader": "0.0.1",
-    "webpack": "^3.8.1",
+    "webpack": "^3.10.0",
+    "webpack-assets-manifest": "^1.0.0",
     "workbox-webpack-plugin": "^2.1.2",
     "xml-webpack-plugin": "0.0.2"
   }
