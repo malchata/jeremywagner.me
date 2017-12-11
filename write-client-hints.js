@@ -1,7 +1,7 @@
 import assets from "./dist/assets-manifest.json";
 
 let hints = [assets["app.css"], assets["app.js"], assets["images/skyline.svg"]];
-let config = `<FilesMatch "\\.html$">
+let config = `<FilesMatch "\\.(html|html\\.gz|html\\.br)$">
 Header set Link "`;
 
 for(let asset in hints){
