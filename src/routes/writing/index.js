@@ -45,10 +45,12 @@ export default class Content extends Component{
 				</ul>
 				<SubHeading>Net Magazine</SubHeading>
 				<ul>
+					<li>4 Quick Image Optimization Tips (<a href="https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/net-january-2018-issue-301/" rel="noopener">Issue 301</a>)</li>
 					<li><a href="http://www.creativebloq.com/how-to/5-tips-for-super-fast-css" rel="noopener">5 Tips for Super-fast CSS</a> (<a href="https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/net-may-2017-issue-292/" rel="noopener">Issue 292</a>)</li>
 				</ul>
 				<SubHeading>Planet Performance</SubHeading>
 				<ul>
+					<li><a href="https://calendar.perfplanet.com/2017/3-tips-for-faster-font-loading/" rel="noopener">3 Tips for Faster Font Loading</a></li>
 					<li><a href="https://calendar.perfplanet.com/2016/speed-versus-speed-to-market/" rel="noopener">Speed Versus Speed to Market</a></li>
 				</ul>
 				<SubHeading>Smashing Magazine</SubHeading>
