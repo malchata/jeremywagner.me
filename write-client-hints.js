@@ -1,11 +1,16 @@
 import assets from "./dist/assets-manifest.json";
 
 let hints = [
-	assets["app.css"],
-	assets["app.js"],
-	assets["images/skyline.svg"],
-	assets["css/fonts/fredokaone.woff2"],
-	assets["css/fonts/monoton.woff2"]
+	{
+		asset: assets["app.css"],
+		push: true
+	},
+	{
+		asset: assets["app.js"]
+	},
+	{
+		asset: assets["images/skyline.svg"]
+	}
 ];
 let config = `<FilesMatch "\\.(html|html\\.gz|html\\.br)$">
 Header set Link "`;
@@ -13,7 +18,7 @@ Header set Link "`;
 for(let asset in hints){
 	let assetType = "";
 	let assetContentType = "";
-	let assetParts = hints[asset].split(".");
+	let assetParts = hints[asset].asset.split(".");
 
 	switch(assetParts[assetParts.length - 1]){
 		case "css":
@@ -53,7 +58,11 @@ for(let asset in hints){
 		break;
 	}
 
-	config += `<${hints[asset]}>; rel=preload; as=${assetType}; type=${assetContentType}; nopush`;
+	config += `<${hints[asset].asset}>; rel=preload; as=${assetType}; type=${assetContentType}`;
+
+	if(typeof hints[asset].push === "undefined"){
+		config += "; nopush";
+	}
 
 	if(hints.indexOf(hints[asset]) < hints.length - 1){
 		config += ",";
