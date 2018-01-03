@@ -10,6 +10,14 @@ let hints = [
 	},
 	{
 		asset: assets["images/skyline.svg"]
+	},
+	{
+		asset: assets["css/fonts/fredokaone.woff2"],
+		crossorigin: "anonymous"
+	},
+	{
+		asset: assets["css/fonts/monoton.woff2"],
+		crossorigin: "anonymous"
 	}
 ];
 let config = `<FilesMatch "\\.(html|html\\.gz|html\\.br)$">
@@ -59,6 +67,10 @@ for(let asset in hints){
 	}
 
 	config += `<${hints[asset].asset}>; rel=preload; as=${assetType}; type=${assetContentType}`;
+
+	if(typeof hints[asset].crossorigin !== "undefined"){
+		config += `; crossorigin=${hints[asset].crossorigin}`;
+	}
 
 	if(typeof hints[asset].push === "undefined"){
 		config += "; nopush";

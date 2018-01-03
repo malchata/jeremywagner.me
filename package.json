@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/malchata/jeremywagner.me#readme",
   "dependencies": {
-    "autoprefixer": "^7.2.3",
+    "autoprefixer": "^7.2.4",
     "autorem": "^0.1.1",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
