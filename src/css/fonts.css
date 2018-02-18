@@ -6,7 +6,7 @@
 		 url("../fonts/monoton.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
-	/* font-display: block; */
+	font-display: swap;
 	unicode-range: U+A,U+20,U+42,U+44-45,U+47,U+4C,U+4F,U+56-57;
 }
 
@@ -18,7 +18,7 @@
 		 url("../fonts/fredokaone.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
-	/* font-display: block; */
+	font-display: swap;
 	unicode-range: U+A,U+20-7E,U+E2,U+201C,U+201D,U+20AC;
 }
 
@@ -30,7 +30,7 @@
 		 url("../fonts/firasans-regular.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
-	/* font-display: swap; */
+	font-display: swap;
 	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
 }
 
@@ -42,11 +42,11 @@
 		 url("../fonts/firasans-bold.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 700;
-	/* font-display: swap; */
+	font-display: swap;
 	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
 }
 
-@font-face{
+/* @font-face{
 	font-family: "Fira Sans";
 	src: url("../fonts/firasans-regular-italic.woff2") format("woff2"),
 		 url("../fonts/firasans-regular-italic.woff") format("woff"),
@@ -54,7 +54,7 @@
 		 url("../fonts/firasans-regular-italic.ttf") format("truetype");
 	font-style: italic;
 	font-weight: 400;
-	/* font-display: swap; */
+	font-display: swap;
 	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
 }
 
@@ -66,6 +66,6 @@
 		 url("../fonts/firasans-bold-italic.ttf") format("truetype");
 	font-style: italic;
 	font-weight: 700;
-	/* font-display: swap; */
+	font-display: swap;
 	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
-}
+} */
