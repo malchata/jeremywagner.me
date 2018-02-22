@@ -52,7 +52,8 @@ const buildRoutes = (routes)=>{
 				minify: {
 					removeComments: true,
 					collapseWhitespace: true,
-					minifyJS: true
+					minifyJS: true,
+					minifyCSS: true
 				},
 				chunks: ["app", entryPointName],
 				title: metadata.title,
