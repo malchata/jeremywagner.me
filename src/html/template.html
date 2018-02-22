@@ -31,57 +31,9 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<!-- <link rel="manifest" href="/manifest.json"> -->
 		<script>document.documentElement.classList.remove("no-js");</script>
-		<style>
-			@font-face{
-				font-family: "Monoton";
-				src: url("/fonts/monoton.woff2") format("woff2"),
-					 url("/fonts/monoton.woff") format("woff"),
-					 url("/fonts/monoton.ttf") format("truetype");
-				font-style: normal;
-				font-weight: 400;
-				font-display: swap;
-				unicode-range: U+A,U+20,U+42,U+44-45,U+47,U+4C,U+4F,U+56-57;
-			}
-
-			@font-face{
-				font-family: "Fredoka One";
-				src: url("/fonts/fredokaone.woff2") format("woff2"),
-					 url("/fonts/fredokaone.woff") format("woff"),
-					 url("/fonts/fredokaone.ttf") format("truetype");
-				font-style: normal;
-				font-weight: 400;
-				font-display: swap;
-				unicode-range: U+A,U+20-7E,U+E2,U+201C,U+201D,U+20AC;
-			}
-		</style>
-		<% if(htmlWebpackPlugin.options.saveData === false){ %>
-			<style>
-				@font-face{
-					font-family: "Fira Sans";
-					src: url("/fonts/firasans-regular.woff2") format("woff2"),
-						 url("/fonts/firasans-regular.woff") format("woff"),
-						 url("/fonts/firasans-regular.ttf") format("truetype");
-					font-style: normal;
-					font-weight: 400;
-					font-display: swap;
-					unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
-				}
-
-				@font-face{
-					font-family: "Fira Sans";
-					src: url("/fonts/firasans-bold.woff2") format("woff2"),
-						 url("/fonts/firasans-bold.woff") format("woff"),
-						 url("/fonts/firasans-bold.ttf") format("truetype");
-					font-style: normal;
-					font-weight: 700;
-					font-display: swap;
-					unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215;
-				}
-			</style>
-		<% } %>
 		<link href="<%= htmlWebpackPlugin.files.css %>" rel="stylesheet">
 	</head>
-	<body<% if(htmlWebpackPlugin.options.saveData === true){ %> class="save-data"<% } %>>
+	<body<% if(htmlWebpackPlugin.options.saveData === false){ %> class="no-save-data"<% } %>>
 		<div class="skyline"></div>
 		<main>
 			<%= htmlWebpackPlugin.options.components.illustration %>

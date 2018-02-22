@@ -1,6 +1,7 @@
-.save-data li,
-.save-data p,
-.save-data .date,
-.save-data figcaption{
-	font-family: var(--system-sans);
+.no-save-data li,
+.no-save-data p,
+.no-save-data .date,
+.no-save-data .read-more,
+.no-save-data figcaption{
+	font-family: var(--fira-sans);
 }

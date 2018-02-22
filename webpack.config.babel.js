@@ -138,7 +138,7 @@ export default {
 				use: "file-loader?name=images/[name].[hash:8].[ext]"
 			},
 			{
-				test: /\.(ttf|eot|woff2?)$/,
+				test: /\.(ttf|woff2?)$/,
 				exclude: node_exclusions,
 				use: "file-loader?name=css/fonts/[name].[hash:8].[ext]"
 			}
@@ -201,12 +201,12 @@ export default {
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({
-			test: /\.(html?|xml|css|js|svg|ttf|eot)$/,
+			test: /\.(html?|xml|css|js|svg|ttf)$/,
 			minRatio: 1,
 			threshold: 0
 		}),
 		new BrotliWebpackPlugin({
-			test: /\.(html?|xml|css|js|svg|ttf|eot)$/,
+			test: /\.(html?|xml|css|js|svg|ttf)$/,
 			minRatio: 1,
 			threshold: 0
 		}),

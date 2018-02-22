@@ -2,7 +2,6 @@
 	font-family: "Monoton";
 	src: url("../fonts/monoton.woff2") format("woff2"),
 		 url("../fonts/monoton.woff") format("woff"),
-		 url("../fonts/monoton.eot") format("embedded-opentype"),
 		 url("../fonts/monoton.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
@@ -14,7 +13,6 @@
 	font-family: "Fredoka One";
 	src: url("../fonts/fredokaone.woff2") format("woff2"),
 		 url("../fonts/fredokaone.woff") format("woff"),
-		 url("../fonts/fredokaone.eot") format("embedded-opentype"),
 		 url("../fonts/fredokaone.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
@@ -26,7 +24,6 @@
 	font-family: "Fira Sans";
 	src: url("../fonts/firasans-regular.woff2") format("woff2"),
 		 url("../fonts/firasans-regular.woff") format("woff"),
-		 url("../fonts/firasans-regular.eot") format("embedded-opentype"),
 		 url("../fonts/firasans-regular.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 400;
@@ -38,7 +35,6 @@
 	font-family: "Fira Sans";
 	src: url("../fonts/firasans-bold.woff2") format("woff2"),
 		 url("../fonts/firasans-bold.woff") format("woff"),
-		 url("../fonts/firasans-bold.eot") format("embedded-opentype"),
 		 url("../fonts/firasans-bold.ttf") format("truetype");
 	font-style: normal;
 	font-weight: 700;
@@ -50,7 +46,6 @@
 	font-family: "Fira Sans";
 	src: url("../fonts/firasans-regular-italic.woff2") format("woff2"),
 		 url("../fonts/firasans-regular-italic.woff") format("woff"),
-		 url("../fonts/firasans-regular-italic.eot") format("embedded-opentype"),
 		 url("../fonts/firasans-regular-italic.ttf") format("truetype");
 	font-style: italic;
 	font-weight: 400;
@@ -62,7 +57,6 @@
 	font-family: "Fira Sans";
 	src: url("../fonts/firasans-bold-italic.woff2") format("woff2"),
 		 url("../fonts/firasans-bold-italic.woff") format("woff"),
-		 url("../fonts/firasans-bold-italic.eot") format("embedded-opentype"),
 		 url("../fonts/firasans-bold-italic.ttf") format("truetype");
 	font-style: italic;
 	font-weight: 700;

@@ -65,7 +65,7 @@ li,
 p{
 	font-size: calc(16px + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
 	line-height: 1.618;
-	font-family: var(--fira-sans);
+	font-family: var(--system-sans);
 	color: var(--black);
 }
 
@@ -100,7 +100,7 @@ article h1:last-child{
 	font-weight: 700;
 	font-size: calc(20px + (26.18 - 20) * ((100vw - 320px) / (960 - 320)));
 	line-height: 1.309;
-	font-family: var(--fira-sans);
+	font-family: var(--system-sans);
 }
 
 .date{
@@ -145,7 +145,7 @@ figcaption{
 	display: inline-block;
 	font-size: calc(16px + (20.944 - 16) * ((100vw - 320px) / (960 - 320)));
 	line-height: 1.618;
-	font-family: var(--fira-sans);
+	font-family: var(--system-sans);
 	margin: 1.92ch 0 2.51328ch;
 }
 
