@@ -36,7 +36,7 @@ export default class Video extends Component{
 			}
 
 			videoMarkup = <figure>
-				<video class={this.lazyClass} poster={props.placeholder} width={props.width} height={props.height} autoplay loop muted>
+				<video class={this.lazyClass} poster={props.placeholder} width={props.width} height={props.height} playsinline autoplay loop muted>
 					{props.sources.map((source)=>this.getSource(source, props))}
 				</video>
 				<figcaption>{props.caption}</figcaption>
@@ -44,7 +44,7 @@ export default class Video extends Component{
 		}
 		else{
 			videoMarkup = <figure>
-				<video width={props.width} height={props.height} autoplay loop muted>
+				<video width={props.width} height={props.height} playsinline autoplay loop muted>
 					{props.sources.map((source)=>this.getSource(source, props))}
 				</video>
 				<figcaption>{props.caption}</figcaption>
