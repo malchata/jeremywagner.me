@@ -2,7 +2,8 @@ import assets from "./dist/assets-manifest.json";
 
 let hints = [
 	{
-		asset: assets["app.css"]
+		asset: assets["app.css"],
+		push: true
 	},
 	{
 		asset: assets["css/fonts/fredokaone.woff2"],
