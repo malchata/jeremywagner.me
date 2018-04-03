@@ -22,22 +22,28 @@ export default class Content extends Component{
 				<p>While I have a blog, I spend most of my time writing for other outlets. Below is a comprehensive list of the articles I've had published in places other than here:</p>
 				<SubHeading>A List Apart</SubHeading>
 				<ul>
-					<li><a href="http://alistapart.com/article/using-http-2-responsibly-adapting-for-users/" rel="noopener">Using HTTP/2 Responsibly: Adapting for Users</a></li>
-					<li><a href="http://alistapart.com/article/considering-how-we-use-http2/" rel="noopener">Considering How We Use HTTP/2</a></li>
+					<li><a href="https://alistapart.com/article/designing-for-research" rel="noopener">Designing for Research</a></li>
+					<li><a href="https://alistapart.com/article/considering-how-we-use-http2/" rel="noopener">Considering How We Use HTTP/2</a></li>
+					<li><a href="https://alistapart.com/article/using-http-2-responsibly-adapting-for-users/" rel="noopener">Using HTTP/2 Responsibly: Adapting for Users</a></li>
 				</ul>
 				<SubHeading>CSS Tricks</SubHeading>
 				<ul>
-					<li><a href="https://css-tricks.com/font-display-masses/" rel="noopener"><code>font-display</code> for the Masses</a></li>
-					<li><a href="https://css-tricks.com/using-webp-images/" rel="noopener">Using WebP Images</a> (mirrored from <a href="/blog/using-webp-images">this post</a>)</li>
-					<li><a href="https://css-tricks.com/cache-aware-server-push/" rel="noopener">Creating a Cache-aware HTTP/2 Server Push Mechanism</a></li>
-					<li><a href="https://css-tricks.com/brotli-static-compression/" rel="noopener">Brotli and Static Compression</a></li>
-					<li><a href="https://css-tricks.com/musings-on-http2-and-bundling/" rel="noopener">Musings on HTTP/2 and Bundling</a></li>
-					<li><a href="https://css-tricks.com/paint-timing-api/" rel="noopener">Using the Paint Timing API</a></li>
 					<li><a href="https://css-tricks.com/help-users-save-data/" rel="noopener">Help Your Users <code>Save-Data</code></a></li>
+					<li><a href="https://css-tricks.com/paint-timing-api/" rel="noopener">Using the Paint Timing API</a></li>
+					<li><a href="https://css-tricks.com/musings-on-http2-and-bundling/" rel="noopener">Musings on HTTP/2 and Bundling</a></li>
+					<li><a href="https://css-tricks.com/brotli-static-compression/" rel="noopener">Brotli and Static Compression</a></li>
+					<li><a href="https://css-tricks.com/cache-aware-server-push/" rel="noopener">Creating a Cache-aware HTTP/2 Server Push Mechanism</a></li>
+					<li><a href="https://css-tricks.com/using-webp-images/" rel="noopener">Using WebP Images</a> (mirrored from <a href="/blog/using-webp-images">this post</a>)</li>
+					<li><a href="https://css-tricks.com/font-display-masses/" rel="noopener"><code>font-display</code> for the Masses</a></li>
 				</ul>
 				<SubHeading>David Walsh Blog</SubHeading>
 				<ul>
 					<li><a href="https://davidwalsh.name/jpeg-compression-guetzli/" rel="noopener">JPEG Compression with Guetzli</a></li>
+				</ul>
+				<SubHeading>Google Web Fundamentals</SubHeading>
+				<ul>
+					<li><a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" rel="noopener">Lazy Loading Images and Video</a></li>
+					<li><a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/" rel="noopener">Why Performance Matters</a></li>
 				</ul>
 				<SubHeading>Manning Publications</SubHeading>
 				<ul>
@@ -55,8 +61,8 @@ export default class Content extends Component{
 				</ul>
 				<SubHeading>Smashing Magazine</SubHeading>
 				<ul>
-					<li><a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/" rel="noopener">Next Generation Server Compression With Brotli</a></li>
 					<li><a href="https://www.smashingmagazine.com/2017/04/guide-http2-server-push/" rel="noopener">A Comprehensive Guide To HTTP/2 Server Push</a></li>
+					<li><a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/" rel="noopener">Next Generation Server Compression With Brotli</a></li>
 				</ul>
 				<SignOff/>
 			</article>

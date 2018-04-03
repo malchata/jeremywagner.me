@@ -109,6 +109,8 @@
 							mediaObserver.unobserve(entry.target);
 						}
 					});
+				}, {
+					rootMargin: "0px 0px 256px 0px"
 				});
 
 				elements[fe](function(media){
