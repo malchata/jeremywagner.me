@@ -19,7 +19,8 @@ export default class Content extends Component{
 		return (
 			<article>
 				<h1>{Metadata.title}</h1>
-				<p>While I have a blog, I spend most of my time writing for other outlets. Below is a comprehensive list of the articles I've had published in places other than here:</p>
+				<p>While I have a blog, I spend most of my time writing for other outlets. Below is a comprehensive list of the articles I've had published in places other than here.</p>
+				<p><em>* Indicates that not the sole author of an article, but received a byline as a contributor.</em></p>
 				<SubHeading>A List Apart</SubHeading>
 				<ul>
 					<li><a href="https://alistapart.com/article/designing-for-research" rel="noopener">Designing for Research</a></li>
@@ -42,6 +43,7 @@ export default class Content extends Component{
 				</ul>
 				<SubHeading>Google Web Fundamentals</SubHeading>
 				<ul>
+					<li><em>*</em> <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/save-data/" rel="noopener">Delivering Fast and Light Applications with <code>Save-Data</code></a></li>
 					<li><a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" rel="noopener">Lazy Loading Images and Video</a></li>
 					<li><a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/" rel="noopener">Why Performance Matters</a></li>
 				</ul>
@@ -51,7 +53,7 @@ export default class Content extends Component{
 				</ul>
 				<SubHeading>Net Magazine</SubHeading>
 				<ul>
-					<li>4 Quick Image Optimization Tips (<a href="https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/net-january-2018-issue-301/" rel="noopener">Issue 301</a>)</li>
+					<li><a href="https://www.creativebloq.com/how-to/4-essential-image-optimisation-tips" rel="noopener">4 Quick Image Optimization Tips</a> (<a href="https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/net-january-2018-issue-301/" rel="noopener">Issue 301</a>)</li>
 					<li><a href="http://www.creativebloq.com/how-to/5-tips-for-super-fast-css" rel="noopener">5 Tips for Super-fast CSS</a> (<a href="https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/net-may-2017-issue-292/" rel="noopener">Issue 292</a>)</li>
 				</ul>
 				<SubHeading>Planet Performance</SubHeading>
