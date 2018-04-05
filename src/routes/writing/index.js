@@ -20,7 +20,7 @@ export default class Content extends Component{
 			<article>
 				<h1>{Metadata.title}</h1>
 				<p>While I have a blog, I spend most of my time writing for other outlets. Below is a comprehensive list of the articles I've had published in places other than here.</p>
-				<p><em>* Indicates that not the sole author of an article, but received a byline as a contributor.</em></p>
+				<p><em>*Indicates that I was not the sole author of the article, but received a byline as a contributor.</em></p>
 				<SubHeading>A List Apart</SubHeading>
 				<ul>
 					<li><a href="https://alistapart.com/article/designing-for-research" rel="noopener">Designing for Research</a></li>
@@ -43,7 +43,7 @@ export default class Content extends Component{
 				</ul>
 				<SubHeading>Google Web Fundamentals</SubHeading>
 				<ul>
-					<li><em>*</em> <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/save-data/" rel="noopener">Delivering Fast and Light Applications with <code>Save-Data</code></a></li>
+					<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/save-data/" rel="noopener">Delivering Fast and Light Applications with <code>Save-Data</code></a><em>*</em></li>
 					<li><a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" rel="noopener">Lazy Loading Images and Video</a></li>
 					<li><a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/" rel="noopener">Why Performance Matters</a></li>
 				</ul>
