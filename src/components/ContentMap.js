@@ -20,10 +20,6 @@ export default {
       excerpt: require("../routes/blog/faster-bulk-image-optimization-in-bash/index.js").BlogExcerpt,
       metadata: require("../routes/blog/faster-bulk-image-optimization-in-bash/index.js").Metadata
     },
-    "/css-is-broken-my-dime-a-dozen-opinion/": {
-      excerpt: require("../routes/blog/css-is-broken-my-dime-a-dozen-opinion/index.js").BlogExcerpt,
-      metadata: require("../routes/blog/css-is-broken-my-dime-a-dozen-opinion/index.js").Metadata
-    },
     "/bulk-image-optimization-in-bash/": {
       excerpt: require("../routes/blog/bulk-image-optimization-in-bash/index.js").BlogExcerpt,
       metadata: require("../routes/blog/bulk-image-optimization-in-bash/index.js").Metadata
