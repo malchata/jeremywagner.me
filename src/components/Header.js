@@ -1,7 +1,7 @@
 import { h, render, Component } from "preact";
 
 export default class Header extends Component{
-  render(){
+  render() {
     return (
       <header>
         <a href="/">

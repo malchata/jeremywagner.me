@@ -3,14 +3,14 @@ import ContentMap from "../components/ContentMap";
 const urlPrefix = "https://jeremywagner.me";
 let sitemap = [];
 
-const lastmod = (dateString)=>{
+const lastmod = (dateString) => {
   let date = new Date(Date.parse(dateString));
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
-const populateSitemap = (contentTree, parentSlug)=>{
-  for(var entry in contentTree){
-    if(typeof contentTree[entry].metadata === "undefined"){
+const populateSitemap = (contentTree, parentSlug) => {
+  for (var entry in contentTree) {
+    if (typeof contentTree[entry].metadata === "undefined") {
       populateSitemap(contentTree[entry], entry);
       return;
     }

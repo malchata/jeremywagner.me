@@ -10,14 +10,14 @@ export const Metadata = {
 }
 
 export default class Content extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  render(props){
+  render(props) {
     let contentExcerpts = [];
 
-    for(var entry in ContentMap["/blog"]){
+    for (var entry in ContentMap["/blog"]) {
       contentExcerpts.push(ContentMap["/blog"][entry].excerpt);
     }
 

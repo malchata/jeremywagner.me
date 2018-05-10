@@ -8,7 +8,7 @@ let rss = {
   items: []
 };
 
-const pubDate = (dateString)=>{
+const pubDate = (dateString) => {
   let date = new Date(Date.parse(dateString));
   let pieces = date.toString().split(" ");
   let offsetTime = pieces[5].match(/[-+]\d{4}/);
@@ -25,10 +25,10 @@ const pubDate = (dateString)=>{
   return parts.join(" ");
 };
 
-const populateFeed = (contentTree, parentSlug)=>{
-  for(var entry in contentTree){
-    if(entry !== "/"){
-      if(typeof contentTree[entry].metadata === "undefined"){
+const populateFeed = (contentTree, parentSlug) => {
+  for (var entry in contentTree) {
+    if (entry !== "/") {
+      if (typeof contentTree[entry].metadata === "undefined") {
         populateFeed(contentTree[entry], entry);
         return;
       }

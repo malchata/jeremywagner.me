@@ -1,4 +1,186 @@
-"use strict";var l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e},u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},d=function(e,t){if("IMG"===e.tagName){var o=e.parentNode;if("PICTURE"===o.tagName)for(var r in[].slice.call(o.querySelectorAll("source")).forEach(function(e){for(var t in e.dataset)e.setAttribute(t,e.dataset[t]),e.removeAttribute("data-"+t)}),e.dataset)e.setAttribute(r,e.dataset[r]),e.removeAttribute("data-"+r);else{var n=new Image;if(void 0!==e.dataset.srcset&&(n.srcset=e.dataset.srcset),n.src=e.dataset.src,!0===t.asyncDecodeSupport)n.decode().then(function(){n.alt=e.alt,n.width=e.width,n.height=e.height,e.replaceWith(n)});else for(var a in e.dataset)e.setAttribute(a,e.dataset[a]),e.removeAttribute("data-"+a)}}"VIDEO"===e.tagName&&([].slice.call(e.querySelectorAll("source")).forEach(function(e){for(var t in e.dataset)e.setAttribute(t,e.dataset[t]),e.removeAttribute("data-"+t)}),e.load()),"IFRAME"===e.tagName&&(e.src=e.dataset.src,e.removeAttribute("data-src"))},yall=function(e){var r={intersectionObserverSupport:"IntersectionObserver"in window&&"IntersectionObserverEntry"in window&&"intersectionRatio"in window.IntersectionObserverEntry.prototype,mutationObserverSupport:"MutationObserver"in window,idleCallbackSupport:"requestIdleCallback"in window,asyncDecodeSupport:"decode"in new Image,eventsToBind:[[document,"scroll"],[document,"touchmove"],[window,"resize"],[window,"orientationchange"]]},t={lazyClass:"lazy",throttleTime:200,idlyLoad:!1,idleLoadTimeout:100,threshold:200,observeChanges:!1,observeRootSelector:"body",mutationObserverOptions:{childList:!0}},n="object"===(void 0===e?"undefined":u(e))?l(t,e):t,o="img."+n.lazyClass+",video."+n.lazyClass+",iframe."+n.lazyClass,a={timeout:n.idleLoadTimeout},i=[].slice.call(document.querySelectorAll(o));if(!0===r.intersectionObserverSupport){var s=new IntersectionObserver(function(e,o){e.forEach(function(e){var t=e.target;!0===e.isIntersecting&&(!0===n.idlyLoad&&!0===r.idleCallbackSupport?requestIdleCallback(function(){d(t,r)},a):d(t,r),t.classList.remove(n.lazyClass),o.unobserve(t),i=i.filter(function(e){return e!==t}))})},{rootMargin:n.threshold+"px 0%"});i.forEach(function(e){return s.observe(e)})}else{var c=function yallBack(){var e=!1;!1===e&&0<i.length&&(e=!0,setTimeout(function(){i.forEach(function(t){t.getBoundingClientRect().top<=window.innerHeight+n.threshold&&t.getBoundingClientRect().bottom>=-n.threshold&&"none"!==getComputedStyle(t).display&&(!0===n.idlyLoad&&!0===r.idleCallbackSupport?requestIdleCallback(function(){d(t,r)},a):d(t,r),t.classList.remove(n.lazyClass),i=i.filter(function(e){return e!==t}))}),e=!1,0===i.length&&!1===n.observeChanges&&r.eventsToBind.forEach(function(e){return e[0].removeEventListener(e[1],yallBack)})},n.throttleTime))};r.eventsToBind.forEach(function(e){return e[0].addEventListener(e[1],c)})}!0===r.mutationObserverSupport&&!0===n.observeChanges&&new MutationObserver(function(e){e.forEach(function(e){[].slice.call(document.querySelectorAll(o)).forEach(function(e){-1===i.indexOf(e)&&(i.push(e),!0===r.intersectionObserverSupport?s.observe(e):c())})})}).observe("body"===n.observeRootSelector?document.body:document.querySelector(n.observeRootSelector),n.mutationObserverOptions)};
+/**
+ * yall.js version 2.0.0
+ * Yet Another Lazy loader
+ **/
+
+const yallLoad = function(element, env) {
+  if (element.tagName === "IMG") {
+    let parentElement = element.parentNode;
+
+    if (parentElement.tagName === "PICTURE") {
+      [].slice.call(parentElement.querySelectorAll("source")).forEach(source => {
+        for (let dataAttribute in source.dataset) {
+          source.setAttribute(dataAttribute, source.dataset[dataAttribute]);
+          source.removeAttribute(`data-${dataAttribute}`);
+        }
+      });
+
+      for (let dataAttribute in element.dataset) {
+        element.setAttribute(dataAttribute, element.dataset[dataAttribute]);
+        element.removeAttribute(`data-${dataAttribute}`);
+      }
+    } else {
+      let newImageElement = new Image();
+
+      if (typeof element.dataset.srcset !== "undefined") {
+        newImageElement.srcset = element.dataset.srcset;
+      }
+
+      newImageElement.src = element.dataset.src;
+
+      if (env.asyncDecodeSupport === true) {
+        newImageElement.decode().then(() => {
+          newImageElement.alt = element.alt;
+          newImageElement.width = element.width;
+          newImageElement.height = element.height;
+          element.replaceWith(newImageElement);
+        });
+      } else {
+        for (let dataAttribute in element.dataset) {
+          element.setAttribute(dataAttribute, element.dataset[dataAttribute]);
+          element.removeAttribute(`data-${dataAttribute}`);
+        }
+      }
+    }
+  }
+
+  if (element.tagName === "VIDEO") {
+    [].slice.call(element.querySelectorAll("source")).forEach(source => {
+      for (let dataAttribute in source.dataset) {
+        source.setAttribute(dataAttribute, source.dataset[dataAttribute]);
+        source.removeAttribute(`data-${dataAttribute}`);
+      }
+    });
+
+    element.load();
+  }
+
+  if (element.tagName === "IFRAME") {
+    element.src = element.dataset.src;
+    element.removeAttribute("data-src");
+  }
+};
+
+const yall = function(userOptions) {
+  const env = {
+    intersectionObserverSupport: "IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype,
+    mutationObserverSupport: "MutationObserver" in window,
+    idleCallbackSupport: "requestIdleCallback" in window,
+    asyncDecodeSupport: "decode" in new Image(),
+    eventsToBind: [
+      [document, "scroll"],
+      [document, "touchmove"],
+      [window, "resize"],
+      [window, "orientationchange"]
+    ]
+  };
+
+  let defaultOptions = {
+    lazyClass: "lazy",
+    throttleTime: 200,
+    idlyLoad: false,
+    idleLoadTimeout: 100,
+    threshold: 200,
+    observeChanges: false,
+    observeRootSelector: "body",
+    mutationObserverOptions: {
+      childList: true
+    }
+  };
+
+  const options = typeof userOptions === "object" ? Object.assign(defaultOptions, userOptions) : defaultOptions;
+  const selectorString = `img.${options.lazyClass},video.${options.lazyClass},iframe.${options.lazyClass}`;
+  const idleCallbackOptions = {
+    timeout: options.idleLoadTimeout
+  };
+
+  let lazyElements = [].slice.call(document.querySelectorAll(selectorString));
+
+  if (env.intersectionObserverSupport === true) {
+    var intersectionListener = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        let element = entry.target;
+
+        if (entry.isIntersecting === true) {
+          if (options.idlyLoad === true && env.idleCallbackSupport === true) {
+            requestIdleCallback(() => {
+              yallLoad(element, env);
+            }, idleCallbackOptions);
+          } else {
+            yallLoad(element, env);
+          }
+
+          element.classList.remove(options.lazyClass);
+          observer.unobserve(element);
+
+          lazyElements = lazyElements.filter((lazyElement) => {
+            return lazyElement !== element;
+          });
+        }
+      });
+    }, {
+      rootMargin: `${options.threshold}px 0%`
+    });
+
+    lazyElements.forEach((lazyElement) => intersectionListener.observe(lazyElement));
+  } else {
+    var yallBack = () => {
+      let active = false;
+
+      if (active === false && lazyElements.length > 0) {
+        active = true;
+
+        setTimeout(() => {
+          lazyElements.forEach((lazyElement) => {
+            if (lazyElement.getBoundingClientRect().top <= (window.innerHeight + options.threshold) && lazyElement.getBoundingClientRect().bottom >= -(options.threshold) && getComputedStyle(lazyElement).display !== "none") {
+              if (options.idlyLoad === true && env.idleCallbackSupport === true) {
+                requestIdleCallback(() => {
+                  yallLoad(lazyElement, env);
+                }, idleCallbackOptions);
+              } else {
+                yallLoad(lazyElement, env);
+              }
+
+              lazyElement.classList.remove(options.lazyClass);
+
+              lazyElements = lazyElements.filter((element) => {
+                return element !== lazyElement;
+              });
+            }
+          });
+
+          active = false;
+
+          if (lazyElements.length === 0 && options.observeChanges === false) {
+            env.eventsToBind.forEach((eventPair) => eventPair[0].removeEventListener(eventPair[1], yallBack));
+          }
+        }, options.throttleTime);
+      }
+    };
+
+    env.eventsToBind.forEach((eventPair) => eventPair[0].addEventListener(eventPair[1], yallBack));
+  }
+
+  if (env.mutationObserverSupport === true && options.observeChanges === true) {
+    const mutationListener = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        [].slice.call(document.querySelectorAll(selectorString)).forEach((newElement) => {
+          if (lazyElements.indexOf(newElement) === -1) {
+            lazyElements.push(newElement);
+
+            if (env.intersectionObserverSupport === true) {
+              intersectionListener.observe(newElement);
+            } else {
+              yallBack();
+            }
+          }
+        });
+      });
+    });
+
+    mutationListener.observe(options.observeRootSelector === "body" ? document.body : document.querySelector(options.observeRootSelector), options.mutationObserverOptions);
+  }
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   yall({
@@ -13,8 +195,8 @@ if ("matchMedia" in window && "IntersectionObserver" in window && "IntersectionO
     let navContainerElement = document.getElementsByClassName("nav-container")[0];
     let navSentinelElement = document.getElementsByClassName("nav-sentinel")[0];
 
-    let navObserver = new IntersectionObserver((entries, observer)=>{
-      entries.forEach((entry)=>{
+    let navObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
         if (matchMedia("(min-width: 50rem)").matches === true && entry.intersectionRatio < 1) {
           entry.target.classList.add("sticky-nav");
         }
@@ -24,8 +206,8 @@ if ("matchMedia" in window && "IntersectionObserver" in window && "IntersectionO
       rootMargin: "0px 0px 1000% 0px"
     });
 
-    let navSentinelObserver = new IntersectionObserver((entries, observer)=>{
-      entries.forEach((entry)=>{
+    let navSentinelObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
         if (matchMedia("(min-width: 50rem)").matches === false || entry.isIntersecting === true) {
           navContainerElement.classList.remove("sticky-nav");
         }

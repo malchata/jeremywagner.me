@@ -21,11 +21,11 @@ export const BlogExcerpt = <Excerpt>
 </Excerpt>;
 
 export default class Content extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  render(props){
+  render(props) {
     return (
       <article>
         {BlogExcerpt}

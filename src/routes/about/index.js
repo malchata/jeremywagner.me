@@ -12,11 +12,11 @@ export const Metadata = {
 };
 
 export default class Content extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  render(props){
+  render(props) {
     return (
       <article>
         <h1>{Metadata.title}</h1>

@@ -11,11 +11,11 @@ export const Metadata = {
 };
 
 export default class Content extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  render(props){
+  render(props) {
     return (
       <article>
         <h1>{Metadata.title}</h1>
@@ -43,6 +43,7 @@ export default class Content extends Component{
         </ul>
         <SubHeading>Google Web Fundamentals</SubHeading>
         <ul>
+          <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/" rel="noopener">Replace Animated GIFs with Video</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/save-data/" rel="noopener">Delivering Fast and Light Applications with <code>Save-Data</code></a><em>*</em></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" rel="noopener">Lazy Loading Images and Video</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/" rel="noopener">Why Performance Matters</a></li>

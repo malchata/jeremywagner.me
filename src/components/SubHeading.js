@@ -1,15 +1,15 @@
 import { h, render, Component } from "preact";
 
 export default class SubHeading extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  createDeepLink(fragment){
+  createDeepLink(fragment) {
     return fragment.replace(/\s/ig, "-").replace(/(\'|\"|\,|\;|\:|\!|\?)/ig, "").toLowerCase();
   }
 
-  render(props){
+  render(props) {
     let deepLink = this.createDeepLink(props.children[0]);
 
     return (

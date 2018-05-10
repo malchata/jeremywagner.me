@@ -1,7 +1,7 @@
 import { h, render, Component } from "preact";
 
 export default class Navigation extends Component{
-  render(){
+  render() {
     return(
       <nav>
         <div className="nav-sentinel"></div>
