@@ -1,36 +1,33 @@
 import assets from "./dist/assets-manifest.json";
 
-let hints = [
-  {
-    asset: assets["app.css"],
-    push: true
-  },
-  {
-    asset: assets["css/fonts/fredokaone.woff2"],
-    crossorigin: "anonymous"
-  },
-  {
-    asset: assets["css/fonts/monoton.woff2"],
-    crossorigin: "anonymous"
-  },
-  {
-    asset: assets["css/fonts/firasans-regular.woff2"],
-    crossorigin: "anonymous"
-  },
-  {
-    asset: assets["css/fonts/firasans-bold.woff2"],
-    crossorigin: "anonymous"
-  }
-];
+let hints = [{
+  asset: assets["app.css"],
+  push: true
+},
+{
+  asset: assets["css/fonts/fredokaone.woff2"],
+  crossorigin: "anonymous"
+},
+{
+  asset: assets["css/fonts/monoton.woff2"],
+  crossorigin: "anonymous"
+},
+{
+  asset: assets["css/fonts/firasans-regular.woff2"],
+  crossorigin: "anonymous"
+},
+{
+  asset: assets["css/fonts/firasans-bold.woff2"],
+  crossorigin: "anonymous"
+}];
+
 let config = `<FilesMatch "\\.(html|html\\.gz|html\\.br)$">
 Header set Link "`;
 
-for(let asset in hints){
-  let assetType = "";
-  let assetContentType = "";
-  let assetParts = hints[asset].asset.split(".");
+for(let asset in hints) {
+  let assetType, assetContentType, assetParts = hints[asset].asset.split(".");
 
-  switch(assetParts[assetParts.length - 1]){
+  switch(assetParts[assetParts.length - 1]) {
     case "css":
       assetType = "style";
       assetContentType = "text/css";
@@ -70,15 +67,15 @@ for(let asset in hints){
 
   config += `<${hints[asset].asset}>; rel=preload; as=${assetType}; type=${assetContentType}`;
 
-  if(typeof hints[asset].crossorigin !== "undefined"){
+  if (typeof hints[asset].crossorigin !== "undefined") {
     config += `; crossorigin=${hints[asset].crossorigin}`;
   }
 
-  if(typeof hints[asset].push === "undefined"){
+  if (typeof hints[asset].push === "undefined") {
     config += "; nopush";
   }
 
-  if(hints.indexOf(hints[asset]) < hints.length - 1){
+  if (hints.indexOf(hints[asset]) < hints.length - 1) {
     config += ",";
   }
 }
