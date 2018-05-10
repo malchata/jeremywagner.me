@@ -1,123 +1,123 @@
 nav{
-	padding: 0 var(--mobile-gutter);
-	margin: 1ch 0 0;
+  padding: 0 var(--mobile-gutter);
+  margin: 1ch 0 0;
 }
 
 .nav-item{
-	display: inline-block;
+  display: inline-block;
 }
 
 .nav-item a{
-	font-size: calc(16px + (32 - 16) * ((100vw - 320px) / (960 - 320)));
-	line-height: 1.618;
-	font-family: var(--fredoka-one);
+  font-size: calc(16px + (32 - 16) * ((100vw - 320px) / (960 - 320)));
+  line-height: 1.618;
+  font-family: var(--fredoka-one);
 }
 
 .nav-item:after{
-	content: "//";
-	color: var(--coral);
-	margin: 0 1ch;
-	font-size: calc(12px + (24 - 12) * ((100vw - 320px) / (960 - 320)));
-	line-height: 1.618;
-	font-family: var(--fredoka-one);
+  content: "//";
+  color: var(--coral);
+  margin: 0 1ch;
+  font-size: calc(12px + (24 - 12) * ((100vw - 320px) / (960 - 320)));
+  line-height: 1.618;
+  font-family: var(--fredoka-one);
 }
 
 .nav-item:last-child:after{
-	content: none;
+  content: none;
 }
 
 .nav-link{
-	color: var(--light-blue);
-	text-decoration: underline;
+  color: var(--light-blue);
+  text-decoration: underline;
 }
 
 #social-nav{
-	margin: 16px 0 36px;
-	font-size: 0;
+  margin: 16px 0 36px;
+  font-size: 0;
 }
 
 .social-item{
-	font-size: 0;
-	display: inline-block;
-	width: 6.5789473684%; /* 20px / 304px */
-	margin: 0 6.5789473684% 0 0; /* 20px / 304px */
-	vertical-align: middle;
-	max-width: 32px;
+  font-size: 0;
+  display: inline-block;
+  width: 6.5789473684%; /* 20px / 304px */
+  margin: 0 6.5789473684% 0 0; /* 20px / 304px */
+  vertical-align: middle;
+  max-width: 32px;
 }
 
 .social-item:last-child{
-	margin: 0;
+  margin: 0;
 }
 
 .social{
-	display: block;
-	background-position: 0 0;
-	background-repeat: no-repeat;
+  display: block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
 }
 
 .twitter a{
-	padding-top: 80.6616915423%; /* 16.213px / 20.1px */
-	background-image: url("../images/twitter.svg");
+  padding-top: 80.6616915423%; /* 16.213px / 20.1px */
+  background-image: url("../images/twitter.svg");
 }
 
 .github a{
-	padding-top: 100.4635461279%; /* 19.939px / 19.847px */
-	background-image: url("../images/github.svg");
+  padding-top: 100.4635461279%; /* 19.939px / 19.847px */
+  background-image: url("../images/github.svg");
 }
 
 .email a{
-	padding-top: 100%; /* 20.1px / 20.1px */
-	background-image: url("../images/email.svg");
+  padding-top: 100%; /* 20.1px / 20.1px */
+  background-image: url("../images/email.svg");
 }
 
 .rss a{
-	padding-top: 104%; /* 20.8px / 20px */
-	background-image: url("../images/rss.svg");
+  padding-top: 104%; /* 20.8px / 20px */
+  background-image: url("../images/rss.svg");
 }
 
 @media (min-width: 800px){
-	@supports (display: grid){
-		nav{
-			padding: 0;
-			margin: 0;
-		}
+  @supports (display: grid){
+    nav{
+      padding: 0;
+      margin: 0;
+    }
 
-		.nav-sentinel{
-			height: 1px;
-			margin-bottom: -1px;
-			position: relative;
-			z-index: 3;
-		}
+    .nav-sentinel{
+      height: 1px;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 3;
+    }
 
-		.sticky-nav{
-			width: 21.975%; /* 316.44px / 1440px */
-			position: fixed;
-			z-index: 2;
-			left: var(--desktop-gutter);
-			top: 0;
-		}
+    .sticky-nav{
+      width: 21.975%; /* 316.44px / 1440px */
+      position: fixed;
+      z-index: 2;
+      left: var(--desktop-gutter);
+      top: 0;
+    }
 
-		.nav-item{
-			display: block;
-			text-align: center;
-			margin: 0 0 .8ch;
-		}
+    .nav-item{
+      display: block;
+      text-align: center;
+      margin: 0 0 .8ch;
+    }
 
-		.nav-item a{
-			font-size: calc(24.4461420932px + (32 - 24.4461420932) * ((100vw - 800px) / (1440 - 800)));
-		}
+    .nav-item a{
+      font-size: calc(24.4461420932px + (32 - 24.4461420932) * ((100vw - 800px) / (1440 - 800)));
+    }
 
-		.nav-item:after{
-			content: none;
-		}
+    .nav-item:after{
+      content: none;
+    }
 
-		#social-nav{
-			text-align: center;
-		}
+    #social-nav{
+      text-align: center;
+    }
 
-		.social-item{
-			width: 10%; /* 32px / 320px */
-			margin: 0 7.5% 0 0; /* 24px / 320px */
-		}
-	}
+    .social-item{
+      width: 10%; /* 32px / 320px */
+      margin: 0 7.5% 0 0; /* 24px / 320px */
+    }
+  }
 }

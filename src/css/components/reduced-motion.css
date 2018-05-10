@@ -1,8 +1,8 @@
 @media (prefers-reduced-motion: reduce){
-	.subhead:before,
-	article p a,
-	article li a,
-	.arrow{
-		transition: none;
-	}
+  .subhead:before,
+  article p a,
+  article li a,
+  .arrow{
+    transition: none;
+  }
 }

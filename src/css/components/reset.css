@@ -1,5 +1,5 @@
 *{
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -28,12 +28,12 @@ footer,
 header,
 nav,
 section{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 article,
@@ -45,40 +45,40 @@ footer,
 header,
 nav,
 section{
-	display: block;
+  display: block;
 }
 
 body{
-	line-height: 1;
-	background: var(--black);
-	color: #fff;
+  line-height: 1;
+  background: var(--black);
+  color: #fff;
 }
 
 img,
 video{
-	max-width: 100%;
-	display: inline-block;
-	height: auto;
+  max-width: 100%;
+  display: inline-block;
+  height: auto;
 }
 
 ol,
 ul{
-	list-style: none;
+  list-style: none;
 }
 
 em{
-	font-style: italic;
+  font-style: italic;
 }
 
 strong{
-	font-weight: 700;
+  font-weight: 700;
 }
 
 blockquote,
 q{
-	quotes: none;
+  quotes: none;
 }
 
 a{
-	text-decoration: none;
+  text-decoration: none;
 }

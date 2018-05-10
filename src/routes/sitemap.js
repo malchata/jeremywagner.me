@@ -4,25 +4,25 @@ const urlPrefix = "https://jeremywagner.me";
 let sitemap = [];
 
 const lastmod = (dateString)=>{
-	let date = new Date(Date.parse(dateString));
-	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  let date = new Date(Date.parse(dateString));
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
 const populateSitemap = (contentTree, parentSlug)=>{
-	for(var entry in contentTree){
-		if(typeof contentTree[entry].metadata === "undefined"){
-			populateSitemap(contentTree[entry], entry);
-			return;
-		}
+  for(var entry in contentTree){
+    if(typeof contentTree[entry].metadata === "undefined"){
+      populateSitemap(contentTree[entry], entry);
+      return;
+    }
 
-		let slug = typeof parentSlug === "undefined" ? entry : `${parentSlug}${entry}`;
+    let slug = typeof parentSlug === "undefined" ? entry : `${parentSlug}${entry}`;
 
-		sitemap.push({
-			loc: `${urlPrefix}${slug}`,
-			priority: typeof contentTree[entry].metadata.sitemapPriority === "undefined" ? 1.0 : contentTree[entry].metadata.sitemapPriority,
-			lastmod: typeof contentTree[entry].metadata.updateDate === "undefined" ? lastmod(contentTree[entry].metadata.date) : lastmod(contentTree[entry].metadata.updateDate)
-		});
-	}
+    sitemap.push({
+      loc: `${urlPrefix}${slug}`,
+      priority: typeof contentTree[entry].metadata.sitemapPriority === "undefined" ? 1.0 : contentTree[entry].metadata.sitemapPriority,
+      lastmod: typeof contentTree[entry].metadata.updateDate === "undefined" ? lastmod(contentTree[entry].metadata.date) : lastmod(contentTree[entry].metadata.updateDate)
+    });
+  }
 }
 
 populateSitemap(ContentMap);

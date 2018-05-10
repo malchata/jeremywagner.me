@@ -3,7 +3,7 @@ import path from "path";
 import webpack from "webpack";
 import ImageminWebpackPlugin from "imagemin-webpack-plugin";
 import ImageminPngQuant from "imagemin-pngquant";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import XmlWebpackPlugin from "xml-webpack-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
@@ -34,9 +34,9 @@ let entryPoints = {
 };
 let htmlOutputs = [];
 
-const buildRoutes = (routes)=>{
-	fs.readdirSync(routes).forEach((route)=>{
-		if(route.indexOf("index.js") !== -1){
+const buildRoutes = function(routes) {
+	fs.readdirSync(routes).forEach((route) => {
+		if (route.indexOf("index.js") !== -1) {
 			let routeModule = require(path.join(routes, route));
 			let metadata = routeModule.Metadata;
 			let Content = routeModule.default;
@@ -67,7 +67,7 @@ const buildRoutes = (routes)=>{
 				}
 			};
 
-			if(typeof metadata.canonical === "string"){
+			if (typeof metadata.canonical === "string") {
 				htmlOpts = Object.assign(htmlOpts, {
 					canonical: metadata.canonical
 				});
@@ -86,7 +86,7 @@ const buildRoutes = (routes)=>{
 			})));
 		}
 
-		if(fs.lstatSync(path.join(routes, route)).isDirectory() === true){
+		if (fs.lstatSync(path.join(routes, route)).isDirectory() === true) {
 			buildRoutes(path.join(routes, route));
 		}
 	});
@@ -121,24 +121,26 @@ export default {
 	module: {
 		rules: [
 			{
-				test: /\.js?$/,
+				test: /\.js$/i,
 				exclude: node_exclusions,
 				use: "babel-loader"
 			},
 			{
-				test: /\.css$/,
+				test: /\.css$/i,
 				exclude: node_exclusions,
-				use: ExtractTextPlugin.extract({
-					use: "css-loader!postcss-loader"
-				})
+				use: [
+					MiniCssExtractPlugin.loader,
+					"css-loader",
+					"postcss-loader"
+				]
 			},
 			{
-				test: /\.(png|gif|jpe?g|svg)$/,
+				test: /\.(png|gif|jpe?g|svg)$/i,
 				exclude: node_exclusions,
 				use: "file-loader?name=images/[name].[hash:8].[ext]"
 			},
 			{
-				test: /\.(ttf|woff2?)$/,
+				test: /\.woff2?$/i,
 				exclude: node_exclusions,
 				use: "file-loader?name=css/fonts/[name].[hash:8].[ext]"
 			}
@@ -146,7 +148,10 @@ export default {
 	},
 	plugins: [
 		new CleanWebpackPlugin(webRoot),
-		new ExtractTextPlugin("css/styles.[contenthash:8].css"),
+		new MiniCssExtractPlugin({
+			filename: path.join("css", "styles.[contenthash:8].css"),
+			chunkFilename: path.join("css", "styles.[contenthash:8].css")
+		}),
 		new FaviconsWebpackPlugin({
 			logo: "./src/icons/favicon.png",
 			prefix: "/",
@@ -177,36 +182,24 @@ export default {
 		new XmlWebpackPlugin({
 			files: xmlOutputs
 		}),
-		// new WorkboxWebpackPlugin({
-		// 	globDirectory: webRoot,
-		// 	globPatterns: ["**\/*.{css,svg,woff2}"],
-		// 	swDest: path.join(webRoot, "js", "sw.js")
-		// }),
-		new webpack.optimize.CommonsChunkPlugin({
-			names: ["vendors", "app"],
-			minChunks: Infinity
-		}),
-		new CopyWebpackPlugin([
-			{
-				from: path.join(__dirname, "src", "*.txt"),
-				to: path.join(__dirname, "dist"),
-				flatten: true
-			}
-		]),
+		new CopyWebpackPlugin([{
+			from: path.join(__dirname, "src", "*.txt"),
+			to: path.join(__dirname, "dist"),
+			flatten: true
+		}]),
 		new webpack.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
 			},
 			"global.GENTLY": false
 		}),
-		new webpack.optimize.UglifyJsPlugin(),
 		new CompressionWebpackPlugin({
-			test: /\.(html?|xml|css|js|svg|ttf)$/,
+			test: /\.(html|xml|css|js|svg)$/i,
 			minRatio: 1,
 			threshold: 0
 		}),
 		new BrotliWebpackPlugin({
-			test: /\.(html?|xml|css|js|svg|ttf)$/,
+			test: /\.(html|xml|css|js|svg)$/i,
 			minRatio: 1,
 			threshold: 0
 		}),

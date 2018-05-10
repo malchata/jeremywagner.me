@@ -1,81 +1,81 @@
 header{
-	padding: 0 var(--mobile-gutter);
+  padding: 0 var(--mobile-gutter);
 }
 
 .skyline{
-	background: top 0 left 95% url("../images/skyline.svg") no-repeat;
-	background-size: auto 101%;
-	padding-top: 30%; /* 96px / 320px */
-	margin: 0 0 8px;
+  background: top 0 left 95% url("../images/skyline.svg") no-repeat;
+  background-size: auto 101%;
+  padding-top: 30%; /* 96px / 320px */
+  margin: 0 0 8px;
 }
 
 .name,
 .site{
-	line-height: 1;
-	color: var(--coral);
-	padding: 0;
-	background: transparent;
+  line-height: 1;
+  color: var(--coral);
+  padding: 0;
+  background: transparent;
 }
 
 .name{
-	font-size: calc(24px + (72 - 24) * ((100vw - 320px) / (960 - 320)));
-	line-height: 1;
-	font-family: var(--fredoka-one);
-	margin: 0 0 .4ch
+  font-size: calc(24px + (72 - 24) * ((100vw - 320px) / (960 - 320)));
+  line-height: 1;
+  font-family: var(--fredoka-one);
+  margin: 0 0 .4ch
 }
 
 .site{
-	font-size: calc(32px + (96 - 32) * ((100vw - 320px) / (960 - 320)));
-	line-height: 1;
-	font-family: var(--monoton);
-	text-transform: uppercase;
-	word-spacing: .225ch;
-	margin: .25ch 0 0;
+  font-size: calc(32px + (96 - 32) * ((100vw - 320px) / (960 - 320)));
+  line-height: 1;
+  font-family: var(--monoton);
+  text-transform: uppercase;
+  word-spacing: .225ch;
+  margin: .25ch 0 0;
 }
 
 @media (min-width: 800px){
-	@supports (display: grid){
-		.skyline{
-			background-position: 50% 0;
-			background-size: auto 101.5%;
-			padding-top: 21.9444444444%; /* 316px / 1440px */
-			margin: 0;
-		}
+  @supports (display: grid){
+    .skyline{
+      background-position: 50% 0;
+      background-size: auto 101.5%;
+      padding-top: 21.9444444444%; /* 316px / 1440px */
+      margin: 0;
+    }
 
-		header{
-			padding: 0;
-		}
+    header{
+      padding: 0;
+    }
 
-		#jeremy{
-			position: relative;
-		}
+    #jeremy{
+      position: relative;
+    }
 
-		#jeremy:before{
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			padding-top: 100%;
-			width: 100%;
-			display: block;
-			background: url("../images/jeremy.svg") no-repeat;
-			background-size: 100%;
-			content: "";
-			font-size: 0;
-		}
+    #jeremy:before{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding-top: 100%;
+      width: 100%;
+      display: block;
+      background: url("../images/jeremy.svg") no-repeat;
+      background-size: 100%;
+      content: "";
+      font-size: 0;
+    }
 
-		.name{
-			font-size: calc(28px + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
-		}
+    .name{
+      font-size: calc(28px + (56 - 28) * ((100vw - 800px) / (1440 - 800)));
+    }
 
-		.name:before,
-		.name:after,
-		.site:before,
-		.site:after{
-			content: none;
-		}
+    .name:before,
+    .name:after,
+    .site:before,
+    .site:after{
+      content: none;
+    }
 
-		.site{
-			font-size: calc(56px + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
-		}
-	}
+    .site{
+      font-size: calc(56px + (112 - 56) * ((100vw - 800px) / (1440 - 800)));
+    }
+  }
 }

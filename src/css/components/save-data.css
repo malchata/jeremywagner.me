@@ -3,5 +3,5 @@
 .no-save-data .date,
 .no-save-data .read-more,
 .no-save-data figcaption{
-	font-family: var(--fira-sans);
+  font-family: var(--fira-sans);
 }
