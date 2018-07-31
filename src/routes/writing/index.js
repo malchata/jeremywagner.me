@@ -43,6 +43,8 @@ export default class Content extends Component{
         </ul>
         <SubHeading>Google Web Fundamentals</SubHeading>
         <ul>
+          <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/" rel="noopener">Reduce JavaScript Payloads with Tree Shaking</a></li>
+          <li><a href="https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing/" rel="noopener">Assessing Loading Performance in Real Life with Navigation and Resource Timing</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/" rel="noopener">Replace Animated GIFs with Video</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/save-data/" rel="noopener">Delivering Fast and Light Applications with <code>Save-Data</code></a><em>*</em></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" rel="noopener">Lazy Loading Images and Video</a></li>
@@ -64,6 +66,7 @@ export default class Content extends Component{
         </ul>
         <SubHeading>Smashing Magazine</SubHeading>
         <ul>
+          <li><a href="https://www.smashingmagazine.com/ebooks/the-webp-manual/" rel="noopener">The WebP Manual</a> (<a href="https://www.smashingmagazine.com/2018/07/converting-images-to-webp/" rel="noopener">Excerpt</a>)</li>
           <li><a href="https://www.smashingmagazine.com/2017/04/guide-http2-server-push/" rel="noopener">A Comprehensive Guide To HTTP/2 Server Push</a></li>
           <li><a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/" rel="noopener">Next Generation Server Compression With Brotli</a></li>
         </ul>

@@ -11,7 +11,6 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import CompressionWebpackPlugin from "compression-webpack-plugin";
 import BrotliWebpackPlugin from "brotli-webpack-plugin";
 import FaviconsWebpackPlugin from "favicons-webpack-plugin";
-import AssetsManifestWebpackPlugin from "webpack-assets-manifest";
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
 
@@ -186,6 +185,11 @@ export default {
       to: path.join(__dirname, "dist"),
       flatten: true
     }]),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, "src", ".htaccess"),
+      to: path.join(__dirname, "dist"),
+      flatten: true
+    }]),
     new webpack.DefinePlugin({
       "process.env": {
         "NODE_ENV": JSON.stringify("production")
@@ -201,10 +205,6 @@ export default {
       test: /\.(html|xml|css|js|svg)$/i,
       minRatio: 1,
       threshold: 0
-    }),
-    new AssetsManifestWebpackPlugin({
-      output: "assets-manifest.json",
-      publicPath: "/"
     })
   ]
 };

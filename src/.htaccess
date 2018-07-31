@@ -1,0 +1,145 @@
+# gzip static compression definitions
+<Files "*.js.gz">
+  AddType "text/javascript" .gz
+  AddEncoding gzip .gz
+</Files>
+<Files "*.css.gz">
+  AddType "text/css" .gz
+  AddEncoding gzip .gz
+</Files>
+<Files "*.svg.gz">
+  AddType "image/svg+xml" .gz
+  AddEncoding gzip .gz
+</Files>
+<Files "*.html.gz">
+  AddType "text/html" .gz
+  AddEncoding gzip .gz
+</Files>
+<Files "*.xml.gz">
+  AddType "text/xml" .gz
+  AddEncoding gzip .gz
+</Files>
+
+# Brotli static compression definitions
+<Files "*.js.br">
+  AddType "text/javascript" .br
+  AddEncoding br .br
+</Files>
+<Files "*.css.br">
+  AddType "text/css" .br
+  AddEncoding br .br
+</Files>
+<Files "*.svg.br">
+  AddType "image/svg+xml" .br
+  AddEncoding br .br
+</Files>
+<Files "*.html.br">
+  AddType "text/html" .br
+  AddEncoding br .br
+</Files>
+<Files "*.xml.br">
+  AddType "text/xml" .br
+  AddEncoding br .br
+</Files>
+
+# Rewrite config
+<IfModule rewrite_module>
+  # Turn on the rewrite module
+  RewriteEngine On
+  RewriteBase "/"
+
+  # WWW to non-WWW redirect
+  # RewriteCond %{HTTP_HOST} ^www.jeremywagner\.me$ [NC]
+  # RewriteRule ^(.*)$ https://jeremywagner\.me$1 [R=301,L]
+
+  # Rewrites for the Save-Data header
+  RewriteCond %{HTTP:Save-Data} =on [NC]
+  RewriteCond %{REQUEST_URI} !savedata.html$
+  RewriteRule ^(.*).html$ $1.savedata.html [L]
+
+  RewriteCond %{HTTP:Save-Data} !=on [NC]
+  RewriteCond %{REQUEST_URI} savedata.html$
+  RewriteRule ^(.*).savedata.html$ $1.html [L,R=302]
+
+  # Rewrites for static compression
+  RewriteCond %{HTTP:Accept-Encoding} br
+  RewriteCond %{REQUEST_FILENAME}.br -f
+  RewriteRule ^(.*)$ $1.br [L]
+
+  RewriteCond %{HTTP:Accept-Encoding} gzip
+  RewriteCond %{REQUEST_FILENAME}.gz -f
+  RewriteRule ^(.*)$ $1.gz [L]
+</IfModule>
+
+# Caching Policy
+<IfModule headers_module>
+  <FilesMatch "\.(png|jpe?g|gif|svg|svg\.br|svg\.gz|webm|ogv|mp4|webp|woff2?|ico|css|css\.br|css\.gz|js|js\.br|js\.gz)$">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "public,max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(html|html\.br|html\.gz|xml|xml\.br|xml\.gz|txt|txt\.br|txt\.gz)$">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "public,max-age=600"
+  </FilesMatch>
+  <FilesMatch "\.(xml|xml\.br|xml\.gz|txt|txt\.br|txt\.gz|ttf|ttf\.br|ttf\.gz|woff2?|eot|eot\.br|eot\.gz|svg|svg\.br|svg\.gz|css|css\.br|css\.gz|js|js\.br|js\.gz)$">
+    Header set Vary "Accept-Encoding"
+  </FilesMatch>
+  <FilesMatch "\.(html|html\.br|html\.gz)$">
+    Header set Vary "Accept-Encoding, Save-Data"
+  </FilesMatch>
+</IfModule>
+
+# Set HSTS Header
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
+# Simple redirects
+Redirect 301 "/blog/webp-images" "/blog/using-webp-images"
+Redirect 301 "/about-me" "/about"
+Redirect 301 "/lets-work-together" "/hire"
+Redirect 301 "/book" "https://manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090"
+Redirect 301 "/visualfold" "http://jlwagner.net/visualfold"
+Redirect 301 "/index.php" "/"
+Redirect 301 "/index.xml" "/"
+Redirect 301 "/index.rdf" "/"
+Redirect 301 "/webopt/ch03-selectors" "http://jlwagner.net/webopt/ch03-selectors/"
+Redirect 301 "/wp-login.php" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+Redirect 301 "/wp-config.php" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+Redirect 302 "/speaker-info" "/about-me"
+Redirect 301 "/blog/amp" "/blog"
+Redirect 301 "/talks/speed-vs-speed" "http://jlwagner.net/talks/speed-vs-speed"
+Redirect 301 "/talks/these-images" "http://jlwagner.net/talks/these-images"
+Redirect 301 "/xmlrpc.php" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+Redirect 301 "/feed" "/rss.xml"
+Redirect 301 "/rss" "/rss.xml"
+Redirect 301 "/blog/feed" "/rss.xml"
+Redirect 301 "/blog/atom.xml" "/rss.xml"
+Redirect 301 "/blog/rss.xml" "/rss.xml"
+Redirect 301 "/blog/rss" "/rss.xml"
+Redirect 301 "/data/rss" "/rss.xml"
+Redirect 301 "/data/atom" "/rss.xml"
+Redirect 301 "/atom.xml" "/rss.xml"
+Redirect 301 "/help.txt" "/license.txt"
+Redirect 301 "/blog/davidwalsh.name/jpeg-compression-guetzli" "https://davidwalsh.name/jpeg-compression-guetzli"
+Redirect 301 "/webp-images" "/blog/webp-images"
+Redirect 301 "/webopt" "http://jlwagner.net/webopt"
+Redirect 301 "/phpMyAdmin" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+Redirect 301 "/blog/index.php" "/"
+
+# Redirect patterns
+RedirectMatch 301 "/wp-admin.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/wp-includes.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/wp-content.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/pma.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/phpmyadmin.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/cdn-cgi.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+RedirectMatch 301 "/cgi-bin.*" "https://www.youtube.com/watch?v=OGp9P6QvMjY"
+Redirectmatch 301 "^/blog/$" "/"
+Redirectmatch 301 "^/readme*" "/license.txt"
+
+# Turn off the server signature
+# ServerSignature Off
+
+# Remove the server response header
+# ServerTokens prod
